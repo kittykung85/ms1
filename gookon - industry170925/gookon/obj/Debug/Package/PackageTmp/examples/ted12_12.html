@@ -1,0 +1,1121 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>12*12</title>
+		<meta charset="utf8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			html, body {
+				height: 100%;
+			}
+
+			body {
+				background-color: #ffffff;
+				margin: 0;
+				font-family: Helvetica, sans-serif;
+				overflow: hidden;
+			}
+
+			a {
+				color: #00ff00;
+			}
+
+			#info {
+				position: absolute;
+				width: 100%;
+				color: #000000;
+				padding: 5px;
+				font-family: Monospace;
+				font-size: 13px;
+				font-weight: bold;
+				text-align: center;
+				z-index: 1;
+			}
+
+			#menu {
+				position: absolute;
+				bottom: 20px;
+				width: 100%;
+				text-align: center;
+			}
+
+			.element {
+				width: 120px;
+				height: 160px;
+				box-shadow: 0px 0px 12px rgba(0,0,0,0.5);
+				border: 1px solid rgba(0,0,0,0.25);
+				text-align: center;				
+				cursor: default;
+			}
+
+			.element:hover {
+				box-shadow: 0px 0px 12px rgba(0,0,0,0.75);
+				border: 1px solid rgba(0,0,0,0.75);
+			}
+
+				.element .number {
+					position: absolute;
+					top: 20px;
+					right: 20px;
+					font-size: 30px;
+					color: rgba(0,0,0,1);
+				}
+
+				.element .symbol {
+					position: absolute;
+					top: 40px;
+					left: 0px;
+					right: 0px;
+					font-size: 40px;
+					font-weight: bold;
+					color: rgba(0,0,0,1);
+					text-shadow: 0 0 60px rgba(255,255,255,1);
+				}
+
+				.element .details {
+					position: absolute;
+					bottom: 15px;
+					left: 0px;
+					right: 0px;
+					font-size: 12px;
+					color: rgba(127,255,255,0.75);
+				}
+
+			button {
+				color: rgba(0,0,0,0.75);
+				background: transparent;
+				outline: 1px solid rgba(127,255,255,0.75);
+				border: 0px;
+				padding: 5px 10px;
+				cursor: pointer;
+			}
+			button:hover {
+				background-color: rgba(255,187,0,0.5);
+			}
+			button:active {
+				color: #000000;
+				background-color: rgba(0,255,255,0.75);
+			}
+		</style>
+	</head>
+	<body>
+		<script src="../build/three.js"></script>
+		<script src="js/libs/tween.min.js"></script>
+		<script src="js/controls/TrackballControls.js"></script>
+		<script src="js/renderers/CSS3DRenderer.js"></script>
+
+		<div id="container">
+           
+        </div>
+		<div id="info">TED 12*12 <br />
+         Select Tag:<select id="Select1" name="D1">
+                <option>Business</option>
+                <option>Computers</option>
+                <option>Culture</option>
+                <option>Design</option>
+                <option>Drones</option>
+                <option>Engineering</option>
+                <option>Future</option>
+                <option>Global-issues</option>
+                <option>Health</option>
+                <option>Health-care</option>
+                <option>Internet</option>
+                <option>Medicine</option>
+                <option>Science</option>
+                <option>Social-change</option>
+                <option>Social-media</option>
+                <option>Technology</option>
+                <option>Tedx</option>
+            </select>
+            <select id="Select2" name="D1">
+                <option>---</option>
+                <option>Business</option>
+                <option>Computers</option>
+                <option>Culture</option>
+                <option>Design</option>
+                <option>Drones</option>
+                <option>Engineering</option>
+                <option>Future</option>
+                <option selected>Global-issues</option>
+                <option>Health</option>
+                <option>Health-care</option>
+                <option>Internet</option>
+                <option>Medicine</option>
+                <option>Science</option>
+                <option>Social-change</option>
+                <option>Social-media</option>
+                <option>Technology</option>
+                <option>Tedx</option>
+            </select>
+             <select id="Select3" name="D1">
+                <option>---</option>
+                <option>Business</option>
+                <option>Computers</option>
+                <option selected>Culture</option>
+                <option>Design</option>
+                <option>Drones</option>
+                <option>Engineering</option>
+                <option>Future</option>
+                <option>Global-issues</option>
+                <option>Health</option>
+                <option>Health-care</option>
+                <option>Internet</option>
+                <option>Medicine</option>
+                <option>Science</option>
+                <option>Social-change</option>
+                <option>Social-media</option>
+                <option>Technology</option>
+                <option>Tedx</option>
+            </select>
+             <select id="Select4" name="D1">
+                <option>---</option>
+                <option>Business</option>
+                <option>Computers</option>
+                <option>Culture</option>
+                <option>Design</option>
+                <option>Drones</option>
+                <option>Engineering</option>
+                <option>Future</option>
+                <option>Global-issues</option>
+                <option selected>Health</option>
+                <option>Health-care</option>
+                <option>Internet</option>
+                <option>Medicine</option>
+                <option>Science</option>
+                <option>Social-change</option>
+                <option>Social-media</option>
+                <option>Technology</option>
+                <option>Tedx</option>
+            </select>
+             <select id="Select5" name="D1">
+                <option>---</option>
+                <option>Business</option>
+                <option>Computers</option>
+                <option>Culture</option>
+                <option>Design</option>
+                <option>Drones</option>
+                <option>Engineering</option>
+                <option>Future</option>
+                <option>Global-issues</option>
+                <option>Health</option>
+                <option>Health-care</option>
+                <option>Internet</option>
+                <option>Medicine</option>
+                <option>Science</option>
+                <option>Social-change</option>
+                <option>Social-media</option>
+                <option>Technology</option>
+                <option>Tedx</option>
+            </select>
+            <input id="Submit1" type="button" value="submit" onclick="tagSel('123')" /></div>
+		<div id="menu">
+			<button id="table">TABLE</button>
+			<button id="sphere">SPHERE</button>
+			<button id="helix">HELIX</button>
+			<button id="grid">GRID</button>
+		</div>
+       	
+        <script>
+          
+                var table = [
+                  "", "0", "55.845", 4, 0, "#", "igimg/17.png", "",
+				"", "1", "58.933195", 5, 0, "#", "igimg/18.png", "",
+                "", "2", "12.0107", 6, 0, "#", "igimg/11.png", "",
+				"", "3", "26.9815386", 7, 0, "igimg/12.png", "", "",
+				"", "4", "28.0855", 8, 0, "#", "igimg/13.png", "",
+				"", "5", "50.9415", 9, 0, "#", "igimg/14.png", "",
+				"", "6", "51.9961", 10, 0, "#", "igimg/15.png", "",
+				"", "7", "54.938045", 11, 0, "#", "igimg/16.png", "",
+				"", "8", "55.845", 12, 0, "#", "igimg/17.png", "rgba(0,143,0,1)",
+				"", "9", "58.933195", 13, 0, "#", "igimg/18.png", "",
+                "", "10", "51.9961", 14, 0, "#", "igimg/15.png", "",
+				"", "11", "54.938045", 15, 0, "#", "igimg/16.png", "",
+
+                "", "12", "55.845", 4, 1, "#", "igimg/17.png", "",
+				"", "13", "58.933195", 5, 1, "#", "igimg/18.png", "",
+                "", "14", "12.0107", 6, 1, "#", "igimg/11.png", "",
+				"", "15", "26.9815386", 7, 1, "igimg/12.png", "", "",
+				"", "16", "28.0855", 8, 1, "#", "igimg/13.png", "",
+				"", "17", "50.9415", 9, 1, "#", "igimg/14.png", "",
+				"", "18", "51.9961", 10, 1, "#", "igimg/15.png", "",
+				"", "19", "54.938045", 11, 1, "#", "igimg/16.png", "rgba(204, 255, 204,1)",
+				"", "20", "55.845", 12, 1, "#", "igimg/17.png", "rgba(204, 255, 204,1)",
+				"", "21", "58.933195", 13, 1, "#", "igimg/18.png", "rgba(204, 255, 204,1)",
+                "", "22", "51.9961", 14, 1, "#", "igimg/15.png", "rgba(204, 255, 204,1)",
+				"", "23", "54.938045", 15, 1, "#", "igimg/16.png", "",
+
+                "", "24", "55.845", 4, 2, "#", "igimg/17.png", "",
+				"", "25", "58.933195", 5, 2, "#", "igimg/18.png", "",
+                "", "26", "12.0107", 6, 2, "#", "igimg/11.png", "",
+				"", "27", "26.9815386", 7, 2, "igimg/12.png", "", "",
+				"", "28", "28.0855", 8, 2, "#", "igimg/13.png", "",
+				"", "29", "50.9415", 9, 2, "#", "igimg/14.png", "",
+				"", "30", "51.9961", 10, 2, "#", "igimg/15.png", "",
+				"", "31", "54.938045", 11, 2, "#", "igimg/16.png", "",
+				"", "32", "55.845", 12, 2, "#", "igimg/17.png", "",
+				"", "33", "58.933195", 13, 2, "#", "igimg/18.png", "",
+                "", "34", "51.9961", 14, 2, "#", "igimg/15.png", "",
+				"", "35", "54.938045", 15, 2, "#", "igimg/16.png", "rgba(204, 255, 204,1)",
+
+                "", "36", "55.845", 4, 3, "#", "igimg/17.png", "rgba(204, 255, 204,1)",
+				"", "37", "58.933195", 5, 3, "#", "igimg/18.png", "rgba(204, 255, 204,1)",
+				"", "38", "65.38", 6, 3, "#", "igimg/21.png", "rgba(204, 255, 204,1)",
+				"", "39", "69.723", 7, 3, "#", "igimg/22.png", "rgba(204, 255, 204,1)",
+				"", "40", "72.63", 8, 3, "#", "igimg/23.png", "",
+				"", "41", "92.90628", 9, 3, "#", "igimg/24.png", "",
+				"", "42", "95.96", 10, 3, "#", "igimg/25.png", "",
+				"", "43", "(98)", 11, 3, "#", "igimg/26.png", "",
+				"", "44", "101.07", 12, 3, "#", "igimg/27.png", "",
+				"", "45", "102.9055", 13, 3, "#", "igimg/28.png", "",
+                "", "46", "51.9961", 14, 3, "#", "igimg/15.png", "",
+				"", "47", "54.938045", 15, 3, "#", "igimg/16.png", "",
+
+                "", "48", "55.845", 4, 4, "#", "igimg/17.png", "",
+				"", "49", "58.933195", 5, 4, "#", "igimg/18.png", "",
+				"", "50", "112.411", 6, 4, "#", "igimg/31.png", "",
+				"", "51", "114.818", 7, 4, "#", "igimg/32.png", "",
+				"", "52", "118.71", 8, 4, "#", "igimg/33.png", "",
+				"", "53", "140.116", 9, 4, "#", "igimg/34.png", "",
+				"", "54", "140.90765", 10, 4, "#", "igimg/35.png", "rgba(0,143,0,1)",
+				"", "55", "144.242", 11, 4, "igmap.htm", "igimg/36.png", "rgba(204, 255, 204,1)",
+				"", "56", "207.2", 8, 6, "#", "igimg/37.png", "rgba(204, 255, 204,1)",
+				"", "57", "150.36", 13, 4, "#", "igimg/38.png", "rgba(204, 255, 204,1)",
+                "", "58", "51.9961", 14, 4, "#", "igimg/15.png", "rgba(204, 255, 204,1)",
+				"", "59", "54.938045", 15, 4, "#", "igimg/16.png", "rgba(204, 255, 204,1)",
+
+
+                "", "60", "55.845", 4, 5, "#", "igimg/17.png", "rgba(0,143,0,1)",
+				"", "61", "58.933195", 5, 5, "#", "igimg/18.png", "",
+				"", "62", "158.92535", 6, 5, "#", "igimg/41.png", "",
+				"", "63", "162.5", 7, 5, "#", "igimg/42.png", "",
+				"", "64", "164.93032", 8, 5, "#", "igimg/43.png", "",
+				"", "65", "180.94788", 9, 5, "", "igimg/44.png", "",
+				"", "66", "183.84", 10, 5, "", "igimg/45.png", "",
+				"", "67", "186.207", 11, 5, "#", "igimg/46.png", "",
+				"", "68", "190.23", 12, 5, "#", "igimg/47.png", "",
+				"", "69", "192.217", 13, 5, "#", "igimg/48.png", "",
+                "", "70", "51.9961", 14, 5, "#", "igimg/15.png", "",
+				"", "71", "54.938045", 15, 5, "#", "igimg/16.png", "",
+
+
+                "", "72", "55.845", 4, 6, "#", "igimg/17.png", "",
+				"", "73", "58.933195", 5, 6, "#", "igimg/18.png", "",
+				"", "74", "200.59", 6, 6, "#", "igimg/51.png", "",
+				"", "75", "204.3833", 7, 6, "#", "igimg/52.png", "",
+                "", "76", "(145)", 12, 4, "#", "igimg/53.png", "rgba(204, 255, 204,1)",
+				"", "77", "232.03806", 9, 6, "", "igimg/54.png", "rgba(204, 255, 204,1)",
+				"", "78", "231.0588", 10, 6, "", "igimg/55.png", "rgba(204, 255, 204,1)",
+				"", "79", "238.02891", 11, 6, "#", "igimg/56.png", "rgba(204, 255, 204,1)",
+				"", "80", "(237)", 12, 6, "#", "igimg/57.png", "rgba(204, 255, 204,1)",
+				"", "81", "(244)", 13, 6, "#", "igimg/58.png", "",
+                "", "82", "51.9961", 14, 6, "#", "igimg/15.png", "",
+				"", "83", "54.938045", 15, 6, "#", "igimg/16.png", "",
+
+
+                "", "84", "55.845", 4, 7, "#", "igimg/17.png", "",
+				"", "85", "58.933195", 5, 7, "#", "igimg/18.png", "",
+				"", "86", "(271)", 6, 7, "#", "igimg/61.png", "",
+				"", "87", "(272)", 7, 7, "#", "igimg/62.png", "",
+				"", "88", "(270)", 8, 7, "#", "igimg/63.png", "",
+				"", "89", "(276)", 9, 7, "#", "igimg/64.png", "",
+				"", "90", "(281)", 10, 7, "#", "igimg/65.png", "",
+				"", "91", "(280)", 11, 7, "#", "igimg/66.png", "",
+				"", "92", "(285)", 12, 7, "#", "igimg/67.png", "",
+				"", "93", "(284)", 13, 7, "#", "igimg/68.png", "",
+                "", "94", "51.9961", 14, 7, "#", "igimg/15.png", "",
+				"", "95", "54.938045", 15, 7, "#", "igimg/16.png", "",
+
+
+                "", "96", "55.845", 4, 8, "#", "igimg/17.png", "",
+				"", "97", "58.933195", 5, 8, "#", "igimg/18.png", "rgba(204, 255, 204,1)",
+				"", "98", "(281)", 6, 8, "#", "igimg/71.png", "rgba(204, 255, 204,1)",
+				"", "99", "(280)", 7, 8, "#", "igimg/72.png", "rgba(204, 255, 204,1)",
+				"", "100", "(285)", 8, 8, "#", "igimg/73.png", "rgba(204, 255, 204,1)",
+				"", "101", "(284)", 9, 8, "#", "igimg/74.png", "",
+				"", "102", "(289)", 10, 8, "#", "igimg/75.png", "",
+				"", "103", "(288)", 11, 8, "#", "igimg/76.png", "",
+				"", "104", "(293)", 12, 8, "#", "igimg/77.png", "",
+				"", "105", "(294)", 13, 8, "#", "igimg/78.png", "",
+                "", "106", "51.9961", 14, 8, "#", "igimg/15.png", "",
+				"", "107", "54.938045", 15, 8, "#", "igimg/16.png", "",
+
+
+                "", "108", "55.845", 4, 9, "#", "igimg/17.png", "",
+				"", "109", "58.933195", 5, 9, "#", "igimg/18.png", "",
+				"", "110", "(281)", 6, 9, "#", "igimg/81.png", "",
+				"", "111", "(280)", 7, 9, "#", "igimg/82.png", "",
+				"", "112", "(285)", 8, 9, "#", "igimg/83.png", "",
+				"", "113", "(284)", 9, 9, "#", "igimg/84.png", "",
+				"", "114", "(289)", 10, 9, "#", "igimg/85.png", "",
+				"", "115", "(288)", 11, 9, "#", "igimg/86.png", "",
+				"", "116", "(293)", 12, 9, "#", "igimg/87.png", "",
+                "", "117", "(247)", 13, 9, "#", "igimg/88.png", "rgba(0,143,0,1)",
+                "", "118", "51.9961", 14, 9, "#", "igimg/15.png", "",
+				"", "119", "54.938045", 15, 9, "#", "igimg/16.png", "",
+
+                "", "120", "55.845", 4, 10, "#", "igimg/17.png", "",
+				"", "121", "58.933195", 5, 10, "#", "igimg/18.png", "",
+				"", "122", "(281)", 6, 10, "#", "igimg/81.png", "",
+				"", "123", "(280)", 7, 10, "#", "igimg/82.png", "",
+				"", "124", "(285)", 8, 10, "#", "igimg/83.png", "",
+				"", "125", "(284)", 9, 10, "#", "igimg/84.png", "",
+				"", "126", "(289)", 10, 10, "#", "igimg/85.png", "",
+				"", "127", "(288)", 11, 10, "#", "igimg/86.png", "",
+				"", "128", "(293)", 12, 10, "#", "igimg/87.png", "",
+                "", "129", "(247)", 13, 10, "#", "igimg/88.png", "",
+                "", "130", "51.9961", 14, 10, "#", "igimg/15.png", "",
+				"", "131", "54.938045", 15, 10, "#", "igimg/16.png", "",
+
+                "", "132", "55.845", 4, 11, "#", "igimg/17.png", "",
+				"", "133", "58.933195", 5, 11, "#", "igimg/18.png", "",
+				"", "134", "(281)", 6, 11, "#", "igimg/81.png", "",
+				"", "135", "(280)", 7, 11, "#", "igimg/82.png", "",
+				"", "136", "(285)", 8, 11, "#", "igimg/83.png", "",
+				"", "137", "(284)", 9, 11, "#", "igimg/84.png", "",
+				"", "138", "(289)", 10, 11, "#", "igimg/85.png", "",
+				"", "139", "(288)", 11, 11, "#", "igimg/86.png", "",
+				"", "140", "(293)", 12, 11, "#", "igimg/87.png", "",
+                "", "141", "(247)", 13, 11, "#", "igimg/88.png", "",
+                "", "142", "51.9961", 14, 11, "#", "igimg/15.png", "",
+				"", "143", "54.938045", 15, 11, "#", "igimg/16.png", "",
+
+			];
+
+            var camera, scene, renderer;
+			var controls;
+
+			var objects = [];
+			var targets = { table: [], sphere: [], helix: [], grid: [] };
+
+			init();
+			animate();
+
+			function init() {
+
+				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
+				camera.position.z =3500;
+
+				scene = new THREE.Scene();
+
+				// table
+
+				for ( var i = 0; i < table.length; i += 8 ) {
+
+					var element = document.createElement( 'div' );
+					element.className = 'element';
+				
+                	var bg = document.createElement('div'); 
+					element.setAttribute('style', "background-color:" + table[i + 7]);
+					element.appendChild(bg);
+
+					var link = document.createElement('a'); // + url
+					link.setAttribute('href', table[i+5]);
+					link.setAttribute('target', "_blank");
+					element.appendChild(link);
+
+					var Img = document.createElement('img');
+					Img.setAttribute('width', 100);
+					Img.setAttribute('height', 100);
+				    Img.setAttribute('src', table[i+6]);
+//					link.appendChild(Img);
+
+					var number = document.createElement( 'div' );
+					number.className = 'number'; //右上角小字
+					number.textContent = (i/8) ;
+					element.appendChild( number );
+					
+
+					var symbol = document.createElement( 'div' );
+					symbol.className = 'symbol'; //大字
+					symbol.textContent = table[i];
+					element.appendChild( symbol );
+					link.appendChild(symbol);
+                    
+					var details = document.createElement( 'div' );
+					details.className = 'details'; //下面兩行小字
+					details.innerHTML = table[ i + 1 ] + '<br>' + table[ i + 2 ];
+					//element.appendChild( details );
+					link.appendChild(details);
+
+					var object = new THREE.CSS3DObject( element );
+					object.position.x = Math.random() * 4000 - 2000;
+					object.position.y = Math.random() * 4000 - 2000;
+					object.position.z = Math.random() * 4000 - 2000;
+					scene.add( object );
+
+					objects.push( object );
+
+					//
+
+					var object = new THREE.Object3D();
+					object.position.x = ( table[ i + 3 ] * 140 ) - 1330;
+					object.position.y = -(table[i + 4] * 180) + 990;
+
+//					console.log( i/8 + "," + object.position.x + ","+ object.position.y)
+					
+                    targets.table.push( object );
+
+				}
+
+				// sphere
+
+				var vector = new THREE.Vector3();
+
+				for ( var i = 0, l = objects.length; i < l; i ++ ) {
+//				    console.log("l=" + l)
+
+					var phi = Math.acos( -1 + ( 2 * i ) / l );
+					var theta = Math.sqrt( l * Math.PI ) * phi;
+
+					var object = new THREE.Object3D();
+
+					object.position.x = 800 * Math.cos( theta ) * Math.sin( phi );
+					object.position.y = 800 * Math.sin( theta ) * Math.sin( phi );
+					object.position.z = 800 * Math.cos( phi );
+
+//					console.log(i + ", phi= " + phi + ", Math.PI= " + Math.PI + ", theta= " + theta + ", cos( theta )= " + Math.cos(theta) + ", sin( phi )= " + Math.sin(phi) + ", x=" + object.position.x + ", sin( theta )= " + Math.sin(theta) + ", sin( phi )= " + Math.sin(phi) + ", y=" + object.position.y + ", cos( phi )= " + Math.cos(phi) + ", z=" + object.position.z)
+					
+//                    console.log(i + "," + phi + "," + Math.PI + "," + theta + "," + Math.cos(theta) + "," + Math.sin(phi) + "," + object.position.x + "," + Math.sin(theta) + "," + Math.sin(phi) + "," + object.position.y + "," + Math.cos(phi) + "," + object.position.z)
+
+					vector.copy( object.position ).multiplyScalar( 2 );
+
+					object.lookAt( vector );
+
+					targets.sphere.push( object );
+
+				}
+
+				// helix
+
+				var vector = new THREE.Vector3();
+
+				for ( var i = 0, l = objects.length; i < l; i ++ ) {
+
+					var phi = i * 0.175 + Math.PI;
+
+					var object = new THREE.Object3D();
+
+					object.position.x = 900 * Math.sin( phi );
+					object.position.y = - ( i * 8 ) + 450;
+					object.position.z = 900 * Math.cos( phi );
+
+					vector.x = object.position.x * 2;
+					vector.y = object.position.y;
+					vector.z = object.position.z * 2;
+
+					object.lookAt( vector );
+
+					targets.helix.push( object );
+
+				}
+
+				// grid
+
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = new THREE.Object3D();
+
+					object.position.x = ( ( i % 5 ) * 400 ) - 800;
+					object.position.y = ( - ( Math.floor( i / 5 ) % 5 ) * 400 ) + 800;
+					object.position.z = ( Math.floor( i / 25 ) ) * 1000 - 2000;
+
+					targets.grid.push( object );
+
+				}
+
+				//
+
+				renderer = new THREE.CSS3DRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.domElement.style.position = 'absolute';
+				document.getElementById( 'container' ).appendChild( renderer.domElement );
+
+				//
+
+				controls = new THREE.TrackballControls( camera, renderer.domElement );
+				controls.rotateSpeed = 0.5;
+				controls.minDistance = 500;
+				controls.maxDistance = 6000;
+				controls.addEventListener( 'change', render );
+
+				var button = document.getElementById( 'table' );
+				button.addEventListener( 'click', function ( event ) {
+
+					transform( targets.table, 20 );
+
+				}, false );
+
+				var button = document.getElementById( 'sphere' );
+				button.addEventListener( 'click', function ( event ) {
+
+					transform( targets.sphere, 20 );
+
+				}, false );
+
+				var button = document.getElementById( 'helix' );
+				button.addEventListener( 'click', function ( event ) {
+
+					transform( targets.helix, 20 );
+
+				}, false );
+
+				var button = document.getElementById( 'grid' );
+				button.addEventListener( 'click', function ( event ) {
+
+					transform( targets.grid, 20 );
+
+				}, false );
+
+				transform( targets.table, 20 );
+
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+}
+
+
+			function transform( targets, duration ) {
+
+				TWEEN.removeAll();
+
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = objects[ i ];
+					var target = targets[ i ];
+
+					new TWEEN.Tween( object.position )
+						.to( { x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration )
+						.easing( TWEEN.Easing.Exponential.InOut )
+						.start();
+
+					new TWEEN.Tween( object.rotation )
+						.to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+						.easing( TWEEN.Easing.Exponential.InOut )
+						.start();
+
+				}
+
+				new TWEEN.Tween( this )
+					.to( {}, duration * 2 )
+					.onUpdate( render )
+					.start();
+
+			}
+			function transformPos(targets, duration, iX, iY, iZ) {
+
+			    TWEEN.removeAll();
+			    camera.position.x = iX;
+			    camera.position.y = iY;
+			    camera.position.z = iZ;
+			    for (var i = 0; i < objects.length; i++) {
+
+			        var object = objects[i];
+			        var target = targets[i];
+
+			        new TWEEN.Tween(object.position)
+						.to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration)
+						.easing(TWEEN.Easing.Exponential.InOut)
+						.start();
+
+			        new TWEEN.Tween(object.rotation)
+						.to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration)
+						.easing(TWEEN.Easing.Exponential.InOut)
+						.start();
+
+			    }
+
+			    new TWEEN.Tween(this)
+					.to({}, duration * 2)
+					.onUpdate(render)
+					.start();
+
+			}
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+				render();
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				TWEEN.update();
+
+				controls.update();
+
+			}
+
+			function render() {
+
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+
+        <script>
+            function tagSel(iselect) {
+                if (iselect == '123') {
+                                   
+                var table = [
+                "", "0", "55.845", 4, 0, "#", "igimg/17.png", "",
+				"", "1", "58.933195", 5, 0, "#", "igimg/18.png", "",
+                "", "2", "12.0107", 6, 0, "#", "igimg/11.png", "",
+				"", "3", "26.9815386", 7, 0, "igimg/12.png", "", "",
+				"", "4", "28.0855", 8, 0, "#", "igimg/13.png", "",
+				"", "5", "50.9415", 9, 0, "#", "igimg/14.png", "",
+				"", "6", "51.9961", 10, 0, "#", "igimg/15.png", "",
+				"", "7", "54.938045", 11, 0, "#", "igimg/16.png", "",
+				"", "8", "55.845", 12, 0, "#", "igimg/17.png", "rgba(196,83,97,0.5)",
+				"", "9", "58.933195", 13, 0, "#", "igimg/18.png", "rgba(196,83,97,0.5)",
+                "", "10", "51.9961", 14, 0, "#", "igimg/15.png", "",
+				"", "11", "54.938045", 15, 0, "#", "igimg/16.png", "",
+
+                "", "12", "55.845", 4, 1, "#", "igimg/17.png", "",
+				"", "13", "58.933195", 5, 1, "#", "igimg/18.png", "",
+                "", "14", "12.0107", 6, 1, "#", "igimg/11.png", "",
+				"", "15", "26.9815386", 7, 1, "igimg/12.png", "", "",
+				"", "16", "28.0855", 8, 1, "#", "igimg/13.png", "",
+				"", "17", "50.9415", 9, 1, "#", "igimg/14.png", "",
+				"", "18", "51.9961", 10, 1, "#", "igimg/15.png", "",
+				"", "19", "54.938045", 11, 1, "#", "igimg/16.png", "rgba(196,83,97,0.5)",
+				"", "20", "55.845", 12, 1, "#", "igimg/17.png", "",
+				"", "21", "58.933195", 13, 1, "#", "igimg/18.png", "",
+                "", "22", "51.9961", 14, 1, "#", "igimg/15.png", "",
+				"", "23", "54.938045", 15, 1, "#", "igimg/16.png", "",
+
+                "", "24", "55.845", 4, 2, "#", "igimg/17.png", "",
+				"", "25", "58.933195", 5, 2, "#", "igimg/18.png", "",
+                "", "26", "12.0107", 6, 2, "#", "igimg/11.png", "",
+				"", "27", "26.9815386", 7, 2, "igimg/12.png", "", "",
+				"", "28", "28.0855", 8, 2, "#", "igimg/13.png", "",
+				"", "29", "50.9415", 9, 2, "#", "igimg/14.png", "",
+				"", "30", "51.9961", 10, 2, "#", "igimg/15.png", "rgba(196,83,97,0.5)",
+				"", "31", "54.938045", 11, 2, "#", "igimg/16.png", "",
+				"", "32", "55.845", 12, 2, "#", "igimg/17.png", "",
+				"", "33", "58.933195", 13, 2, "#", "igimg/18.png", "",
+                "", "34", "51.9961", 14, 2, "#", "igimg/15.png", "",
+				"", "35", "54.938045", 15, 2, "#", "igimg/16.png", "",
+
+                "", "36", "55.845", 4, 3, "#", "igimg/17.png", "",
+				"", "37", "58.933195", 5, 3, "#", "igimg/18.png", "",
+				"", "38", "65.38", 6, 3, "#", "igimg/21.png", "",
+				"", "39", "69.723", 7, 3, "#", "igimg/22.png", "",
+				"", "40", "72.63", 8, 3, "#", "igimg/23.png", "",
+				"", "41", "92.90628", 9, 3, "#", "igimg/24.png", "",
+				"", "42", "95.96", 10, 3, "#", "igimg/25.png", "",
+				"", "43", "(98)", 11, 3, "#", "igimg/26.png", "",
+				"", "44", "101.07", 12, 3, "#", "igimg/27.png", "",
+				"", "45", "102.9055", 13, 3, "#", "igimg/28.png", "",
+                "", "46", "51.9961", 14, 3, "#", "igimg/15.png", "",
+				"", "47", "54.938045", 15, 3, "#", "igimg/16.png", "",
+
+                "", "48", "55.845", 4, 4, "#", "igimg/17.png", "",
+				"", "49", "58.933195", 5, 4, "#", "igimg/18.png", "",
+				"", "50", "112.411", 6, 4, "#", "igimg/31.png", "",
+				"", "51", "114.818", 7, 4, "#", "igimg/32.png", "",
+				"", "52", "118.71", 8, 4, "#", "igimg/33.png", "",
+				"", "53", "140.116", 9, 4, "#", "igimg/34.png", "",
+				"", "54", "140.90765", 10, 4, "#", "igimg/35.png", "",
+				"", "55", "144.242", 11, 4, "igmap.htm", "igimg/36.png", "",
+				"", "56", "207.2", 8, 6, "#", "igimg/37.png", "",
+				"", "57", "150.36", 13, 4, "#", "igimg/38.png", "",
+                "", "58", "51.9961", 14, 4, "#", "igimg/15.png", "",
+				"", "59", "54.938045", 15, 4, "#", "igimg/16.png", "",
+
+
+                "", "60", "55.845", 4, 5, "#", "igimg/17.png", "",
+				"", "61", "58.933195", 5, 5, "#", "igimg/18.png", "",
+				"", "62", "158.92535", 6, 5, "#", "igimg/41.png", "",
+				"", "63", "162.5", 7, 5, "#", "igimg/42.png", "",
+				"", "64", "164.93032", 8, 5, "#", "igimg/43.png", "",
+				"", "65", "180.94788", 9, 5, "", "igimg/44.png", "",
+				"", "66", "183.84", 10, 5, "", "igimg/45.png", "",
+				"", "67", "186.207", 11, 5, "#", "igimg/46.png", "",
+				"", "68", "190.23", 12, 5, "#", "igimg/47.png", "",
+				"", "69", "192.217", 13, 5, "#", "igimg/48.png", "",
+                "", "70", "51.9961", 14, 5, "#", "igimg/15.png", "",
+				"", "71", "54.938045", 15, 5, "#", "igimg/16.png", "",
+
+
+                "", "72", "55.845", 4, 6, "#", "igimg/17.png", "",
+				"", "73", "58.933195", 5, 6, "#", "igimg/18.png", "",
+				"", "74", "200.59", 6, 6, "#", "igimg/51.png", "",
+				"", "75", "204.3833", 7, 6, "#", "igimg/52.png", "",
+                "", "76", "(145)", 12, 4, "#", "igimg/53.png", "",
+				"", "77", "232.03806", 9, 6, "", "igimg/54.png", "",
+				"", "78", "231.0588", 10, 6, "", "igimg/55.png", "",
+				"", "79", "238.02891", 11, 6, "#", "igimg/56.png", "",
+				"", "80", "(237)", 12, 6, "#", "igimg/57.png", "",
+				"", "81", "(244)", 13, 6, "#", "igimg/58.png", "",
+                "", "82", "51.9961", 14, 6, "#", "igimg/15.png", "",
+				"", "83", "54.938045", 15, 6, "#", "igimg/16.png", "",
+
+
+                "", "84", "55.845", 4, 7, "#", "igimg/17.png", "",
+				"", "85", "58.933195", 5, 7, "#", "igimg/18.png", "",
+				"", "86", "(271)", 6, 7, "#", "igimg/61.png", "",
+				"", "87", "(272)", 7, 7, "#", "igimg/62.png", "",
+				"", "88", "(270)", 8, 7, "#", "igimg/63.png", "",
+				"", "89", "(276)", 9, 7, "#", "igimg/64.png", "",
+				"", "90", "(281)", 10, 7, "#", "igimg/65.png", "",
+				"", "91", "(280)", 11, 7, "#", "igimg/66.png", "",
+				"", "92", "(285)", 12, 7, "#", "igimg/67.png", "",
+				"", "93", "(284)", 13, 7, "#", "igimg/68.png", "",
+                "", "94", "51.9961", 14, 7, "#", "igimg/15.png", "",
+				"", "95", "54.938045", 15, 7, "#", "igimg/16.png", "",
+
+
+                "", "96", "55.845", 4, 8, "#", "igimg/17.png", "",
+				"", "97", "58.933195", 5, 8, "#", "igimg/18.png", "",
+				"", "98", "(281)", 6, 8, "#", "igimg/71.png", "",
+				"", "99", "(280)", 7, 8, "#", "igimg/72.png", "",
+				"", "100", "(285)", 8, 8, "#", "igimg/73.png", "",
+				"", "101", "(284)", 9, 8, "#", "igimg/74.png", "",
+				"", "102", "(289)", 10, 8, "#", "igimg/75.png", "",
+				"", "103", "(288)", 11, 8, "#", "igimg/76.png", "",
+				"", "104", "(293)", 12, 8, "#", "igimg/77.png", "",
+				"", "105", "(294)", 13, 8, "#", "igimg/78.png", "",
+                "", "106", "51.9961", 14, 8, "#", "igimg/15.png", "",
+				"", "107", "54.938045", 15, 8, "#", "igimg/16.png", "",
+
+
+                "", "108", "55.845", 4, 9, "#", "igimg/17.png", "",
+				"", "109", "58.933195", 5, 9, "#", "igimg/18.png", "",
+				"", "110", "(281)", 6, 9, "#", "igimg/81.png", "",
+				"", "111", "(280)", 7, 9, "#", "igimg/82.png", "",
+				"", "112", "(285)", 8, 9, "#", "igimg/83.png", "",
+				"", "113", "(284)", 9, 9, "#", "igimg/84.png", "",
+				"", "114", "(289)", 10, 9, "#", "igimg/85.png", "",
+				"", "115", "(288)", 11, 9, "#", "igimg/86.png", "",
+				"", "116", "(293)", 12, 9, "#", "igimg/87.png", "",
+                "", "117", "(247)", 13, 9, "#", "igimg/88.png", "",
+                "", "118", "51.9961", 14, 9, "#", "igimg/15.png", "",
+				"", "119", "54.938045", 15, 9, "#", "igimg/16.png", "",
+
+                "", "120", "55.845", 4, 10, "#", "igimg/17.png", "",
+				"", "121", "58.933195", 5, 10, "#", "igimg/18.png", "",
+				"", "122", "(281)", 6, 10, "#", "igimg/81.png", "",
+				"", "123", "(280)", 7, 10, "#", "igimg/82.png", "",
+				"", "124", "(285)", 8, 10, "#", "igimg/83.png", "",
+				"", "125", "(284)", 9, 10, "#", "igimg/84.png", "",
+				"", "126", "(289)", 10, 10, "#", "igimg/85.png", "",
+				"", "127", "(288)", 11, 10, "#", "igimg/86.png", "",
+				"", "128", "(293)", 12, 10, "#", "igimg/87.png", "",
+                "", "129", "(247)", 13, 10, "#", "igimg/88.png", "",
+                "", "130", "51.9961", 14, 10, "#", "igimg/15.png", "",
+				"", "131", "54.938045", 15, 10, "#", "igimg/16.png", "",
+
+                "", "132", "55.845", 4, 11, "#", "igimg/17.png", "",
+				"", "133", "58.933195", 5, 11, "#", "igimg/18.png", "",
+				"", "134", "(281)", 6, 11, "#", "igimg/81.png", "",
+				"", "135", "(280)", 7, 11, "#", "igimg/82.png", "",
+				"", "136", "(285)", 8, 11, "#", "igimg/83.png", "",
+				"", "137", "(284)", 9, 11, "#", "igimg/84.png", "",
+				"", "138", "(289)", 10, 11, "#", "igimg/85.png", "",
+				"", "139", "(288)", 11, 11, "#", "igimg/86.png", "rgba(196,83,97,0.5)",
+				"", "140", "(293)", 12, 11, "#", "igimg/87.png", "",
+                "", "141", "(247)", 13, 11, "#", "igimg/88.png", "",
+                "", "142", "51.9961", 14, 11, "#", "igimg/15.png", "",
+				"", "143", "54.938045", 15, 11, "#", "igimg/16.png", "",
+
+			];
+
+            var camera, scene, renderer;
+			var controls;
+
+			var objects = [];
+			var targets = { table: [], sphere: [], helix: [], grid: [] };
+
+					
+            init1();
+			animate();
+
+			function init1() {
+
+				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
+				camera.position.z =3500;
+
+				scene = new THREE.Scene();
+
+				//remove object
+//				var selectedObject = scene.getObjectByName(object.name);
+
+//				scene.remove(selectedObject);
+//				animate();
+//				console.log("object.name" + object.name);
+
+				// table
+
+				for ( var i = 0; i < table.length; i += 8 ) {
+
+					var element = document.createElement( 'div' );
+					element.className = 'element';
+				
+                	var bg = document.createElement('div'); 
+					element.setAttribute('style', "background-color:" + table[i + 7]);
+					element.appendChild(bg);
+
+					var link = document.createElement('a'); // + url
+					link.setAttribute('href', table[i+5]);
+					link.setAttribute('target', "_blank");
+					element.appendChild(link);
+
+					var Img = document.createElement('img');
+					Img.setAttribute('width', 100);
+					Img.setAttribute('height', 100);
+				    Img.setAttribute('src', table[i+6]);
+//					link.appendChild(Img);
+
+					var number = document.createElement( 'div' );
+					number.className = 'number'; //右上角小字
+					number.textContent = (i/8) ;
+					element.appendChild( number );
+					
+
+					var symbol = document.createElement( 'div' );
+					symbol.className = 'symbol'; //大字
+					symbol.textContent = table[i];
+					element.appendChild( symbol );
+					link.appendChild(symbol);
+                    
+					var details = document.createElement( 'div' );
+					details.className = 'details'; //下面兩行小字
+					details.innerHTML = table[ i + 1 ] + '<br>' + table[ i + 2 ];
+					//element.appendChild( details );
+					link.appendChild(details);
+
+					var object = new THREE.CSS3DObject( element );
+					object.position.x = Math.random() * 4000 - 2000;
+					object.position.y = Math.random() * 4000 - 2000;
+					object.position.z = Math.random() * 4000 - 2000;
+					scene.add( object );
+
+					objects.push( object );
+
+					//
+
+					var object = new THREE.Object3D();
+					object.position.x = ( table[ i + 3 ] * 140 ) - 1330;
+					object.position.y = -(table[i + 4] * 180) + 990;
+
+//					console.log( i/8 + "," + object.position.x + ","+ object.position.y)
+					
+
+                    targets.table.push( object );
+                    
+				}
+
+				// sphere
+
+				var vector = new THREE.Vector3();
+
+				for ( var i = 0, l = objects.length; i < l; i ++ ) {
+//				    console.log("l=" + l)
+
+					var phi = Math.acos( -1 + ( 2 * i ) / l );
+					var theta = Math.sqrt( l * Math.PI ) * phi;
+
+					var object = new THREE.Object3D();
+
+					object.position.x = 800 * Math.cos( theta ) * Math.sin( phi );
+					object.position.y = 800 * Math.sin( theta ) * Math.sin( phi );
+					object.position.z = 800 * Math.cos( phi );
+
+//					console.log(i + ", phi= " + phi + ", Math.PI= " + Math.PI + ", theta= " + theta + ", cos( theta )= " + Math.cos(theta) + ", sin( phi )= " + Math.sin(phi) + ", x=" + object.position.x + ", sin( theta )= " + Math.sin(theta) + ", sin( phi )= " + Math.sin(phi) + ", y=" + object.position.y + ", cos( phi )= " + Math.cos(phi) + ", z=" + object.position.z)
+					
+//                    console.log(i + "," + phi + "," + Math.PI + "," + theta + "," + Math.cos(theta) + "," + Math.sin(phi) + "," + object.position.x + "," + Math.sin(theta) + "," + Math.sin(phi) + "," + object.position.y + "," + Math.cos(phi) + "," + object.position.z)
+
+					vector.copy( object.position ).multiplyScalar( 2 );
+
+					object.lookAt( vector );
+
+					targets.sphere.push( object );
+
+				}
+
+				// helix
+
+				var vector = new THREE.Vector3();
+
+				for ( var i = 0, l = objects.length; i < l; i ++ ) {
+
+					var phi = i * 0.175 + Math.PI;
+
+					var object = new THREE.Object3D();
+
+					object.position.x = 900 * Math.sin( phi );
+					object.position.y = - ( i * 8 ) + 450;
+					object.position.z = 900 * Math.cos( phi );
+
+					vector.x = object.position.x * 2;
+					vector.y = object.position.y;
+					vector.z = object.position.z * 2;
+
+					object.lookAt( vector );
+
+					targets.helix.push( object );
+
+				}
+
+				// grid
+
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = new THREE.Object3D();
+
+					object.position.x = ( ( i % 5 ) * 400 ) - 800;
+					object.position.y = ( - ( Math.floor( i / 5 ) % 5 ) * 400 ) + 800;
+					object.position.z = ( Math.floor( i / 25 ) ) * 1000 - 2000;
+
+					targets.grid.push( object );
+
+				}
+
+				//
+
+				renderer = new THREE.CSS3DRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.domElement.style.position = 'absolute';
+				document.getElementById( 'container' ).appendChild( renderer.domElement );
+
+				//
+
+				controls = new THREE.TrackballControls( camera, renderer.domElement );
+				controls.rotateSpeed = 0.5;
+				controls.minDistance = 500;
+				controls.maxDistance = 6000;
+				controls.addEventListener( 'change', render );
+
+				var button = document.getElementById( 'table' );
+				button.addEventListener( 'click', function ( event ) {
+
+					transform( targets.table, 20 );
+
+				}, false );
+
+				var button = document.getElementById( 'sphere' );
+				button.addEventListener( 'click', function ( event ) {
+
+					transform( targets.sphere, 20 );
+
+				}, false );
+
+				var button = document.getElementById( 'helix' );
+				button.addEventListener( 'click', function ( event ) {
+
+					transform( targets.helix, 20 );
+
+				}, false );
+
+				var button = document.getElementById( 'grid' );
+				button.addEventListener( 'click', function ( event ) {
+
+					transform( targets.grid, 20 );
+
+				}, false );
+
+				transform( targets.table, 20 );
+
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+}
+
+
+			function transform( targets, duration ) {
+
+				TWEEN.removeAll();
+
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = objects[ i ];
+					var target = targets[ i ];
+
+					new TWEEN.Tween( object.position )
+						.to( { x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration )
+						.easing( TWEEN.Easing.Exponential.InOut )
+						.start();
+
+					new TWEEN.Tween( object.rotation )
+						.to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+						.easing( TWEEN.Easing.Exponential.InOut )
+						.start();
+
+				}
+
+				new TWEEN.Tween( this )
+					.to( {}, duration * 2 )
+					.onUpdate( render )
+					.start();
+
+			}
+			function transformPos(targets, duration, iX, iY, iZ) {
+
+			    TWEEN.removeAll();
+			    camera.position.x = iX;
+			    camera.position.y = iY;
+			    camera.position.z = iZ;
+			    for (var i = 0; i < objects.length; i++) {
+
+			        var object = objects[i];
+			        var target = targets[i];
+
+			        new TWEEN.Tween(object.position)
+						.to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration)
+						.easing(TWEEN.Easing.Exponential.InOut)
+						.start();
+
+			        new TWEEN.Tween(object.rotation)
+						.to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration)
+						.easing(TWEEN.Easing.Exponential.InOut)
+						.start();
+
+			    }
+
+			    new TWEEN.Tween(this)
+					.to({}, duration * 2)
+					.onUpdate(render)
+					.start();
+
+			}
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+				render();
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				TWEEN.update();
+
+				controls.update();
+
+			}
+
+			function render() {
+
+				renderer.render( scene, camera );
+
+			}
+         
+                }
+            }
+</script>
+	</body>
+</html>

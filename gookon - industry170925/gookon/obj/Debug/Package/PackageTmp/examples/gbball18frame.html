@@ -1,0 +1,1567 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>故宮故事球</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			html, body {
+				height: 100%;
+			}
+
+			body {
+				background-color: #FFFFFF;
+				margin: 0;
+				font-family: Helvetica, sans-serif;
+				overflow: hidden;
+			}
+
+			a {
+				color: #000000;
+			}
+            	#info {
+				position: absolute;
+				width: 100%;
+				color: #000;
+				padding: 5px;
+				font-family: Monospace;
+				font-size: 13px;
+				font-weight: bold;
+				text-align: center;
+				z-index: 1;
+			}
+			#logo {
+				position: absolute;
+				width: 100%;
+				padding: 0px;
+				font-family: Monospace;
+				font-size: 20px;
+				font-weight: bold;
+				text-align: center;
+				z-index: 1;
+                top: 5px;
+                left: -30px;
+            }
+
+			#menu {
+				position: absolute;
+				bottom: 0px;
+				width: 100%;
+				text-align: center;
+                left: 0px;
+            }
+			
+			#menuL {
+				position: absolute;
+				top: 40px;
+				left:0px;
+				width: 100%;
+				text-align: center;
+			}
+
+			.element {
+                  width: 180px; 
+                  height:279px;
+                  font-weight: bold;
+                  -webkit-font-smoothing: antialiased;
+                  -moz-osx-font-smoothing: grayscale;
+                  background-color: rgba(255, 128, 0,0.75);
+                  border: 0px solid rgba(127,255,255,0);
+                  order-radius: 8px;
+                  text-align: center;
+                  cursor: default;                  
+                }
+                
+                .element1 {
+                  width: 130px;
+                  height:260px;
+                  font-weight: bold;
+                  -webkit-font-smoothing: antialiased;
+                  -moz-osx-font-smoothing: grayscale;
+                  background-color: rgba(255, 128, 0,0.75);
+                  border: 0px solid rgba(127,255,255,0);
+                  order-radius: 8px;
+                  text-align: center;
+                  cursor: default;                  
+                }
+
+                 .element2 {
+                  width: 110px;
+                  height:230px;
+                  font-weight: bold;
+                  -webkit-font-smoothing: antialiased;
+                  -moz-osx-font-smoothing: grayscale;
+                  background-color: rgba(255, 128, 0,0.75);
+                  border: 0px solid rgba(127,255,255,0);
+                  order-radius: 8px;
+                  text-align: center;
+                  cursor: default;                  
+                }
+                
+                 .element3 {
+                  width: 90px;
+                  height:180px;
+                  font-weight: bold;
+                  -webkit-font-smoothing: antialiased;
+                  -moz-osx-font-smoothing: grayscale;
+                  background-color: rgba(255, 128, 0,0.75);
+                  border: 0px solid rgba(127,255,255,0);
+                  order-radius: 8px;
+                  text-align: center;
+                  cursor: default;                  
+                }
+                
+                 .element4 {
+                  width: 70px;
+                  height:120px;
+                  font-weight: bold;
+                  -webkit-font-smoothing: antialiased;
+                  -moz-osx-font-smoothing: grayscale;
+                  background-color: rgba(255, 128, 0,0.75);
+                  border: 0px solid rgba(127,255,255,0);
+                  order-radius: 8px;
+                  text-align: center;
+                  cursor: default;                  
+                }
+                .element5 {
+                  width: 110px;
+                  height:200px;
+                  font-weight: bold;
+                  -webkit-font-smoothing: antialiased;
+                  -moz-osx-font-smoothing: grayscale;
+                  background-color: rgba(255, 128, 0,0.75);
+                  border: 0px solid rgba(127,255,255,0);
+                  order-radius: 8px;
+                  text-align: center;
+                  cursor: default;                  
+                }
+                .element:hover {
+                  box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+                  border: 1px solid rgba(127,255,255,0.75);
+                }
+                .element .svg {
+                  position: absolute;
+                  top: 20px;
+                  left: 2px;
+                  right: 0px;
+                }
+				.element .image{ 
+                  position: absolute;
+                  top:80px;
+                  left:0px;
+                  width: 100%;
+                  height: 200px;
+                  border-style:ridge;
+                  border-color:brown;
+                  border-width: 0px;
+                }
+				.element .number {
+					position: absolute;
+					top: 20px;
+					right: 20px;
+					font-size: 30px;
+					text-shadow:1px 1px 1px #cccccc;
+					color: rgba(0,0,0,0.75);
+				}
+				.element .symbol {
+				  position: absolute;
+                  top: 35px;
+                  left: 0px;
+                  right: 0px;
+                  font-size: 30px;
+                  color: rgba(0, 0, 0,0.75);
+				}
+				.element .details {
+				    position: absolute;
+                    top: 5px;
+                    left: 0px;
+                    right: 0px;
+                    font-size: 30px;
+                    color: rgba(255, 0, 0,0.75);
+				}
+				
+				
+				.element1:hover {
+                  box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+                  border: 1px solid rgba(127,255,255,0.75);
+                }
+				
+				.element1 .svg {
+                  position: absolute;
+                  top: 20px;
+                  left: 2px;
+                  right: 0px;
+                }
+				.element1 .image{
+                  position: absolute;
+                  top:65px;
+                  left:0px;
+                  width: 100%;
+                  height: 200px;
+                  border-style:ridge;
+                  border-color:brown;
+                  border-width: 0px;
+                }
+				.element1 .number {
+					position: absolute;
+					top: 20px;
+					right: 20px;
+					font-size: 30px;
+					text-shadow:1px 1px 1px #cccccc;
+					color: rgba(0,0,0,0.75);
+				}
+				.element1 .symbol {
+				  position: absolute;
+                  top: 35px;
+                  left: 0px;
+                  right: 0px;
+                  font-size:30px;
+                  color: rgba(0, 0, 0,0.75);
+				}
+				.element1 .details {
+				    position: absolute;
+                    top: 5px;
+                    left: 0px;
+                    right: 0px;
+                    font-size: 30px;
+                    color: rgba(255, 0, 0,0.75);
+				}
+				
+				
+				.element2:hover {
+                  box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+                  border: 1px solid rgba(127,255,255,0.75);
+                }
+				.element2 .number {
+					position: absolute;
+					top: 20px;
+					right: 20px;
+					font-size: 30px;
+					text-shadow:1px 1px 1px #cccccc;
+					color: rgba(0,0,0,0.75);
+				}
+				.element2 .svg {
+                  position: absolute;
+                  top: 20px;
+                  left: 2px;
+                  right: 0px;
+                }
+				.element2 .image{
+                  position: absolute;
+                  top:65px;
+                  left:0px;
+                  width: 100%;
+                  height: 163px;
+                  border-style:ridge;
+                  border-color:brown;
+                  border-width: 0px;
+                }
+				.element2 .number {
+					position: absolute;
+					top: 20px;
+					right: 20px;
+					font-size: 30px;
+					text-shadow:1px 1px 1px #cccccc;
+					color: rgba(0,0,0,0.75);
+				}
+				.element2 .symbol {
+				  position: absolute;
+                  top: 35px;
+                  left: 0px;
+                  right: 0px;
+                  font-size: 30px;
+                  color: rgba(0, 0, 0,0.75);
+				}
+				.element2 .details {
+				    position: absolute;
+                    top: 5px;
+                    left: 0px;
+                    right: 0px;
+                    font-size: 30px;
+                    color: rgba(255, 0, 0,0.75);
+				}
+				
+				
+				.element3:hover {
+                  box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+                  border: 1px solid rgba(127,255,255,0.75);
+                }
+				.element3 svg {
+                  position: absolute;
+                  top: 20px;
+                  left: 2px;
+                  right: 0px;
+                }
+				.element3 .image{
+                  position: absolute;
+                  top:65px;
+                  left:0px;
+                  width: 100%;
+                  height: 110px;
+                  border-style:ridge;
+                  border-color:brown;
+                  border-width: 0px;
+                }
+				.element3 .number {
+					position: absolute;
+					top: 20px;
+					right: 20px;
+					font-size: 30px;
+					text-shadow:1px 1px 1px #cccccc;
+					color: rgba(0,0,0,0.75);
+				}
+				.element3 .symbol {
+				  position: absolute;
+                  top: 35px;
+                  left: 0px;
+                  right: 0px;
+                  font-size: 30px;
+                  color: rgba(0, 0, 0,0.75);
+				}
+				.element3 .details {
+				    position: absolute;
+                    top: 5px;
+                    left: 0px;
+                    right: 0px;
+                    font-size: 30px;
+                    color: rgba(255, 0, 0,0.75);
+				}
+				
+				
+				.element4:hover {
+                  box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+                  border: 1px solid rgba(127,255,255,0.75);
+                }				
+				.element4 .svg {
+                  position: absolute;
+                  top: 20px;
+                  left: 2px;
+                  right: 0px;
+                }
+				.element4 .image{
+                  position: absolute;
+                  top:65px;
+                  left:0px;
+                  width: 100%;
+                  height: 50px;
+                  border-style:ridge;
+                  border-color:brown;
+                  border-width: 0px;
+                }
+				.element4 .number {
+					position: absolute;
+					top: 20px;
+					right: 20px;
+					font-size: 30px;
+					text-shadow:1px 1px 1px #cccccc;
+					color: rgba(0,0,0,0.75);
+				}
+				.element4 .symbol {
+				  position: absolute;
+                  top: 35px;
+                  left: 0px;
+                  right: 0px;
+                  font-size: 30px;
+                  color: rgba(0, 0, 0,0.75);
+				}
+				.element4 .details {
+				                position: absolute;
+                                top: 5px;
+                                left: 0px;
+                                right: 0px;
+                                font-size:30px;
+                                color: rgba(255, 0, 0,0.75);
+				}
+				            
+				
+				.element5:hover {
+                  box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+                  border: 1px solid rgba(127,255,255,0.75);
+                }	
+				.element5 .svg {
+                  position: absolute;
+                  top: 20px;
+                  left: 2px;
+                  right: 0px;
+                }
+				.element5 .image{   
+                  position: absolute;
+                  top:65px;
+                  left:0px;
+                  width: 100%;
+                  height: 130px;
+                  border-style:ridge;
+                  border-color:brown;
+                  border-width: 0px;
+                }
+				.element5 .number {
+					position: absolute;
+					top: 20px;
+					right: 20px;
+					font-size: 30px;
+					text-shadow:1px 1px 1px #cccccc;
+					color: rgba(0,0,0,0.75);
+				}
+               .element5 .symbol {
+				  position: absolute;
+                  top: 35px;
+                  left: 0px;
+                  right: 0px;
+                  font-size:30px;
+                  color: rgba(0, 0, 0,0.75);
+				}
+	            .element5 .details {
+				                position: absolute;
+                                top: 5px;
+                                left: 0px;
+                                right: 0px;
+                                font-size: 30px;
+                                color: rgba(255, 0, 0,0.75);
+			     }
+
+
+			button {
+				color: rgba(0,0,0,0.75);
+				background: transparent;
+				outline: 1px solid rgba(127,255,255,0);
+				border: 0px;
+				padding: 5px 10px;
+				cursor: pointer;
+			}
+			button:hover {
+				background-color: rgba(255,187,0,0.5);
+			}
+			button:active {
+				color: #FFFFFF;
+				background-color: rgba(0,255,255,0.75);
+			}
+		</style>
+        <script type="text/javascript" src="../highslide/highslide-with-gallery.js"></script>
+        <link rel="stylesheet" type="text/css" href="../highslide/highslide.css" />
+
+        <link rel="stylesheet" href="css/buttons.css" type="text/css" media="screen" />
+	</head>
+	<body>
+		<script src="../build/three.js"></script>
+		<script src="js/libs/tween.min.js"></script>
+		<script src="js/controls/TrackballControls.js"></script>
+		<script src="js/renderers/CSS3DRenderer.js"></script>
+        <div id="info" >故宮故事球</div>
+		<div id="container" ></div>
+		
+        <div id="menuL" style="font-size: 12px">
+        <script language="javascript">
+            function pOnchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("iposition");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544") {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }
+            }
+            function k1Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind1");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544") {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "34") {
+                    transformPos(targets.sphere, 20, 1500, 1000, 2000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }
+            }
+            function k2Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind2");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544" ) {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }
+              }
+                  function k3Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind3");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544" ) {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }
+                }
+                  function k4Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind4");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544" ) {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }}
+                  function k5Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind5");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544" ) {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }}
+                  function k6Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind6");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544" ) {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }}
+                function k7Onchange() {
+                    //                alert('test onchange');
+                    var selectBox = document.getElementById("kind7");
+                    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                    controls.reset();
+
+                    if (selectedValue == "5544") {
+                        transformPos(targets.sphere, 20, 0, 0, 3000);
+                    }
+                    if (selectedValue == "198") {
+                        transformPos(targets.sphere, 20, 0, 0, -3000);
+                    }
+                    if (selectedValue == "71") {
+                        transformPos(targets.sphere, 20, 0, -3000, 0);
+                    }
+                    if (selectedValue == "18") {
+                        transformPos(targets.sphere, 20, 0, 3000, 0);
+                    }
+                    if (selectedValue == "11") {
+                        transformPos(targets.sphere, 20, 3000, 0, 0);
+                    }
+                    if (selectedValue == "88") {
+                        transformPos(targets.sphere, 20, -3000, 0, 0);
+                    } 
+                }
+                  function k8Onchange() {
+                //                alert('test onchange');
+                      location.href="http://140.113.73.194/yuekan/9.html";
+            }
+</script>
+        <select id="kind1" style="width: 50px" onchange="k1Onchange()">
+                <option id="OptionA" >繪畫</option>
+                <option id="Option1" >畫元世祖出獵圖</option>
+                <option id="Option2" >潑墨仙人</option>
+                <option value="34" style="background-color: rgba(255,0,25,0.7)">百駿圖</option>
+                <option id="Option3" >唐人宮樂圖</option>
+                <option id="Option4" >秉燭夜遊</option>
+                <option id="Option5" >谿山行旅</option>
+                <option id="Option11" >陶穀贈詞</option>
+                <option value="11" style="background-color: rgba(255,0,0,0.7)">雙喜圖</option>
+                <option id="Option13" >漢宮春曉</option>    
+                <option id="Option14" >層巖叢樹圖</option>
+                <option value="5544" style="background-color: rgba(255,0,0,0.7)">富春山居圖</option>   
+                <option id="Option15" >霜浦歸漁圖</option>
+                <option id="Option21" >春遊晚歸</option>
+                <option id="Option22" >桃花漁艇</option>
+                <option id="Option23" >鵲華秋色</option>
+                <option id="Option24" >赤壁圖</option>
+                <option id="Option25" >古木寒泉</option>
+                <option id="Option31" >清明上河圖</option>
+                <option id="Option32" >溪山清遠</option>
+                <option id="Option33" >王蒙夏日山居圖</option>    
+                <option id="Option34" >牡丹</option>
+                <option id="Option41" >具區林屋</option>
+                <option id="Option42" >明人畫入蹕圖</option>
+                <option id="Option43" >花竹</option>    
+                <option id="Option44" >花竹廬山高</option> 
+                       
+            </select>
+        <select id="kind2" style="width: 50px" onchange="k2Onchange()">
+                <option id="OptionB" >陶瓷</option>
+                <option id="Ceramics" style="background-color: rgba(255,0,0,0)">天青釉紫斑如意</option>
+                <option id="Curios" style="background-color: rgba(255, 148, 201,0)">寶石紅釉僧帽壺</option>
+                <option id="Painting" style="background-color: rgba(255, 128, 0,0)">黑陶高足盃</option>
+                <option value="18" style="background-color: rgba(255,255,0,0.7)">茶葉末六聯瓶</option>
+                <option id="Jade" style="background-color: rgba(83,138,0,0)">開光花鳥雙連瓶</option>
+                <option id="Calligraphy" style="background-color: rgba(0, 255, 255,0)">紅釉尊</option>
+                <option id="Literature" style="background-color: rgba(72, 72, 147,0)">白瓷嬰兒枕</option>
+                <option id="Book" style="background-color: rgba(145, 70, 136,0)">白陶鬶</option>       
+                <option id="Option10" style="background-color: rgba(255,0,0,0)">黃釉粉彩八卦如意</option>
+                <option id="Option16" style="background-color: rgba(255, 148, 201,0)">黑陶繭式壺</option>
+                <option id="Option17" style="background-color: rgba(255, 128, 0,0)">黑陶高足盃</option>
+                <option id="Option18" style="background-color: rgba(255,255,0,0)">青瓷葵花式洗</option>
+                <option id="Option64" style="background-color: rgba(83,138,0,0)">紅地描金萬福紋</option>
+                <option value="5544"  style="background-color: rgba(0, 255, 255,0.7)">嬌黃錐拱獸面紋鼎</option>
+                <option id="Option66" style="background-color: rgba(72, 72, 147,0)">青花人物紋扁壺</option>
+                <option id="Option67" style="background-color: rgba(145, 70, 136,0)">粉紅錦地番蓮碗</option>       
+               <option id="Option68" style="background-color: rgba(145, 70, 136,0)">粉彩紫地花鳥文</option>
+            </select>
+        <select id="kind3" style="width: 50px" onchange="k3Onchange()">
+                <option id="Option1" >珍玩</option>
+                <option id="Option2" style="background-color: rgba(255,0,0,0)">雕竹窺簡圖筆筒</option>
+                <option id="Option3" style="background-color: rgba(255, 148, 201,0)">四層透花提食盒</option>
+                <option id="Option4" style="background-color: rgba(255, 128, 0,0)">雕竹荷葉式水盛</option>
+                <option id="Option5" style="background-color: rgba(255,255,0,0)">黃地牡丹紋蟠龍瓶</option>
+                <option id="Option6" style="background-color: rgba(83,138,0,0)">掐絲琺瑯番蓮紋盒</option>
+                <option value="198" style="background-color: rgba(0, 255, 255,0.7)">肉形石</option>
+                <option id="Option8" style="background-color: rgba(72, 72, 147,0)">填漆牡丹圓盒</option>
+                <option id="Option9" style="background-color: rgba(145, 70, 136,0)">內填琺瑯纍絲盒</option>       
+                <option id="Option69" style="background-color: rgba(145, 70, 136,0)">雕漆雙緣寶盒</option> 
+            </select>            
+        <select id="kind4" style="width: 50px" onchange="k4Onchange()">
+                <option id="Option19" >銅器</option>
+                <option value="71" style="background-color: rgba(255,0,0,0.7)">蟠虺紋鼎</option>
+                <option value="198" style="background-color: rgba(255, 148, 201,0.7)">鉤連乳丁紋羊首</option>
+                <option id="Option22" style="background-color: rgba(255, 128, 0,0)">獸面紋鉞</option>
+                <option id="Option23" style="background-color: rgba(255,255,0,0)">玉高足杯</option>
+                
+                <!--<option id="Option24" style="background-color: rgba(83,138,0,0)">玉器</option>
+                <option id="Option25" style="background-color: rgba(0, 255, 255,0)">書法</option>
+                <option id="Option26" style="background-color: rgba(72, 72, 147,0)">文獻</option>
+                <option id="Option27" style="background-color: rgba(145, 70, 136,0)">圖書</option>       
+           --> </select>
+        <select id="kind5" style="width: 50px" onchange="k5Onchange()">
+            <option id="Option28" >玉器</option>
+            <option id="Option29" style="background-color: rgba(255,0,0,0)">玉鰲魚花插</option>
+            <option id="Option30" style="background-color: rgba(255, 148, 201,0)">玉角形杯</option>
+            <option value="5544" style="background-color: rgba(0, 255, 255,0.7)">翠玉白菜</option>
+            <option id="Option31" style="background-color: rgba(255, 128, 0,0)">新石器時代玉琮</option>
+            <option id="Option32" style="background-color: rgba(255,255,0,0)">鷹紋圭</option>
+            <option id="Option33" style="background-color: rgba(83,138,0,0)">龍冠鳳紋玉飾</option>
+           
+            <!--<option id="Option35" style="background-color: rgba(72, 72, 147,0)">文獻</option>
+            <option id="Option36" style="background-color: rgba(145, 70, 136,0)">圖書</option>       
+        -->  </select>
+        <select id="kind6" style="width: 50px" onchange="k6Onchange()">
+            <option id="Option37" >書法</option>
+            <option value="5544" style="background-color: rgba(255,0,0,0.7)">花氣薰人帖</option>
+            <option id="Option39" style="background-color: rgba(255, 148, 201,0)">書譜</option>
+            <option id="Option40" style="background-color: rgba(255, 128, 0,0)">臨閣帖行書</option>
+            <option id="Option41" style="background-color: rgba(255,255,0,0)">自書五憶歌</option>
+            <option id="Option42" style="background-color: rgba(83,138,0,0)">自敘帖</option>
+            <option id="Option43" style="background-color: rgba(0, 255, 255,0)">書黃州寒食詩</option>
+            <!--<option id="Option44" style="background-color: rgba(72, 72, 147,0)">文獻</option>
+            <option id="Option45" style="background-color: rgba(145, 70, 136,0)">圖書</option>       
+        --> </select>
+        <select id="kind7" style="width: 50px" onchange="k7Onchange()">
+            <option id="Option46" >文獻</option>
+            <option id="Option47" style="background-color: rgba(255,0,0,0)">宮中檔奏摺</option>
+            <option value="88" style="background-color: rgba(255, 148, 0,0.7)">大清國致大英國書</option>
+            <option id="Option49" style="background-color: rgba(255, 128, 0,0)">滿文原檔</option>
+            <!--<option id="Option50" style="background-color: rgba(255,255,0,0)">銅器</option>
+            <option id="Option51" style="background-color: rgba(83,138,0,0)">玉器</option>
+            <option id="Option52" style="background-color: rgba(0, 255, 255,0)">書法</option>
+            <option id="Option53" style="background-color: rgba(72, 72, 147,0)">文獻</option>
+            <option id="Option54" style="background-color: rgba(145, 70, 136,0)">圖書</option>       
+        --> </select>
+        <select id="kind8" style="width: 50px" onchange="k8Onchange()">
+            <option id="Option55" >圖書</option>
+            <option id="Option56" style="background-color: rgba(255,0,0,0)">爾雅</option>
+            <option value="99" style="background-color: rgba(255, 148, 201,0.7)">周禮疏</option>
+            <option id="Option58" style="background-color: rgba(255, 128, 0,0)">劉賓客文集</option><!--
+            <option id="Option59" style="background-color: rgba(255,255,0,0)">銅器</option>
+            <option id="Option60" style="background-color: rgba(83,138,0,0)">玉器</option>
+            <option id="Option61" style="background-color: rgba(0, 255, 255,0)">書法</option>
+            <option id="Option62" style="background-color: rgba(72, 72, 147,0)">文獻</option>
+            <option id="Option63" style="background-color: rgba(145, 70, 136,0)">圖書</option>      --> 
+        </select>
+		<select id="kind9" style="width: 50px" onchange="k8Onchange()" name="D1">
+            <option id="Option70" >月刊</option>
+            <option id="Option71" style="background-color: rgba(255,0,0,0)"><a href='http://140.113.73.194/yuekan/9.html' target=_blank >故宮文物</a></option>
+            <!--<option value="99" style="background-color: rgba(255, 148, 201,0.7)"></option>
+            <option id="Option72" style="background-color: rgba(255, 128, 0,0)"></option>--><!--
+            <option id="Option59" style="background-color: rgba(255,255,0,0)">銅器</option>
+            <option id="Option60" style="background-color: rgba(83,138,0,0)">玉器</option>
+            <option id="Option61" style="background-color: rgba(0, 255, 255,0)">書法</option>
+            <option id="Option62" style="background-color: rgba(72, 72, 147,0)">文獻</option>
+            <option id="Option63" style="background-color: rgba(145, 70, 136,0)">圖書</option>      --> 
+        </select>
+		<div id="menu" style="bottom: auto">
+			<button id="table">TABLE</button>
+			<button id="sphere">SPHERE</button>
+			<button id="helix">HELIX</button>
+			<button id="grid">GRID</button>
+		</div>
+   <!--sphere--start-->     	
+        <script>
+
+            var table = [
+                "[1]", "10000 BC", "良渚文化", 5, 1, "http://140.113.73.194/hypermooc/howmooc_home.html", "img/.jpg", "rgba(255, 138, 194,0.75)",
+				"[2]", "4000 BC", "良渚文化", 6, 1, "", "img/.jpg", "rgba(255, 194, 224, 0.75)",
+				"[3]", "2000 BC", "", 7, 1, "", "img/.jpg", "rgba(255, 165, 138,0.75)",
+				"[4]", "1200 BC", "", 8, 1, "", "img/.jpg", "rgba(255, 219, 184,0.75)",
+				"[5]", "900 BC", "", 9, 1, " ", "img/.jpg", "rgba(255, 221, 87,0.75)",
+				"[6]", "600 BC", "", 10, 1, " ", "img/.jpg", "rgba(255, 255, 184,0.75)",
+				"[7]", "400 BC", "", 11, 1, " ", "img/.jpg", "rgba(102, 255, 102,0.75)",
+				"[8]", "200 BC", "", 12, 1, " ", "img/.jpg", "rgba(186, 255, 102,0.75)",
+				"[9]", "AD 1", "", 13, 1, " ", "img/.jpg", "rgba(117, 255, 205,0.75)",
+				"[10]", "AD 220", "", 14, 1, " ", "img/.jpg", "rgba(194, 255, 228, 0.75)",
+
+				"[11]", "AD 400", "", 5, 2, "#", "img/.jpg", "rgba(102, 255, 255,0.75)",
+                "[12]", "AD 600", "", 6, 2, "#", "img/.jpg", "rgba(117, 221, 255,0.75)",
+				"[13]", "AD 800", "", 7, 2, "#", "img/.jpg", "rgba(153, 187, 255,0.75)",
+				"[14]", "AD 1000", "", 8, 2, "#", "img/.jpg", "rgba(71, 163, 255, 0.75)",
+				"[15]", "AD 1200", "50.9415", 9, 2, "#", "img/.jpg", "rgba(161, 138, 255,0.75)",
+				"[16]", "AD 1400", "51.9961", 10, 2, "#", "img/.jpg", "rgba(210, 143, 255,0.75)",
+				"[17]", "AD 1600", "54.938045", 11, 2, "#", "img/.jpg", "rgba(227, 143, 255,0.75)",
+				"[18]", "AD 1800", "55.845", 12, 2, "#", "img/.jpg", "rgba(219, 179, 255, 0.75)",
+				"1", " ", "58.933195", 13, 2, "#", "img/1.jpg", "rgba(255, 138, 194,0.75)",
+				"5", " ", "58.6934", 14, 2, "#", "img/2.jpg", "rgba(255, 194, 224, 0.75)",
+
+				"9", " ", "63.546", 5, 3, "#", "img/3.jpg", "rgba(255, 165, 138,0.75)",
+				"13", " ", "65.38", 6, 3, "#", "img/4.jpg", "rgba(255, 219, 184,0.75)",
+				"17", " ", "69.723", 7, 3, "#", "img/5.jpg", "rgba(255, 221, 87,0.75)",
+				"21", " ", "72.63", 8, 3, "#", "img/6.jpg", "rgba(255, 255, 184,0.75)",
+				"25", " ", "92.90628", 9, 3, "#", "img/7.jpg", "rgba(102, 255, 102,0.75)",
+				"29", " ", "95.96", 10, 3, "#", "img/8.jpg", "rgba(186, 255, 102,0.75)",
+				"33", " ", "(98)", 11, 3, "#", "img/9.jpg", "rgba(117, 255, 205,0.75)",
+				"37", " ", "101.07", 12, 3, "#", "img/10.jpg", "rgba(194, 255, 228, 0.75)",
+				"41", " ", "102.9055", 13, 3, "#", "img/11.jpg", "rgba(102, 255, 255,0.75)",
+				"45", " ", "106.42", 14, 3, "#", "img/12.jpg", "rgba(117, 221, 255,0.75)",
+
+				"49", " ", "107.8682", 5, 4, "#", "img/13.jpg", "rgba(153, 187, 255,0.75)",
+				"53", " ", "112.411", 6, 4, "#", "img/14.jpg", "rgba(71, 163, 255, 0.75)",
+				"57", " ", "114.818", 7, 4, "#", "img/15.jpg", "rgba(161, 138, 255,0.75)",
+				"61", " ", "118.71", 8, 4, "#", "img/16.jpg", "rgba(210, 143, 255,0.75)",
+				"65", " ", "140.116", 9, 4, "http://140.113.73.194/open/mobilemap.php?chid=333&cid=416", "img/17.jpg", "rgba(227, 143, 255,0.75)",
+				"69", " ", "140.90765", 10, 4, "#", "img/18.jpg", "rgba(219, 179, 255, 0.75)",
+				"2", " ", "144.242", 11, 4, "igmap.htm", "img/19.jpg", "rgba(255, 138, 194,0.75)",
+				"6", " ", "207.2", 8, 6, "#", "img/20.jpg", "rgba(255, 194, 224, 0.75)",
+				"10", " ", "150.36", 13, 4, "#", "img/21.jpg", "rgba(255, 165, 138,0.75)",
+				"14", " ", "151.964", 14, 4, "#", "img/22.jpg", "rgba(255, 219, 184,0.75)",
+
+				"18", " ", "157.25", 5, 5, "#", "img/23.jpg", "rgba(255, 221, 87,0.75)",
+				"22", " ", "158.92535", 6, 5, "#", "img/24.jpg", "rgba(255, 255, 184,0.75)",
+				"26", " ", "162.5", 7, 5, "#", "img/25.jpg", "rgba(102, 255, 102,0.75)",
+				"30", " ", "", 8, 5, "#", "img/26.jpg", "rgba(186, 255, 102,0.75)",
+				"34", " ", "", 9, 5, "http://140.113.73.194/open/mobilemap.php?chid=334&cid=416", "img/27.jpg", "rgba(117, 255, 205,0.75)",
+				"38", " ", "", 10, 5, "http://theme.npm.edu.tw/selection/Article.aspx?sNo=04001075", "img/28.jpg", "rgba(194, 255, 228, 0.75)",
+				"42", " ", "186.207", 11, 5, "#", "img/29.jpg", "rgba(102, 255, 255,0.75)",
+				"46", " ", "190.23", 12, 5, "#", "img/30.jpg", "rgba(117, 221, 255,0.75)",
+				"50", " ", "192.217", 13, 5, "#", "img/31.jpg", "rgba(153, 187, 255,0.75)",
+				"54", " ", "195.084", 14, 5, "#", "img/32.jpg", "rgba(71, 163, 255, 0.75)",
+
+				"58", " ", "196.966569", 5, 6, "#", "img/33.jpg", "rgba(161, 138, 255,0.75)",
+				"62", " ", "200.59", 6, 6, "#", "img/34.jpg", "rgba(210, 143, 255,0.75)",
+				"66", " ", "204.3833", 7, 6, "#", "img/35.jpg", "rgba(227, 143, 255,0.75)",
+                "70", " ", "(145)", 12, 4, "#", "img/36.jpg", "rgba(219, 179, 255, 0.75)",
+				"3", " ", "", 9, 6, "http://140.113.73.194/open/mobilemap.php?chid=335&cid=416", "img/37.jpg", "rgba(255, 138, 194,0.75)",
+				"7", " ", "", 10, 6, "http://theme.npm.edu.tw/selection/Article.aspx?sNo=04001024", "img/38.jpg", "rgba(255, 194, 224, 0.75)",
+				"11", " ", "238.02891", 11, 6, "#", "img/39.jpg", "rgba(255, 165, 138,0.75)",
+				"15", " ", "(237)", 12, 6, "#", "img/40.jpg", "rgba(255, 219, 184,0.75)",
+				"19", " ", "(244)", 13, 6, "#", "img/41.jpg", "rgba(255, 221, 87,0.75)",
+				"23", " ", "(243)", 14, 6, "#", "img/42.jpg", "rgba(255, 255, 184,0.75)",
+
+				"27", " ", "(268)", 5, 7, "#", "img/43.jpg", "rgba(102, 255, 102,0.75)",
+				"31", " ", "(271)", 6, 7, "#", "img/44.jpg", "rgba(186, 255, 102,0.75)",
+				"35", " ", "(272)", 7, 7, "#", "img/45.jpg", "rgba(117, 255, 205,0.75)",
+				"39", " ", "(270)", 8, 7, "#", "img/46.jpg", "rgba(194, 255, 228, 0.75)",
+				"43", " ", "(276)", 9, 7, "#", "img/47.jpg", "rgba(102, 255, 255,0.75)",
+				"47", " ", "(281)", 10, 7, "#", "img/48.jpg", "rgba(117, 221, 255,0.75)",
+				"51", " ", "", 11, 7, "#", "img/49.jpg", "rgba(153, 187, 255,0.75)",
+				"55", " ", "(285)", 12, 7, "#", "img/50.jpg", "rgba(71, 163, 255, 0.75)",
+				"59", " ", "(284)", 13, 7, "#", "img/51.jpg", "rgba(161, 138, 255,0.75)",
+				"63", " ", "(289)", 14, 7, "#", "img/52.jpg", "rgba(210, 143, 255,0.75)",
+
+				"67", " ", "(276)", 5, 8, "#", "img/53.jpg", "rgba(227, 143, 255,0.75)",
+				"71", " ", "(281)", 6, 8, "#", "img/54.jpg", "rgba(219, 179, 255, 0.75)",
+				"4", " ", "(280)", 7, 8, "#", "img/55.jpg", "rgba(255, 138, 194,0.75)",
+				"8", " ", "(285)", 8, 8, "#", "img/56.jpg", "rgba(255, 194, 224, 0.75)",
+				"12", " ", "(284)", 9, 8, "#", "img/57.jpg", "rgba(255, 165, 138,0.75)",
+				"16", " ", "(289)", 10, 8, "#", "img/58.jpg", "rgba(255, 219, 184,0.75)",
+				"20", " ", "(288)", 11, 8, "#", "img/59.jpg", "rgba(255, 221, 87,0.75)",
+				"24", " ", "(293)", 12, 8, "#", "img/60.jpg", "rgba(255, 255, 184,0.75)",
+				"28", " ", "(294)", 13, 8, "#", "img/61.jpg", "rgba(102, 255, 102,0.75)",
+				"32", " ", "(294)", 14, 8, "#", "img/62.jpg", "rgba(186, 255, 102,0.75)",
+
+				"36", " ", "(276)", 5, 9, "#", "img/63.jpg", "rgba(117, 255, 205,0.75)",
+				"40", " ", "(281)", 6, 9, "#", "img/64.jpg", "rgba(194, 255, 228, 0.75)",
+				"44", " ", "(280)", 7, 9, "#", "img/65.jpg", "rgba(102, 255, 255,0.75)",
+				"48", " ", "(285)", 8, 9, "#", "img/66.jpg", "rgba(117, 221, 255,0.75)",
+				"52", " ", "(284)", 9, 9, "#", "img/67.jpg", "rgba(153, 187, 255,0.75)",
+				"56", " ", "(289)", 10, 9, "#", "img/68.jpg", "rgba(71, 163, 255, 0.75)",
+				"60", "翠玉白菜", "", 9, 6, "npmfmiddleVeg.htm", "img/j055.jpg", "rgba(161, 138, 255,0.75)",
+				"64", " ", "(293)", 12, 9, "#", "img/j092.jpg", "rgba(210, 143, 255,0.75)",
+                "68", " ", "(247)", 13, 9, "#", "img/j091.jpg", "rgba(227, 143, 255,0.75)",
+                "72", " ", "(247)", 14, 9, "#", "img/j093.jpg", "rgba(219, 179, 255, 0.75)",
+                "  ", " ", "(252)", 6, 10, "#", "img/", "rgba(255,255,255,0.75)",
+				" ", " ", "(276)", 7, 10, "#", "img/.jpg", "rgba(255,255,255,0.75)",
+				"  ", " ", "(281)", 8, 10, "#", "img/.jpg", "rgba(255,255,255,0.75)",
+				" ", " ", "(280)", 9, 10, "#", "img/.jpg", "rgba(255,255,255,0.75)",
+
+				"(1) ", " ", "(280)", 9, 10, "#", "img/70_.jpg", "rgba(255, 138, 194,0.75)",
+				"(5)", " ", "(251)", 5, 10, "#", "img/72_.jpg", "rgba(255, 194, 224, 0.75)",
+				"(9)", " ", "(252)", 6, 10, "#", "img/69_.jpg", "rgba(255, 165, 138,0.75)",
+				"(13)", " ", "(276)", 7, 10, "#", "img/71_.jpg", "rgba(255, 219, 184,0.75)",
+				"(17)", " ", "(281)", 8, 10, "#", "img/68_.jpg", "rgba(255, 221, 87,0.75)",
+				"(21)", " ", "(280)", 9, 10, "#", "img/1_.jpg", "rgba(255, 255, 184,0.75)",
+				"(25)", " ", "(285)", 10, 10, "#", "img/2_.jpg", "rgba(102, 255, 102,0.75)",
+				"(29)", " ", "", 11, 10, "", "img/3_.jpg", "rgba(186, 255, 102,0.75)",
+				"(33)", " ", "", 12, 10, "", "img/4_.jpg", "rgba(117, 255, 205,0.75)",
+				"(37)", " ", "(288)", 13, 10, "http://140.113.73.194/hypermooc/howmooc_home.html", "img/5_.jpg", "rgba(194, 255, 228, 0.75)",
+               	"(41)", " ", "(293)", 14, 10, "http://140.113.73.194/hypermooc/howmooc_home.html", "img/6_.jpg", "rgba(102, 255, 255,0.75)",
+            //100
+            	"(45)", " ", "107.8682", 5, 4, "#", "img/7_.jpg", "rgba(117, 221, 255,0.75)",
+				"(49)", " ", "112.411", 6, 4, "#", "img/8_.jpg", "rgba(153, 187, 255,0.75)",
+				"(53)", " ", "114.818", 7, 4, "#", "img/9_.jpg", "rgba(71, 163, 255, 0.75)",
+				"(57)", " ", "118.71", 8, 4, "#", "img/10_.jpg", "rgba(161, 138, 255,0.75)",
+				"(61)", " ", "140.116", 9, 4, "http://140.113.73.194/open/mobilemap.php?chid=333&cid=416", "img/11_.jpg", "rgba(210, 143, 255,0.75)",
+				"(65)", " ", "140.90765", 10, 4, "#", "img/12_.jpg", "rgba(227, 143, 255,0.75)",
+				"(69)", " ", "144.242", 11, 4, "igmap.htm", "img/13_.jpg", "rgba(219, 179, 255, 0.75)",
+				"(2)", " ", "207.2", 8, 6, "#", "img/14_.jpg", "rgba(255, 194, 224, 0.75)",
+				"(6)", " ", "150.36", 13, 4, "#", "img/15_.jpg", "rgba(255, 194, 224, 0.75)",
+				"(10)", " ", "151.964", 14, 4, "#", "img/16_.jpg", "rgba(255, 165, 138,0.75)",
+
+				"(14)", " ", "157.25", 5, 5, "#", "img/17_.jpg", "rgba(255, 219, 184,0.75)",
+				"(18)", " ", "158.92535", 6, 5, "#", "img/18_.jpg", "rgba(255, 221, 87,0.75)",
+				"(22)", " ", "162.5", 7, 5, "#", "img/19_.jpg", "rgba(255, 255, 184,0.75)",
+				"(26)", " ", "", 8, 5, "#", "img/20_.jpg", "rgba(102, 255, 102,0.75)",
+				"(30)", " ", "", 9, 5, "http://140.113.73.194/open/mobilemap.php?chid=334&cid=416", "img/21_.jpg", "rgba(186, 255, 102,0.75)",
+				"(34)", " ", "", 10, 5, "http://theme.npm.edu.tw/selection/Article.aspx?sNo=04001075", "img/22_.jpg", "rgba(117, 255, 205,0.75)",
+				"(38)", " ", "186.207", 11, 5, "#", "img/23_.jpg", "rgba(194, 255, 228, 0.75)",
+				"(42)", " ", "190.23", 12, 5, "#", "img/24_.jpg", "rgba(102, 255, 255,0.75)",
+				"(46)", " ", "192.217", 13, 5, "#", "img/25_.jpg", "rgba(117, 221, 255,0.75)",
+				"(50)", " ", "195.084", 14, 5, "#", "img/26_.jpg", "rgba(153, 187, 255,0.75)",
+
+				"(54)", " ", "196.966569", 5, 6, "#", "img/27_.jpg", "rgba(71, 163, 255, 0.75)",
+				"(58)", " ", "200.59", 6, 6, "#", "img/28_.jpg", "rgba(161, 138, 255,0.75)",
+				"(62)", " ", "204.3833", 7, 6, "#", "img/29_.jpg", "rgba(210, 143, 255,0.75)",
+                "(66)", " ", "(145)", 12, 4, "#", "img/30_.jpg", "rgba(227, 143, 255,0.75)",
+				"(70)", " ", "", 9, 6, "http://140.113.73.194/open/mobilemap.php?chid=335&cid=416", "img/31_.jpg", "rgba(219, 179, 255, 0.75)",
+				"(3)", " ", "", 10, 6, "http://theme.npm.edu.tw/selection/Article.aspx?sNo=04001024", "img/32_.jpg", "rgba(255, 138, 194,0.75)",
+				"(7)", " ", "238.02891", 11, 6, "#", "img/33_.jpg", "rgba(255, 194, 224, 0.75)",
+				"(11)", " ", "(237)", 12, 6, "#", "img/34_.jpg", "rgba(255, 165, 138,0.75)",
+				"(15)", " ", "(244)", 13, 6, "#", "img/35_.jpg", "rgba(255, 219, 184,0.75)",
+				"(19)", " ", "(243)", 14, 6, "#", "img/36_.jpg", "rgba(255, 221, 87,0.75)",
+
+				"(23)", " ", "(268)", 5, 7, "#", "img/69_.jpg", "rgba(255, 255, 184,0.75)",
+				"(27)", " ", "(271)", 6, 7, "#", "img/38_.jpg", "rgba(102, 255, 102,0.75)",
+				"(31)", " ", "(272)", 7, 7, "#", "img/39_.jpg", "rgba(186, 255, 102,0.75)",
+				"(35)", " ", "(270)", 8, 7, "#", "img/40_.jpg", "rgba(117, 255, 205,0.75)",
+				"(39)", " ", "(276)", 9, 7, "#", "img/41_.jpg", "rgba(194, 255, 228, 0.75)",
+				"(43)", " ", "(281)", 10, 7, "#", "img/42_.jpg", "rgba(102, 255, 255,0.75)",
+				"(47)", " ", "", 11, 7, "#", "img/43_.jpg", "rgba(117, 221, 255,0.75)",
+				"(51)", " ", "(285)", 12, 7, "#", "img/44_.jpg", "rgba(153, 187, 255,0.75)",
+				"(55)", " ", "(284)", 13, 7, "#", "img/45_.jpg", "rgba(71, 163, 255, 0.75)",
+				"(59)", " ", "(289)", 14, 7, "#", "img/46_.jpg", "rgba(161, 138, 255,0.75)",
+
+				"(63)", " ", "(276)", 5, 8, "#", "img/47_.jpg", "rgba(210, 143, 255,0.75)",
+				"(67)", " ", "(281)", 6, 8, "#", "img/48_.jpg", "rgba(227, 143, 255,0.75)",
+				"(71)", " ", "(280)", 7, 8, "#", "img/49_.jpg", "rgba(219, 179, 255, 0.75)",
+				"(4)", " ", "(285)", 8, 8, "#", "img/50_.jpg", "rgba(255, 138, 194,0.75)",
+				"(8)", " ", "(284)", 9, 8, "#", "img/51_.jpg", "rgba(255, 194, 224, 0.75)",
+				"(12)", " ", "(289)", 10, 8, "#", "img/52_.jpg", "rgba(255, 165, 138,0.75)",
+				"(16)", " ", "(288)", 11, 8, "#", "img/53_.jpg", "rgba(255, 219, 184,0.75)",
+				"(20)", " ", "(293)", 12, 8, "#", "img/54_.jpg", "rgba(255, 221, 87,0.75)",
+				"(24)", " ", "(294)", 13, 8, "#", "img/55_.jpg", "rgba(255, 255, 184,0.75",
+				"(28)", " ", "(294)", 14, 8, "#", "img/56_.jpg", "rgba(102, 255, 102,0.75)",
+
+				"(32)", " ", "(276)", 5, 9, "#", "img/57_.jpg", "rgba(186, 255, 102,0.75)",
+				"(36)", " ", "(281)", 6, 9, "#", "img/58_.jpg", "rgba(117, 255, 205,0.75)",
+				"(40)", " ", "(280)", 7, 9, "#", "img/59_.jpg", "rgba(194, 255, 228, 0.75)",
+				"(44)", " ", "(285)", 8, 9, "#", "img/60_.jpg", "rgba(102, 255, 255,0.75)",
+				"(48)", " ", "(284)", 9, 9, "#", "img/61_.jpg", "rgba(117, 221, 255,0.75)",
+				"(52)", " ", "(289)", 10, 9, "#", "img/62_.jpg", "rgba(153, 187, 255,0.75)",
+				"(56)", " ", "(288)", 11, 9, "#", "img/63_.jpg", "rgba(71, 163, 255, 0.75)",
+				"(60)", " ", "(293)", 12, 9, "#", "img/64_.jpg", "rgba(161, 138, 255,0.75)",
+                "(64)", " ", "(247)", 13, 9, "#", "img/65_.jpg", "rgba(210, 143, 255,0.75)",
+				"(68)", " ", "(247)", 14, 9, "#", "img/66_.jpg", "rgba(227, 143, 255,0.75)",
+
+				"(72)", " ", "(251)", 5, 10, "#", "img/67_.jpg", "rgba(219, 179, 255, 0.75)",
+				
+				" ", " ", "(285)", 10, 10, "#", "img/.jpg", "rgba(255, 255, 255,0.75)",
+				"  ", " ", "", 11, 10, "", "img/ .jpg", "rgba(255, 255, 255,0.75)",
+				"  ", " ", "", 12, 10, "", "img/ .jpg", "rgba(255, 255, 255,0.75)",
+				"  ", " ", "(288)", 13, 10, "http://140.113.73.194/hypermooc/howmooc_home.html", "img/ .jpg", "rgba(255, 255, 255,0.75)",
+               
+			];
+
+			var camera, scene, renderer;
+			var controls;
+
+			var objects = [];
+			var targets = { table: [], sphere: [], helix: [], grid: [] };
+
+			init();
+			animate();
+
+			function init() {
+
+				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 0.1, 10000 );
+				camera.position.z = 2000;
+
+				scene = new THREE.Scene();
+
+				// table
+
+				for ( var i = 0; i < table.length; i += 8 ) {
+
+				    var element = document.createElement('div');
+                    //北半球
+                    if (i >= 0 && i<= 136) {
+					element.className = 'element'; //赤道
+                    }
+	                else if (i > 136 && i <= 280) {
+                    element.className = 'element1';
+                    }
+                    else if (i > 280 && i <= 424) {
+                        element.className = 'element2';
+                    }
+                    else if (i > 424 && i <= 568) {
+                        element.className = 'element3';
+                    }
+                    else if (i > 568 && i <= 712) {
+                        element.className = 'element4';
+                    }
+                    else if (i > 712 && i <= 748) {
+                        element.className = 'element5';
+                    }
+                    //南半球
+                    if (i >= 748 && i <= 892) {
+                        element.className = 'element1';
+                    }
+                    else if (i > 892 && i <= 1032) {
+                        element.className = 'element2';
+                    }
+                    else if (i > 1032 && i <= 1176) {
+                        element.className = 'element3';
+                    }
+                    else if (i > 1176 && i <= 1320) {
+                        element.className = 'element4';
+                    }
+                    else if (i > 1320 && i <= 1352) {
+                        element.className = 'element5';
+                    }
+                    
+					//element.style.backgroundColor = 'rgba(255,187,0,' + ( Math.random() * 0.5 + 0.25 ) + ')';
+					
+
+					var bg = document.createElement('div');
+					element.setAttribute('style', "background-color:" + table[i + 7]);
+					element.appendChild(bg);
+
+					var link = document.createElement('a'); // + url
+					link.setAttribute('href', table[i + 5]);					
+					link.setAttribute('target', "right");
+//					link.setAttribute('class', 'highslide-gallery');
+					//					link.setAttribute('onclick', 'alert("hi")');
+//					link.setAttribute('href', 'return hs.expand(this, miniGalleryOptions1)');
+//					link.setAttribute('onclick', 'return hs.expand(this, miniGalleryOptions1)');
+					element.appendChild(link);
+
+                    var Img = document.createElement('img');
+					Img.setAttribute('class', 'image');
+//					Img.setAttribute('width', 230);
+//					Img.setAttribute('height', 230);
+					Img.setAttribute('style', 'background-image:url(' + table[i + 6] + ');background-size:180px 180px;background-repeat:no-repeat;background-position:center');
+//				    Img.setAttribute('src', table[i+6]);
+					link.appendChild(Img);
+//					<a class='highslide' id="thumb1" href='../images/thumbstrip11.jpg' title="Two cabins"	onclick="return hs.expand(this, miniGalleryOptions1)">	<img src='../images/thumbstrip11.thumb.png' alt=''/></a>
+
+					var number = document.createElement( 'div' );
+					number.className = 'number'; //右上角小字
+					number.textContent = (i/8) ;
+//					element.appendChild( number );
+					
+
+					var symbol = document.createElement( 'div' );
+					symbol.className = 'symbol'; //大字
+					symbol.textContent = table[i];
+					element.appendChild( symbol );
+					link.appendChild(symbol);
+                    
+					var details = document.createElement( 'div' );
+					details.className = 'details'; //下面兩行小字
+					details.innerHTML = table[ i + 1 ] // + '<br>' + table[ i + 2 ];
+					//element.appendChild( details );
+					link.appendChild(details);
+
+					var icol = Math.floor(i / 8 / 18) + 1; //取商數 x 18爪
+					var irow = i / 8 % 18 + 1; //取餘數 y
+
+
+					var object = new THREE.CSS3DObject( element );
+//					object.position.x = Math.random() * 4000 - 2000;
+//					object.position.y = Math.random() * 4000 - 2000;
+//					object.position.z = Math.random() * 4000 - 2000;
+					scene.add( object );
+
+					objects.push( object );
+
+					//
+
+					var object = new THREE.Object3D();
+//					object.position.x = ( table[ i + 3 ] * 185 ) - 1750;
+//					object.position.y = - ( table[ i + 4 ] * 300 ) + 1620;
+
+					object.position.x = (irow * 185) - 1750;
+					object.position.y = -(icol * 300) + 1620;
+
+					targets.table.push(object);
+
+				}
+
+				// sphere
+
+				var vector = new THREE.Vector3();
+                var temp0 = [
+800, 0, 0,
+ 751.7540966287268, 273.61611466053495, 0,
+ 612.8355544951825, 514.2300877492314, 0,
+ 400.0000000000001, 692.8203230275509, 0,
+ 138.91854213354432, 787.8462024097664, 0,
+ -138.91854213354424, 787.8462024097664, 0,
+ -399.99999999999983, 692.820323027551, 0,
+ -612.8355544951824, 514.2300877492315, 0,
+ -751.7540966287266, 273.6161146605351, 0,
+ -800, 9.797174393178826e-14, 0,
+ -751.7540966287268, -273.61611466053495, 0,
+ -612.8355544951825, -514.2300877492314, 0,
+ -400.00000000000034, -692.8203230275508, 0,
+ -138.91854213354426, -787.8462024097664, 0,
+ 138.91854213354398, -787.8462024097665, 0,
+ 400.0000000000001, -692.8203230275509, 0,
+ 612.8355544951822, -514.2300877492316, 0,
+ 751.7540966287265, -273.6161146605356, 0,
+ 767.5943788915979, 0, 225.38604547314372,
+ 721.3027736011773, 262.53273948448197, 225.38604547314372,
+ 588.011408519272, 493.400156016554, 225.38604547314372,
+ 383.79718944579906, 664.7562319222615, 225.38604547314372,
+ 133.29136508190527, 755.932895501036, 225.38604547314372,
+ -133.2913650819052, 755.932895501036, 225.38604547314372,
+ -383.7971894457988, 664.7562319222616, 225.38604547314372,
+ -588.0114085192719, 493.4001560165541, 225.38604547314372,
+ -721.3027736011771, 262.53273948448214, 225.38604547314372,
+ -767.5943788915979, 9.40031999153096e-14, 225.38604547314372,
+ -721.3027736011773, -262.53273948448197, 225.38604547314372,
+ -588.011408519272, -493.400156016554, 225.38604547314372,
+ -383.7971894457993, -664.7562319222613, 225.38604547314372,
+ -133.29136508190524, -755.932895501036, 225.38604547314372,
+ 133.29136508190496, -755.9328955010361, 225.38604547314372,
+ 383.79718944579906, -664.7562319222615, 225.38604547314372,
+ 588.0114085192718, -493.4001560165542, 225.38604547314372,
+ 721.302773601177, -262.53273948448253, 225.38604547314372,
+ 673.0028262649449, 0, 432.51265396447803,
+ 632.4157896092296, 230.1805230977166, 432.51265396447803,
+ 515.5500752636282, 432.5978780071292, 432.51265396447803,
+ 336.5014131324726, 582.8375443641673, 432.51265396447803,
+ 116.86571434560146, 662.7784011048459, 432.51265396447803,
+ -116.86571434560139, 662.7784011048459, 432.51265396447803,
+ -336.50141313247235, 582.8375443641675, 432.51265396447803,
+ -515.5500752636281, 432.59787800712934, 432.51265396447803,
+ -632.4157896092295, 230.18052309771673, 432.51265396447803,
+ -673.0028262649449, 8.241907570024871e-14, 432.51265396447803,
+ -632.4157896092296, -230.1805230977166, 432.51265396447803,
+ -515.5500752636282, -432.5978780071292, 432.51265396447803,
+ -336.50141313247275, -582.8375443641672, 432.51265396447803,
+ -116.8657143456014, -662.7784011048459, 432.51265396447803,
+ 116.86571434560118, -662.778401104846, 432.51265396447803,
+ 336.5014131324726, -582.8375443641673, 432.51265396447803,
+ 515.550075263628, -432.59787800712945, 432.51265396447803,
+ 632.4157896092294, -230.1805230977171, 432.51265396447803,
+ 523.888587156228, 0, 604.5996594834066,
+ 492.2942394646628, 179.1804496658552, 604.5996594834066,
+ 401.32194100448095, 336.74909268021, 604.5996594834066,
+ 261.9442935781141, 453.7008252300315, 604.5996594834066,
+ 90.97229846018185, 515.9295423460653, 604.5996594834066,
+ -90.97229846018179, 515.9295423460653, 604.5996594834066,
+ -261.94429357811396, 453.70082523003157, 604.5996594834066,
+ -401.3219410044809, 336.74909268021014, 604.5996594834066,
+ -492.2942394646627, 179.18044966585532, 604.5996594834066,
+ -523.888587156228, 6.415784813707039e-14, 604.5996594834066,
+ -492.2942394646628, -179.1804496658552, 604.5996594834066,
+ -401.32194100448095, -336.74909268021, 604.5996594834066,
+ -261.94429357811424, -453.7008252300314, 604.5996594834066,
+ -90.9722984601818, -515.9295423460653, 604.5996594834066,
+ 90.97229846018162, -515.9295423460653, 604.5996594834066,
+ 261.9442935781141, -453.7008252300315, 604.5996594834066,
+ 401.3219410044808, -336.7490926802102, 604.5996594834066,
+ 492.2942394646626, -179.1804496658556, 604.5996594834066,
+ 332.33201040150914, 0, 727.7055962836147,
+ 312.2899378252439, 113.66424182923177, 727.7055962836147,
+ 254.5810898386345, 213.61889858830818, 727.7055962836147,
+ 166.16600520075463, 287.8079634984612, 727.7055962836147,
+ 57.70884798660942, 327.28314041754, 727.7055962836147,
+ -57.708847986609385, 327.28314041754, 727.7055962836147,
+ -166.1660052007545, 287.8079634984613, 727.7055962836147,
+ -254.58108983863445, 213.6188985883082, 727.7055962836147,
+ -312.2899378252439, 113.66424182923184, 727.7055962836147,
+ -332.33201040150914, 4.069893327924131e-14, 727.7055962836147,
+ -312.2899378252439, -113.66424182923177, 727.7055962836147,
+ -254.5810898386345, -213.61889858830818, 727.7055962836147,
+ -166.1660052007547, -287.80796349846116, 727.7055962836147,
+ -57.7088479866094, -327.28314041754, 727.7055962836147,
+ 57.70884798660928, -327.28314041754004, 727.7055962836147,
+ 166.16600520075463, -287.8079634984612, 727.7055962836147,
+ 254.5810898386344, -213.61889858830827, 727.7055962836147,
+ 312.28993782524384, -113.66424182923204, 727.7055962836147,
+ 113.8518706186281, 0, 791.8571535047462,
+ 6.971416446502074e-15, 113.8518706186281, 791.8571535047462,
+ -113.8518706186281, 1.3942832893004148e-14, 791.8571535047462,
+ -2.091424933950622e-14, -113.8518706186281, 791.8571535047462,
+ 767.5943788915979, 0, -225.38604547314372,
+ 721.3027736011773, 262.53273948448197, -225.38604547314372,
+ 588.011408519272, 493.400156016554, -225.38604547314372,
+ 383.79718944579906, 664.7562319222615, -225.38604547314372,
+ 133.29136508190527, 755.932895501036, -225.38604547314372,
+ -133.2913650819052, 755.932895501036, -225.38604547314372,
+ -383.7971894457988, 664.7562319222616, -225.38604547314372,
+ -588.0114085192719, 493.4001560165541, -225.38604547314372,
+ -721.3027736011771, 262.53273948448214, -225.38604547314372,
+ -767.5943788915979, 9.40031999153096e-14, -225.38604547314372,
+ -721.3027736011773, -262.53273948448197, -225.38604547314372,
+ -588.011408519272, -493.400156016554, -225.38604547314372,
+ -383.7971894457993, -664.7562319222613, -225.38604547314372,
+ -133.29136508190524, -755.932895501036, -225.38604547314372,
+ 133.29136508190496, -755.9328955010361, -225.38604547314372,
+ 383.79718944579906, -664.7562319222615, -225.38604547314372,
+ 588.0114085192718, -493.4001560165542, -225.38604547314372,
+ 721.302773601177, -262.53273948448253, -225.38604547314372,
+ 673.0028262649449, 0, -432.51265396447803,
+ 632.4157896092296, 230.1805230977166, -432.51265396447803,
+ 515.5500752636282, 432.5978780071292, -432.51265396447803,
+ 336.5014131324726, 582.8375443641673, -432.51265396447803,
+ 116.86571434560146, 662.7784011048459, -432.51265396447803,
+ -116.86571434560139, 662.7784011048459, -432.51265396447803,
+ -336.50141313247235, 582.8375443641675, -432.51265396447803,
+ -515.5500752636281, 432.59787800712934, -432.51265396447803,
+ -632.4157896092295, 230.18052309771673, -432.51265396447803,
+ -673.0028262649449, 8.241907570024871e-14, -432.51265396447803,
+ -632.4157896092296, -230.1805230977166, -432.51265396447803,
+ -515.5500752636282, -432.5978780071292, -432.51265396447803,
+ -336.50141313247275, -582.8375443641672, -432.51265396447803,
+ -116.8657143456014, -662.7784011048459, -432.51265396447803,
+ 116.86571434560118, -662.778401104846, -432.51265396447803,
+ 336.5014131324726, -582.8375443641673, -432.51265396447803,
+ 515.550075263628, -432.59787800712945, -432.51265396447803,
+ 632.4157896092294, -230.1805230977171, -432.51265396447803,
+ 523.888587156228, 0, -604.5996594834066,
+ 492.2942394646628, 179.1804496658552, -604.5996594834066,
+ 401.32194100448095, 336.74909268021, -604.5996594834066,
+ 261.9442935781141, 453.7008252300315, -604.5996594834066,
+ 90.97229846018185, 515.9295423460653, -604.5996594834066,
+ -90.97229846018179, 515.9295423460653, -604.5996594834066,
+ -261.94429357811396, 453.70082523003157, -604.5996594834066,
+ -401.3219410044809, 336.74909268021014, -604.5996594834066,
+ -492.2942394646627, 179.18044966585532, -604.5996594834066,
+ -523.888587156228, 6.415784813707039e-14, -604.5996594834066,
+ -492.2942394646628, -179.1804496658552, -604.5996594834066,
+ -401.32194100448095, -336.74909268021, -604.5996594834066,
+ -261.94429357811424, -453.7008252300314, -604.5996594834066,
+ -90.9722984601818, -515.9295423460653, -604.5996594834066,
+ 90.97229846018162, -515.9295423460653, -604.5996594834066,
+ 261.9442935781141, -453.7008252300315, -604.5996594834066,
+ 401.3219410044808, -336.7490926802102, -604.5996594834066,
+ 492.2942394646626, -179.1804496658556, -604.5996594834066,
+ 332.33201040150914, 0, -727.7055962836147,
+ 312.2899378252439, 113.66424182923177, -727.7055962836147,
+ 254.5810898386345, 213.61889858830818, -727.7055962836147,
+ 166.16600520075463, 287.8079634984612, -727.7055962836147,
+ 57.70884798660942, 327.28314041754, -727.7055962836147,
+ -57.708847986609385, 327.28314041754, -727.7055962836147,
+ -166.1660052007545, 287.8079634984613, -727.7055962836147,
+ -254.58108983863445, 213.6188985883082, -727.7055962836147,
+ -312.2899378252439, 113.66424182923184, -727.7055962836147,
+ -332.33201040150914, 4.069893327924131e-14, -727.7055962836147,
+ -312.2899378252439, -113.66424182923177, -727.7055962836147,
+ -254.5810898386345, -213.61889858830818, -727.7055962836147,
+ -166.1660052007547, -287.80796349846116, -727.7055962836147,
+ -57.7088479866094, -327.28314041754, -727.7055962836147,
+ 57.70884798660928, -327.28314041754004, -727.7055962836147,
+ 166.16600520075463, -287.8079634984612, -727.7055962836147,
+ 254.5810898386344, -213.61889858830827, -727.7055962836147,
+ 312.28993782524384, -113.66424182923204, -727.7055962836147,
+ 113.8518706186281, 0, -791.8571535047462,
+ 6.971416446502074e-15, 113.8518706186281, -791.8571535047462,
+ -113.8518706186281, 1.3942832893004148e-14, -791.8571535047462,
+ -2.091424933950622e-14, -113.8518706186281, -791.8571535047462,
+
+            ];
+
+           //table located map find element position in temp0
+                temp1 = [
+                   64, 96, 83, 95, 82, 94, 81, 80, 93, 79,      //0~9
+                   84, 0, 1, 2, 3, 4, 5, 6, 7, 99,              //10~19
+                   65, 27, 28, 29, 30, 31, 32, 33, 8, 78,       //20~29
+                   85, 26, 47, 48, 49, 50, 51, 34, 9, 77,       //30~39
+                   66, 25, 46, 59, 60, 61, 52, 35, 10, 92,       //40~49
+                   86, 24, 45, 58, 63, 62, 53, 36, 11, 76,      //50~59
+                   67, 23, 44, 57, 56, 55, 54, 37, 12, 91,      //60~69
+                   68, 22, 43, 42, 41, 40, 39, 38, 13, 75,      //70~79
+                   97, 21, 20, 19, 18, 17, 16, 15, 14, 90,      //80~89
+                   69, 87, 70, 71, 88, 72, 89, 73, 98, 74,      //90~99
+                 ];
+
+
+
+             for (var i = 0, l = objects.length; i < l; i++) {             
+				  
+					var temp2 = [];
+					var object = new THREE.Object3D();
+//					object.position.x = temp0[3 * temp1[i]];
+//					object.position.y = temp0[3 * temp1[i] + 1];
+//					object.position.z = temp0[3 * temp1[i] + 2];
+
+					object.position.x = temp0[3 * i];
+					object.position.y = temp0[3 * i + 1];
+					object.position.z = temp0[3 * i + 2];
+					
+					temp2.push(object);
+					vector.copy(object.position).multiplyScalar(2);
+					object.lookAt(vector);
+//					object.lookAt({ x: 0, y: 1000, z: 0 });
+                    targets.sphere.push(object);
+                    
+				}
+               
+				// helix
+
+				var vector = new THREE.Vector3();
+
+				for ( var i = 0, l = objects.length; i < l; i ++ ) {
+
+					var phi = i * 0.175 + Math.PI;
+
+					var object = new THREE.Object3D();
+
+					object.position.x = 1300 * Math.sin( phi );
+					object.position.y = - ( i * 12 ) + 600;
+					object.position.z = 1300 * Math.cos( phi );
+
+					vector.x = object.position.x * 2;
+					vector.y = object.position.y;
+					vector.z = object.position.z * 2;
+
+					object.lookAt( vector );
+
+					targets.helix.push( object );
+
+				}
+
+				// grid
+
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = new THREE.Object3D();
+
+					object.position.x = ( ( i % 4 ) * 310 ) - 400;
+					object.position.y = ( - ( Math.floor( i / 4 ) % 3 ) * 310 ) + 400;
+					object.position.z = ( Math.floor( i / 12 ) ) * 500 - 1000;
+
+					targets.grid.push( object );
+
+				}
+
+				//
+
+				renderer = new THREE.CSS3DRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.domElement.style.position = 'absolute';
+				document.getElementById( 'container' ).appendChild( renderer.domElement );
+
+				//
+
+				controls = new THREE.TrackballControls( camera, renderer.domElement );
+				controls.rotateSpeed = 0.5;
+				controls.minDistance = 200;
+				controls.maxDistance = 100000;
+				controls.addEventListener( 'change', render );
+
+				var button = document.getElementById( 'table' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.table, 20);
+				    camera.position.x = 0;
+				    camera.position.y = 0;
+					camera.position.z = 5000;
+				}, false );
+
+				var button = document.getElementById( 'sphere' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.sphere, 20);
+				    camera.position.x = 0;
+				    camera.position.y = 0;
+					camera.position.z = 3000;
+				}, false );
+
+          
+				var button = document.getElementById( 'helix' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.helix, 20);
+				    camera.position.x = 0;
+				    camera.position.y = 0;
+					camera.position.z = 5000;
+				}, false );
+
+				var button = document.getElementById( 'grid' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.grid, 20);
+				    camera.position.x = 2000;
+				    camera.position.y = 0;
+					camera.position.z = 2000;
+				}, false );
+
+	            transform(targets.sphere, 20); // sphere default
+	            controls.reset();
+				camera.position.x = 0;
+				camera.position.y = 0;
+				camera.position.z = 3000;
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			function transform( targets, duration ) {
+
+				TWEEN.removeAll();
+
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = objects[ i ];
+					var target = targets[ i ];
+
+					new TWEEN.Tween( object.position )
+						.to( { x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration )
+						.easing( TWEEN.Easing.Exponential.InOut )
+						.start();
+
+					new TWEEN.Tween( object.rotation )
+						.to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+						.easing( TWEEN.Easing.Exponential.InOut )
+						.start();
+
+				}
+	               
+
+				new TWEEN.Tween( this )
+					.to( {}, duration * 2 )
+					.onUpdate( render )
+					.start();
+
+			}
+
+			function transformPos(targets, duration,iX,iY,iZ) {
+
+			    TWEEN.removeAll();
+			    camera.position.x = iX;
+			    camera.position.y = iY;
+			    camera.position.z = iZ;
+			    for (var i = 0; i < objects.length; i++) {
+
+			        var object = objects[i];
+			        var target = targets[i];
+
+			        new TWEEN.Tween(object.position)
+						.to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration)
+						.easing(TWEEN.Easing.Exponential.InOut)
+						.start();
+
+			        new TWEEN.Tween(object.rotation)
+						.to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration)
+						.easing(TWEEN.Easing.Exponential.InOut)
+						.start();
+
+			    }
+                
+                new TWEEN.Tween(this)
+					.to({}, duration * 2)
+					.onUpdate(render)
+					.start();
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+				render();
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				TWEEN.update();
+
+				controls.update();
+
+			}
+
+			function render() {
+
+				renderer.render( scene, camera );
+
+			}
+
+
+		</script>
+
+   <!-- highslide start-->
+<script type="text/javascript">
+            hs.graphicsDir = '../highslide/graphics/';
+            hs.align = 'center';
+            hs.transitions = ['expand', 'crossfade'];
+            hs.fadeInOut = true;
+            hs.outlineType = 'glossy-dark';
+            hs.wrapperClassName = 'dark';
+            hs.captionEval = 'this.a.title';
+            hs.numberPosition = 'caption';
+            hs.useBox = true;
+            hs.width = 600;
+            hs.height = 400;
+            //hs.dimmingOpacity = 0.8;
+
+            // Add the slideshow providing the controlbar and the thumbstrip
+            hs.addSlideshow({
+                //slideshowGroup: 'group1',
+                interval: 5000,
+                repeat: false,
+                useControls: true,
+                fixedControls: 'fit',
+                overlayOptions: {
+                    position: 'bottom center',
+                    opacity: .75,
+                    hideOnMouseOut: true
+                },
+                thumbstrip: {
+                    position: 'above',
+                    mode: 'horizontal',
+                    relativeTo: 'expander'
+                }
+            });
+
+            // Make all images animate to the one visible thumbnail
+            var miniGalleryOptions1 = {
+                thumbnailId: 'thumb1'
+            }
+            var miniGalleryOptions1a = {
+                thumbnailId: 'thumb1a'
+            }
+</script>
+	</body>
+</html>

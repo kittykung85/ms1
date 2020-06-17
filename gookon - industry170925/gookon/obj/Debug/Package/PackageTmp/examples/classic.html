@@ -1,0 +1,1032 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>故宮典藏</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			html, body {
+				height: 100%;
+			}
+
+			body {
+				background-color: #FFFFFF;
+				margin: 0;
+				font-family: Helvetica, sans-serif;
+				overflow: hidden;
+			}
+
+			a {
+				color: #000000;
+			}
+
+			#logo {
+				position: absolute;
+				width: 100%;
+				padding: 0px;
+				font-family: Monospace;
+				font-size: 20px;
+				font-weight: bold;
+				text-align: center;
+				z-index: 1;
+                top: 5px;
+                left: -30px;
+            }
+
+			#menu {
+				position: absolute;
+				bottom: 22px;
+				width: 100%;
+				text-align: center;
+			}
+			
+			#menuL {
+				position: absolute;
+				top: 100px;
+				left:0px;
+				width: 100%;
+				text-align: center;
+			}
+
+			.element {
+                  width: 180px;
+                  height:250px;
+                  font-weight: bold;
+                  -webkit-font-smoothing: antialiased;
+                  -moz-osx-font-smoothing: grayscale;
+                  background-color: rgba(255, 128, 0,0.75);
+                  border: 0px solid rgba(127,255,255,0);
+                  order-radius: 8px;
+                  text-align: center;
+                  cursor: default;
+                  
+                }
+
+                .element:hover {
+                  box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+                  border: 1px solid rgba(127,255,255,0.75);
+                }
+                .element svg {
+                  position: absolute;
+                  top: 20px;
+                  left: 2px;
+                  right: 0px;
+                }
+				.element .done{
+                  position: absolute;
+                  top:65px;
+                  left:0px;
+                  width: 100%;
+                  height: 180px;
+                  border-style:ridge;
+                  border-color:brown;
+                  border-width: 0px;
+                }
+				.element .number {
+					position: absolute;
+					top: 20px;
+					right: 20px;
+					font-size: 10px;
+					text-shadow:1px 1px 1px #cccccc;
+					color: rgba(0,0,0,0.75);
+				}
+
+				.element .symbol {
+				  position: absolute;
+                  top: 35px;
+                  left: 0px;
+                  right: 0px;
+                  font-size: 20px;
+                  color: rgba(230, 255, 0,0.75);
+				}
+
+				.element .details {
+				    position: absolute;
+                    top: 5px;
+                    left: 0px;
+                    right: 0px;
+                    font-size: 20px;
+                    color: rgba(255,255, 255,0.75);
+				}
+
+			button {
+				color: rgba(0,0,0,0.75);
+				background: transparent;
+				outline: 1px solid rgba(127,255,255,0);
+				border: 0px;
+				padding: 5px 10px;
+				cursor: pointer;
+			}
+			button:hover {
+				background-color: rgba(255,187,0,0.5);
+			}
+			button:active {
+				color: #FFFFFF;
+				background-color: rgba(0,255,255,0.75);
+			}
+		</style>
+        <link rel="stylesheet" href="css/buttons.css" type="text/css" media="screen" />
+	</head>
+	<body>
+		<script src="../build/three.js"></script>
+		<script src="js/libs/tween.min.js"></script>
+		<script src="js/controls/TrackballControls.js"></script>
+		<script src="js/renderers/CSS3DRenderer.js"></script>
+        
+        <link href="http://140.113.73.197/npm/gbball/examples/css/style.css" rel="stylesheet">
+        
+        
+
+
+<div class="banner-info" style="display:block;" >
+	<ul>
+		<li><a href="/npm/gbball/examples/index.html" class="scroll hvr-radial-out">數位學院</a></li>
+        <li><a href="/npm/gbball/examples/gbball.html" class="scroll hvr-radial-out">故宮展出</a></li>
+        <li><a href="/npm/gbball/examples/classic.html" class="scroll hvr-radial-out">故宮文物</a></li>
+        <div style="width:300px; display:inline-block; position:relative; ">
+       
+        <img src="http://140.113.73.197/npm/gbball/examples/img/logo2.png" >
+         
+        </div>
+        <li><a href="#" class="scroll hvr-radial-out-R" >師資介紹</a></li>
+        <li><a href="/iClass/index6.html" class="scroll hvr-radial-out-R" >線上課程</a></li>
+        <li><a href="#" class="scroll hvr-radial-out-R" " >國際交流</a></li>
+	</ul>
+</div>
+<div id="container"></div>
+<div id="menuL" style="font-size: 12px">
+		      
+        <script language="javascript">
+            function pOnchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("iposition");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544") {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }
+            }
+            function k1Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind1");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544") {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "34") {
+                    transformPos(targets.sphere, 20, 1500, 1000, 2000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }
+            }
+            function k2Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind2");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544" ) {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }
+              }
+                  function k3Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind3");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544" ) {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }
+                }
+                  function k4Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind4");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544" ) {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }}
+                  function k5Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind5");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544" ) {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }}
+                  function k6Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind6");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544" ) {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }}
+                function k7Onchange() {
+                    //                alert('test onchange');
+                    var selectBox = document.getElementById("kind7");
+                    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                    controls.reset();
+
+                    if (selectedValue == "5544") {
+                        transformPos(targets.sphere, 20, 0, 0, 3000);
+                    }
+                    if (selectedValue == "198") {
+                        transformPos(targets.sphere, 20, 0, 0, -3000);
+                    }
+                    if (selectedValue == "71") {
+                        transformPos(targets.sphere, 20, 0, -3000, 0);
+                    }
+                    if (selectedValue == "18") {
+                        transformPos(targets.sphere, 20, 0, 3000, 0);
+                    }
+                    if (selectedValue == "11") {
+                        transformPos(targets.sphere, 20, 3000, 0, 0);
+                    }
+                    if (selectedValue == "88") {
+                        transformPos(targets.sphere, 20, -3000, 0, 0);
+                    } 
+                }
+                  function k8Onchange() {
+                //                alert('test onchange');
+                      location.href="http://140.113.73.194/yuekan/9.html";
+            }
+</script>
+        <select id="kind1" style="width: 5%" onchange="k1Onchange()">
+                <option id="OptionA" >繪畫</option>
+                <option id="Option1" >畫元世祖出獵圖</option>
+                <option id="Option2" >潑墨仙人</option>
+                <option value="34" style="background-color: rgba(255,0,25,0.7)">百駿圖</option>
+                <option id="Option3" >唐人宮樂圖</option>
+                <option id="Option4" >秉燭夜遊</option>
+                <option id="Option5" >谿山行旅</option>
+                <option id="Option11" >陶穀贈詞</option>
+                <option value="11" style="background-color: rgba(255,0,0,0.7)">雙喜圖</option>
+                <option id="Option13" >漢宮春曉</option>    
+                <option id="Option14" >層巖叢樹圖</option>
+                <option value="5544" style="background-color: rgba(255,0,0,0.7)">富春山居圖</option>   
+                <option id="Option15" >霜浦歸漁圖</option>
+                <option id="Option21" >春遊晚歸</option>
+                <option id="Option22" >桃花漁艇</option>
+                <option id="Option23" >鵲華秋色</option>
+                <option id="Option24" >赤壁圖</option>
+                <option id="Option25" >古木寒泉</option>
+                <option id="Option31" >清明上河圖</option>
+                <option id="Option32" >溪山清遠</option>
+                <option id="Option33" >王蒙夏日山居圖</option>    
+                <option id="Option34" >牡丹</option>
+                <option id="Option41" >具區林屋</option>
+                <option id="Option42" >明人畫入蹕圖</option>
+                <option id="Option43" >花竹</option>    
+                <option id="Option44" >花竹廬山高</option> 
+                       
+            </select>
+        <select id="kind2" style="width: 5%" onchange="k2Onchange()">
+                <option id="OptionB" >陶瓷</option>
+                <option id="Ceramics" style="background-color: rgba(255,0,0,0)">天青釉紫斑如意</option>
+                <option id="Curios" style="background-color: rgba(255, 148, 201,0)">寶石紅釉僧帽壺</option>
+                <option id="Painting" style="background-color: rgba(255, 128, 0,0)">黑陶高足盃</option>
+                <option value="18" style="background-color: rgba(255,255,0,0.7)">茶葉末六聯瓶</option>
+                <option id="Jade" style="background-color: rgba(83,138,0,0)">開光花鳥雙連瓶</option>
+                <option id="Calligraphy" style="background-color: rgba(0, 255, 255,0)">紅釉尊</option>
+                <option id="Literature" style="background-color: rgba(72, 72, 147,0)">白瓷嬰兒枕</option>
+                <option id="Book" style="background-color: rgba(145, 70, 136,0)">白陶鬶</option>       
+                <option id="Option10" style="background-color: rgba(255,0,0,0)">黃釉粉彩八卦如意</option>
+                <option id="Option16" style="background-color: rgba(255, 148, 201,0)">黑陶繭式壺</option>
+                <option id="Option17" style="background-color: rgba(255, 128, 0,0)">黑陶高足盃</option>
+                <option id="Option18" style="background-color: rgba(255,255,0,0)">青瓷葵花式洗</option>
+                <option id="Option64" style="background-color: rgba(83,138,0,0)">紅地描金萬福紋</option>
+                <option value="5544"  style="background-color: rgba(0, 255, 255,0.7)">嬌黃錐拱獸面紋鼎</option>
+                <option id="Option66" style="background-color: rgba(72, 72, 147,0)">青花人物紋扁壺</option>
+                <option id="Option67" style="background-color: rgba(145, 70, 136,0)">粉紅錦地番蓮碗</option>       
+               <option id="Option68" style="background-color: rgba(145, 70, 136,0)">粉彩紫地花鳥文</option>
+            </select>
+        <select id="kind3" style="width: 5%" onchange="k3Onchange()">
+                <option id="Option1" >珍玩</option>
+                <option id="Option2" style="background-color: rgba(255,0,0,0)">雕竹窺簡圖筆筒</option>
+                <option id="Option3" style="background-color: rgba(255, 148, 201,0)">四層透花提食盒</option>
+                <option id="Option4" style="background-color: rgba(255, 128, 0,0)">雕竹荷葉式水盛</option>
+                <option id="Option5" style="background-color: rgba(255,255,0,0)">黃地牡丹紋蟠龍瓶</option>
+                <option id="Option6" style="background-color: rgba(83,138,0,0)">掐絲琺瑯番蓮紋盒</option>
+                <option value="198" style="background-color: rgba(0, 255, 255,0.7)">肉形石</option>
+                <option id="Option8" style="background-color: rgba(72, 72, 147,0)">填漆牡丹圓盒</option>
+                <option id="Option9" style="background-color: rgba(145, 70, 136,0)">內填琺瑯纍絲盒</option>       
+                <option id="Option69" style="background-color: rgba(145, 70, 136,0)">雕漆雙緣寶盒</option> 
+            </select>            
+        <select id="kind4" style="width: 5%" onchange="k4Onchange()">
+                <option id="Option19" >銅器</option>
+                <option value="71" style="background-color: rgba(255,0,0,0.7)">蟠虺紋鼎</option>
+                <option value="198" style="background-color: rgba(255, 148, 201,0.7)">鉤連乳丁紋羊首</option>
+                <option id="Option22" style="background-color: rgba(255, 128, 0,0)">獸面紋鉞</option>
+                <option id="Option23" style="background-color: rgba(255,255,0,0)">玉高足杯</option>
+                
+                <!--<option id="Option24" style="background-color: rgba(83,138,0,0)">玉器</option>
+                <option id="Option25" style="background-color: rgba(0, 255, 255,0)">書法</option>
+                <option id="Option26" style="background-color: rgba(72, 72, 147,0)">文獻</option>
+                <option id="Option27" style="background-color: rgba(145, 70, 136,0)">圖書</option>       
+           --> </select>&nbsp;
+        <select id="kind5" style="width: 5%" onchange="k5Onchange()">
+            <option id="Option28" >玉器</option>
+            <option id="Option29" style="background-color: rgba(255,0,0,0)">玉鰲魚花插</option>
+            <option id="Option30" style="background-color: rgba(255, 148, 201,0)">玉角形杯</option>
+            <option value="5544" style="background-color: rgba(0, 255, 255,0.7)">翠玉白菜</option>
+            <option id="Option31" style="background-color: rgba(255, 128, 0,0)">新石器時代玉琮</option>
+            <option id="Option32" style="background-color: rgba(255,255,0,0)">鷹紋圭</option>
+            <option id="Option33" style="background-color: rgba(83,138,0,0)">龍冠鳳紋玉飾</option>
+           
+            <!--<option id="Option35" style="background-color: rgba(72, 72, 147,0)">文獻</option>
+            <option id="Option36" style="background-color: rgba(145, 70, 136,0)">圖書</option>       
+        -->  </select>
+        <select id="kind6" style="width: 5%" onchange="k6Onchange()">
+            <option id="Option37" >書法</option>
+            <option value="5544" style="background-color: rgba(255,0,0,0.7)">花氣薰人帖</option>
+            <option id="Option39" style="background-color: rgba(255, 148, 201,0)">書譜</option>
+            <option id="Option40" style="background-color: rgba(255, 128, 0,0)">臨閣帖行書</option>
+            <option id="Option41" style="background-color: rgba(255,255,0,0)">自書五憶歌</option>
+            <option id="Option42" style="background-color: rgba(83,138,0,0)">自敘帖</option>
+            <option id="Option43" style="background-color: rgba(0, 255, 255,0)">書黃州寒食詩</option>
+            <!--<option id="Option44" style="background-color: rgba(72, 72, 147,0)">文獻</option>
+            <option id="Option45" style="background-color: rgba(145, 70, 136,0)">圖書</option>       
+        --> </select>
+        <select id="kind7" style="width: 5%" onchange="k7Onchange()">
+            <option id="Option46" >文獻</option>
+            <option id="Option47" style="background-color: rgba(255,0,0,0)">宮中檔奏摺</option>
+            <option value="88" style="background-color: rgba(255, 148, 0,0.7)">大清國致大英國書</option>
+            <option id="Option49" style="background-color: rgba(255, 128, 0,0)">滿文原檔</option>
+            <!--<option id="Option50" style="background-color: rgba(255,255,0,0)">銅器</option>
+            <option id="Option51" style="background-color: rgba(83,138,0,0)">玉器</option>
+            <option id="Option52" style="background-color: rgba(0, 255, 255,0)">書法</option>
+            <option id="Option53" style="background-color: rgba(72, 72, 147,0)">文獻</option>
+            <option id="Option54" style="background-color: rgba(145, 70, 136,0)">圖書</option>       
+        --> </select>
+        <select id="kind8" style="width: 5%" onchange="k8Onchange()">
+            <option id="Option55" >圖書</option>
+            <option id="Option56" style="background-color: rgba(255,0,0,0)">爾雅</option>
+            <option value="99" style="background-color: rgba(255, 148, 201,0.7)">周禮疏</option>
+            <option id="Option58" style="background-color: rgba(255, 128, 0,0)">劉賓客文集</option><!--
+            <option id="Option59" style="background-color: rgba(255,255,0,0)">銅器</option>
+            <option id="Option60" style="background-color: rgba(83,138,0,0)">玉器</option>
+            <option id="Option61" style="background-color: rgba(0, 255, 255,0)">書法</option>
+            <option id="Option62" style="background-color: rgba(72, 72, 147,0)">文獻</option>
+            <option id="Option63" style="background-color: rgba(145, 70, 136,0)">圖書</option>      --> 
+        </select>
+
+		<select id="kind9" style="width: 5%" onchange="k8Onchange()" name="D1">
+            <option id="Option70" >月刊</option>
+            <option id="Option71" style="background-color: rgba(255,0,0,0)"></a><a href='http://140.113.73.194/yuekan/9.html' target=_blank >故宮文物</a></option>
+            <!--<option value="99" style="background-color: rgba(255, 148, 201,0.7)"></option>
+            <option id="Option72" style="background-color: rgba(255, 128, 0,0)"></option>--><!--
+            <option id="Option59" style="background-color: rgba(255,255,0,0)">銅器</option>
+            <option id="Option60" style="background-color: rgba(83,138,0,0)">玉器</option>
+            <option id="Option61" style="background-color: rgba(0, 255, 255,0)">書法</option>
+            <option id="Option62" style="background-color: rgba(72, 72, 147,0)">文獻</option>
+            <option id="Option63" style="background-color: rgba(145, 70, 136,0)">圖書</option>      --> 
+        </select></div>
+
+		<div id="menu">
+			<button id="table">TABLEtton>
+			<button id="sphere">SPHERE</button>
+			<button id="helix">HELIX</button>
+			<button id="grid">GRID</button>
+		</div>
+       	
+        <script>
+
+            var table = [
+                "畫元世祖出獵圖", "新石器時代", "良渚文化", 5, 1, "", "img/j001.jpg", "rgba(200, 169, 91,1)",
+				"潑墨仙人", "新石器時代", "良渚文化", 6, 1, "", "img/j002.jpg", "rgba(200, 169, 91,1)",
+				"唐人宮樂圖", "良渚文化晚期", "", 7, 1, "", "img/j003.jpg", "rgba(200, 169, 91,1)",
+				"秉燭夜遊", "山東龍山文化晚期", "", 8, 1, "", "img/j004.jpg", "rgba(200, 169, 91,1)",
+				"谿山行旅", "商晚期", "", 9, 1, " ", "img/j005.jpg", "rgba(200, 169, 91,1)",
+				"雕竹窺簡圖筆筒", "戰國", "", 10, 1, " ", "img/j006.jpg", "rgba(199, 132, 87,1)",
+				"四層透花提食盒", "西漢", "", 11, 1, " ", "img/j007.jpg", "rgba(199, 132, 87,1)",
+				"雕竹荷葉式水盛", "漢", "", 12, 1, " ", "img/j008.jpg", "rgba(199, 132, 87,1)",
+				"黃地牡丹紋蟠龍瓶", "東漢", "", 13, 1, " ", "img/j009.jpg", "rgba(199, 132, 87,1)",
+				"掐絲琺瑯番蓮紋盒", "南宋至元", "", 14, 1, " ", "img/j010.jpg", "rgba(199, 132, 87,1)",
+
+				"陶穀贈詞", "清", "", 5, 2, "#", "img/j011.jpg", "rgba(200, 169, 91,1)",
+                "雙喜圖", "明", "", 6, 2, "#", "img/j012.jpg", "rgba(200, 169, 91,1)",
+				"漢宮春曉", "明", "", 7, 2, "#", "img/j013.jpg", "rgba(200, 169, 91,1)",
+				"層巖叢樹圖", "清乾隆", "", 8, 2, "#", "img/j014.jpg", "rgba(200, 169, 91,1)",
+				"霜浦歸漁圖", "元", "50.9415", 9, 2, "#", "img/j015.jpg", "rgba(200, 169, 91,1)",
+				"天青釉紫斑如意", "元", "51.9961", 10, 2, "#", "img/j016.jpg", "rgba(196,83,97,1)",
+				"寶石紅釉僧帽壺", "明宣德", "54.938045", 11, 2, "#", "img/j017.jpg", "rgba(196,83,97,1)",
+				"黑陶高足盃", "龍山文化", "55.845", 12, 2, "#", "img/j018.jpg", "rgba(196,83,97,1)",
+				"茶葉末六聯瓶", "清乾隆", "58.933195", 13, 2, "#", "img/j019.jpg", "rgba(196,83,97,1)",
+				"肉形石", "清", "58.6934", 14, 2, "#", "img/j020.jpg", "rgba(199, 132, 87,1)",
+
+				"春遊晚歸", "明", "63.546", 5, 3, "#", "img/j021.jpg", "rgba(200, 169, 91,1)",
+				"桃花漁艇", "清", "65.38", 6, 3, "#", "img/j022.jpg", "rgba(200, 169, 91,1)",
+				"鵲華秋色", "元", "69.723", 7, 3, "#", "img/j023.jpg", "rgba(200, 169, 91,1)",
+				"赤壁圖", "金", "72.63", 8, 3, "#", "img/j024.jpg", "rgba(200, 169, 91,1)",
+				"古木寒泉", "明", "92.90628", 9, 3, "#", "img/j025.jpg", "rgba(200, 169, 91,1)",
+				"開光花鳥雙連瓶", "清乾隆", "95.96", 10, 3, "#", "img/j026.jpg", "rgba(196,83,97,1)",
+				"紅釉尊", "清康熙", "(98)", 11, 3, "#", "img/j027.jpg", "rgba(196,83,97,1)",
+				"白瓷嬰兒枕", "北宋", "101.07", 12, 3, "#", "img/j028.jpg", "rgba(196,83,97,1)",
+				"白陶鬶", "新石器時代 大汶口文化", "102.9055", 13, 3, "#", "img/j029.jpg", "rgba(196,83,97,1)",
+				"填漆牡丹圓盒", "明", "106.42", 14, 3, "#", "img/j030.jpg", "rgba(199, 132, 87,1)",
+
+				"清明上河圖", "清", "107.8682", 5, 4, "#", "img/j031.jpg", "rgba(200, 169, 91,1)",
+				"溪山清遠", "宋", "112.411", 6, 4, "#", "img/j032.jpg", "rgba(200, 169, 91,1)",
+				"王蒙夏日山居圖", "清", "114.818", 7, 4, "#", "img/j033.jpg", "rgba(200, 169, 91,1)",
+				"牡丹", "清", "118.71", 8, 4, "#", "img/j034.jpg", "rgba(200, 169, 91,1)",
+				"百駿圖", "清", "140.116", 9, 4, "http://140.113.73.194/open/mobilemap.php?chid=333&cid=416", "img/j035.jpg", "rgba(200, 169, 91,1)",
+				"黃釉粉彩八卦如意", "清乾隆", "140.90765", 10, 4, "#", "img/j036.jpg", "rgba(196,83,97,1)",
+				"黑陶繭式壺", "西漢", "144.242", 11, 4, "igmap.htm", "img/j037.jpg", "rgba(196,83,97,1)",
+				"青瓷葵花式洗", "南宋", "207.2", 8, 6, "#", "img/j038.jpg", "rgba(43,130,120,1)",
+				"紅地描金萬福紋", "清嘉慶", "150.36", 13, 4, "#", "img/j039.jpg", "rgba(196,83,97,1)",
+				"內填琺瑯纍絲盒", "清", "151.964", 14, 4, "#", "img/j040.jpg", "rgba(199, 132, 87,1)",
+
+				"具區林屋", "元", "157.25", 5, 5, "#", "img/j041.jpg", "rgba(200, 169, 91,1)",
+				"明人畫入蹕圖", "明", "158.92535", 6, 5, "#", "img/j042.jpg", "rgba(200, 169, 91,1)",
+				"花竹", "明", "162.5", 7, 5, "#", "img/j043.jpg", "rgba(200, 169, 91,1)",
+				"廬山高", "清乾隆", "", 8, 5, "#", "img/j044.jpg", "rgba(200, 169, 91,1)",
+				"富春山居圖", "清", "", 9, 5, "http://140.113.73.194/open/mobilemap.php?chid=334&cid=416", "img/j045.jpg", "rgba(200, 169, 91,1)",
+				"嬌黃錐拱獸面紋鼎", "明", "", 10, 5, "http://theme.npm.edu.tw/selection/Article.aspx?sNo=04001075", "img/j046.jpg", "rgba(196,83,97,1)",
+				"青花人物紋扁壺", "明永樂", "186.207", 11, 5, "#", "img/j047.jpg", "rgba(196,83,97,1)",
+				"粉紅錦地番蓮碗", "清乾隆", "190.23", 12, 5, "#", "img/j048.jpg", "rgba(196,83,97,1)",
+				"粉彩紫地花鳥文", "清同治", "192.217", 13, 5, "#", "img/j049.jpg", "rgba(196,83,97,1)",
+				"雕漆雙緣寶盒", "清乾隆", "195.084", 14, 5, "#", "img/j050.jpg", "rgba(199, 132, 87,1)",
+
+				"子犯編鐘1-12", "春秋", "196.966569", 5, 6, "#", "img/j051.jpg", "rgba(110,145,48,1)",
+				"鳥紋方座簋", "西周早期", "200.59", 6, 6, "#", "img/j052.jpg", "rgba(110,145,48,1)",
+				"鷹紋圭", "山東龍山文化晚期", "204.3833", 7, 6, "#", "img/j053.jpg", "rgba(43,130,120,1)",
+                "龍冠鳳紋玉飾", "商晚期", "(145)", 12, 4, "#", "img/j054.jpg", "rgba(196,83,97,1)",
+				"翠玉白菜", "清", "", 9, 6, "http://140.113.73.194/open/mobilemap.php?chid=335&cid=416", "img/j055.jpg", "rgba(43,130,120,1)",
+				"花氣薰人帖", "南宋至元", "", 10, 6, "http://theme.npm.edu.tw/selection/Article.aspx?sNo=04001024", "img/j056.jpg", "rgba(27, 80, 71,1)",
+				"書譜", "唐", "238.02891", 11, 6, "#", "img/j057.jpg", "rgba(27, 80, 71,1)",
+				"臨閣帖行書", "清", "(237)", 12, 6, "#", "img/j058.jpg", "rgba(27, 80, 71,1)",
+				"宮中檔奏摺", "清", "(244)", 13, 6, "#", "img/j059.jpg", "rgba(19, 35, 57,0.9)",
+				"爾雅", "宋", "(243)", 14, 6, "#", "img/j060.jpg", "rgba(35, 18, 54,0.6)",
+
+				"亞醜方簋", "商晚期至西周早期", "(268)", 5, 7, "#", "img/j061.jpg", "rgba(110,145,48,1)",
+				"亞醜方尊", "商晚期", "(271)", 6, 7, "#", "img/j062.jpg", "rgba(110,145,48,1)",
+				"玉鰲魚花插", "明", "(272)", 7, 7, "#", "img/j063.jpg", "rgba(43,130,120,1)",
+				"玉角形杯", "漢", "(270)", 8, 7, "#", "img/j064.jpg", "rgba(43,130,120,1)",
+				"新石器時代玉琮", "新石器時代", "(276)", 9, 7, "#", "img/j065.jpg", "rgba(43,130,120,1)",
+				"自書五憶歌", "明", "(281)", 10, 7, "#", "img/j066.jpg", "rgba(27, 80, 71,1)",
+				"自敘帖", "唐", "", 11, 7, "#", "img/j067.jpg", "rgba(27, 80, 71,1)",
+				"書黃州寒食詩", "宋", "(285)", 12, 7, "#", "img/j068.jpg", "rgba(27, 80, 71,1)",
+				"暹羅國金葉表文", "清乾隆", "(284)", 13, 7, "#", "img/j069.jpg", "rgba(19, 35, 57,0.9)",
+				"儀禮要義", "宋", "(289)", 14, 7, "#", "img/j070.jpg", "rgba(35, 18, 54,0.6)",
+
+				"獸面紋鉞", "商後期", "(276)", 5, 8, "#", "img/j071.jpg", "rgba(110,145,48,1)",
+				"蟠虺紋鼎", "春秋", "(281)", 6, 8, "#", "img/j072.jpg", "rgba(110,145,48,1)",
+				"玉高足杯", "西漢", "(280)", 7, 8, "#", "img/j073.jpg", "rgba(43,130,120,1)",
+				"玉螭紋觿", "西漢", "(285)", 8, 8, "#", "img/j074.jpg", "rgba(43,130,120,1)",
+				"玉鳩杖首", "清乾隆", "(284)", 9, 8, "#", "img/j075.jpg", "rgba(43,130,120,1)",
+				"平安何如奉橘三帖", "晉", "(289)", 10, 8, "#", "img/j076.jpg", "rgba(27, 80, 71,1)",
+				"醉翁亭記", "明", "(288)", 11, 8, "#", "img/j077.jpg", "rgba(27, 80, 71,1)",
+				"詩帖", "宋", "(293)", 12, 8, "#", "img/j078.jpg", "rgba(27, 80, 71,1)",
+				"滿文原檔", "清", "(294)", 13, 8, "#", "img/j079.jpg", "rgba(19, 35, 57,0.9)",
+				"劉賓客文集", "宋", "(294)", 14, 8, "#", "img/j080.jpg", "rgba(35, 18, 54,0.6)",
+
+				"鉤連乳丁紋羊首", "商後期", "(276)", 5, 9, "#", "img/j081.jpg", "rgba(110,145,48,1)",
+				"言樂 季獻盨", "西周晚期", "(281)", 6, 9, "#", "img/j082.jpg", "rgba(110,145,48,1)",
+				"祖丁鼎", "商晚期至西周早期", "(280)", 7, 9, "#", "img/j083.jpg", "rgba(110,145,48,1)",
+				"祖乙尊", "西周早期", "(285)", 8, 9, "#", "img/j084.jpg", "rgba(110,145,48,1)",
+				"康侯方鼎", "西周早期", "(284)", 9, 9, "#", "img/j085.jpg", "rgba(110,145,48,1)",
+				"詔書─同治親政詔", "清同治", "(289)", 10, 9, "#", "img/j086.jpg", "rgba(19, 35, 57,0.9)",
+				"得勝圖銅版畫", "清", "(288)", 11, 9, "#", "img/j087.jpg", "rgba(19, 35, 57,0.9)",
+				"大清國致大英國", "清光緒", "(293)", 12, 9, "#", "img/j088.jpg", "rgba(19, 35, 57,0.9)",
+                "起居注冊", "清", "(247)", 13, 9, "#", "img/j089.jpg", "rgba(19, 35, 57,0.9)",
+				"孟子註疏解經", "宋", "(247)", 14, 9, "#", "img/j090.jpg", "rgba(35, 18, 54,0.6)",
+
+				"縣妀簋", "西周中期", "(251)", 5, 10, "#", "img/j091.jpg", "rgba(110,145,48,1)",
+				"盤虺紋盤", "春秋", "(252)", 6, 10, "#", "img/j092.jpg", "rgba(110,145,48,1)",
+				"井季史尊", "西周中期", "(276)", 7, 10, "#", "img/j093.jpg", "rgba(110,145,48,1)",
+				"蟠龍紋盤", "商後期", "(281)", 8, 10, "#", "img/j094.jpg", "rgba(110,145,48,1)",
+				"亞禽父乙尊", "商", "(280)", 9, 10, "#", "img/j095.jpg", "rgba(110,145,48,1)",
+				"新校定集注杜詩", "宋", "(285)", 10, 10, "#", "img/j096.jpg", "rgba(35, 18, 54,0.6)",
+				"新刊淮南鴻烈解", "清", "", 11, 10, "", "img/j097.jpg", "rgba(35, 18, 54,0.6)",
+				"昭德郡齋讀書志", "宋", "", 12, 10, "", "img/j098.jpg", "rgba(35, 18, 54,0.6)",
+				"晦庵先生文集", "宋", "(288)", 13, 10, "http://140.113.73.194/hypermooc/howmooc_home.html", "img/j099.jpg", "rgba(35, 18, 54,0.6)",
+               	"周禮疏", "宋", "(293)", 14, 10, "http://140.113.73.194/hypermooc/howmooc_home.html", "img/j100.jpg", "rgba(35, 18, 54,0.6)",               	
+				
+			];
+
+			var camera, scene, renderer;
+			var controls;
+
+			var objects = [];
+			var targets = { table: [], sphere: [], helix: [], grid: [] };
+
+			init();
+			animate();
+
+			function init() {
+
+				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 0.1, 10000 );
+				camera.position.z = 2000;
+
+				scene = new THREE.Scene();
+
+				// table
+
+				for ( var i = 0; i < table.length; i += 8 ) {
+
+					var element = document.createElement( 'div' );
+					element.className = 'element';
+					//element.style.backgroundColor = 'rgba(255,187,0,' + ( Math.random() * 0.5 + 0.25 ) + ')';
+					
+
+					var bg = document.createElement('div');
+					element.setAttribute('style', "background-color:" + table[i + 7]);
+					element.appendChild(bg);
+
+					var link = document.createElement('a'); // + url
+					link.setAttribute('href', table[i+5]);
+					link.setAttribute('target', "_blank");
+					element.appendChild(link);
+
+					var Img = document.createElement('img');
+					Img.setAttribute('class', 'done');
+//					Img.setAttribute('width', 230);
+//					Img.setAttribute('height', 230);
+					Img.setAttribute('style', 'background-image:url(' + table[i + 6] + ');background-size:180px 180px;background-repeat:no-repeat;background-position:center');
+//				    Img.setAttribute('src', table[i+6]);
+					link.appendChild(Img);
+
+					var number = document.createElement( 'div' );
+					number.className = 'number'; //右上角小字
+					number.textContent = (i/8) ;
+					element.appendChild( number );
+					
+
+					var symbol = document.createElement( 'div' );
+					symbol.className = 'symbol'; //大字
+					symbol.textContent = table[i];
+					element.appendChild( symbol );
+					link.appendChild(symbol);
+                    
+					var details = document.createElement( 'div' );
+					details.className = 'details'; //下面兩行小字
+					details.innerHTML = table[ i + 1 ] // + '<br>' + table[ i + 2 ];
+					//element.appendChild( details );
+					link.appendChild(details);
+
+					var object = new THREE.CSS3DObject( element );
+//					object.position.x = Math.random() * 4000 - 2000;
+//					object.position.y = Math.random() * 4000 - 2000;
+//					object.position.z = Math.random() * 4000 - 2000;
+					scene.add( object );
+
+					objects.push( object );
+
+					//
+
+					var object = new THREE.Object3D();
+					object.position.x = ( table[ i + 3 ] * 185 ) - 1790;
+					object.position.y = - ( table[ i + 4 ] * 300 ) + 1620;
+
+					targets.table.push( object );
+
+				}
+
+				// sphere
+
+				var vector = new THREE.Vector3();
+                var temp0 = [
+     800, 0, 0,
+ 779.9423297454589, 178.01674716505153, 0,
+ 720.7750943219353, 347.1069912940465, 0,
+ 625.4651859744239, 498.7918414869868, 0,
+ 498.79184148698687, 625.4651859744239, 0,
+ 347.10699129404657, 720.7750943219353, 0,
+ 178.01674716505156, 779.9423297454589, 0,
+ 4.898587196589413e-14, 800, 0,
+ -178.01674716505147, 779.9423297454589, 0,
+ -347.10699129404645, 720.7750943219353, 0,
+ -498.7918414869868, 625.4651859744239, 0,
+ -625.4651859744238, 498.79184148698687, 0,
+ -720.7750943219353, 347.10699129404657, 0,
+ -779.9423297454589, 178.0167471650516, 0,
+ -800, 9.797174393178826e-14, 0,
+ -779.9423297454589, -178.0167471650514, 0,
+ -720.7750943219353, -347.1069912940464, 0,
+ -625.4651859744239, -498.7918414869867, 0,
+ -498.791841486987, -625.4651859744238, 0,
+ -347.1069912940466, -720.7750943219353, 0,
+ -178.01674716505167, -779.9423297454589, 0,
+ -1.4695761589768238e-13, -800, 0,
+ 178.01674716505138, -779.9423297454589, 0,
+ 347.10699129404634, -720.7750943219354, 0,
+ 498.7918414869867, -625.4651859744239, 0,
+ 625.4651859744238, -498.791841486987, 0,
+ 720.7750943219353, -347.1069912940467, 0,
+ 779.9423297454588, -178.01674716505173, 0,
+ 720.7750943219353, 0, 347.1069912940465,
+ 685.4978502381305, 222.73175326768364, 347.1069912940465,
+ 583.1193004286513, 423.66097066214985, 347.1069912940465,
+ 423.66097066214985, 583.1193004286513, 347.1069912940465,
+ 222.7317532676837, 685.4978502381305, 347.1069912940465,
+ 4.4134745608324484e-14, 720.7750943219353, 347.1069912940465,
+ -222.73175326768362, 685.4978502381306, 347.1069912940465,
+ -423.6609706621498, 583.1193004286513, 347.1069912940465,
+ -583.1193004286513, 423.6609706621499, 347.1069912940465,
+ -685.4978502381305, 222.73175326768376, 347.1069912940465,
+ -720.7750943219353, 8.826949121664897e-14, 347.1069912940465,
+ -685.4978502381306, -222.7317532676836, 347.1069912940465,
+ -583.1193004286513, -423.6609706621498, 347.1069912940465,
+ -423.6609706621499, -583.1193004286513, 347.1069912940465,
+ -222.73175326768379, -685.4978502381305, 347.1069912940465,
+ -1.3240423682497346e-13, -720.7750943219353, 347.1069912940465,
+ 222.73175326768356, -685.4978502381306, 347.1069912940465,
+ 423.66097066214974, -583.1193004286514, 347.1069912940465,
+ 583.1193004286513, -423.66097066215, 347.1069912940465,
+ 685.4978502381305, -222.73175326768384, 347.1069912940465,
+ 498.79184148698687, 0, 625.4651859744239,
+ 431.9664059281516, 249.3959207434934, 625.4651859744239,
+ 249.39592074349352, 431.9664059281515, 625.4651859744239,
+ 3.0542191605892625e-14, 498.79184148698687, 625.4651859744239,
+ -249.39592074349332, 431.9664059281516, 625.4651859744239,
+ -431.96640592815146, 249.3959207434936, 625.4651859744239,
+ -498.79184148698687, 6.108438321178525e-14, 625.4651859744239,
+ -431.9664059281516, -249.3959207434933, 625.4651859744239,
+ -249.39592074349366, -431.96640592815135, 625.4651859744239,
+ -9.162657481767786e-14, -498.79184148698687, 625.4651859744239,
+ 249.39592074349312, -431.96640592815174, 625.4651859744239,
+ 431.96640592815135, -249.39592074349366, 625.4651859744239,
+ 178.01674716505156, 0, 779.9423297454589,
+ 1.0900381980515202e-14, 178.01674716505156, 779.9423297454589,
+ -178.01674716505156, 2.1800763961030404e-14, 779.9423297454589,
+ -3.2701145941545607e-14, -178.01674716505156, 779.9423297454589,
+ 720.7750943219353, 0, -347.1069912940465,
+ 685.4978502381305, 222.73175326768364, -347.1069912940465,
+ 583.1193004286513, 423.66097066214985, -347.1069912940465,
+ 423.66097066214985, 583.1193004286513, -347.1069912940465,
+ 222.7317532676837, 685.4978502381305, -347.1069912940465,
+ 4.4134745608324484e-14, 720.7750943219353, -347.1069912940465,
+ -222.73175326768362, 685.4978502381306, -347.1069912940465,
+ -423.6609706621498, 583.1193004286513, -347.1069912940465,
+ -583.1193004286513, 423.6609706621499, -347.1069912940465,
+ -685.4978502381305, 222.73175326768376, -347.1069912940465,
+ -720.7750943219353, 8.826949121664897e-14, -347.1069912940465,
+ -685.4978502381306, -222.7317532676836, -347.1069912940465,
+ -583.1193004286513, -423.6609706621498, -347.1069912940465,
+ -423.6609706621499, -583.1193004286513, -347.1069912940465,
+ -222.73175326768379, -685.4978502381305, -347.1069912940465,
+ -1.3240423682497346e-13, -720.7750943219353, -347.1069912940465,
+ 222.73175326768356, -685.4978502381306, -347.1069912940465,
+ 423.66097066214974, -583.1193004286514, -347.1069912940465,
+ 583.1193004286513, -423.66097066215, -347.1069912940465,
+ 685.4978502381305, -222.73175326768384, -347.1069912940465,
+ 498.79184148698687, 0, -625.4651859744239,
+ 431.9664059281516, 249.3959207434934, -625.4651859744239,
+ 249.39592074349352, 431.9664059281515, -625.4651859744239,
+ 3.0542191605892625e-14, 498.79184148698687, -625.4651859744239,
+ -249.39592074349332, 431.9664059281516, -625.4651859744239,
+ -431.96640592815146, 249.3959207434936, -625.4651859744239,
+ -498.79184148698687, 6.108438321178525e-14, -625.4651859744239,
+ -431.9664059281516, -249.3959207434933, -625.4651859744239,
+ -249.39592074349366, -431.96640592815135, -625.4651859744239,
+ -9.162657481767786e-14, -498.79184148698687, -625.4651859744239,
+ 249.39592074349312, -431.96640592815174, -625.4651859744239,
+ 431.96640592815135, -249.39592074349366, -625.4651859744239,
+ 178.01674716505156, 0, -779.9423297454589,
+ 1.0900381980515202e-14, 178.01674716505156, -779.9423297454589,
+ -178.01674716505156, 2.1800763961030404e-14, -779.9423297454589,
+ -3.2701145941545607e-14, -178.01674716505156, -779.9423297454589,
+
+            ];
+
+           //table located map find element position in temp0
+                temp1 = [
+                   64, 96, 83, 95, 82, 94, 81, 80, 93, 79,      //0~9
+                   84, 0, 1, 2, 3, 4, 5, 6, 7, 99,              //10~19
+                   65, 27, 28, 29, 30, 31, 32, 33, 8, 78,       //20~29
+                   85, 26, 47, 48, 49, 50, 51, 34, 9, 77,       //30~39
+                   66, 25, 46, 59, 60, 61, 52, 35, 10, 92,       //40~49
+                   86, 24, 45, 58, 63, 62, 53, 36, 11, 76,      //50~59
+                   67, 23, 44, 57, 56, 55, 54, 37, 12, 91,      //60~69
+                   68, 22, 43, 42, 41, 40, 39, 38, 13, 75,      //70~79
+                   97, 21, 20, 19, 18, 17, 16, 15, 14, 90,      //80~89
+                   69, 87, 70, 71, 88, 72, 89, 73, 98, 74,      //90~99
+                 ];
+
+
+
+             for (var i = 0, l = objects.length; i < l; i++) {             
+				  
+					var temp2 = [];
+					var object = new THREE.Object3D();
+					object.position.x = temp0[3 * temp1[i]];
+					object.position.y = temp0[3 * temp1[i] + 1];
+					object.position.z = temp0[3 * temp1[i] + 2];
+					
+					temp2.push(object);
+					vector.copy(object.position).multiplyScalar(2);
+					object.lookAt(vector);
+                    targets.sphere.push(object);
+                    
+				}
+               
+				// helix
+
+				var vector = new THREE.Vector3();
+
+				for ( var i = 0, l = objects.length; i < l; i ++ ) {
+
+					var phi = i * 0.175 + Math.PI;
+
+					var object = new THREE.Object3D();
+
+					object.position.x = 1300 * Math.sin( phi );
+					object.position.y = - ( i * 12 ) + 600;
+					object.position.z = 1300 * Math.cos( phi );
+
+					vector.x = object.position.x * 2;
+					vector.y = object.position.y;
+					vector.z = object.position.z * 2;
+
+					object.lookAt( vector );
+
+					targets.helix.push( object );
+
+				}
+
+				// grid
+
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = new THREE.Object3D();
+
+					object.position.x = ( ( i % 4 ) * 310 ) - 400;
+					object.position.y = ( - ( Math.floor( i / 4 ) % 3 ) * 310 ) + 400;
+					object.position.z = ( Math.floor( i / 12 ) ) * 500 - 1000;
+
+					targets.grid.push( object );
+
+				}
+
+				//
+
+				renderer = new THREE.CSS3DRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.domElement.style.position = 'absolute';
+				document.getElementById( 'container' ).appendChild( renderer.domElement );
+
+				//
+
+				controls = new THREE.TrackballControls( camera, renderer.domElement );
+				controls.rotateSpeed = 0.5;
+				controls.minDistance = 200;
+				controls.maxDistance = 100000;
+				controls.addEventListener( 'change', render );
+
+				var button = document.getElementById( 'table' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.table, 20);
+				    camera.position.x = 0;
+				    camera.position.y = 0;
+					camera.position.z = 5000;
+				}, false );
+
+				var button = document.getElementById( 'sphere' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.sphere, 20);
+				    camera.position.x = 0;
+				    camera.position.y = 0;
+					camera.position.z = 3000;
+				}, false );
+
+          
+				var button = document.getElementById( 'helix' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.helix, 20);
+				    camera.position.x = 0;
+				    camera.position.y = 0;
+					camera.position.z = 5000;
+				}, false );
+
+				var button = document.getElementById( 'grid' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.grid, 20);
+				    camera.position.x = 2000;
+				    camera.position.y = 0;
+					camera.position.z = 2000;
+				}, false );
+
+	            transform(targets.table, 20);
+	            controls.reset();
+				camera.position.x = 0;
+				camera.position.y = 0;
+				camera.position.z = 5000;
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			function transform( targets, duration ) {
+
+				TWEEN.removeAll();
+
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = objects[ i ];
+					var target = targets[ i ];
+
+					new TWEEN.Tween( object.position )
+						.to( { x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration )
+						.easing( TWEEN.Easing.Exponential.InOut )
+						.start();
+
+					new TWEEN.Tween( object.rotation )
+						.to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+						.easing( TWEEN.Easing.Exponential.InOut )
+						.start();
+
+				}
+	               
+
+				new TWEEN.Tween( this )
+					.to( {}, duration * 2 )
+					.onUpdate( render )
+					.start();
+
+			}
+
+			function transformPos(targets, duration,iX,iY,iZ) {
+
+			    TWEEN.removeAll();
+			    camera.position.x = iX;
+			    camera.position.y = iY;
+			    camera.position.z = iZ;
+			    for (var i = 0; i < objects.length; i++) {
+
+			        var object = objects[i];
+			        var target = targets[i];
+
+			        new TWEEN.Tween(object.position)
+						.to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration)
+						.easing(TWEEN.Easing.Exponential.InOut)
+						.start();
+
+			        new TWEEN.Tween(object.rotation)
+						.to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration)
+						.easing(TWEEN.Easing.Exponential.InOut)
+						.start();
+
+			    }
+                
+                new TWEEN.Tween(this)
+					.to({}, duration * 2)
+					.onUpdate(render)
+					.start();
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+				render();
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				TWEEN.update();
+
+				controls.update();
+
+			}
+
+			function render() {
+
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+	</body>
+</html>
+

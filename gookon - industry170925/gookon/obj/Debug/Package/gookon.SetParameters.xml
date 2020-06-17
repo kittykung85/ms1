@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="Default Web Site/gookon_deploy" />
+  <setParameter name="medicineConnectionString1-Web.config Connection String" value="Data Source=CHIAHUISHIH-PC\sqlexpress;Initial Catalog=medicine;Integrated Security=True" />
+  <setParameter name="industryConnectionString-Web.config Connection String" value="Data Source=CHIAHUISHIH-PC\SQLEXPRESS;Initial Catalog=industry;Integrated Security=True" />
+</parameters>

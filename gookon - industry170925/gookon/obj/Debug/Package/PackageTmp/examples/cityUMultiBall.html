@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CityU HowMoocOpen</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			html, body {
+				height: 100%;
+			}
+
+			body {
+				background-color: #FFFFFF;
+				margin: 0;
+				font-family: Helvetica, sans-serif;
+				overflow: hidden;
+			}
+
+			a {
+				color: #000000;
+			}
+
+			#logo {
+				position: absolute;
+				width: 100%;
+				padding: 0px;
+				font-family: Monospace;
+				font-size: 20px;
+				font-weight: bold;
+				text-align: center;
+				z-index: 1;
+                top: 5px;
+                left: -30px;
+            }
+
+			#menu {
+				position: absolute;
+				bottom: 22px;
+				width: 100%;
+				text-align: center;
+			}
+			
+			#menuL {
+				position: absolute;
+				top: 5px;
+				left:27px;
+				width: 100%;
+				text-align: center;
+			}
+
+			.element {
+                  width: 150px;
+                  height:200px;
+                  font-weight: bold;
+                  -webkit-font-smoothing: antialiased;
+                  -moz-osx-font-smoothing: grayscale;
+                  background-color: rgba(255, 128, 0,0.75);
+                  border: 0px solid rgba(127,255,255,0);
+                  order-radius: 8px;
+                  text-align: center;
+                  cursor: default;
+                  
+                }
+
+                .element:hover {
+                  box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+                  border: 1px solid rgba(127,255,255,0.75);
+                }
+                .element svg {
+                  position: absolute;
+                  top: 20px;
+                  left: 2px;
+                  right: 0px;
+                }
+				.element .done{
+                  position: absolute;
+                  top:10px;
+                  left:0px;
+                  width: 100%;
+                  height: 180px;
+                  border-style:ridge;
+                  border-color:brown;
+                  border-width: 0px;
+                }
+				.element .number {
+					position: absolute;
+					top: 20px;
+					right: 20px;
+					font-size: 10px;
+					text-shadow:1px 1px 1px #cccccc;
+					color: rgba(0,0,0,0.75);
+				}
+
+				.element .symbol {
+				  position: absolute;
+                  top: 10px;
+                  left: 0px;
+                  right: 0px;
+                  font-size: 20px;
+                  color: rgba(230, 255, 0,0.75);
+				}
+
+				.element .details {
+				    position: absolute;
+                    top: 150px;
+                    left: 0px;
+                    right: 0px;
+                    font-size: 35px;
+                    color: rgba(255,255, 255,0.75);
+				}
+
+			button {
+				color: rgba(0,0,0,0.75);
+				background: transparent;
+				outline: 1px solid rgba(127,255,255,0);
+				border: 0px;
+				padding: 5px 10px;
+				cursor: pointer;
+			}
+			button:hover {
+				background-color: rgba(255,187,0,0.5);
+			}
+			button:active {
+				color: #FFFFFF;
+				background-color: rgba(0,255,255,0.75);
+			}
+		</style>
+        
+	</head>
+	<body >
+		<script src="../build/three.js"></script>
+		<script src="js/libs/tween.min.js"></script>
+		<script src="js/controls/TrackballControls.js"></script>
+		<script src="js/renderers/CSS3DRenderer.js"></script>
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+
+		<div id="container"></div>
+        <div id="container1"></div>
+		
+        <div id="menuL" style="font-size: 12px">
+        <script language="javascript">
+                   
+			function k1Onchange() {
+					//                alert('test onchange');
+					var selectBox = document.getElementById("Art");
+					var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+					
+					document.getElementById("Biology").selectedIndex = "0";
+					document.getElementById("Economics").selectedIndex = "0";
+					document.getElementById("Environment").selectedIndex = "0";
+					document.getElementById("Humanity").selectedIndex = "0";
+					document.getElementById("Technology").selectedIndex = "0";
+					document.getElementById("Law and Math").selectedIndex = "0";
+					
+					
+					controls.reset();
+					var phi = Math.acos(-1 + (2 * selectedValue) / 80);
+					var theta = Math.sqrt(80 * Math.PI) * phi;
+					x = 3000 * Math.cos(theta) * Math.sin(phi);
+					y = 3000 * Math.sin(theta) * Math.sin(phi);
+					z = 3000 * Math.cos(phi);
+					transformPos(targets.sphere, 20, x, y, z);
+					$('body').css('background-image', 'url(img/ukc.PNG)');
+			}
+			function k2Onchange() {
+					//                alert('test onchange');
+					var selectBox = document.getElementById("Biology");
+					var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+					
+					document.getElementById("Art").selectedIndex = "0";
+					document.getElementById("Economics").selectedIndex = "0";
+					document.getElementById("Environment").selectedIndex = "0";
+					document.getElementById("Humanity").selectedIndex = "0";
+					document.getElementById("Technology").selectedIndex = "0";
+					document.getElementById("Law and Math").selectedIndex = "0";
+					
+					controls.reset();
+					var phi = Math.acos(-1 + (2 * selectedValue) / 80);
+					var theta = Math.sqrt(80 * Math.PI) * phi;
+					x = 3000 * Math.cos(theta) * Math.sin(phi);
+					y = 3000 * Math.sin(theta) * Math.sin(phi);
+					z = 3000 * Math.cos(phi);
+					transformPos(targets.sphere, 20, x, y, z);
+					if (selectedValue == 68) {
+					    $('body').css('background-image', 'url(img/pmm.PNG)');
+					}
+					else if (selectedValue == 64) {
+					    $('body').css('background-image', 'url(img/dho.PNG)');
+					}
+			}
+			function k3Onchange() {
+					//                alert('test onchange');
+					var selectBox = document.getElementById("Economics");
+					var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+					
+					document.getElementById("Art").selectedIndex = "0";
+					document.getElementById("Biology").selectedIndex = "0";
+					document.getElementById("Environment").selectedIndex = "0";
+					document.getElementById("Humanity").selectedIndex = "0";
+					document.getElementById("Technology").selectedIndex = "0";
+					document.getElementById("Law and Math").selectedIndex = "0";
+					
+					controls.reset();
+					var phi = Math.acos(-1 + (2 * selectedValue) / 80);
+					var theta = Math.sqrt(80 * Math.PI) * phi;
+					x = 3000 * Math.cos(theta) * Math.sin(phi);
+					y = 3000 * Math.sin(theta) * Math.sin(phi);
+					z = 3000 * Math.cos(phi);
+					transformPos(targets.sphere, 20, x, y, z);
+//					body.background = "img/lkf.PNG"
+					$('body').css('background-image', 'url(img/lkf.PNG)');
+			}
+			function k4Onchange() {
+					//                alert('test onchange');
+					var selectBox = document.getElementById("Environment");
+					var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+					
+					document.getElementById("Art").selectedIndex = "0";
+					document.getElementById("Biology").selectedIndex = "0";
+					document.getElementById("Economics").selectedIndex = "0";
+					document.getElementById("Humanity").selectedIndex = "0";
+					document.getElementById("Technology").selectedIndex = "0";
+					document.getElementById("Law and Math").selectedIndex = "0";
+					
+					controls.reset();
+					var phi = Math.acos(-1 + (2 * selectedValue) / 80);
+					var theta = Math.sqrt(80 * Math.PI) * phi;
+					x = 3000 * Math.cos(theta) * Math.sin(phi);
+					y = 3000 * Math.sin(theta) * Math.sin(phi);
+					z = 3000 * Math.cos(phi);
+					transformPos(targets.sphere, 20, x, y, z);
+					$('body').css('background-image', 'url(img/fshu.PNG)');
+			}
+			function k5Onchange() {
+					//                alert('test onchange');
+					var selectBox = document.getElementById("Humanity");
+					var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+					
+					document.getElementById("Art").selectedIndex = "0";
+					document.getElementById("Biology").selectedIndex = "0";
+					document.getElementById("Economics").selectedIndex = "0";
+					document.getElementById("Environment").selectedIndex = "0";
+					document.getElementById("Technology").selectedIndex = "0";
+					document.getElementById("Law and Math").selectedIndex = "0";
+					
+					controls.reset();
+					var phi = Math.acos(-1 + (2 * selectedValue) / 80);
+					var theta = Math.sqrt(80 * Math.PI) * phi;
+					x = 3000 * Math.cos(theta) * Math.sin(phi);
+					y = 3000 * Math.sin(theta) * Math.sin(phi);
+					z = 3000 * Math.cos(phi);
+					transformPos(targets.sphere, 20, x, y, z);
+					
+			}
+			function k6Onchange() {
+					//                alert('test onchange');
+					var selectBox = document.getElementById("Technology");
+					var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+					
+					document.getElementById("Art").selectedIndex = "0";
+					document.getElementById("Biology").selectedIndex = "0";
+					document.getElementById("Economics").selectedIndex = "0";
+					document.getElementById("Environment").selectedIndex = "0";
+					document.getElementById("Humanity").selectedIndex = "0";
+					document.getElementById("Law and Math").selectedIndex = "0";
+					
+					controls.reset();
+					var phi = Math.acos(-1 + (2 * selectedValue) / 80);
+					var theta = Math.sqrt(80 * Math.PI) * phi;
+					x = 3000 * Math.cos(theta) * Math.sin(phi);
+					y = 3000 * Math.sin(theta) * Math.sin(phi);
+					z = 3000 * Math.cos(phi);
+					transformPos(targets.sphere, 20, x, y, z);
+					$('body').css('background-image', 'url(img/shr.PNG)');
+			}
+			function k7Onchange() {
+					//                alert('test onchange');
+					var selectBox = document.getElementById("Law and Math");
+					var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+					
+					document.getElementById("Art").selectedIndex = "0";
+					document.getElementById("Biology").selectedIndex = "0";
+					document.getElementById("Economics").selectedIndex = "0";
+					document.getElementById("Environment").selectedIndex = "0";
+					document.getElementById("Humanity").selectedIndex = "0";
+					document.getElementById("Technology").selectedIndex = "0";
+//					alert(selectedValue);
+					controls.reset();
+					var phi = Math.acos(-1 + (2 * selectedValue) / 80);
+					var theta = Math.sqrt(80 * Math.PI) * phi;
+					x = 3000 * Math.cos(theta) * Math.sin(phi);
+					y = 3000 * Math.sin(theta) * Math.sin(phi);
+					z = 3000 * Math.cos(phi);
+					transformPos(targets.sphere, 20, x, y, z);
+					$('body').css('background-image', 'url(img/pll.PNG)');
+			}
+			
+			
+           
+</script>
+		<h1>CityU Distinguished Lecture Series</h1>
+        <select id="Art" style="width:100px;position:absolute;left:27%" onchange="k1Onchange()">
+                <option id="OptionA" >Art</option>
+                <option value="54" style="background-color:#FF8888" >Prof. Yu Kwang-chung</option>
+                <option value="55" >Fung Ming-chu</option>
+                <option value="56" >Prof. Ovid J. L. Tzeng</option>
+                <option value="57" >Dr. Francesco Vossilla</option>
+        </select>
+		<select id="Biology" style="width:100px;position:absolute;left:33%" onchange="k2Onchange()">
+                <option id="OptionB" >Biology</option>
+                <option value="60" >Prof. GUO Lei</option>
+                <option value="61" >Prof. Robert Austin</option>
+                <option value="62" >Prof. Herbert Waldmann</option>
+                <option value="63" >Prof. Michael Waterman</option>
+				<option value="64" style="background-color:#FF8888" >Prof. David D. Ho</option>
+                <option value="65" >Prof. Maxime Schwartz</option>
+                <option value="66" >Prof. Hung Mien-chie</option>
+                <option value="67" >Prof. Wing Hung Wong</option>
+				<option value="68" style="background-color:#FF8888" >Prof. Poo Mu-ming</option>
+                <option value="69" >Prof. Ada Yonath</option>
+                <option value="70" >Prof. Dennis Lo</option>
+        </select>
+		<select id="Economics" style="width:100px;position:absolute;left:39%" onchange="k3Onchange()">
+                <option id="OptionC" >Economics</option>
+                <option value="49" >Prof. Myron S. Scholes</option>
+                <option value="50" >Prof. John R. Birge</option>
+                <option value="51" >Dr. Chang Chia Juch</option>
+                <option value="52" style="background-color:#FF8888" >Dr. Lee Kai-fu</option>
+				<option value="53" >Dr. Seppo Honkapohja</option>
+        </select>
+		<select id="Environment" style="width:100px;position:absolute;left:45%" onchange="k4Onchange()">
+                <option id="OptionD" >Environment</option>
+                <option value="40" >Dr. Thomas Mason</option>
+                <option value="41" >Prof. Pan Zi-qiang</option>
+                <option value="42" >Prof. Roger Wets</option>
+                <option value="43" >Prof. Liang Di-gang</option>
+				<option value="44" style="background-color:#FF8888" >Prof. Frank Shu</option>
+				<option value="45" >Prof. Sidney Yip</option>
+                <option value="46" >Prof. Stephen Forrest</option>
+                <option value="47" >Prof. David R. Clarke</option>
+                <option value="48" >Prof. Roger Cashmore</option>
+        </select>
+		<select id="Humanity" style="width:100px;position:absolute;left:51%" onchange="k5Onchange()">
+                <option id="OptionE" >Humanity</option>
+                <option value="20" >Prof. Thomas Sargent</option>
+                <option value="21" >Prof. Huang Chin-shing</option>
+                <option value="22" >Dr. Yukio Hatoyama</option>
+                <option value="23" >Mr. Hau Pei-tsun</option>
+				<option value="24" >Prof. Zhang Jie</option>
+				<option value="25" >Mr. Robert C.Y. Wu</option>
+                <option value="26" >Prof. Yuan Ming</option>
+                <option value="27" >Ms. Fung Ming-chu</option>
+                <option value="28" >Prof. Loren W. Crabtree</option>
+                <option value="29" >Prof. Peter Burke</option>
+                <option value="30" >Dr. Liu Chao-shiuan</option>
+                <option value="31" >Prof. Torbjörn Lodén</option>
+                <option value="32" >Prof. Noriko Mizuta</option>
+				<option value="33" >Prof. Arden L. Bement Jr.</option>
+				<option value="34" >Dr. Wu Dong-yang</option>
+                <option value="35" >Prof. Chao Han Liu</option>
+                <option value="36" >Prof. Rogers Smith</option>
+        </select>
+		<select id="Technology" style="width:100px;position:absolute;left:57%" onchange="k6Onchange()">
+                <option id="OptionF" >Technology</option>
+                <option value="0" >Prof. Bai Chunli</option>
+                <option value="1" >Prof. Jochen Feldmann</option>
+                <option value="2" >Prof. H T Kung</option>
+                <option value="3" >Prof. Akihisa Inoue</option>
+				<option value="4" >Prof. Wei Zhao</option>
+				<option value="5" >Prof. Martyn Poliakoff</option>
+                <option value="6" >Prof. Andrew Yao</option>
+                <option value="7" >Prof. Gao Wen</option>
+                <option value="8" >Prof. Herbert Gleiter</option>
+                <option value="9" >Prof. Ziyuan Ouyang</option>
+                <option value="10" >Prof. Yi-long Huang</option>
+                <option value="11" style="background-color:#FF8888">Prof. Serge Haroche</option>
+                <option value="12" >Prof. Li-jun Wan</option>
+				<option value="13" >Prof. Chen Hesheng</option>
+				<option value="14" >Dr. Jeffrey Wadsworth</option>
+                <option value="15" >Prof. George Fu Gao</option>
+        </select>
+		<select id="Law and Math" 
+                style="width:100px;position:absolute;left:63%; right: 418px;" 
+                onchange="k7Onchange()">
+                <option id="OptionF" >Law and Math</option>
+                <option value="71" >Prof. Thomas Wilhelmsson</option>
+                <option value="72" >Justice He Rong</option>
+                <option value="73" style="background-color:#FF8888" >Prof. Pierre-Louis Lions</option>
+        </select>
+        <input id="Submit1" type="button" value="new sphere" onclick="tagSel('123')" 
+                style="position: absolute; right: 300px" />
+		</div>
+		<div id="menu">
+			<button id="table">TABLE</button>
+			<button id="sphere">SPHERE</button>
+			<button id="helix">HELIX</button>
+			<button id="grid">GRID</button>
+		</div>
+       	
+        <script>
+			
+			 var table = [
+                "Prof Bai Chunli", "Technology", "", 5, 1, "#", "img/Bai_Chunli.png", "rgba(255, 194, 224,0.7)",
+				"Prof Jochen Feldmann", "Technology", "", 6, 1, "#", "img/Jochen_Feldmann.png", "rgba(255, 194, 224,0.7)",
+				"Prof H T Kung", "Technology", "", 7, 1, "#", "img/H_T_Kung.png", "rgba(255, 194, 224,0.7)",
+				"Prof Akihisa Inoue", "Technology", "", 8, 1, "#", "img/Akihisa_Inoue.png", "rgba(255, 194, 224,0.7)",
+				"Prof Wei Zhao", "Technology", "", 9, 1, "#", "img/Wei_Zhao.png", "rgba(255, 194, 224,0.7)",
+				"Prof Martyn Poliakoff", "Technology", "", 10, 1, "#", "img/Martyn_Poliakoff.png", "rgba(255, 194, 224,0.7)",
+				"Prof Andrew Yao", "Technology", "", 11, 1, "#", "img/Andrew_Yao.png", "rgba(255, 194, 224,0.7)",
+				"Prof Gao Wen","Technology", "", 12, 1, "#", "img/Gao_Wen.png", "rgba(255, 194, 224,0.7)",
+				"Prof Herbert Gleiter", "Technology", "", 13, 1, "#", "img/Herbert_Gleiter.png", "rgba(255, 194, 224,0.7)",
+				"Prof Ziyuan Ouyang", "Technology", "", 14, 1, "#", "img/Ziyuan_Ouyang.png", "rgba(255, 194, 224,0.7)",
+
+				"Prof Yi-long Huang", "Technology", "", 5, 2, "#", "img/Yi_long_Huang.png", "rgba(255, 194, 224,0.7)",
+				"Prof Serge Haroche", "Technology", "", 6, 2, "http://140.113.73.194/cityU/Fifty-Years-of-Revolutions-in-Laser-Physics.htm", "img/Serge_Haroche.png", "rgba(255, 194, 224,0.7)",
+				"Prof Li-jun Wan", "Technology", "", 7, 2, "#", "img/Li_jun_Wan.png", "rgba(255, 194, 224,0.7)",
+				"Prof Chen Hesheng", "Technology", "", 8, 2, "#", "img/Chen_Hesheng.png", "rgba(255, 194, 224,0.7)",
+				"Dr Jeffrey Wadsworth", "Technology", "", 9, 2, "#", "img/Jeffrey_Wadsworth.png", "rgba(255, 194, 224,0.7)",
+				"Prof George Fu Gao", "Technology", "", 10, 2, "#", "img/George_Fu_Gao.png", "rgba(255, 194, 224,0.7)",
+				"", "Technology", "", 11, 2, "#", "", "rgba(255, 194, 224,0.7)",
+				"", "Technology", "", 12, 2, "#", "", "rgba(255, 194, 224,0.7)",
+				"", "Technology", "", 13, 2, "#", "", "rgba(255, 194, 224,0.7)",
+				"", "Technology", "", 14, 2, "#", "", "rgba(255, 194, 224,0.7)",
+
+				"Prof Thomas J Sargent", "Humanity", "", 5, 3, "#", "img/Thomas_J_Sargent.png", "rgba(255, 194, 224,0.7)",
+				"Prof Huang Chin-shing", "Humanity", "", 6, 3, "#", "img/Huang_Chin_shing.png", "rgba(255, 194, 224,0.7)",
+				"Dr Yukio Hatoyama", "Humanity", "", 7, 3, "#", "img/Yukio_Hatoyama.png", "rgba(255, 194, 224,0.7)",
+				"Mr Hau Pei-tsun", "Humanity", "", 8, 3, "#", "img/Hau_Pei_tsun.png", "rgba(255, 194, 224,0.7)",
+				"Prof Zhang Jie", "Humanity", "", 9, 3, "#", "img/Zhang_Jie.PNG", "rgba(255, 194, 224,0.7)",
+				"Mr Robert CY Wu", "Humanity", "", 10, 3, "#", "img/Robert_CY_Wu.png", "rgba(255, 194, 224,0.7)",
+				"Prof Yuan Ming", "Humanity", "", 11, 3, "#", "img/Yuan_Ming.png", "rgba(255, 194, 224,0.7)",
+				"Fung Ming-chu", "Humanity", "", 12, 3, "#", "img/Fung_Ming_chu.png", "rgba(255, 194, 224,0.7)",
+				"Prof Loren W. Crabtree", "Humanity", "", 13, 3, "#", "img/Loren_W_Crabtree.png", "rgba(255, 194, 224,0.7)",
+				"Prof Peter Burke", "Humanity", "", 14, 3, "#", "img/Peter_Burke.png", "rgba(255, 194, 224,0.7)",
+
+				"Dr Liu Chao-shiuan", "Humanity", "", 5, 4, "#", "img/Liu_Chao_shiuan.png", "rgba(255, 194, 224,0.7)",
+				"Prof Torbjörn Lodén", "Humanity", "", 6, 4, "#", "img/Torbjörn_Lodén.png", "rgba(255, 194, 224,0.7)",
+				"Prof Noriko Mizuta", "Humanity", "", 7, 4, "#", "img/Noriko_Mizuta.png", "rgba(255, 194, 224,0.7)",
+				"Prof Arden L Bement Jr", "Humanity", "", 8, 4, "#", "img/Arden_L_Bement_Jr.png", "rgba(255, 194, 224,0.7)",
+				"伍東揚博士", "Humanity", "", 9, 4, "#", "img/伍東揚博士.png", "rgba(255, 194, 224,0.7)",
+				"Prof Chao Han Liu", "Humanity", "(244)", 10, 4, "#", "img/Chao_Han_Liu.png", "rgba(255, 194, 224,0.7)",
+				"Prof Rogers Smith", "Humanity", "(272)", 11, 4, "#", "img/Rogers_Smith.png", "rgba(255, 194, 224,0.7)",
+				"", "Humanity", "", 12, 4, "#", "", "rgba(255, 194, 224,0.7)",
+				"", "Humanity", "", 13, 4, "#", "", "rgba(255, 194, 224,0.7)",
+				"", "Humanity", "", 14, 4, "#", "", "rgba(255, 194, 224,0.7)",
+
+				"Dr Thomas E Mason", "Environment", "140.116", 5, 5, "#", "img/Thomas_E_Mason.png", "rgba(255, 194, 224,0.7)",
+				"Prof Pan Zi-qiang", "Environment", "186.207", 6, 5, "#", "img/Pan_Zi_qiang.png", "rgba(255, 194, 224,0.7)",
+				"Prof Roger Wets", "Environment", "192.217", 7, 5, "#", "img/Roger_Wets.png", "rgba(255, 194, 224,0.7)",
+				"Prof Liang Di-gang", "Environment", "158.92535", 8, 5, "#", "img/Liang_Di_gang.png", "rgba(255, 194, 224,0.7)",
+				"Professor Frank Shu", "Environment", "58.933195", 9, 5, "http://140.113.73.194/cityU/Reversing-Climate-change-Using-Carbon-Tech-to-Fight-Carbon-Em.htm", "img/Frank_Shu.png", "rgba(255, 194, 224,0.7)",
+				"Prof Sidney Yip", "Environment", "", 10, 5, "#", "img/Sidney_Yip.png", "rgba(255, 194, 224,0.7)",
+				"Prof Stephen Forrest", "Environment", "", 11, 5, "#", "img/Stephen_Forrest.png", "rgba(255, 194, 224,0.7)",
+				"Prof David R. Clarke", "Environment", "", 12, 5, "#", "img/David_R_Clarke.png", "rgba(255, 194, 224,0.7)",
+				"Prof Roger Cashmore", "Environment", "", 13, 5, "#", "img/Roger_Cashmore.png", "rgba(255, 194, 224,0.7)",
+				"Prof Myron S Scholes", "Economics", "", 14, 5, "#", "img/Myron_S_Scholes.png", "rgba(255, 194, 224,0.7)",
+				
+				
+				"Prof John R. Birge", "Economics", "", 5, 6, "#", "img/John_R_Birge.png", "rgba(255, 194, 224,0.7)",
+				"Dr Chang Chia Juch", "Economics", "", 6, 6, "#", "img/Chang_Chia_Juch.png", "rgba(255, 194, 224,0.7)",
+				"Dr Lee Kai-fu", "Economics", "", 7, 6, "http://140.113.73.194/cityU/Betting-on-Chinas-Innovation-A-Perspective-from-Innovation-Works.htm", "img/Lee_Kai_fu.png", "rgba(255, 194, 224,0.7)",
+				"Dr Seppo Honkapohja", "Economics", "", 8, 6, "#", "img/Seppo_Honkapohja.png", "rgba(255, 194, 224,0.7)",
+				"Prof Yu Kwang-chung", "Art", "", 9, 6, "http://140.113.73.194/cityU/ukc.htm", "img/Yu_Kwang_chung.png", "rgba(255, 194, 224,0.7)",
+				"Fung Ming-chu", "Art", "", 10, 6, "#", "img/Fung_Ming_chu.png", "rgba(255, 194, 224,0.7)",
+				"Prof Ovid J. L. Tzeng", "Art", "", 11, 6, "#", "img/Ovid_J_L_Tzeng.png", "rgba(255, 194, 224,0.7)",
+				"Dr Francesco Vossilla", "Art", "", 12, 6, "#", "img/Francesco_Vossilla.png", "rgba(255, 194, 224,0.7)",
+				"", "Art", "", 13, 6, "#", "", "rgba(255, 194, 224,0.7)",
+				"", "Art", "", 14, 6, "#", "", "rgba(255, 194, 224,0.7)",
+				
+				"Professor Prof GUO Lei", "Biology", "", 5, 7, "#", "img/GUO_Lei.png", "rgba(255, 194, 224,0.7)",
+				"Prof Robert H Austin", "Biology", "", 6, 7, "#", "img/Robert_H_Austin.png", "rgba(255, 194, 224,0.7)",
+				"Prof Herbert Waldmann", "Biology", "", 7, 7, "#", "img/Herbert_Waldmann.png", "rgba(255, 194, 224,0.7)",
+				"Prof Michael Waterman", "Biology", "", 8, 7, "#", "img/Michael_Waterman.png", "rgba(255, 194, 224,0.7)",
+				"Professor David D. Ho", "Biology", "", 9,7, "http://140.113.73.194/cityU/Novel-Approaches-to-HIV-Prevention.htm", "img/David_D_Ho.png", "rgba(255, 194, 224,0.7)",
+				"Prof Maxime Schwartz", "Biology", "", 10, 7, "#", "img/Maxime_Schwartz.png", "rgba(255, 194, 224,0.7)",
+				"Prof Hung Mien-chie", "Biology", "", 11, 7, "#", "img/Hung_Mien_chie.png", "rgba(255, 194, 224,0.7)",
+				"Prof Wing Hung Wong", "Biology", "", 12, 7, "#", "img/Wing_Hung_Wong.png", "rgba(255, 194, 224,0.7)",
+				"Professor Poo Mu-ming", "Biology", "", 13, 7, "http://140.113.73.194/cityU/NeuralPlasticityFromSynapsetoCognition.htm", "img/Poo_Mu_ming.png", "rgba(255, 194, 224,0.7)",
+				"Prof Ada Yonath", "Biology", "", 14, 7, "#", "img/Ada_Yonath.png", "rgba(255, 194, 224,0.7)",
+
+				"Prof Dennis Lo", "Biology", "", 5, 8, "#", "img/Dennis_Lo.png", "rgba(255, 194, 224,0.7)",
+				"Prof Thomas Wilhelmsson", "Law", "", 6, 8, "#", "img/Thomas_Wilhelmsson.png", "rgba(255, 194, 224,0.7)",
+				"賀榮大法官", "Law", "", 7, 8, "#", "img/賀榮大法官.png", "rgba(255, 194, 224,0.7)",
+				"Professor Pierre-Louis Lions", "Math", "", 8, 8, "http://140.113.73.194/cityU/On-Mean-Field-Games.htm", "img/Pierre_Louis_Lions.png", "rgba(255, 194, 224,0.7)",
+				"", "", "", 9, 8, "#", "", "rgba(255, 194, 224,0.7)",
+				"", "", "", 10, 8, "#", "", "rgba(255, 194, 224,0.7)",
+				"", "", "", 11, 8, "#", "", "rgba(255, 194, 224,0.7)",
+				"", "", "", 12, 8, "#", "", "rgba(255, 194, 224,0.7)",
+				"", "", "", 13, 8, "#", "", "rgba(255, 194, 224,0.7)",
+				"", "", "", 14, 8, "#", "", "rgba(255, 194, 224,0.7)",
+
+			];
+			console.log(table);
+			
+			var camera, scene, renderer;
+			var controls;
+
+			var objects = [];
+			//var objects1 = [];
+			var targets = { table: [], sphere: [], helix: [], grid: [] };
+			
+
+			init();
+			animate();
+
+			function init() {
+
+				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 0.1, 10000 );
+				camera.position.z = 2800;
+
+				scene = new THREE.Scene();
+
+				// table
+
+				for ( var i = 0; i < table.length; i += 8 ) {
+				
+					
+
+					var element = document.createElement( 'div' );
+					element.className = 'element';
+					//element.style.backgroundColor = 'rgba(255,187,0,' + ( Math.random() * 0.5 + 0.25 ) + ')';
+					
+
+					var bg = document.createElement('div');
+					element.setAttribute('style', "background-color:" + table[i + 7]);
+					element.appendChild(bg);
+
+					var link = document.createElement('a'); // + url
+					link.setAttribute('href', table[i+5]);
+					link.setAttribute('target', "_blank");
+					element.appendChild(link);
+
+					var Img = document.createElement('img');
+					Img.setAttribute('class', 'done');
+//					Img.setAttribute('width', 230);
+//					Img.setAttribute('height', 230);
+					Img.setAttribute('style', 'background-image:url(' + table[i + 6] + ');background-size:100px 100px;background-repeat:no-repeat;background-position:center');
+//				    Img.setAttribute('src', table[i+6]);
+					link.appendChild(Img);
+
+					var number = document.createElement( 'div' );
+					number.className = 'number'; //右上角小字
+					number.textContent = (i/8) ;
+					element.appendChild( number );
+					
+
+					var symbol = document.createElement( 'div' );
+					symbol.className = 'symbol'; //大字
+					symbol.textContent = table[i];
+					element.appendChild( symbol );
+					link.appendChild(symbol);
+                    
+					var details = document.createElement( 'div' );
+					details.className = 'details'; //下面兩行小字
+					details.innerHTML = table[ i + 1 ] // + '<br>' + table[ i + 2 ];
+					element.appendChild( details );
+					link.appendChild(details);
+
+					var object = new THREE.CSS3DObject( element );
+					
+//					object.position.x = Math.random() * 4000 - 2000;
+//					object.position.y = Math.random() * 4000 - 2000;
+//					object.position.z = Math.random() * 4000 - 2000;
+					scene.add( object );
+					
+					
+					objects.push( object );
+					
+					
+
+					//
+
+					var object = new THREE.Object3D();
+					object.position.x = ( table[ i + 3 ] * 185 ) - 1790;
+					object.position.y = - ( table[ i + 4 ] * 300 ) + 1620;
+					
+					
+
+					targets.table.push( object );
+					
+
+				}
+				// sphere
+
+				var vector = new THREE.Vector3();
+
+				for (var i = 0, l = objects.length; i < l; i++) {
+
+					var phi = Math.acos(-1 + (2 * i) / l);
+					var theta = Math.sqrt(l * Math.PI) * phi;
+
+					var object = new THREE.Object3D();
+
+					object.position.x = 800 * Math.cos(theta) * Math.sin(phi);
+					object.position.y = 800 * Math.sin(theta) * Math.sin(phi);
+					object.position.z = 800 * Math.cos(phi);
+
+					vector.copy(object.position).multiplyScalar(2);
+
+					object.lookAt(vector);
+
+					targets.sphere.push(object);
+
+				}
+				// helix
+
+				var vector = new THREE.Vector3();
+
+				for ( var i = 0, l = objects.length; i < l; i ++ ) {
+
+					var phi = i * 0.175 + Math.PI;
+
+					var object = new THREE.Object3D();
+
+					object.position.x = 1300 * Math.sin( phi );
+					object.position.y = - ( i * 12 ) + 600;
+					object.position.z = 1300 * Math.cos( phi );
+
+					vector.x = object.position.x * 2;
+					vector.y = object.position.y;
+					vector.z = object.position.z * 2;
+
+					object.lookAt( vector );
+
+					targets.helix.push( object );
+
+				}
+
+				// grid
+
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = new THREE.Object3D();
+
+					object.position.x = ( ( i % 4 ) * 310 ) - 400;
+					object.position.y = ( - ( Math.floor( i / 4 ) % 3 ) * 310 ) + 400;
+					object.position.z = ( Math.floor( i / 12 ) ) * 500 - 1000;
+
+					targets.grid.push( object );
+
+				}
+
+				//
+
+				renderer = new THREE.CSS3DRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.domElement.style.position = 'absolute';
+				document.getElementById( 'container' ).appendChild( renderer.domElement );
+
+				//
+
+				controls = new THREE.TrackballControls( camera, renderer.domElement );
+				controls.rotateSpeed = 0.5;
+				controls.minDistance = 200;
+				controls.maxDistance = 100000;
+				controls.addEventListener( 'change', render );
+
+				var button = document.getElementById( 'table' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.table, 20);
+				    camera.position.x = 0;
+				    camera.position.y = 0;
+					camera.position.z = 5000;
+				}, false );
+
+				var button = document.getElementById( 'sphere' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.sphere, 20);
+				    camera.position.x = 0;
+				    camera.position.y = 0;
+					camera.position.z = 3000;
+				}, false );
+
+          
+				var button = document.getElementById( 'helix' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.helix, 20);
+				    camera.position.x = 0;
+				    camera.position.y = 0;
+					camera.position.z = 5000;
+				}, false );
+
+				var button = document.getElementById( 'grid' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.grid, 20);
+				    camera.position.x = 2000;
+				    camera.position.y = 0;
+					camera.position.z = 3000;
+				}, false );
+
+	            transform(targets.sphere, 20);
+	            controls.reset();
+				camera.position.x = 0;
+				camera.position.y = 0;
+				camera.position.z = 3000;
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			function transform( targets, duration ) {
+
+				TWEEN.removeAll();
+
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = objects[ i ];
+					var target = targets[ i ];
+
+					new TWEEN.Tween( object.position )
+						.to( { x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration )
+						.easing( TWEEN.Easing.Exponential.InOut )
+						.start();
+
+					new TWEEN.Tween( object.rotation )
+						.to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+						.easing( TWEEN.Easing.Exponential.InOut )
+						.start();
+
+				}
+	               
+
+				new TWEEN.Tween( this )
+					.to( {}, duration * 2 )
+					.onUpdate( render )
+					.start();
+
+			}
+			
+			
+
+			function transformPos(targets, duration,iX,iY,iZ) {
+
+			    TWEEN.removeAll();
+			    camera.position.x = iX;
+			    camera.position.y = iY;
+			    camera.position.z = iZ;
+			    for (var i = 0; i < objects.length; i++) {
+
+			        var object = objects[i];
+			        var target = targets[i];
+
+			        new TWEEN.Tween(object.position)
+						.to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration)
+						.easing(TWEEN.Easing.Exponential.InOut)
+						.start();
+
+			        new TWEEN.Tween(object.rotation)
+						.to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration)
+						.easing(TWEEN.Easing.Exponential.InOut)
+						.start();
+
+			    }
+                
+                new TWEEN.Tween(this)
+					.to({}, duration * 2)
+					.onUpdate(render)
+					.start();
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+				render();
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				TWEEN.update();
+
+				controls.update();
+
+			}
+
+			function render() {
+
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+
+    <!--    multiple ball start -->
+    <script>
+        function tagSel(iselect) {
+            if (iselect == '123') {
+
+                var table = [
+
+                "唐詩神遊", "岱宗夫如何", "", 5, 1, "#", "img/Yu_Kwang_chung.png", "",
+				"唐詩神遊", "登鸛雀樓", "", 6, 1, "#", "img/Yu_Kwang_chung.png", "",
+				"唐詩神遊", "尋隱者不遇", "", 7, 1, "#", "img/Yu_Kwang_chung.png", "",
+				"唐詩神遊", "聽箏", "", 8, 1, "#", "img/Yu_Kwang_chung.png", "",
+                "唐詩神遊", "寄揚州韓綽判官", "", 9, 1, "#", "img/Yu_Kwang_chung.png", "",
+				"唐詩神遊", "霜月", "", 10, 1, "#", "img/Yu_Kwang_chung.png", "",
+                "唐詩神遊", "夜雨寄北", "", 11, 1, "#", "img/Yu_Kwang_chung.png", "",
+				"唐詩神遊", "讀八陣圖", "", 12, 1, "#", "img/Yu_Kwang_chung.png", "",
+                "唐詩神遊", "北斗七星高", "", 13, 1, "#", "img/Yu_Kwang_chung.png", "",
+				"唐詩神遊", "冷冷七弦上", "", 14, 1, "#", "img/Yu_Kwang_chung.png", "",
+
+                "唐詩神遊", "隴西行", "", 5, 2, "#", "img/Yu_Kwang_chung.png", "",
+				"唐詩神遊", "新嫁娘", "", 6, 2, "#", "img/Yu_Kwang_chung.png", "",
+				"唐詩神遊", "秦俑", "", 7, 2, "#", "img/Yu_Kwang_chung.png", "",
+				"唐詩神遊", "尋李白", "", 8, 2, "#", "img/Yu_Kwang_chung.png", "",
+                "", "", "", 9, 2, "#", "", "",
+				"", "", "", 10, 2, "#", "", "",
+                "", "", "", 11, 2, "#", "", "",
+				"", "", "", 12, 2, "#", "", "",
+                "", "", "", 13, 2, "#", "", "",
+				"", "", "", 14, 2, "#", "", "",
+
+                "新詩", "與李白同遊高速公路", "", 5, 3, "#", "img/Yu_Kwang_chung.png", "",
+				"新詩", "漂水花-絕技授鍾鈴", "", 6, 3, "#", "img/Yu_Kwang_chung.png", "",
+				"新詩", "客從蒙古來", "", 7, 3, "#", "img/Yu_Kwang_chung.png", "",
+				"新詩", "四方舞Quadrille", "", 8, 3, "#", "img/Yu_Kwang_chung.png", "",
+                "新詩", "台東", "", 9, 3, "#", "img/Yu_Kwang_chung.png", "",
+				"", "", "", 10, 3, "#", "", "",
+                "", "", "", 11, 3, "#", "", "",
+				"", "", "", 12, 3, "#", "", "",
+                "", "", "", 13, 3, "#", "", "",
+				"", "", "", 14, 3, "#", "", "",
+
+                "", "", "", 5, 4, "#", "", "",
+				"", "", "", 6, 4, "#", "", "",
+				"", "", "", 7, 4, "#", "", "",
+				"", "", "", 8, 4, "#", "", "",
+                "", "", "", 9, 4, "#", "", "",
+				"", "", "", 10, 4, "#", "", "",
+                "", "", "", 11, 4, "#", "", "",
+				"", "", "", 12, 4, "#", "", "",
+                "", "", "", 13, 4, "#", "", "",
+				"", "", "", 14, 4, "#", "", "",
+
+                "", "", "", 5, 5, "#", "", "",
+				"", "", "", 6, 5, "#", "", "",
+				"", "", "", 7, 5, "#", "", "",
+				"", "", "", 8, 5, "#", "", "",
+                "", "", "", 9, 5, "#", "", "",
+				"", "", "", 10, 5, "#", "", "",
+                "", "", "", 11, 5, "#", "", "",
+				"", "", "", 12, 5, "#", "", "",
+                "", "", "", 13, 5, "#", "", "",
+				"", "", "", 14, 5, "#", "", "",
+
+                "", "", "", 5, 6, "#", "", "",
+				"", "", "", 6, 6, "#", "", "",
+				"", "", "", 7, 6, "#", "", "",
+				"", "", "", 8, 6, "#", "", "",
+                "", "", "", 9, 6, "#", "", "",
+				"", "", "", 10, 6, "#", "", "",
+                "", "", "", 11, 6, "#", "", "",
+				"", "", "", 12, 6, "#", "", "",
+                "", "", "", 13, 6, "#", "", "",
+				"", "", "", 14, 6, "#", "", "",
+
+                "", "", "", 5, 7, "#", "", "",
+				"", "", "", 6, 7, "#", "", "",
+				"", "", "", 7, 7, "#", "", "",
+				"", "", "", 8, 7, "#", "", "",
+                "", "", "", 9, 7, "#", "", "",
+				"", "", "", 10, 7, "#", "", "",
+                "", "", "", 11, 7, "#", "", "",
+				"", "", "", 12, 7, "#", "", "",
+                "", "", "", 13, 7, "#", "", "",
+				"", "", "", 14, 7, "#", "", "",
+
+                "", "", "", 5, 8, "#", "", "",
+				"", "", "", 6, 8, "#", "", "",
+				"", "", "", 7, 8, "#", "", "",
+				"", "", "", 8, 8, "#", "", "",
+                "", "", "", 9, 8, "#", "", "",
+				"", "", "", 10, 8, "#", "", "",
+                "", "", "", 11, 8, "#", "", "",
+				"", "", "", 12, 8, "#", "", "",
+                "", "", "", 13, 8, "#", "", "",
+				"", "", "", 14, 8, "#", "", "",
+
+                "", "", "", 5, 9, "#", "", "",
+				"", "", "", 6, 9, "#", "", "",
+				"", "", "", 7, 9, "#", "", "",
+				"", "", "", 8, 9, "#", "", "",
+                "", "", "", 9, 9, "#", "", "",
+				"", "", "", 10, 9, "#", "", "",
+                "", "", "", 11, 9, "#", "", "",
+				"", "", "", 12, 9, "#", "", "",
+                "", "", "", 13, 9, "#", "", "",
+				"", "", "", 14, 9, "#", "", "",
+
+                "", "", "", 5, 10, "#", "img/Yu_Kwang_chung.png", "",
+				"", "", "", 6, 10, "#", "img/Yu_Kwang_chung.png", "",
+				"", "", "", 7, 10, "#", "img/Yu_Kwang_chung.png", "",
+				"", "", "", 8, 10, "#", "img/Yu_Kwang_chung.png", "",
+                "", "", "", 9, 10, "#", "img/Yu_Kwang_chung.png", "",
+				"", "", "", 10, 10, "#", "img/Yu_Kwang_chung.png", "",
+                "", "", "", 11, 10, "#", "img/Yu_Kwang_chung.png", "",
+				"", "", "", 12, 10, "#", "img/Yu_Kwang_chung.png", "",
+                "", "", "", 13, 10, "#", "img/Yu_Kwang_chung.png", "",
+				"新詩", "台東", "", 14, 10, "#", "img/Yu_Kwang_chung.png", "",
+
+
+			];
+
+                var camera, scene, renderer;
+                var controls;
+
+                var objects = [];
+                var targets = { table: [], sphere: [], helix: [], grid: [] };
+
+
+                init1();
+                animate();
+
+                function init1() {
+
+                    camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 10000);
+                    camera.position.z = 5000;
+
+                    scene = new THREE.Scene();
+
+                    // table
+
+                    for (var i = 0; i < table.length; i += 8) {
+
+                        var element = document.createElement('div');
+                        element.className = 'element';
+                        //element.style.backgroundColor = 'rgba(255,187,0,' + ( Math.random() * 0.5 + 0.25 ) + ')';
+
+
+                        var bg = document.createElement('div');
+                        element.setAttribute('style', "background-color:" + table[i + 7]);
+                        element.appendChild(bg);
+
+                        var link = document.createElement('a'); // + url
+                        link.setAttribute('href', table[i + 5]);
+                        link.setAttribute('target', "_blank");
+                        element.appendChild(link);
+
+                        var Img = document.createElement('img');
+                        Img.setAttribute('class', 'done');
+                        //					Img.setAttribute('width', 230);
+                        //					Img.setAttribute('height', 230);
+                        Img.setAttribute('style', 'background-image:url(' + table[i + 6] + ');background-size:180px 180px;background-repeat:no-repeat;background-position:center');
+                        //				    Img.setAttribute('src', table[i+6]);
+                        link.appendChild(Img);
+
+                        var number = document.createElement('div');
+                        number.className = 'number'; //右上角小字
+                        number.textContent = (i / 8);
+                        element.appendChild(number);
+
+
+                        var symbol = document.createElement('div');
+                        symbol.className = 'symbol'; //大字
+                        symbol.textContent = table[i];
+                        element.appendChild(symbol);
+                        link.appendChild(symbol);
+
+                        var details = document.createElement('div');
+                        details.className = 'details'; //下面兩行小字
+                        details.innerHTML = table[i + 1] // + '<br>' + table[ i + 2 ];
+                        //element.appendChild( details );
+                        link.appendChild(details);
+
+                        var object = new THREE.CSS3DObject(element);
+                        //					object.position.x = Math.random() * 4000 - 2000;
+                        //					object.position.y = Math.random() * 4000 - 2000;
+                        //					object.position.z = Math.random() * 4000 - 2000;
+                        scene.add(object);
+
+                        objects.push(object);
+
+                        //
+
+                        var object = new THREE.Object3D();
+                        object.position.x = (table[i + 3] * 200) - 1790;
+                        object.position.y = -(table[i + 4] * 300) + 1620;
+
+                        targets.table.push(object);
+
+                    }
+
+                    // sphere
+
+                    var vector = new THREE.Vector3();
+                    var temp0 = [
+     800, 0, 0,
+ 779.9423297454589, 178.01674716505153, 0,
+ 720.7750943219353, 347.1069912940465, 0,
+ 625.4651859744239, 498.7918414869868, 0,
+ 498.79184148698687, 625.4651859744239, 0,
+ 347.10699129404657, 720.7750943219353, 0,
+ 178.01674716505156, 779.9423297454589, 0,
+ 4.898587196589413e-14, 800, 0,
+ -178.01674716505147, 779.9423297454589, 0,
+ -347.10699129404645, 720.7750943219353, 0, //9
+ -498.7918414869868, 625.4651859744239, 0,
+ -625.4651859744238, 498.79184148698687, 0,
+ -720.7750943219353, 347.10699129404657, 0,
+ -779.9423297454589, 178.0167471650516, 0,
+ -800, 9.797174393178826e-14, 0,
+ -779.9423297454589, -178.0167471650514, 0,
+ -720.7750943219353, -347.1069912940464, 0,
+ -625.4651859744239, -498.7918414869867, 0,
+ -498.791841486987, -625.4651859744238, 0,
+ -347.1069912940466, -720.7750943219353, 0, //19
+ -178.01674716505167, -779.9423297454589, 0,
+ -1.4695761589768238e-13, -800, 0,
+ 178.01674716505138, -779.9423297454589, 0,
+ 347.10699129404634, -720.7750943219354, 0,
+ 498.7918414869867, -625.4651859744239, 0,
+ 625.4651859744238, -498.791841486987, 0,
+ 720.7750943219353, -347.1069912940467, 0,
+ 779.9423297454588, -178.01674716505173, 0,
+ 720.7750943219353, 0, 347.1069912940465,
+ 685.4978502381305, 222.73175326768364, 347.1069912940465, //29
+ 583.1193004286513, 423.66097066214985, 347.1069912940465,
+ 423.66097066214985, 583.1193004286513, 347.1069912940465,
+ 222.7317532676837, 685.4978502381305, 347.1069912940465,
+ 4.4134745608324484e-14, 720.7750943219353, 347.1069912940465,
+ -222.73175326768362, 685.4978502381306, 347.1069912940465,
+ -423.6609706621498, 583.1193004286513, 347.1069912940465,
+ -583.1193004286513, 423.6609706621499, 347.1069912940465,
+ -685.4978502381305, 222.73175326768376, 347.1069912940465,
+ -720.7750943219353, 8.826949121664897e-14, 347.1069912940465,
+ -685.4978502381306, -222.7317532676836, 347.1069912940465,    //39
+ -583.1193004286513, -423.6609706621498, 347.1069912940465,
+ -423.6609706621499, -583.1193004286513, 347.1069912940465,
+ -222.73175326768379, -685.4978502381305, 347.1069912940465,
+ -1.3240423682497346e-13, -720.7750943219353, 347.1069912940465,
+ 222.73175326768356, -685.4978502381306, 347.1069912940465,
+ 423.66097066214974, -583.1193004286514, 347.1069912940465,
+ 583.1193004286513, -423.66097066215, 347.1069912940465,
+ 685.4978502381305, -222.73175326768384, 347.1069912940465,
+ 498.79184148698687, 0, 625.4651859744239,
+ 431.9664059281516, 249.3959207434934, 625.4651859744239,  //49
+ 249.39592074349352, 431.9664059281515, 625.4651859744239,
+ 3.0542191605892625e-14, 498.79184148698687, 625.4651859744239,
+ -249.39592074349332, 431.9664059281516, 625.4651859744239,
+ -431.96640592815146, 249.3959207434936, 625.4651859744239,
+ -498.79184148698687, 6.108438321178525e-14, 625.4651859744239,
+ -431.9664059281516, -249.3959207434933, 625.4651859744239,
+ -249.39592074349366, -431.96640592815135, 625.4651859744239,
+ -9.162657481767786e-14, -498.79184148698687, 625.4651859744239,
+ 249.39592074349312, -431.96640592815174, 625.4651859744239,
+ 431.96640592815135, -249.39592074349366, 625.4651859744239,   //59
+ 178.01674716505156, 0, 779.9423297454589,
+ 1.0900381980515202e-14, 178.01674716505156, 779.9423297454589,
+ -178.01674716505156, 2.1800763961030404e-14, 779.9423297454589,
+ -3.2701145941545607e-14, -178.01674716505156, 779.9423297454589,
+ 720.7750943219353, 0, -347.1069912940465,
+ 685.4978502381305, 222.73175326768364, -347.1069912940465,
+ 583.1193004286513, 423.66097066214985, -347.1069912940465,
+ 423.66097066214985, 583.1193004286513, -347.1069912940465,
+ 222.7317532676837, 685.4978502381305, -347.1069912940465,
+ 4.4134745608324484e-14, 720.7750943219353, -347.1069912940465, //69
+ -222.73175326768362, 685.4978502381306, -347.1069912940465,
+ -423.6609706621498, 583.1193004286513, -347.1069912940465,
+ -583.1193004286513, 423.6609706621499, -347.1069912940465,
+ -685.4978502381305, 222.73175326768376, -347.1069912940465,
+ -720.7750943219353, 8.826949121664897e-14, -347.1069912940465,
+ -685.4978502381306, -222.7317532676836, -347.1069912940465,
+ -583.1193004286513, -423.6609706621498, -347.1069912940465,
+ -423.6609706621499, -583.1193004286513, -347.1069912940465,
+ -222.73175326768379, -685.4978502381305, -347.1069912940465,
+ -1.3240423682497346e-13, -720.7750943219353, -347.1069912940465,   //79
+ 222.73175326768356, -685.4978502381306, -347.1069912940465,
+ 423.66097066214974, -583.1193004286514, -347.1069912940465,
+ 583.1193004286513, -423.66097066215, -347.1069912940465,
+ 685.4978502381305, -222.73175326768384, -347.1069912940465,
+ 498.79184148698687, 0, -625.4651859744239,
+ 431.9664059281516, 249.3959207434934, -625.4651859744239,
+ 249.39592074349352, 431.9664059281515, -625.4651859744239,
+ 3.0542191605892625e-14, 498.79184148698687, -625.4651859744239,
+ -249.39592074349332, 431.9664059281516, -625.4651859744239,
+ -431.96640592815146, 249.3959207434936, -625.4651859744239,    //89
+ -498.79184148698687, 6.108438321178525e-14, -625.4651859744239,
+ -431.9664059281516, -249.3959207434933, -625.4651859744239,
+ -249.39592074349366, -431.96640592815135, -625.4651859744239,
+ -9.162657481767786e-14, -498.79184148698687, -625.4651859744239,
+ 249.39592074349312, -431.96640592815174, -625.4651859744239,
+ 431.96640592815135, -249.39592074349366, -625.4651859744239,
+ 178.01674716505156, 0, -779.9423297454589,
+ 1.0900381980515202e-14, 178.01674716505156, -779.9423297454589, //97
+ -178.01674716505156, 2.1800763961030404e-14, -779.9423297454589,
+ -3.2701145941545607e-14, -178.01674716505156, -779.9423297454589,
+
+            ];
+
+                    //table located map find element position in temp0
+                    temp1 = [
+                   64, 96, 83, 95, 82, 94, 81, 80, 93, 79,      //0~9 ex: 編號0 換到編號64 的位置, 編號1 換到編號96
+                   84, 0, 1, 2, 3, 4, 5, 6, 7, 99,              //10~19
+                   65, 27, 28, 29, 30, 31, 32, 33, 8, 78,       //20~29
+                   85, 26, 47, 48, 49, 50, 51, 34, 9, 77,       //30~39
+                   66, 25, 46, 59, 60, 61, 52, 35, 10, 92,      //40~49
+                   86, 24, 45, 58, 63, 62, 53, 36, 11, 76,      //50~59
+                   67, 23, 44, 57, 56, 55, 54, 37, 12, 91,      //60~69
+                   68, 22, 43, 42, 41, 40, 39, 38, 13, 75,      //70~79
+                   97, 21, 20, 19, 18, 17, 16, 15, 14, 90,      //80~89
+                   69, 87, 70, 71, 88, 72, 89, 73, 98, 74,      //90~99
+                 ];
+
+
+
+                    for (var i = 0, l = objects.length; i < l; i++) {
+
+                        var temp2 = [];
+                        var object = new THREE.Object3D();
+                        object.position.x = temp0[3 * temp1[i]];
+                        object.position.y = temp0[3 * temp1[i] + 1];
+                        object.position.z = temp0[3 * temp1[i] + 2];
+
+                        temp2.push(object);
+                        vector.copy(object.position).multiplyScalar(2);
+                        object.lookAt(vector);
+                        targets.sphere.push(object);
+
+                    }
+
+                    // helix
+
+                    var vector = new THREE.Vector3();
+
+                    for (var i = 0, l = objects.length; i < l; i++) {
+
+                        var phi = i * 0.175 + Math.PI;
+
+                        var object = new THREE.Object3D();
+
+                        object.position.x = 900 * Math.sin(phi);
+                        object.position.y = -(i * 8) + 450;
+                        object.position.z = 900 * Math.cos(phi);
+
+                        vector.x = object.position.x * 2;
+                        vector.y = object.position.y;
+                        vector.z = object.position.z * 2;
+
+                        object.lookAt(vector);
+
+                        targets.helix.push(object);
+
+                    }
+
+                    // grid
+
+                    for (var i = 0; i < objects.length; i++) {
+
+                        var object = new THREE.Object3D();
+
+                        object.position.x = ((i % 5) * 400) - 800;
+                        object.position.y = (-(Math.floor(i / 5) % 5) * 400) + 800;
+                        object.position.z = (Math.floor(i / 25)) * 1000 - 2000;
+
+                        targets.grid.push(object);
+
+                    }
+
+                    //
+
+                    renderer = new THREE.CSS3DRenderer();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                    renderer.domElement.style.position = 'absolute';
+                    document.getElementById('container').appendChild(renderer.domElement);
+
+                    //
+
+                    controls = new THREE.TrackballControls(camera, renderer.domElement);
+                    controls.rotateSpeed = 0.5;
+                    controls.minDistance = 500;
+                    controls.maxDistance = 6000;
+                    controls.addEventListener('change', render);
+
+                    var button = document.getElementById('table');
+                    button.addEventListener('click', function (event) {
+
+                        transform(targets.table, 20);
+
+                    }, false);
+
+                    var button = document.getElementById('sphere');
+                    button.addEventListener('click', function (event) {
+
+                        transform(targets.sphere, 20);
+
+                    }, false);
+
+                    var button = document.getElementById('helix');
+                    button.addEventListener('click', function (event) {
+
+                        transform(targets.helix, 20);
+
+                    }, false);
+
+                    var button = document.getElementById('grid');
+                    button.addEventListener('click', function (event) {
+
+                        transform(targets.grid, 20);
+
+                    }, false);
+
+                    transform(targets.table, 20);
+
+                    //
+
+                    window.addEventListener('resize', onWindowResize, false);
+
+                }
+
+
+                function transform(targets, duration) {
+
+                    TWEEN.removeAll();
+
+                    for (var i = 0; i < objects.length; i++) {
+
+                        var object = objects[i];
+                        var target = targets[i];
+
+                        new TWEEN.Tween(object.position)
+						.to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration)
+						.easing(TWEEN.Easing.Exponential.InOut)
+						.start();
+
+                        new TWEEN.Tween(object.rotation)
+						.to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration)
+						.easing(TWEEN.Easing.Exponential.InOut)
+						.start();
+
+                    }
+
+                    new TWEEN.Tween(this)
+					.to({}, duration * 2)
+					.onUpdate(render)
+					.start();
+
+                }
+                function transformPos(targets, duration, iX, iY, iZ) {
+
+                    TWEEN.removeAll();
+                    camera.position.x = iX;
+                    camera.position.y = iY;
+                    camera.position.z = iZ;
+
+                    for (var i = 0; i < objects.length; i++) {
+
+                        var object = objects[i];
+                        var target = targets[i];
+
+                        new TWEEN.Tween(object.position)
+						.to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration)
+						.easing(TWEEN.Easing.Exponential.InOut)
+						.start();
+
+                        new TWEEN.Tween(object.rotation)
+						.to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration)
+						.easing(TWEEN.Easing.Exponential.InOut)
+						.start();
+
+                    }
+
+                    new TWEEN.Tween(this)
+					.to({}, duration * 2)
+					.onUpdate(render)
+					.start();
+
+                }
+                function onWindowResize() {
+
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
+
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+
+                    render();
+
+                }
+
+                function animate() {
+
+                    requestAnimationFrame(animate);
+
+                    TWEEN.update();
+
+                    controls.update();
+
+                }
+
+                function render() {
+
+                    renderer.render(scene, camera);
+
+                }
+
+            }
+        }
+</script>
+
+    <!--    multiple ball end -->
+	</body>
+</html>

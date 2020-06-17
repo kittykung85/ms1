@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>編曲球</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background-color: #FFFFFF;
+            margin: 0;
+            font-family: Helvetica, sans-serif;
+            overflow: hidden;
+        }
+
+        a {
+            color: #000000;
+        }
+        #info {
+            position: absolute;
+            width: 100%;
+            color: #000;
+            padding: 5px;
+            font-family: Monospace;
+            font-size: 13px;
+            font-weight: bold;
+            text-align: center;
+            z-index: 1;
+        }
+        #logo {
+            position: absolute;
+            width: 100%;
+            padding: 0px;
+            font-family: Monospace;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            z-index: 1;
+            top: 5px;
+            left: -30px;
+        }
+
+        #menu {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            left: 0px;
+        }
+
+        #menuL {
+            position: relative;
+            top: 40px;
+            left:0px;
+            width: 100%;
+            text-align: center;
+        }
+
+
+        .element {
+            width: 350px;
+            height:180px;
+            font-weight: bold;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: rgba(255, 128, 0,0.75);
+            border: 0px solid rgba(127,255,255,0);
+            order-radius: 8px;
+            text-align: center;
+            cursor: default;
+        }
+
+        .element1 {
+            width: 260px;
+            height:180px;
+            font-weight: bold;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: rgba(255, 128, 0,0.75);
+            border: 0px solid rgba(127,255,255,0);
+            order-radius: 8px;
+            text-align: center;
+            cursor: default;
+        }
+
+        .element2 {
+            width: 200px;
+            height:160px;
+            font-weight: bold;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: rgba(255, 128, 0,0.75);
+            border: 0px solid rgba(127,255,255,0);
+            order-radius: 8px;
+            text-align: center;
+            cursor: default;
+        }
+
+        .element3 {
+            width: 140px;
+            height:155px;
+            font-weight: bold;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: rgba(255, 128, 0,0.75);
+            border: 0px solid rgba(127,255,255,0);
+            order-radius: 8px;
+            text-align: center;
+            cursor: default;
+        }
+
+        .element4 {
+            width: 100px;
+            height:180px;
+            font-weight: bold;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: rgba(255, 128, 0,0.75);
+            border: 0px solid rgba(127,255,255,0);
+            order-radius: 8px;
+            text-align: center;
+            cursor: default;
+        }
+        .element5 {
+            width:180px;
+            height:180px;
+            font-weight: bold;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: rgba(255, 255, 255,1);
+            border: 1px solid rgba(255,255,255,1);
+            order-radius: 0px;
+            text-align: center;
+            cursor: default;
+        }
+
+        .element6 {
+            width:278px;
+            height:158px;
+            font-weight: bold;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: rgba(255, 255, 255,1);
+            border: 1px solid rgba(255,255,255,1);
+            order-radius: 0px;
+            text-align: center;
+            cursor: default;
+        }
+
+        .element7 {
+            width:230px;
+            height:160px;
+            font-weight: bold;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: rgba(255, 255, 255,1);
+            border: 1px solid rgba(255,255,255,1);
+            order-radius: 0px;
+            text-align: center;
+            cursor: default;
+        }
+
+        .element:hover {
+            box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+            border: 1px solid rgba(127,255,255,0.75);
+
+        }
+        .element .svg {
+            position: absolute;
+            top: 20px;
+            left: 2px;
+            right: 0px;
+        }
+        .element .image{
+            position: absolute;
+            top:0px;
+            left:0px;
+            width: 100%;
+            height: 100%;
+            border-style:ridge;
+            border-color:brown;
+            border-width: 0px;
+        }
+        .element .number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            text-shadow:1px 1px 1px #cccccc;
+            color: rgba(0,255,255,0.75);
+        }
+        .element .symbol {
+            position: absolute;
+            top: 35px;
+            left: 0px;
+            right: 0px;
+            font-size: 15px;
+            color: rgba(0, 0, 0,0.75);
+        }
+        .element .details {
+            position: absolute;
+            top: 5px;
+            left: 0px;
+            right: 0px;
+            font-size: 30px;
+            color: rgba(255, 255, 255,0.75);
+        }
+
+
+        .element1:hover {
+            box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+            border: 1px solid rgba(127,255,255,1);
+        }
+
+        .element1 .svg {
+            position: absolute;
+            top: 20px;
+            left: 2px;
+            right: 0px;
+        }
+        .element1 .image{
+            position: absolute;
+            top:0px;
+            left:0px;
+            width: 100%;
+            height: 100%;
+            border-style:ridge;
+            border-color:brown;
+            border-width: 0px;
+        }
+        .element1 .number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            text-shadow:1px 1px 1px #cccccc;
+            color: rgba(0,255,255,0.75);
+        }
+        .element1 .symbol {
+            position: absolute;
+            top: 8px;
+            left: 120px;
+            right: 0px;
+            font-size:15px;
+            color: rgba(0, 0, 0,0.75);
+        }
+        .element1 .details {
+            position: absolute;
+            top: 5px;
+            left: 0px;
+            right: 0px;
+            font-size: 30px;
+            color: #000000;
+        }
+
+
+        .element2:hover {
+            box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+            border: 1px solid rgba(127,255,255,0.75);
+        }
+
+        .element2 .svg {
+            position: absolute;
+            top: 20px;
+            left: 2px;
+            right: 0px;
+        }
+        .element2 .image{
+            position: absolute;
+            top:0px;
+            left:0px;
+            width: 100%;
+            height: 100%;
+            border-style:ridge;
+            border-color:brown;
+            border-width: 0px;
+        }
+        .element2 .number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            text-shadow:1px 1px 1px #cccccc;
+            color: rgba(0,255,255,0.75);
+        }
+        .element2 .symbol {
+            position: absolute;
+            top: 8px;
+            left: 120px;
+            right: 0px;
+            font-size: 10px;
+            color: rgba(0, 0, 0,0.75);
+        }
+        .element2 .details {
+            position: absolute;
+            top: 5px;
+            left: 0px;
+            right: 0px;
+            font-size: 30px;
+            color: #000000;
+        }
+
+
+        .element3:hover {
+            box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+            border: 1px solid rgba(127,255,255,0.75);
+        }
+        .element3 svg {
+            position: absolute;
+            top: 20px;
+            left: 2px;
+            right: 0px;
+        }
+        .element3 .image{
+            position: absolute;
+            top:0px;
+            left:0px;
+            width: 100%;
+            height: 100%;
+            border-style:ridge;
+            border-color:brown;
+            border-width: 0px;
+        }
+        .element3 .number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            text-shadow:1px 1px 1px #cccccc;
+            color: rgba(0,255,255,0.75);
+        }
+        .element3 .symbol {
+            position: absolute;
+            top: 8px;
+            left: 120px;
+            right: 0px;
+            font-size: 10px;
+            color: rgba(0, 0, 0,0.75);
+        }
+        .element3 .details {
+            position: absolute;
+            top: 5px;
+            left: 0px;
+            right: 0px;
+            font-size: 25px;
+            color: #000000;
+        }
+
+
+        .element4:hover {
+            box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+            border: 1px solid rgba(127,255,255,0.75);
+        }
+        .element4 .svg {
+            position: absolute;
+            top: 20px;
+            left: 2px;
+            right: 0px;
+        }
+        .element4 .image{
+            position: absolute;
+            top:0px;
+            left:0px;
+            width: 100%;
+            height: 100%;
+            border-style:ridge;
+            border-color:brown;
+            border-width: 0px;
+        }
+        .element4 .number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            text-shadow:0px 0px 0px #cccccc;
+            color: rgba(0,255,255,0.75);
+        }
+        .element4 .symbol {
+            position: absolute;
+            top: 8px;
+            left: 120px;
+            right: 0px;
+            font-size: 10px;
+            color: rgba(0, 0, 0,0.75);
+        }
+        .element4 .details {
+            position: absolute;
+            top: 5px;
+            left: 0px;
+            right: 0px;
+            font-size:30px;
+            color: #000000;
+        }
+
+
+        .element5:hover {
+            box-shadow: 0px 0px 0px rgba(255,255,255,0.75);
+            border: 0px solid rgba(255,255,255,0.75);
+        }
+        .element5 .svg {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+        }
+        .element5 .image{
+            position: absolute;
+            top:0px;
+            left:0px;
+            width: 100%;
+            height: 100%;
+            border-style:ridge;
+            border-color:brown;
+            border-width: 0px;
+        }
+        .element5 .number {
+            position: absolute;
+            top: 0px;
+            right: 20px;
+            font-size: 30px;
+            text-shadow:1px 1px 1px #cccccc;
+            color: rgba(0,255,255,0.75);
+        }
+        .element5 .symbol {
+            position: absolute;
+            top: 8px;
+            left: 120px;
+            right: 0px;
+            font-size:10px;
+            color: rgba(0, 0, 0,0.75);
+        }
+        .element5 .details {
+            position: absolute;
+            top: 5px;
+            left: 0px;
+            right: 0px;
+            font-size: 30px;
+            color: #000000;
+        }
+
+        .element6:hover {
+            box-shadow: 0px 0px 0px rgba(255,255,255,0.75);
+            border: 1px solid rgba(0,255,255,0.75);
+        }
+        .element6 .svg {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+        }
+        .element6 .image{
+            position: absolute;
+            top:0px;
+            left:0px;
+            width: 100%;
+            height: 100%;
+            border-style:ridge;
+            border-color:brown;
+            border-width: 0px;
+        }
+        .element6 .number {
+            position: absolute;
+            top: 0px;
+            right: 20px;
+            font-size: 30px;
+            text-shadow:1px 1px 1px #cccccc;
+            color: rgba(0,255,255,0.75);
+        }
+        .element6 .symbol {
+            position: absolute;
+            top: 8px;
+            left: 120px;
+            right: 0px;
+            font-size:10px;
+            color: rgba(0, 0, 0,0.75);
+        }
+        .element6 .details {
+            position: absolute;
+            top: 5px;
+            left: 0px;
+            right: 0px;
+            font-size: 30px;
+            color: #000000;
+        }
+
+        /*.element7:hover {
+            box-shadow: 0px 0px 0px rgba(255,255,255,0.75);
+            border: 1px solid rgba(255,255,255,0.75);
+            width: 500px;
+            height: 220px;
+            position: relative;
+        }*/
+
+        .element7:hover {
+            box-shadow: 0px 0px 0px rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(0,255,255,0.75);
+        }
+
+        .element7 .svg {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+        }
+        .element7 .image{
+            position: absolute;
+            top:0px;
+            left:0px;
+            width: 100%;
+            height: 100%;
+            border-style:ridge;
+            border-color:brown;
+            border-width: 0px;
+        }
+        .element7 .number {
+            position: absolute;
+            top: 0px;
+            right: 20px;
+            font-size: 30px;
+            text-shadow:1px 1px 1px #cccccc;
+            color: rgba(0,255,255,0.75);
+        }
+        .element7 .symbol {
+            position: absolute;
+            top: 8px;
+            left: 120px;
+            right: 0px;
+            font-size:10px;
+            color: rgba(0, 0, 0,0.75);
+        }
+        .element7 .details {
+            position: absolute;
+            top: 5px;
+            left: 0px;
+            right: 0px;
+            font-size: 30px;
+            color: #000000;
+        }
+
+        button {
+            color: rgba(0,0,0,0.75);
+            background: transparent;
+            outline: 1px solid rgba(127,255,255,0);
+            border: 0px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: rgba(255,187,0,0.5);
+        }
+        button:active {
+            color: #FFFFFF;
+            background-color: rgba(0,255,255,0.75);
+        }
+
+
+
+        #form {
+            position: relative;
+            top: 50px;
+            left:0px;
+            width: 100%;
+            text-align: center;
+        }
+
+        input{
+            width:60px;
+        }
+        input.active{
+            border:3px solid ;
+            border-color: #c53f3c;
+
+        }
+
+        #musicplay{
+            position: relative;
+            left:70px;
+            top:100px;
+            width:160px;
+            height:60px;
+            frameborder:"0";
+            text-align: center;
+        }
+
+        #videoplay{
+            style=z-index:-100;
+            position: absolute;
+            right:10px;
+            width:225px;
+            height:400px;
+            frameborder:0;
+        }
+
+        #buttonidid{
+            z-index:-100;
+        }
+
+
+
+    </style>
+    <!--<script type="text/javascript" src="../highslide/highslide-with-gallery.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="../highslide/highslide.css" />-->
+
+    <link rel="stylesheet" href="css/buttons.css" type="text/css" media="screen" />
+</head>
+<body>
+<script src="../build/three.js"></script>
+<script src="js/libs/tween.min.js"></script>
+<script src="js/controls/TrackballControls.js"></script>
+<script src="js/renderers/CSS3DRenderer.js"></script>
+<div id="info"><font size="30">Sphere of Music Puzzle</font></div>
+
+<div id="container"></div>
+<p><br></p>
+<div id="menuL">
+    <select name="select1" id="select1"  style="width:150px"
+            onchange="k1Onchange(this.options[this.selectedIndex].value)">
+        <option value="" >大調 快樂的 Major</option>
+        <option value="61" >大調 快樂的 mm_ </option>
+        <option value="25" >mma</option>
+        <option value="26" >mmb</option>
+        <option value="37" >mmc</option>
+        <option value="38" >mmd</option>
+        <option value="49" >mme</option>
+        <option value="50" >mmf</option>
+        <option value="61" >mmg</option>
+        <option value="62" >mmh</option>
+        <option value="73" >mmi</option>
+        <option value="74" >mmj</option>
+        <option value="85" >mmk</option>
+        <option value="86" >mml</option>
+        <option value="97" >mmm</option>
+        <option value="98" >mmn</option>
+    </select>
+    <select name="select-song5" id="select-song5"  style="width:150px"
+            onchange="k1Onchange(this.options[this.selectedIndex].value)">
+        <option value="" >小調 憂鬱的 minor</option>
+        <option value="64" >小調 憂鬱的 m_</option>
+        <option value="28" >ma</option>
+        <option value="29" >mb</option>
+        <option value="40" >mc</option>
+        <option value="41" >md</option>
+        <option value="52" >me</option>
+        <option value="53" >mf</option>
+        <option value="64" >mg</option>
+        <option value="65" >mh</option>
+        <option value="76" >mi</option>
+        <option value="77" >mj</option>
+        <option value="88" >mk</option>
+        <option value="89" >ml</option>
+        <option value="100" >mm</option>
+        <option value="101" >mn</option>
+    </select>
+
+    <select name="select-song3" id="select-song3"  style="width:150px" onchange="k1Onchange(this.options[this.selectedIndex].value)">
+        <option value="">中國風的 Chinese</option>
+        <option value="70" >中國風 c_ </option>
+        <option value="34" >ca (古箏)</option>
+        <option value="35" >cb (望春風1)</option>
+        <option value="46" >cc (望春風2)</option>
+        <option value="47" >cd (望春風3)</option>
+        <option value="58" >ce (祝你幸福)</option>
+        <option value="59" >cf (月亮代表我的心1)</option>
+        <option value="70" >cg (月亮代表我的心2)</option>
+        <option value="71" >ch (菊花台1)</option>
+        <option value="82" >ci (菊花台2)</option>
+        <option value="83" >cj (髮如雪)</option>
+        <option value="94" >ck (青花瓷)</option>
+        <option value="95" >cl (千里之外)</option>
+        <option value="106" >cm (望春風4)</option>
+        <option value="107" >cn (你怎麼說)</option>
+    </select>
+
+</div>
+<form class ="formclass" name='form' id='form'>
+    <strong>1  </strong><input class="formget" type='text' name='first' id='first' />
+    <strong>2  </strong><input class="formget" type='text' name='second' id='second' />
+    <strong>3  </strong><input class="formget" type='text' name='third' id='third' />
+    <strong>4  </strong><input class="formget" type='text' name='fourth' id='fourth' />
+    <input type='button' name='submit' value='PLAY' onclick='processFormData()'>
+    <input type='button' name='stop' value='PAUSE' onclick='pausePianoaudio()'>
+    <input type='button' name='stop' value='STOP' onclick='stopPianoaudio()'>
+</form>
+
+
+<div id="menu">
+    <button id="table">TABLE</button>
+    <button id="sphere">SPHERE</button>
+    <button id="helix">HELIX</button>
+    <button id="stair">STAIR</button>
+</div>
+
+<div>
+    <iframe name="myframe" id ="musicplay" style="display:none" ></iframe> <!--style="display:none"-->
+</div>
+
+
+
+
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+<script src="jquery-1.10.2.js" type="text/javascript"></script>
+
+<!--sphere--start-->
+<script>
+
+    /*$(".formget").oncontextmenu = function() {
+        return false;
+    };
+
+    $(".formget").mousedown(function(e) {
+        console.log(e.which);
+        //右键为3
+        if (3 == e.which) {
+            console.log("又見");
+            }
+        else if (1 == e.which) {
+        //左键为1
+        console.log('左鍵');
+    }
+        else{
+            return;
+        }
+    });*/
+
+
+
+    var table = [
+        //"  ", " ", "(252)", 6, 10, "https://theme.npm.edu.tw/selection/Dynasty.aspx", "img/gugon.png", "rgba(255,255,255,1)", //天頂
+
+        "  ", " ", "(252)", 6, 10, " ", "", "#ffffff", //1
+        "  ", " ", "(252)", 6, 10, "", "", "#ecab80", //2
+        " ", " ", "(276)", 7, 10, "", "", "#f7ca66", //3
+        "  ", " ", "(281)", 8, 10, "", "", "#e0e0e0", //4
+        " ", " ", "(280)", 9, 10, "", "", "#afc9c8", //5
+        "  ", " ", "(252)", 6, 10, "", "", "#938995", //6
+        " ", " ", "(276)", 7, 10, "", "", "#ffffff", //7
+        "  ", " ", "(281)", 8, 10, "", "", "#5a5664", //8
+        " ", " ", "(280)", 9, 10, "", "","#33616b", //9
+        "  ", " ", "(252)", 6, 10, "", "", "#e0e0e0", //10
+        " ", " ", "(276)", 7, 10, "", "","#ca971a", //11
+        "  ", " ", "(281)", 8, 10, "", "","#ba612f", //12
+
+
+
+
+        " ", "西方 | 東方", "(280)", 9, 10, "", "", "#ffffff", //13
+        "  ", "- 開頭 - ", "(252)", 6, 10, "", "", "#ecab80", //14
+        " ", "- 開頭 -", "(276)", 7, 10, "", "", "#f7ca66", //15
+        "  ", "小調 | 大調", "(281)", 8, 10, "", "", "#e0e0e0", //16
+        " ", "- 開頭 - ", "(280)", 9, 10, "", "", "#afc9c8", //17
+        "  ", "- 開頭 -", "(281)", 8, 10, "", "", "#938995", //18
+        " ", "東方 | 西方", "(281)", 5, 1, "", "", "#ffffff", //19
+        "", "- 開頭 -", "", 6, 1, "", "", "#5a5664",     //20
+        "", "- 開頭 -", "", 7, 1, "", "", "#33616b",            //21
+        "", "大調 | 小調", "", 8, 1, "", "", "#e0e0e0",          //22
+        "", "- 開頭 -", "", 9, 1, " ", "","#ca971a",            //23
+        "", "- 開頭 -", "", 10, 1, " ", "","#ba612f",            //24
+
+
+
+
+        "", "西方 | 東方", "", 11, 1, "","", "#ffffff",            //25
+        "", "mma", "", 12, 1,"musicp/mma.wav","", "#ecab80",            //26
+        "", "mmb", "", 13, 1, "musicp/mmb.wav","", "#f7ca66",             //27
+        "", "小調 | 大調", "", 14, 1, "","", "#e0e0e0",          //28
+        "", "ma", "", 5, 1, "musicp/ma.wav","", "#afc9c8",            //29
+        "", "mb", "", 6, 1, "musicp/mb.wav","", "#938995",             //30
+        "", "東方 | 西方", "", 7, 2, "","", "#ffffff",            //31
+        "", "", "", 8, 2, "","", "#5a5664",          //32
+        "", "", "50.9415", 9, 2, "","", "#33616b",    //33
+        "", "大調 | 小調", "51.9961", 10, 2, "","", "#e0e0e0",   //34
+        "", "ca", "54.938045", 11, 2, "musicp/ca.wav","img/mp/古箏-1.png", "#ca971a", //35
+        "", "cb", "55.845", 12, 2, "musicp/cb.wav","img/mp/望春風1-1.png", "#ba612f",   //36
+
+
+
+
+        "", "西方 | 東方", "", 13, 2, "", "", "#ffffff",        //37
+        "", "mmc", "", 14, 2, "musicp/mmc.wav", "", "#ecab80",        //38
+        "", "mmd", "63.54", 5, 3, "musicp/mmd.wav", "", "#f7ca66",           //39
+        "", "小調 | 大調", "65.38", 6, 3, "", "",  "#e0e0e0",          //40
+        "", "mc", "69.723", 7, 3, "musicp/mc.wav", "", "#afc9c8",         //41
+        "", "md", "72.63", 8, 3, "musicp/md.wav", "", "#938995",           //42
+        "", "東方 | 西方", "92.90628", 9, 3, "", "", "#ffffff",        //43
+        "", "", "95.96", 10, 3, "", "", "#5a5664",          //44
+        "", "", "(98)", 11, 3, "", "", "#33616b",          //45
+        "", "大調 | 小調", "101.07", 12, 3, "", "", "#e0e0e0",      //46
+        "", "cc", "102.9055", 13, 3, "musicp/cc.wav", "img/mp/望春風2-1.png", "#ca971a",     //47
+        "", "cd", "106.42", 14, 3, "musicp/cd.wav", "img/mp/望春風3-1.png", "#ba612f",        //48
+
+
+
+
+        "", "西方 | 東方", " ", 5, 4, "", "", "#ffffff",      //49
+        "", "mme", " ", 6, 4, "musicp/mme.wav", "", "#ecab80",      //50
+        "", "mmf", " ", 7, 4, "musicp/mmf.wav", "", "#f7ca66",       //51
+        "", "小調 | 大調", " ", 8, 4, "", "",  "#e0e0e0",        //52  //缺網頁網址
+        "", "me", " ", 9, 4, "musicp/me.wav", "", "#afc9c8",       //53
+        "", "mf", " ", 10, 4, "musicp/mf.wav", "","#938995",   //54
+        "", "東方 | 西方", " ", 11, 4, "", "", "#ffffff",                                               //55
+        "", "", " ", 8, 6, "", "", "#5a5664",                      //56
+        "", "", " ", 13, 4, "", "", "#33616b",                             //57
+        "", "大調 | 小調", " ", 14, 4, "", "", "#e0e0e0",      //58
+        "", "ce", " ", 5, 5, "musicp/ce.wav", "img/mp/祝你幸福-1.png", "#ca971a",        //59
+        "", "cf", " ", 6, 5, "musicp/cf.wav", "img/mp/月亮1-1.png","#ba612f",      //60
+
+
+
+
+        "", "西方 | 東方", "162.5", 7, 5, "", "", "#ffffff",          //61
+        "", "mmg", "", 8, 5, "musicp/mmg.wav", "","#ecab80",               //62
+        "", "mmh", "", 9, 5, "musicp/mmh.wav", "","#f7ca66",              //63
+        "", "小調 | 大調", "", 10, 5, "", "",  "#e0e0e0",           //64
+        "", "mg", "186.207", 11, 5, "musicp/mg.wav", "", "#afc9c8",  //65
+        "", "mh", "190.23", 12, 5, "musicp/mh.wav", "", "#938995",    //66
+        "", "東方 | 西方", "192.217", 13, 5, "", "", "#ffffff",  //67
+        "", "", "195.084", 14, 5, "", "", "#5a5664", //68      //(6)
+        "", "", "196.966569", 5, 6, "", "", "#33616b",    //69
+        "", "大調 | 小調", "200.59", 6, 6, "", "","#e0e0e0",        //70
+        "", "cg", "204.3833", 7, 6, "musicp/cg.wav", "img/mp/月亮2-1.png", "#ca971a",      //71
+        "", "ch", "(145)", 12, 4, "musicp/ch.wav", "img/mp/菊花台1-1.png", "#ba612f",       //72
+
+
+
+
+        "", "西方 | 東方", "", 9, 6, "", "", "#ffffff",                //73
+        "", "mmi", "", 10, 6, "musicp/mmi.wav", "", "#ecab80",             //74
+        "", "mmj", "238.02891", 11, 6, "musicp/mmj.wav", "", "#f7ca66",    //75
+        "", "小調 | 大調", "(237)", 12, 6, "", "",  "#e0e0e0",        //76
+        "", "mi", "(244)", 13, 6, "musicp/mi.wav", "", "#afc9c8",        //77
+        "", "mj", "(243)", 14, 6, "musicp/mj.wav", "", "#938995",         //78
+        "", "東方 | 西方", "(268)", 5, 7, "", "","#ffffff",          //79
+        "", "", "(271)", 6, 7, "", "", "#5a5664",          //80
+        "", "", "(272)", 7, 7, "", "", "#33616b",         //81
+        "", "大調 | 小調", "(270)", 8, 7, "", "", "#e0e0e0",        //82
+        "", "ci", "(276)", 9, 7, "musicp/ci.wav", "img/mp/菊花台2-1.png", "#ca971a",         //83
+        "", "cj", "(281)", 10, 7, "musicp/cj.wav", "img/mp/髮如雪-1.png", "#ba612f",         //84
+
+
+
+
+        "", "西方 | 東方", "", 11, 7, "", "","#ffffff",             //85
+        "", "mmk", "(285)", 12, 7, "musicp/mmk.wav", "", "#ecab80",       //86
+        "", "mml", "(284)", 13, 7, "musicp/mml.wav", "", "#f7ca66",        //87
+        "", "小調 | 大調", "(289)", 14, 7, "", "",  "#e0e0e0",        //88
+        "", "mk", "(276)", 5, 8, "musicp/mk.wav", "", "#afc9c8",         //89
+        "", "ml", "(281)", 6, 8, "musicp/ml.wav", "", "#938995",        //90
+        "", "東方 | 西方", "(280)", 7, 8, "", "", "#ffffff",            //91
+        "", "", "(285)", 8, 8, "", "", "#5a5664",      //92
+        "", "", "(284)", 9, 8, "", "", "#33616b",     //93
+        "", "大調 | 小調", "(289)", 10, 8, "", "", "#e0e0e0",    //94
+        "", "ck", "(288)", 11, 8, "musicp/ck.wav", "img/mp/青花瓷-1.png", "#ca971a",    //95
+        "", "cl", "(293)", 12, 8, "musicp/cl.wav", "img/mp/千里之外-1.png", "#ba612f",     //96
+
+
+
+
+        "", "西方 | 東方", "(294)", 13, 8, "", "", "#ffffff",     //97
+        "", "mmm", "(294)", 14, 8, "musicp/mmm.wav", "", "#ecab80",     //98
+        "", "mmn", "(276)", 5, 9, "musicp/mmn.wav", "", "#f7ca66",     //99
+        "", "小調 | 大調", "(281)", 6, 9, "", "",  "#e0e0e0",    //100
+        "", "mm", "(280)", 7, 9, "musicp/mm.wav", "","#afc9c8",     //101
+        "", "mn", "(285)", 8, 9, "musicp/mn.wav", "", "#938995",      //102
+        "", "東方 | 西方", "(284)", 9, 9, "", "", "#ffffff",     //103
+        "", "", "(289)", 10, 9, "", "", "#5a5664",   //104
+        "", "", "", 9, 6, "", "", "#33616b", //105
+        "", "大調 | 小調", "(293)", 12, 9, "", "","#e0e0e0",  //106
+        "", "cm", "(247)", 13, 9, "musicp/cm.wav", "img/mp/望春風4-1.png", "#ca971a",  //107
+        "", "cn", "(247)", 14, 9, "musicp/cn.wav", "img/mp/你怎麼說-1.png", "#ba612f", //108
+
+
+
+
+        "", "西方 | 東方", "(280)", 9, 10, "", "", "#ffffff",   //109
+        "", "", "(251)", 5, 10, "", "", "#ecab80",  //110
+        "", "", "(252)", 6, 10, "", "", "#f7ca66",  //111
+        "", "小調 | 大調", "(276)", 7, 10, "", "",  "#e0e0e0", //112
+        "", "", "(281)", 8, 10, "", "", "#afc9c8", //113
+        "", "", "(280)", 9, 10, "", "", "#938995",   //114
+        "", "東方 | 西方", "", 10, 10, "", "", "#ffffff",  //115
+        "", "", "", 11, 10, "", "", "#5a5664",        //116
+        "", "", "", 12, 10, "", "", "#33616b",       //117
+        "", "大調 | 小調", "(288)", 13, 10, "", "","#e0e0e0",    //118
+        "", "", "(293)", 14, 10, "", "", "#ca971a",     //119
+        "", "", "107.8682", 5, 4, "", "", "#ba612f",     //120
+
+
+
+
+        "", "西方 | 東方", "112.411", 6, 4, "", "", "#ffffff",     //121
+        "", "- 結尾 -", "114.818", 7, 4, "", "", "#ecab80",    //122
+        "", "- 結尾 -", "118.71", 8, 4, "", "", "#f7ca66",     //123
+        "", "小調 | 大調", "140.116", 9, 4, "", "", "#e0e0e0",    //124
+        "", "- 結尾 -", "140.90765", 10, 4, "", "", "#afc9c8", //125
+        "", "- 結尾 -", "144.242", 11, 4, "", "", "#938995",  //126
+        "", "東方 | 西方", "207.2", 8, 6, "", "", "#ffffff",    //127
+        "", "- 結尾 -", "150.36", 13, 4, "", "","#5a5664", //128 //54重疊
+        "", "- 結尾 -", "151.964", 14, 4, "", "", "#33616b", //129
+        "", "大調 | 小調", "157.25", 5, 5, "", "", "#e0e0e0",     //130
+        "", "- 結尾 -", "158.92535", 6, 5, "", "", "#ca971a",  //131
+        "", "- 結尾 -", "162.5", 7, 5, "", "", "#ba612f",       //132
+
+
+
+
+        "", "", "", 8, 5, "", "","#ffffff",            //133
+        "", "", "", 9, 5, "", "", "#ecab80",        //134
+        "", "", "", 10, 5, "", "", "#f7ca66",    //135
+        "", "", "186.207", 11, 5, "", "",  "#e0e0e0",  //136
+        "", "", "190.23", 12, 5, "", "", "#afc9c8",    //137
+        "", "", "192.217", 13, 5, "", "","#938995",    //138
+        "", "", "195.084", 14, 5, "", "", "#ffffff",   //139
+        "", "", "196.966569", 5, 6, "", "", "#5a5664",    //140
+        "", "", "200.59", 6, 6, "", "", "#33616b",     //141
+        "", "", "204.3833", 7, 6, "", "","#e0e0e0",   //142
+        "", "", "(145)", 12, 4, "", "", "#ca971a",     //143
+        "", "", "", 9, 6, "", "abc", "#ba612f",  //144
+
+    ];
+
+    var camera, scene, renderer;
+    var controls;
+
+    var objects = [];
+    var targets = { table: [], sphere: [], helix: [], stair: [] };
+    var element = document.createElement('div');
+
+
+    //menuL var
+    var dlist1 = [];
+    var dlist2 = [];
+    var dlist3 = [];
+    var dlist4 = [];
+    var did1 = [];
+    var did2 = [];
+    var did3 = [];
+    var did4 = [];
+
+    dlist1 = [];
+    dlist2 = [];
+    dlist3 = [];
+    dlist4 = [];
+    did1 = [];
+    did2 = [];
+    did3 = [];
+    did4 = [];
+    select_num = 0;
+    //menuL end
+
+    init();
+    animate();
+
+    function init() {
+
+        camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 10000);
+        camera.position.z = 2000;
+
+        scene = new THREE.Scene();
+
+        // table
+        // console.log(table.length)
+        for (var i = 0; i < table.length; i += 8) {
+            // console.log(i)
+            var element = document.createElement('div');
+            var icol  // x 18爪
+            var irow  // y
+
+            //北半球
+            if (i >= 0 && i < 96) {
+                element.className = 'element4'; //1
+                icol = 0;
+                irow = i / 8 % 12 + 1; //取餘數
+            }
+            else if (i >= 96 && i < 192) {  //2
+                element.className = 'element3';
+                icol = 1;
+                irow = i / 8 % 12 + 1;  //取餘數 北極的10片*8=80 要扣掉 //不須扣掉了
+            }
+            else if (i >= 192 && i < 288) { //3
+                element.className = 'element2';
+                icol = 2;
+                irow = i / 8 % 12 + 1; //取餘數
+            }
+            else if (i >= 288 && i < 384) { //4
+                element.className = 'element7';
+                icol = 3;
+                irow = i / 8 % 12 + 1; //取餘數
+            }
+            else if (i >= 384 && i < 480) {  //5
+                element.className = 'element1';
+                icol = 4;
+                irow = i / 8 % 12 + 1; //取餘數
+            }
+            else if (i >= 480 && i < 576) {  //6
+                element.className = 'element6';
+                icol = 5;
+                irow = i / 8 % 12 + 1; //取餘數
+            }
+
+            //南半球
+            if (i >= 576 && i < 672) {  //1
+                element.className = 'element6';
+                icol = 7;
+                irow = i / 8 % 12 + 1; //取餘數
+            }
+            else if (i >= 672 && i < 768) {  //2
+                element.className = 'element1';
+                icol = 8;
+                irow = i / 8 % 12 + 1; //取餘數
+            }
+            else if (i >= 768 && i < 864) {  //3
+                element.className = 'element7';
+                icol = 9;
+                irow = i / 8 % 12 + 1; //取餘數
+            }
+            else if (i >= 864 && i < 960) {  //4
+                element.className = 'element2';
+                icol = 10;
+                irow = i / 8 % 12 + 1; //取餘數
+            }
+            else if (i >= 960 && i < 1056) {  //5
+                element.className = 'element3';
+                icol = 11;
+                irow = i / 8 % 12 + 1; //取餘數
+            }
+            else if (i >= 1056 && i < 1152) {  //6
+                element.className = 'element4';
+                icol = 12;
+                irow = i / 8 % 12 + 1; //取餘數
+            }
+
+
+            //element.style.backgroundColor = 'rgba(255,187,0,' + ( Math.random() * 0.5 + 0.25 ) + ')';
+
+
+            var bg = document.createElement('div');
+            element.setAttribute('style', "background-color:" + table[i + 7]);
+            element.setAttribute('id',table[i + 1]);
+            //element.setAttribute(onclick,console.log(element.getAttribute('id')));
+            //element.setAttribute(onclick,console.log(element));
+            element.appendChild(bg);
+
+            var link = document.createElement('a'); // + url
+            link.setAttribute('href', table[i + 5]);
+            link.setAttribute('target', "myframe"); //myframe
+
+            //					link.setAttribute('class', 'highslide-gallery');
+            //					link.setAttribute('onclick', 'alert("hi")');
+            //					link.setAttribute('href', 'return hs.expand(this, miniGalleryOptions1)');
+            //					link.setAttribute('onclick', 'return hs.expand(this, miniGalleryOptions1)');
+            element.appendChild(link);
+
+
+            // var id = document.createElement('div');
+            // id.setAttribute('id',table[i+6]);
+
+            //var iddd = document.getElementsByTagName("id");
+            //var id = table[i+6];
+            //					Img.setAttribute('width', 230);
+            //					Img.setAttribute('height', 230);
+            // music.setAttribute('style', 'background-image:url(' + table[i + 6] + ');background-size:180px 180px;background-repeat:no-repeat;background-position:center');
+            //				    Img.setAttribute('src', table[i+6]);
+
+            // element.appendChild(id);
+
+
+            element.onclick=function(e){
+                console.log(this.getAttribute('id'));
+                console.log("迴圈");
+                nowmusicid = this.getAttribute('id');
+                console.log('musicid'+nowmusicid);
+            };
+
+
+            var Img = document.createElement('img');
+            Img.setAttribute('class', 'image');
+            //					Img.setAttribute('width', 230);
+            //					Img.setAttribute('height', 230);
+            Img.setAttribute('style', 'background-image:url(' + table[i + 6] + ');background-size:180px 180px;background-repeat:no-repeat;background-position:center');
+            //				    Img.setAttribute('src', table[i+6]);
+
+            link.appendChild(Img);
+
+            /*
+            var Imghover = document.createElement('img');
+            Imghover.setAttribute('class', 'image');
+            //					Img.setAttribute('width', 230);
+            //					Img.setAttribute('height', 230);
+            Imghover.setAttribute('style', 'background-image:url(' + table[i + 2] + ')');
+
+            //				    Img.setAttribute('src', table[i+6]);
+
+            link.appendChild(Imghover);
+            */
+
+
+
+            //					<a class='highslide' id="thumb1" href='../images/thumbstrip11.jpg' title="Two cabins"	onclick="return hs.expand(this, miniGalleryOptions1)">	<img src='../images/thumbstrip11.thumb.png' alt=''/></a>
+
+            var number = document.createElement('div');
+            number.className = 'number'; //右上角小字 index
+            number.textContent = (i / 8);
+            //					element.appendChild( number );
+
+
+            var symbol = document.createElement('div');
+            symbol.className = 'symbol'; //大字
+            symbol.textContent = table[i];
+            element.appendChild(symbol);
+            link.appendChild(symbol);
+
+            var details = document.createElement('div');
+            details.className = 'details'; //下面兩行小字
+            details.innerHTML = table[i + 1] // + '<br>' + table[ i + 2 ];
+            //element.appendChild( details );
+            link.appendChild(details);
+
+
+            //                    var icol = Math.floor(i / 8 / 18) + 1; //取商數 x 18爪
+            //					var irow = i / 8 % 18 + 1; //取餘數 y
+
+            //					if (i > 24 && i <= 1320) {
+            //					    icol = icol + 1;
+            //					    irow = (i - 32) / 8 % 18 + 1;					   }
+            //                    else if (i > 1320 && i <= 1352){
+            //                        icol=icol+1;
+            //                        irow = (i-32) / 8 % 18+1 ;
+            //                    }
+
+            var object = new THREE.CSS3DObject(element);
+            //					object.position.x = Math.random() * 4000 - 2000;
+            //					object.position.y = Math.random() * 4000 - 2000;
+            //					object.position.z = Math.random() * 4000 - 2000;
+            scene.add(object);
+
+            objects.push(object);
+
+            //
+
+            var object = new THREE.Object3D();
+            //					object.position.x = ( table[ i + 3 ] * 185 ) - 1750;
+            //					object.position.y = - ( table[ i + 4 ] * 300 ) + 1620;
+
+            object.position.x = (irow * 300) - 1750 - 800;  //常數項為整個Table水平起始位置;irow*300 的300為每片的寬度+間距
+            object.position.y = -(icol * 300) + 1730; //常數項為整個Table垂直起始位置 數字越大越往上
+
+            targets.table.push(object);
+
+
+        }
+
+
+        // sphere
+
+        var vector = new THREE.Vector3();
+        temp0 = [
+
+
+
+            //0, 780, 0,
+
+
+
+            178.01674716505156, 755.1594245089926, 0,
+            154.16702534400613, 755.1594245089926, 89.00837358252576,
+            89.0083735825258, 755.1594245089926, 154.1670253440061,
+            1.0900381980515202e-14, 755.1594245089926, 178.01674716505156,
+            -89.00837358252573, 755.1594245089926, 154.16702534400613,
+            -154.16702534400608, 755.1594245089926, 89.00837358252585,
+            -178.01674716505156, 755.1594245089926, 2.1800763961030404e-14,
+            -154.16702534400613, 755.1594245089926, -89.00837358252573,
+            -89.00837358252585, 755.1594245089926, -154.16702534400608,
+            -3.2701145941545607e-14, 755.1594245089926, -178.01674716505156,
+            89.00837358252566, 755.1594245089926, -154.16702534400616,
+            154.16702534400605, 755.1594245089926, -89.00837358252585,
+            347.10699129404657, 677.4643593300711, 0,
+            300.6034722918283, 677.4643593300711, 173.55349564702325,
+            173.5534956470233, 677.4643593300711, 300.60347229182827,
+            2.1254173292496116e-14, 677.4643593300711, 347.10699129404657,
+            -173.5534956470232, 677.4643593300711, 300.6034722918283,
+            -300.6034722918282, 677.4643593300711, 173.5534956470234,
+            -347.10699129404657, 677.4643593300711, 4.250834658499223e-14,
+            -300.6034722918283, 677.4643593300711, -173.55349564702317,
+            -173.55349564702342, 677.4643593300711, -300.6034722918282,
+            -6.376251987748835e-14, 677.4643593300711, -347.10699129404657,
+            173.55349564702306, 677.4643593300711, -300.60347229182844,
+            300.60347229182815, 677.4643593300711, -173.55349564702342,
+            498.79184148698687, 565.7984023295334, 0,
+            431.9664059281516, 565.7984023295334, 249.3959207434934,
+            249.39592074349352, 565.7984023295334, 431.9664059281515,
+            3.0542191605892625e-14, 565.7984023295334, 498.79184148698687,
+            -249.39592074349332, 565.7984023295334, 431.9664059281516,
+            -431.96640592815146, 565.7984023295334, 249.3959207434936,
+            -498.79184148698687, 565.7984023295334, 6.108438321178525e-14,
+            -431.9664059281516, 565.7984023295334, -249.3959207434933,
+            -249.39592074349366, 565.7984023295334, -431.96640592815146,
+            -9.162657481767786e-14, 565.7984023295334, -498.79184148698687,
+            249.39592074349312, 565.7984023295334, -431.96640592815174,
+            431.96640592815135, 565.7984023295334, -249.39592074349366,
+            625.4651859744239, 425.7609508678156, 0,
+            541.6687402366096, 425.7609508678156, 312.7325929872119,
+            312.732592987212, 425.7609508678156, 541.6687402366094,
+            3.829869689908411e-14, 425.7609508678156, 625.4651859744239,
+            -312.7325929872118, 425.7609508678156, 541.6687402366096,
+            -541.6687402366093, 425.7609508678156, 312.7325929872122,
+            -625.4651859744239, 425.7609508678156, 7.659739379816822e-14,
+            -541.6687402366096, 425.7609508678156, -312.7325929872117,
+            -312.7325929872122, 425.7609508678156, -541.6687402366093,
+            -1.1489609069725232e-13, 425.7609508678156, -625.4651859744239,
+            312.73259298721155, 425.7609508678156, -541.6687402366097,
+            541.6687402366092, 425.7609508678156, -312.7325929872122,
+            720.7750943219353, 264.37406750668157, 0,
+            624.2095420979209, 264.37406750668157, 360.3875471609676,
+            360.38754716096776, 264.37406750668157, 624.2095420979209,
+            4.4134745608324484e-14, 264.37406750668157, 720.7750943219353,
+            -360.38754716096753, 264.37406750668157, 624.2095420979209,
+            -624.2095420979208, 264.37406750668157, 360.3875471609679,
+            -720.7750943219353, 264.37406750668157, 8.826949121664897e-14,
+            -624.2095420979209, 264.37406750668157, -360.3875471609675,
+            -360.387547160968, 264.37406750668157, -624.2095420979208,
+            -1.3240423682497346e-13, 264.37406750668157, -720.7750943219353,
+            360.3875471609672, 264.37406750668157, -624.2095420979211,
+            624.2095420979207, 264.37406750668157, -360.387547160968,
+            779.9423297454589, 89.41279372102815, 0,
+            675.4498710463869, 89.41279372102815, 389.9711648727294,
+            389.97116487272956, 89.41279372102815, 675.4498710463868,
+            4.7757693882115285e-14, 89.41279372102815, 779.9423297454589,
+            -389.9711648727293, 89.41279372102815, 675.4498710463869,
+            -675.4498710463866, 89.41279372102815, 389.97116487272973,
+            -779.9423297454589, 89.41279372102815, 9.551538776423057e-14,
+            -675.4498710463869, 89.41279372102815, -389.9711648727292,
+            -389.9711648727298, 89.41279372102815, -675.4498710463866,
+            -1.4327308164634585e-13, 89.41279372102815, -779.9423297454589,
+            389.97116487272893, 89.41279372102815, -675.4498710463871,
+            675.4498710463866, 89.41279372102815, -389.9711648727298,
+            779.9423297454589, -89.41279372102815, 0,
+            675.4498710463869, -89.41279372102815, 389.9711648727294,
+            389.97116487272956, -89.41279372102815, 675.4498710463868,
+            4.7757693882115285e-14, -89.41279372102815, 779.9423297454589,
+            -389.9711648727293, -89.41279372102815, 675.4498710463869,
+            -675.4498710463866, -89.41279372102815, 389.97116487272973,
+            -779.9423297454589, -89.41279372102815, 9.551538776423057e-14,
+            -675.4498710463869, -89.41279372102815, -389.9711648727292,
+            -389.9711648727298, -89.41279372102815, -675.4498710463866,
+            -1.4327308164634585e-13, -89.41279372102815, -779.9423297454589,
+            389.97116487272893, -89.41279372102815, -675.4498710463871,
+            675.4498710463866, -89.41279372102815, -389.9711648727298,
+            720.7750943219353, -264.37406750668157, 0,
+            624.2095420979209, -264.37406750668157, 360.3875471609676,
+            360.38754716096776, -264.37406750668157, 624.2095420979209,
+            4.4134745608324484e-14, -264.37406750668157, 720.7750943219353,
+            -360.38754716096753, -264.37406750668157, 624.2095420979209,
+            -624.2095420979208, -264.37406750668157, 360.3875471609679,
+            -720.7750943219353, -264.37406750668157, 8.826949121664897e-14,
+            -624.2095420979209, -264.37406750668157, -360.3875471609675,
+            -360.387547160968, -264.37406750668157, -624.2095420979208,
+            -1.3240423682497346e-13, -264.37406750668157, -720.7750943219353,
+            360.3875471609672, -264.37406750668157, -624.2095420979211,
+            624.2095420979207, -264.37406750668157, -360.387547160968,
+            625.4651859744239, -425.7609508678156, 0,
+            541.6687402366096, -425.7609508678156, 312.7325929872119,
+            312.732592987212, -425.7609508678156, 541.6687402366094,
+            3.829869689908411e-14, -425.7609508678156, 625.4651859744239,
+            -312.7325929872118, -425.7609508678156, 541.6687402366096,
+            -541.6687402366093, -425.7609508678156, 312.7325929872122,
+            -625.4651859744239, -425.7609508678156, 7.659739379816822e-14,
+            -541.6687402366096, -425.7609508678156, -312.7325929872117,
+            -312.7325929872122, -425.7609508678156, -541.6687402366093,
+            -1.1489609069725232e-13, -425.7609508678156, -625.4651859744239,
+            312.73259298721155, -425.7609508678156, -541.6687402366097,
+            541.6687402366092, -425.7609508678156, -312.7325929872122,
+            498.79184148698687, -565.7984023295334, 0,
+            431.9664059281516, -565.7984023295334, 249.3959207434934,
+            249.39592074349352, -565.7984023295334, 431.9664059281515,
+            3.0542191605892625e-14, -565.7984023295334, 498.79184148698687,
+            -249.39592074349332, -565.7984023295334, 431.9664059281516,
+            -431.96640592815146, -565.7984023295334, 249.3959207434936,
+            -498.79184148698687, -565.7984023295334, 6.108438321178525e-14,
+            -431.9664059281516, -565.7984023295334, -249.3959207434933,
+            -249.39592074349366, -565.7984023295334, -431.96640592815146,
+            -9.162657481767786e-14, -565.7984023295334, -498.79184148698687,
+            249.39592074349312, -565.7984023295334, -431.96640592815174,
+            431.96640592815135, -565.7984023295334, -249.39592074349366,
+            347.10699129404657, -677.4643593300711, 0,
+            300.6034722918283, -677.4643593300711, 173.55349564702325,
+            173.5534956470233, -677.4643593300711, 300.60347229182827,
+            2.1254173292496116e-14, -677.4643593300711, 347.10699129404657,
+            -173.5534956470232, -677.4643593300711, 300.6034722918283,
+            -300.6034722918282, -677.4643593300711, 173.5534956470234,
+            -347.10699129404657, -677.4643593300711, 4.250834658499223e-14,
+            -300.6034722918283, -677.4643593300711, -173.55349564702317,
+            -173.55349564702342, -677.4643593300711, -300.6034722918282,
+            -6.376251987748835e-14, -677.4643593300711, -347.10699129404657,
+            173.55349564702306, -677.4643593300711, -300.60347229182844,
+            300.60347229182815, -677.4643593300711, -173.55349564702342,
+            178.01674716505156, -755.1594245089926, 0,
+            154.16702534400613, -755.1594245089926, 89.00837358252576,
+            89.0083735825258, -755.1594245089926, 154.1670253440061,
+            1.0900381980515202e-14, -755.1594245089926, 178.01674716505156,
+            -89.00837358252573, -755.1594245089926, 154.16702534400613,
+            -154.16702534400608, -755.1594245089926, 89.00837358252585,
+            -178.01674716505156, -755.1594245089926, 2.1800763961030404e-14,
+            -154.16702534400613, -755.1594245089926, -89.00837358252573,
+            -89.00837358252585, -755.1594245089926, -154.16702534400608,
+            -3.2701145941545607e-14, -755.1594245089926, -178.01674716505156,
+            89.00837358252566, -755.1594245089926, -154.16702534400616,
+            154.16702534400605, -755.1594245089926, -89.00837358252585,
+
+
+
+
+
+            //0, -780, 0,
+
+        ];
+
+
+
+
+
+        for (var i = 0, l = objects.length; i < l; i++) {
+
+            //var temp2 = [];
+            var object = new THREE.Object3D();
+
+
+            object.position.x = temp0[3 * i];
+            object.position.y = temp0[3 * i + 1];
+            object.position.z = temp0[3 * i + 2];
+
+            //temp2.push(object);
+            vector.copy(object.position).multiplyScalar(2);
+            object.lookAt(vector);
+            targets.sphere.push(object);
+
+        }
+
+        // helix
+
+        var vector = new THREE.Vector3();
+
+        for (var i = 0, l = objects.length; i < l; i++) {
+
+            var phi = i * 0.175 + Math.PI;
+
+            var object = new THREE.Object3D();
+
+            object.position.x = 1400 * Math.sin(phi);
+            object.position.y = - (i * 12) + 1200;
+            object.position.z = 1400 * Math.cos(phi);
+
+            vector.x = object.position.x * 2;
+            vector.y = object.position.y;
+            vector.z = object.position.z * 2;
+
+            object.lookAt(vector);
+
+            targets.helix.push(object);
+
+        }
+
+        // stair
+
+        for (var i = 0; i < objects.length; i++) {
+
+            var object = new THREE.Object3D();
+
+            object.position.x = ((i % 18) * 310) - 5400;
+            object.position.y = (- (Math.floor(i / 18)) * 310) + 2000;
+            object.position.z = (Math.floor(i / 18)) * 500 - 5000;
+
+            targets.stair.push(object);
+
+        }
+
+        //
+
+        renderer = new THREE.CSS3DRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.domElement.style.position = 'absolute';
+        document.getElementById('container').appendChild(renderer.domElement);
+
+        //
+
+        controls = new THREE.TrackballControls(camera, renderer.domElement);
+        controls.rotateSpeed = 0.5;
+        controls.minDistance = 200;
+        controls.maxDistance = 100000;
+        controls.addEventListener('change', render);
+
+        var button = document.getElementById('table');
+        button.addEventListener('click', function (event) {
+            controls.reset();
+            transform(targets.table, 20);
+            camera.position.x = 0;
+            camera.position.y = 0;
+            camera.position.z = 6000;
+        }, false);
+
+        var button = document.getElementById('sphere');
+        button.addEventListener('click', function (event) {
+            controls.reset();
+            transform(targets.sphere, 20);
+            camera.position.x = 0;
+            camera.position.y = 0;
+            camera.position.z = 3000;
+        }, false);
+
+
+        var button = document.getElementById('helix');
+        button.addEventListener('click', function (event) {
+            controls.reset();
+            transform(targets.helix, 20);
+            camera.position.x = 0;
+            camera.position.y = 0;
+            camera.position.z = 5000;
+        }, false);
+
+        var button = document.getElementById('stair');
+        button.addEventListener('click', function (event) {
+            controls.reset();
+            transform(targets.stair, 20);
+            camera.position.x = 2000;
+            camera.position.y = 0;
+            camera.position.z = 2000;
+        }, false);
+
+
+        transform(targets.sphere, 20); // 一開始看 sphere ; start default
+        //	            transform(targets.table, 20); // 一開始看 table; start default
+        controls.reset();
+        camera.position.x = 0;
+        camera.position.y = 0;   // 一開始 y = -2268 z = 676 看赤道(55置中) ; y=0 z=3000 看北極
+        camera.position.z = 3000;
+        //
+
+        window.addEventListener('resize', onWindowResize, false);
+
+
+    }
+
+    function k1Onchange(i) {
+
+
+        controls.reset();
+
+
+        x = 3 * temp0[3 * i];
+        y = 3 * temp0[3 * i + 1];
+        z = 3 * temp0[3 * i + 2];
+        //			      alert("x=" + x + ", y=" + y + ", z=" + z);
+        transformPos(targets.sphere, 20, x, y, z);
+
+    }
+
+
+
+    function transform(targets, duration) {
+
+        TWEEN.removeAll();
+
+        for (var i = 0; i < objects.length; i++) {
+
+            var object = objects[i];
+            var target = targets[i];
+
+            new TWEEN.Tween(object.position)
+                .to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration)
+                .easing(TWEEN.Easing.Exponential.InOut)
+                .start();
+
+            new TWEEN.Tween(object.rotation)
+                .to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration)
+                .easing(TWEEN.Easing.Exponential.InOut)
+                .start();
+
+        }
+
+
+        new TWEEN.Tween(this)
+            .to({}, duration * 2)
+            .onUpdate(render)
+            .start();
+
+    }
+
+    function transformPos(targets, duration, iX, iY, iZ) {
+        //			    alert("transformPos: x=" + x + ", y=" + y + ", z=" + z);
+        TWEEN.removeAll();
+        camera.position.x = iX;
+        camera.position.y = iY;
+        camera.position.z = iZ;
+
+        for (var i = 0; i < objects.length; i++) {
+
+            var object = objects[i];
+            var target = targets[i];
+
+            new TWEEN.Tween(object.position)
+                .to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration)
+                .easing(TWEEN.Easing.Exponential.InOut)
+                .start();
+
+            new TWEEN.Tween(object.rotation)
+                .to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration)
+                .easing(TWEEN.Easing.Exponential.InOut)
+                .start();
+
+        }
+
+        new TWEEN.Tween(this)
+            .to({}, duration * 2)
+            .onUpdate(render)
+            .start();
+
+    }
+
+    function onWindowResize() {
+
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        render();
+
+    }
+
+    function animate() {
+
+        requestAnimationFrame(animate);
+
+        TWEEN.update();
+
+        controls.update();
+
+    }
+
+    function render() {
+
+        renderer.render(scene, camera);
+
+    }
+
+
+
+    var keyAllowed = {};
+    var isPlaying = false;
+    var pianoplaying = false;
+    var Pianoaudio = new Audio();
+    var i = 0;
+
+    var nowform;
+    var nowmusicid;
+
+
+
+
+
+    $('.formget').bind('mousedown', function(e){
+        console.log('click for');
+        console.log(this.getAttribute('id'));
+        nowform=this.getAttribute("id");
+        console.log("NOWFORM"+nowform);
+        document.getElementById(nowform).value = nowmusicid;
+        console.log(nowmusicid);
+    });
+
+
+    const submitBtn = document.querySelector('[data-action="submit"]');
+    submitBtn.addEventListener("click", processFormData);
+    function processFormData() {
+        const firstElement = document.getElementById("first");
+        const first = firstElement.value;
+        const secondElement = document.getElementById("second");
+        const second = secondElement.value;
+        const thirdElement = document.getElementById("third");
+        const third = thirdElement.value;
+        const fourthElement = document.getElementById("fourth");
+        const fourth = fourthElement.value;
+        var ynn=confirm("第一模組 " + first + "\n第二模組 " + second + "\n第三模組 " + third + "\n第四模組 " + fourth);
+        if (ynn==true){
+            Pianoaudio = new Audio();
+            var playlistP= new Array('./musicp/'+first+'.wav','./musicp/'+second+'.wav','./musicp/'+third+'.wav','./musicp/'+fourth+'.wav');
+            console.log(first);
+            console.log(second);
+            console.log(third);
+            console.log(fourth);
+            Pianoaudio.addEventListener('ended', function () {
+                $("form:eq(0) input:eq("+i+")").removeClass("active");
+                i = ++i < playlistP.length ? i : 0;
+                console.log(i);
+                $("form:eq(0) input:eq("+i+")").addClass('active');
+                Pianoaudio.src = playlistP[i];
+                console.log('avti');
+                Pianoaudio.play();
+            }, true);
+
+            Pianoaudio.onplaying = function(){
+                pianoplaying = true;
+            }
+            Pianoaudio.onpause = function(){
+                pianoplaying = false;
+            }
+
+            Pianoaudio.loop = false;
+            Pianoaudio.src = playlistP[i];
+            console.log('why');
+            $("form:eq(0) input:eq("+i+")").addClass('active');
+            Pianoaudio.play();
+        }
+        else{
+            return;
+        }
+
+
+    }
+
+
+
+    function stopPianoaudio(){
+        console.log(pianoplaying);
+        if (pianoplaying) {
+            Pianoaudio.pause();
+            pianoplaying = false;
+            console.log(pianoplaying);
+            $("form:eq(0) input:eq("+i+")").removeClass("active");
+            i = 0;
+            console.log(i);
+            playpausebtn.innerHTML=("Play Piano");
+
+        }else {
+            i = 0;
+            console.log("i must be 0 when i stop"+i);
+            playpausebtn.innerHTML=("Play Piano");
+        }
+    }
+
+
+
+
+    function mergePiano1(){
+        Pianoaudio = new Audio();
+        //var Pianoaudio = new Audio(),
+        //var i = 0;
+        var o =  $("ul:eq(0) li:eq(0)").attr("id");
+        console.log(o);
+
+        var p =  $("ul:eq(0) li:eq(1)").attr("id");
+        console.log(p);
+
+        /* var q =  $("ul:eq(0) li:eq(2)").attr("id");
+         console.log(q);
+
+         var r =  $("ul:eq(0) li:eq(3)").attr("id");
+         console.log(r);*/
+        //var myAudio = document.getElementById(o+ "Audio");
+        var playlistP = new Array('./musicp/Aminor/Am_piano/'+o+'.wav','./musicp/Aminor/Am_piano/'+p+'.wav','./musicp/Aminor/Am_piano/'+q+'.wav','./musicp/Aminor/Am_piano/'+r+'.wav');
+        let PlaylistPString = playlistP.toString();
+        console.log(PlaylistPString); //轉字串
+        if (PlaylistPString.includes('./musicp/Aminor/Am_piano/e.wav,./musicp/Aminor/Am_piano/a.wav')){
+            var yn= confirm('第五個模組接第一個模組不合適，確定繼續嗎？' );
+            if (yn==true){
+                Pianoaudio.addEventListener('ended', function () {
+                    $("ul:eq(0) li:eq("+i+")").removeClass("active");
+                    i = ++i < playlistP.length ? i : 0;
+                    console.log(i);
+                    $("ul:eq(0) li:eq("+i+")").addClass('active');
+                    Pianoaudio.src = playlistP[i];
+                    console.log('avti');
+                    Pianoaudio.play();
+                }, true);
+
+                Pianoaudio.onplaying = function(){
+                    pianoplaying = true;
+                }
+                Pianoaudio.onpause = function(){
+                    pianoplaying = false;
+                }
+
+                Pianoaudio.loop = false;
+                Pianoaudio.src = playlistP[i];
+                console.log('why');
+                $("ul:eq(0) li:eq("+i+")").addClass('active');
+                Pianoaudio.play();
+
+            }else{
+                playpausebtn.innerHTML=("Play Piano");
+                return;
+            }
+
+        }else{
+
+            Pianoaudio.addEventListener('ended', function () {
+                $("ul:eq(0) li:eq("+i+")").removeClass("active");
+                i = ++i < playlistP.length ? i : 0;
+                console.log(i);
+                $("ul:eq(0) li:eq("+i+")").addClass('active');
+                Pianoaudio.src = playlistP[i];
+                console.log('avti');
+                Pianoaudio.play();
+            }, true);
+
+            Pianoaudio.onplaying = function(){
+                pianoplaying = true;
+            }
+            Pianoaudio.onpause = function(){
+                pianoplaying = false;
+            }
+
+            Pianoaudio.loop = false;
+            Pianoaudio.src = playlistP[i];
+            console.log('why');
+            $("ul:eq(0) li:eq("+i+")").addClass('active');
+            Pianoaudio.play();
+        }
+    }
+
+
+    function pausePianoaudio(){
+        if (pianoplaying) {
+            Pianoaudio.pause();
+            pianoplaying = false;
+            $("form:eq(0) input:eq("+i+")").removeClass("active");
+        }else {
+            return;
+        }
+    }
+
+
+    function playpause(){
+        if(pianoplaying){
+            pausePianoaudio();
+        }
+        else{
+            mergePiano1();
+        }
+    }
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

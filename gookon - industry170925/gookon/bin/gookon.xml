@@ -1,0 +1,163 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+gookon
+</name>
+</assembly>
+<members>
+<member name="F:gookon.industry._form1">
+<summary>
+form1 控制項。
+</summary>
+<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member>
+<member name="F:gookon.industry._chkAll">
+<summary>
+chkAll 控制項。
+</summary>
+<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member>
+<member name="F:gookon.industry._a1">
+<summary>
+a1 控制項。
+</summary>
+<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member>
+<member name="F:gookon.industry._a2">
+<summary>
+a2 控制項。
+</summary>
+<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member>
+<member name="F:gookon.industry._a3">
+<summary>
+a3 控制項。
+</summary>
+<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member>
+<member name="F:gookon.industry._a4">
+<summary>
+a4 控制項。
+</summary>
+<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member>
+<member name="F:gookon.industry._b1">
+<summary>
+b1 控制項。
+</summary>
+<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member>
+<member name="F:gookon.industry._c1">
+<summary>
+c1 控制項。
+</summary>
+<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member>
+<member name="F:gookon.industry._c2">
+<summary>
+c2 控制項。
+</summary>
+<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member>
+<member name="F:gookon.industry._d1">
+<summary>
+d1 控制項。
+</summary>
+<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member>
+<member name="F:gookon.industry._e1">
+<summary>
+e1 控制項。
+</summary>
+<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member>
+<member name="F:gookon.industry._f1">
+<summary>
+f1 控制項。
+</summary>
+<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member>
+<member name="F:gookon.industry._g1">
+<summary>
+g1 控制項。
+</summary>
+<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member>
+<member name="F:gookon.industry._h1">
+<summary>
+h1 控制項。
+</summary>
+<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member>
+<member name="F:gookon.industry._btnQry">
+<summary>
+btnQry 控制項。
+</summary>
+<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member>
+<member name="F:gookon.industry._GridView1">
+<summary>
+GridView1 控制項。
+</summary>
+<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member>
+<member name="F:gookon.industry._SqlDataSource1">
+<summary>
+SqlDataSource1 控制項。
+</summary>
+<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member>
+</members>
+</doc>

@@ -1,0 +1,801 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>草藥養生球</title>
+		<meta charset="big5">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			html, body {
+				height: 100%;
+			}
+
+			body {
+				background-color: #FFFFFF;
+				margin: 0;
+				font-family: Helvetica, sans-serif;
+				overflow: hidden;
+			}
+
+			a {
+				color: #ffffff;
+			}
+
+			#info {
+				position: absolute;
+				width: 100%;
+				color: #ffffff;
+				padding: 5px;
+				font-family: Monospace;
+				font-size: 13px;
+				font-weight: bold;
+				text-align: center;
+				z-index: 1;
+			}
+
+			#menu {
+				position: absolute;
+				bottom: 5px;
+				width: 100%;
+				text-align: center;
+			}
+            #menuL {
+				position: absolute;
+				top: 5px;
+				left:27px;
+				width: 100%;
+				text-align: center;
+			}
+			.element {
+                  width: 180px;
+                  height:250px;
+                  font-weight: bold;
+                  -webkit-font-smoothing: antialiased;
+                  -moz-osx-font-smoothing: grayscale;
+                
+                  border: 0px solid rgba(127,255,255,0);
+                  order-radius: 8px;
+                  text-align: center;
+                  cursor: default;
+                  
+                }
+
+                .element:hover {
+                  box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+                  border: 1px solid rgba(127,255,255,0.75);
+                  
+                }
+                .element svg {
+                  position: absolute;
+                  top: 20px;
+                  left: 2px;
+                  right: 0px;
+                }
+				.element .done{
+                  position: absolute;
+                  top:65px;
+                  left:0px;
+                  width: 100%;
+                  height: 180px;
+                  border-style:ridge;
+                  border-color:brown;
+                  border-width: 0px;
+                }
+				.element .number {
+					position: absolute;
+					top: 20px;
+					right: 20px;
+					font-size: 10px;
+					text-shadow:1px 1px 1px #cccccc;
+					color: rgba(0,0,0,0.75);
+				}
+
+				.element .symbol {
+				  position: absolute;
+                  top: 35px;
+                  left: 0px;
+                  right: 0px;
+                  font-size: 20px;
+                  color: rgba(0, 0, 0,0.75);
+				}
+
+				.element .details {
+				    position: absolute;
+                    top: 5px;
+                    left: 0px;
+                    right: 0px;
+                    font-size: 20px;
+                    color: rgba(255,255, 255,0.75);
+				}
+
+			button {
+				color: rgba(0,0,0,0.75);
+				background: transparent;
+				outline: 1px solid rgba(127,255,255,0);
+				border: 0px;
+				padding: 5px 10px;
+				cursor: pointer;
+			}
+			button:hover {
+				background-color: rgba(255,187,0,0.5);
+			}
+			button:active {
+				color: #FFFFFF;
+				background-color: rgba(0,255,255,0.75);
+			}
+		</style>
+	</head>
+	<body>
+		<script src="../build/three.js"></script>
+		<script src="js/libs/tween.min.js"></script>
+		<script src="js/controls/TrackballControls.js"></script>
+		<script src="js/renderers/CSS3DRenderer.js"></script>
+
+		<div id="container"></div>
+		<div id="menuL" style="font-size: 12px">
+        <script language="javascript">
+            function pOnchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("iposition");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544") {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }
+            }
+            function k1Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind1");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544") {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "34") {
+                    transformPos(targets.sphere, 20, 1500, 1000, 2000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }
+            }
+            function k2Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind2");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544") {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }
+            }
+            function k3Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind3");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544") {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }
+            }
+            function k4Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind4");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544") {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                } 
+            }
+            function k5Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind5");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544") {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                } 
+            }
+            function k6Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind6");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544") {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                } 
+            }
+            function k7Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind7");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544") {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }
+            }
+            function k8Onchange() {
+                //                alert('test onchange');
+                location.href = "http://140.113.73.194/yuekan/9.html";
+            }
+</script>
+            草藥養生球 <br />
+            症狀:<select id="Select1" name="A">
+                <option>感冒、流感</option>
+                <option>咳嗽</option>
+                <option>喉嚨痛</option>
+            </select>
+            <select id="Select2" name="B">
+                <option>---</option>
+                <option>腹瀉</option>
+                <option>消化不良</option>
+                <option>便秘</option>
+                
+            </select>
+             <select id="Select3" name="C">
+                <option>---</option>
+                <option>心臟保健</option>
+                <option>高血壓</option>
+                <option>血液循環</option>
+              
+            </select>
+             <select id="Select4" name="D">
+                <option>---</option>
+                <option>皮膚炎</option>
+                <option>發炎</option>
+                <option>瘀傷</option>
+                <option>燒燙傷</option>
+                <option>擦傷、割傷、瘡傷</option>
+                <option>濕疹</option>
+                <option>牛皮癬</option>
+                               
+            </select>
+             <select id="Select5" name="E">
+                <option>---</option>
+                <option>泌尿道保健</option>
+                <option>利尿</option>
+                <option>糖尿病</option>
+                
+            </select>
+            <select id="Select6" name="F">
+                <option>---</option>
+                <option>抗氧化物</option>
+                <option>焦慮/緊張</option>
+                <option>失眠</option>
+                <option>認知能力</option>
+                <option>偏頭痛</option>               
+            </select>
+             <select id="Select7" name="G">
+                <option>---</option>
+                <option>關節炎</option>
+                <option>骨骼保健</option>                      
+            </select>
+            <select id="Select8" name="H">
+                <option>---</option>
+                <option>支氣管炎</option>
+                <option>氣喘</option>                      
+            </select>
+             <select id="Select9" name="I">
+                <option>---</option>
+                <option>經前症候群</option>
+                <option>更年期</option>    
+                <option>女性生理健康</option>                      
+            </select>
+             <select id="Select10" name="J">
+                <option>---</option>
+                <option>攝護腺保健</option>
+                <option>男性生理健康</option>                      
+            </select><input id="Submit1" type="button" value="submit" onclick="tagSel('123')" /></div>
+		<div id="menu">
+			<button id="table">TABLE</button>
+			<button id="sphere">SPHERE</button>
+			<button id="helix">HELIX</button>
+			<button id="grid">GRID</button>
+		</div>
+       	
+        <script>
+
+		    var table = [
+
+                "洛神葵", "感冒、流感", "喉嚨痛", 5, 1, "https://youtu.be/TKBNy5kJaOo", "img/m2.png", "",
+				"薑", "", "良渚文化", 6, 1, "http://www.natgeomedia.com/reading/mag-news/42375", "img/m32.jpg", "",
+				"茴香", "", "", 7, 1, "", "img/m34.jpg", "",
+				"迷迭香", "", "", 8, 1, "", "img/m55.png", "",
+				"蛇麻", "", "", 9, 1, " ", "img/m45.png", "",
+				"鼠尾草", "", "", 10, 1, " ", "img/m36.JPG", "",
+				"可可", "", "", 11, 1, " ", "img/m8.png", "",
+				"石榴", "", "", 12, 1, "http://smsbp.cloudapp.net/BP_Web/Product.aspx?bokId=MB16002", "img/m1.png", "",
+				"杜松", "", "", 13, 1, " ", "img/m37.jpg", "",
+				"金盞花", "", "", 14, 1, " ", "img/m38.jpg", "",
+
+				"柳樹皮", "", "", 5, 2, "#", "img/m39.png", "",
+                "洋甘菊", "", "", 6, 2, "#", "img/m40.jpg", "",
+				"洋芫荽", "", "", 7, 2, "#", "img/m58.png", "",
+				"洋蓍草", "", "", 8, 2, "#", "img/m19.png", "",
+				"胡椒薄荷", "", "50.9415", 9, 2, "#", "img/m50.png", "",
+				"香蜂草", "", "51.9961", 10, 2, "#", "img/m42.jpg", "",
+				"茶", "", "54.938045", 11, 2, "#", "img/m61.png", "",
+				"黑升麻", "", "55.845", 12, 2, "#", "img/m43.jpg", "",
+				"滑榆", "", "58.933195", 13, 2, "#", "img/m33.png", "",
+				"當歸", "", "58.6934", 14, 2, "#", "img/m26.png", "",
+
+				"葡萄與葡萄籽", "", "63.546", 5, 3, "#", "img/m60.png", "",
+				"蜂斗菜", "", "65.38", 6, 3, "#", "img/m47.png", "",
+				"總序天冬", "", "69.723", 7, 3, "#", "img/m29.png", "",
+				"蘆薈", "", "72.63", 8, 3, "#", "img/m44.jpg", "",
+				"大豆", "", "92.90628", 9, 3, "#", "img/m30.png", "",
+				"大蒜", "", "95.96", 10, 3, "#", "img/m45.jpg", "",
+				"山金車", "", "(98)", 11, 3, "#", "img/m53.png", "",
+				"天竺葵", "", "101.07", 12, 3, "#", "img/m46.jpg", "",
+				"毛蕊花", "", "102.9055", 13, 3, "#", "img/m47.jpg", "",
+				"北美黃芩", "", "106.42", 14, 3, "#", "img/m43.png", "",
+
+				"卡瓦胡椒", "", "107.8682", 5, 4, "#", "img/m42.png", "",
+				"玉米鬚", "", "112.411", 6, 4, "#", "img/m14.png", "",
+				"甘草", "", "114.818", 7, 4, "#", "img/m48.jpg", "",
+				"白毛茛", "", "118.71", 8, 4, "#", "img/m59.png", "",
+				"百里香", "", "140.116", 9, 4, "", "img/m62.png", "",
+				"西番蓮", "", "140.90765", 10, 4, "#", "img/m49.jpg", "",
+				"亞洲參", "", "144.242", 11, 4, "igmap.htm", "img/m40.png", "",
+				"青花菜", "", "207.2", 8, 6, "#", "img/m501.png", "",
+				"洋車前子", "", "150.36", 13, 4, "#", "img/m52.png", "",
+				"桉樹", "", "151.964", 14, 4, "#", "img/m63.png", "",
+
+				"異株蕁麻", "", "157.25", 5, 5, "#", "img/m56.png", "",
+				"紫錐花", "", "158.92535", 6, 5, "#", "img/m46.png", "",
+				"菠菜", "", "162.5", 7, 5, "#", "img/m23.png", "",
+				"椰子油", "", "", 8, 5, "#", "img/m57.jpg", "",
+				"過長沙", "", "", 9, 5, "", "img/m41.jpg", "",
+				"銀杏", "", "", 10, 5, "", "img/m51.jpg", "",
+				"歐益母草", "", "186.207", 11, 5, "#", "img/m27.png", "",
+				"薑黃", "", "190.23", 12, 5, "#", "img/m52.jpg", "",
+				"藥蜀葵根", "", "192.217", 13, 5, "#", "img/m50.png", "",
+				"纈草", "", "195.084", 14, 5, "#", "img/m44.png", "",
+
+				"小白菊", "", "196.966569", 5, 6, "#", "img/m58.jpg", "",
+				"小豆蔻", "", "200.59", 6, 6, "#", "img/m11.png", "",
+				"山楂", "", "204.3833", 7, 6, "#", "img/m59.png", "",
+                "肉桂", "", "(145)", 12, 4, "#", "img/m3.png", "",
+				"西洋接骨木", "", "", 9, 6, "", "img/m6.png", "",
+				"西洋蒲公英", "", "", 10, 6, "", "img/m15.png", "",
+				"刺小蘗", "", "238.02891", 11, 6, "#", "img/m10.png", "",
+				"金縷梅", "", "(237)", 12, 6, "#", "img/m18.png", "",
+				"非洲李", "", "(244)", 13, 6, "#", "img/m22.png", "",
+				"南歐黃荊", "", "(243)", 14, 6, "#", "img/m25.png", "",
+
+				"枸杞", "", "(268)", 5, 7, "#", "img/m531.png", "",
+				"康復力", "", "(271)", 6, 7, "#", "img/m13.png", "",
+				"淫羊藿", "", "(272)", 7, 7, "#", "img/m21.png", "",
+				"番茄", "", "(270)", 8, 7, "#", "img/m54.jpg", "",
+				"黃耆", "感冒、流感", "(276)", 9, 7, "http://www.natgeomedia.com/reading/mag-news/42081", "img/m5.png", "",
+				"酪梨", "", "(281)", 10, 7, "", "img/m55.jpg", "",
+				"熊果", "", "", 11, 7, "#", "img/m24.png", "",
+				"辣椒", "", "(285)", 12, 7, "#", "img/m56.jpg", "",
+				"歐洲七葉樹", "", "(284)", 13, 7, "#", "img/m9.png", "",
+				"歐洲越橘", "", "(289)", 14, 7, "#", "img/m7.png", "",
+
+				"膠草", "", "(276)", 5, 8, "#", "img/m16.png", "",
+				"蔓越莓", "", "(281)", 6, 8, "#", "img/m57.png", "",
+				"燕麥片", "", "(280)", 7, 8, "#", "img/m54.png", "",
+				"貓爪藤", "", "(285)", 8, 8, "#", "img/m12.png", "",
+				"鋸棕櫚", "", "(284)", 9, 8, "#", "img/m20.png", "",
+				"優格", "", "(289)", 10, 8, "#", "img/m4.png", "",
+				"薰衣草", "", "(288)", 11, 8, "#", "img/m17.png", "",
+				"覆盆子葉", "", "(293)", 12, 8, "#", "img/m28.png", "",
+				"感冒、流感", "", "(294)", 13, 8, "#", "img/.jpg", "rgba(191, 191, 191,0.5)",
+				"咳嗽", "", "(294)", 14, 8, "#", "img/.jpg", "rgba(255, 82, 82,0.5)",
+
+				"喉嚨痛", "", "(276)", 5, 9, "#", "img/.jpg", "rgba(255, 148, 201,0.5)",
+				"腹瀉", "", "(281)", 6, 9, "#", "img/.jpg", "rgba(128, 128, 255,0.5)",
+				"消化不良", "", "(280)", 7, 9, "#", "img/.jpg", "rgba(71, 163, 2557,0.5)",
+				"便秘", "", "(285)", 8, 9, "#", "img/.jpg", "rgba(77, 255, 255,0.5)",
+				"心臟保健", "", "(284)", 9, 9, "#", "img/.jpg", "rgba(82, 255, 82,0.5)",
+				"高血壓", "", "(289)", 10, 9, "#", "img/.jpg", "rgba(167, 255, 36,0.5)",
+				"血液循環", "", "(288)", 11, 9, "#", "img/.jpg", "rgba(250, 250, 0,0.5)",
+				"皮膚炎", "", "(293)", 12, 9, "#", "img/.jpg", "rgba(255, 161, 66,0.5)",
+                "發炎", "", "(247)", 13, 9, "#", "img/.jpg", "rgba(184, 111, 111,0.5)",
+				"燒燙傷", "", "(247)", 14, 9, "#", "img/.jpg", "rgba(175, 175, 96,0.5)",
+
+				"瘀傷", "", "(251)", 5, 10, "#", "img/.jpg", "rgba(113, 183, 183,0.5)",
+				"擦傷、割傷、瘡傷", "", "(252)", 6, 10, "#", "img/.jpg", "rgba(153, 153, 204,0.5)",
+				"牛皮癬", "", "(276)", 7, 10, "#", "img/.jpg", "rgba(183, 102, 174,0.5)",
+				"濕疹", "", "(281)", 8, 10, "#", "img/.jpg", "rgba(143, 143, 143,0.5)",
+				"泌尿道保健", "", "(280)", 9, 10, "#", "img/.jpg", "rgba(235, 0, 0,0.5)",
+				"利尿", "", "(285)", 10, 10, "#", "img/.jpg", "rgba(255, 51, 153,0.5)",
+				"糖尿病", "", "", 11, 10, "", "img/.jpg", "rgba(156, 51, 255,0.5)",
+				"抗氧化物", "", "", 12, 10, "", "img/.jpg", "rgba(0, 0, 230,0.5)",
+				"焦慮緊張", "", "(288)", 13, 10, "", "img/.jpg", "rgba(0, 102, 204,0.5)",
+               	"失眠", "", "(293)", 14, 10, "", "img/.jpg", "rgba(0, 173, 173,0.5)",
+
+                "認知能力", "", "(251)", 5, 11, "#", "img/.jpg", "rgba(2, 202, 119,0.5)",
+				"偏頭痛", "", "(252)", 6, 11, "#", "img/.jpg", "rgba(101, 168, 0,0.5)",
+				"關節炎", "", "(276)", 7, 11, "#", "img/.jpg", "rgba(117, 117, 0,0.5)",
+				"骨骼保健", "", "(281)", 8, 11, "#", "img/.jpg", "rgba(189, 94, 0,0.5)",
+				"背痛", "", "(280)", 9, 11, "#", "img/.jpg", "rgba(133, 44, 0,0.5)",
+				"支氣管炎", "", "(285)", 10, 11, "#", "img/.jpg", "rgba(129, 65, 65,0.5)",
+				"氣喘", "", "", 11, 11, "", "img/.jpg", "rgba(129, 129, 65,0.5)",
+				"經前症候群", "", "", 12, 11, "", "img/.jpg", "rgba(65, 129, 129,0.5)",
+				"更年期", "", "(288)", 13, 11, "", "img/.jpg", "rgba(91, 91, 174,0.5)",
+               	"女性生理健康", "", "(293)", 14, 11, "", "img/.jpg", "rgba(145, 70, 136,0.5)",
+
+                "攝護腺保健", "", "(288)", 5, 12, "", "img/.jpg", "rgba(0, 97, 0,0.5)",
+               	"男性生理健康", "", "(293)", 6, 12, "", "img/.jpg", "rgba(90, 0, 173,0.5)",      
+			];
+
+			var camera, scene, renderer;
+			var controls;
+
+			var objects = [];
+			var targets = { table: [], sphere: [], helix: [], grid: [] };
+
+			init();
+			animate();
+
+			function init() {
+
+				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
+				camera.position.z = 4400;
+
+				scene = new THREE.Scene();
+
+				// table
+
+				for ( var i = 0; i < table.length; i += 8 ) {
+
+					var element = document.createElement( 'div' );
+					element.className = 'element';
+				
+                	var bg = document.createElement('div'); 
+					element.setAttribute('style', "background-color:" + table[i + 7]);
+					element.appendChild(bg);
+
+					var link = document.createElement('a'); // + url
+					link.setAttribute('href', table[i+5]);
+					link.setAttribute('target', "_blank");
+					element.appendChild(link);
+
+					var Img = document.createElement('img');
+					Img.setAttribute('class', 'done');
+					//					Img.setAttribute('width', 230);
+					//					Img.setAttribute('height', 230);
+					Img.setAttribute('style', 'background-image:url(' + table[i + 6] + ');background-size:180px 180px;background-repeat:no-repeat;background-position:center');
+//					Img.setAttribute('style', 'background-image:url(img/m25.png);background-size:180px 180px;background-repeat:no-repeat;background-position:center');
+					//				    Img.setAttribute('src', table[i+6]);
+					link.appendChild(Img);
+
+					var number = document.createElement( 'div' );
+					number.className = 'number'; //右上角小字
+					number.textContent = (i/8) ;
+//					element.appendChild( number );
+					
+
+					var symbol = document.createElement( 'div' );
+					symbol.className = 'symbol'; //大字
+					symbol.textContent = table[i];
+					//element.appendChild( symbol );
+					link.appendChild(symbol);
+                    
+					var details = document.createElement( 'div' );
+					details.className = 'details'; //下面兩行小字
+					details.innerHTML = table[ i + 1 ] + '<br>' + table[ i + 2 ];
+					//element.appendChild( details );
+//					link.appendChild(details);
+
+					var object = new THREE.CSS3DObject( element );
+					object.position.x = Math.random() * 4000 - 2000;
+					object.position.y = Math.random() * 4000 - 2000;
+					object.position.z = Math.random() * 4000 - 2000;
+					scene.add( object );
+
+					objects.push( object );
+
+					//
+
+					var object = new THREE.Object3D();
+					object.position.x = (table[i + 3] * 200) - 1600;
+					object.position.y = -(table[i + 4] * 300) + 1620;
+
+					targets.table.push( object );
+
+				}
+
+				// sphere
+
+				var vector = new THREE.Vector3();
+
+				for ( var i = 0, l = objects.length; i < l; i ++ ) {
+
+					var phi = Math.acos( -1 + ( 2 * i ) / l );
+					var theta = Math.sqrt( l * Math.PI ) * phi;
+
+					var object = new THREE.Object3D();
+
+					object.position.x = 800 * Math.cos( theta ) * Math.sin( phi );
+					object.position.y = 800 * Math.sin( theta ) * Math.sin( phi );
+					object.position.z = 800 * Math.cos( phi );
+
+					vector.copy( object.position ).multiplyScalar( 2 );
+
+					object.lookAt( vector );
+
+					targets.sphere.push( object );
+
+				}
+
+				// helix
+
+				var vector = new THREE.Vector3();
+
+				for ( var i = 0, l = objects.length; i < l; i ++ ) {
+
+					var phi = i * 0.175 + Math.PI;
+
+					var object = new THREE.Object3D();
+
+					object.position.x = 900 * Math.sin( phi );
+					object.position.y = - ( i * 10 ) + 450;
+					object.position.z = 900 * Math.cos( phi );
+
+					vector.x = object.position.x * 2;
+					vector.y = object.position.y;
+					vector.z = object.position.z * 2;
+
+					object.lookAt( vector );
+
+					targets.helix.push( object );
+
+				}
+
+				// grid
+
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = new THREE.Object3D();
+
+					object.position.x = ( ( i % 5 ) * 400 ) - 800;
+					object.position.y = ( - ( Math.floor( i / 5 ) % 5 ) * 400 ) + 800;
+					object.position.z = ( Math.floor( i / 25 ) ) * 1000 - 2000;
+
+					targets.grid.push( object );
+
+				}
+
+				//
+
+				renderer = new THREE.CSS3DRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.domElement.style.position = 'absolute';
+				document.getElementById( 'container' ).appendChild( renderer.domElement );
+
+				//
+
+				controls = new THREE.TrackballControls( camera, renderer.domElement );
+				controls.rotateSpeed = 0.5;
+				controls.minDistance = 500;
+				controls.maxDistance = 6000;
+				controls.addEventListener( 'change', render );
+
+				var button = document.getElementById( 'table' );
+				button.addEventListener( 'click', function ( event ) {
+
+					transform( targets.table, 20 );
+
+				}, false );
+
+				var button = document.getElementById( 'sphere' );
+				button.addEventListener( 'click', function ( event ) {
+
+					transform( targets.sphere, 20 );
+
+				}, false );
+
+				var button = document.getElementById( 'helix' );
+				button.addEventListener( 'click', function ( event ) {
+
+					transform( targets.helix, 20 );
+
+				}, false );
+
+				var button = document.getElementById( 'grid' );
+				button.addEventListener( 'click', function ( event ) {
+
+					transform( targets.grid, 20 );
+
+				}, false );
+
+				transform( targets.table, 20 );
+
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			function transform( targets, duration ) {
+
+				TWEEN.removeAll();
+
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = objects[ i ];
+					var target = targets[ i ];
+
+					new TWEEN.Tween( object.position )
+						.to( { x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration )
+						.easing( TWEEN.Easing.Exponential.InOut )
+						.start();
+
+					new TWEEN.Tween( object.rotation )
+						.to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+						.easing( TWEEN.Easing.Exponential.InOut )
+						.start();
+
+				}
+
+				new TWEEN.Tween( this )
+					.to( {}, duration * 2 )
+					.onUpdate( render )
+					.start();
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+				render();
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				TWEEN.update();
+
+				controls.update();
+
+			}
+
+			function render() {
+
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+	</body>
+</html>

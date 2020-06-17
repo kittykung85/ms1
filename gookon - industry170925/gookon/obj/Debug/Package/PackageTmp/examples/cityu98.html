@@ -1,0 +1,809 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>GRE</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			html, body {
+				height: 100%;
+			}
+
+			body {
+				background-color: #FFFFFF;
+				margin: 0;
+				font-family: Helvetica, sans-serif;
+				overflow: hidden;
+			}
+
+			a {
+				color: #000000;
+			}
+
+			#logo {
+				position: absolute;
+				width: 100%;
+				padding: 0px;
+				font-family: Monospace;
+				font-size: 20px;
+				font-weight: bold;
+				text-align: center;
+				z-index: 1;
+                top: 5px;
+                left: -30px;
+            }
+
+			#menu {
+				position: absolute;
+				bottom: 22px;
+				width: 100%;
+				text-align: center;
+			}
+			
+			#menuL {
+				position: absolute;
+				top: 5px;
+				left:27px;
+				width: 100%;
+				text-align: center;
+			}
+
+			.element {
+                  width: 180px;
+                  height:250px;
+                  font-weight: bold;
+                  -webkit-font-smoothing: antialiased;
+                  -moz-osx-font-smoothing: grayscale;
+                  background-color: rgba(133, 66, 0,0.75);
+                  border: 0px solid rgba(127,255,255,0);
+                  order-radius: 8px;
+                  text-align: center;
+                  cursor: default;
+                  
+                }
+
+                .element:hover {
+                  box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+                  border: 1px solid rgba(168,118,0,0.75);
+                }
+                .element svg {
+                  position: absolute;
+                  top: 20px;
+                  left: 2px;
+                  right: 0px;
+                }
+				.element .done{
+                  position: absolute;
+                  top:65px;
+                  left:0px;
+                  width: 100%;
+                  height: 180px;
+                  border-style:ridge;
+                  border-color:brown;
+                  border-width: 0px;
+                }
+				.element .number {
+					position: absolute;
+					top: 20px;
+					right: 20px;
+					font-size: 10px;
+					text-shadow:1px 1px 1px #cccccc;
+					color: rgba(0,0,0,0.75);
+				}
+
+				.element .symbol {
+				  position: absolute;
+                  top: 35px;
+                  left: 0px;
+                  right: 0px;
+                  font-size: 20px;
+                  color: rgba(230, 255, 0,0.75);
+				}
+
+				.element .details {
+				    position: absolute;
+                    top: 5px;
+                    left: 0px;
+                    right: 0px;
+                    font-size: 20px;
+                    color: rgba(255,255, 255,0.75);
+				}
+
+			button {
+				color: rgba(0,0,0,0.75);
+				background: transparent;
+				outline: 1px solid rgba(127,255,255,0);
+				border: 0px;
+				padding: 5px 10px;
+				cursor: pointer;
+			}
+			button:hover {
+				background-color: rgba(255,187,0,0.5);
+			}
+			button:active {
+				color: #FFFFFF;
+				background-color: rgba(0,255,255,0.75);
+			}
+		</style>
+        <link rel="stylesheet" href="css/buttons.css" type="text/css" media="screen" />
+	</head>
+	<body>
+		<script src="../build/three.js"></script>
+		<script src="js/libs/tween.min.js"></script>
+		<script src="js/controls/TrackballControls.js"></script>
+		<script src="js/renderers/CSS3DRenderer.js"></script>
+
+		<div id="container"></div>
+		
+        <div id="menuL" style="font-size: 12px; height: 106px;">
+        <script language="javascript">
+            function pOnchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("iposition");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544") {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }
+            }
+            function k1Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind1");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544") {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "34") {
+                    transformPos(targets.sphere, 20, 1500, 1000, 2000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }
+            }
+            function k2Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind2");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544" ) {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }
+              }
+                  function k3Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind3");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544" ) {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }
+                }
+                  function k4Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind4");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544" ) {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }}
+                  function k5Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind5");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544" ) {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }}
+                  function k6Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind6");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544" ) {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }}
+                function k7Onchange() {
+                    //                alert('test onchange');
+                    var selectBox = document.getElementById("kind7");
+                    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                    controls.reset();
+
+                    if (selectedValue == "5544") {
+                        transformPos(targets.sphere, 20, 0, 0, 3000);
+                    }
+                    if (selectedValue == "198") {
+                        transformPos(targets.sphere, 20, 0, 0, -3000);
+                    }
+                    if (selectedValue == "71") {
+                        transformPos(targets.sphere, 20, 0, -3000, 0);
+                    }
+                    if (selectedValue == "18") {
+                        transformPos(targets.sphere, 20, 0, 3000, 0);
+                    }
+                    if (selectedValue == "11") {
+                        transformPos(targets.sphere, 20, 3000, 0, 0);
+                    }
+                    if (selectedValue == "88") {
+                        transformPos(targets.sphere, 20, -3000, 0, 0);
+                    } 
+                }
+                  function k8Onchange() {
+                //                alert('test onchange');
+                      location.href="http://140.113.73.194/yuekan/9.html";
+            }
+</script>
+           <h2>CityU</h2> 
+            
+        <select id="kind1" style="width: 100px" onchange="k1Onchange()">
+                <option id="OptionA" >A-D</option>
+                <option value="198" style="background-color: rgba(255,0,25,0.7)">Abraham Lincoln</option>
+                <option id="Option2" >Adam Smith</option>
+                <option value="34" style="background-color: rgba(255,0,25,0.7)">xx</option>
+                <option id="Option3" >xx</option>
+                <option id="Option4" >xx</option>
+                <option id="Option5" >xx</option>
+                <option id="Option11" >xx</option>
+                <option value="11" style="background-color: rgba(255,0,0,0.7)">xx</option>
+                <option id="Option13" >xx</option>    
+                <option id="Option14" >xx</option>
+                <option value="5544" style="background-color: rgba(255,0,0,0.7)">xx</option>   
+                <option id="Option15" >xx</option>
+                <option id="Option21" >xx</option>
+                <option id="Option22" >xx</option>
+                <option id="Option23" >xx</option>
+                <option id="Option24" >xx</option>
+                <option id="Option25" >xx</option>
+                <option id="Option31" >xx</option>
+                <option id="Option32" >xx</option>
+                <option id="Option33" >xx</option>    
+                <option id="Option34" >xx</option>
+                <option id="Option41" >xx</option>
+                <option id="Option42" >xx</option>
+                <option id="Option43" >xx</option>    
+                <option id="Option44" >xx</option> 
+                       
+            </select>
+        <select id="kind2" style="width: 100px" onchange="k2Onchange()">
+                <option id="OptionB" >E-L</option>
+                <option id="Ceramics" style="background-color: rgba(255,0,0,0)">xx</option>
+                <option id="Curios" style="background-color: rgba(255, 148, 201,0)">xx</option>
+                <option id="Painting" style="background-color: rgba(255, 128, 0,0)">xx</option>
+                <option value="18" style="background-color: rgba(255,255,0,0.7)">xx</option>
+                <option id="Jade" style="background-color: rgba(83,138,0,0)">xx</option>
+                <option id="Calligraphy" style="background-color: rgba(0, 255, 255,0)">xx</option>
+                <option id="Literature" style="background-color: rgba(72, 72, 147,0)">xx</option>
+                <option id="Book" style="background-color: rgba(145, 70, 136,0)">xx</option>       
+                <option id="Option10" style="background-color: rgba(255,0,0,0)">xx</option>
+                <option id="Option16" style="background-color: rgba(255, 148, 201,0)">xx</option>
+                <option id="Option17" style="background-color: rgba(255, 128, 0,0)">xx</option>
+                <option id="Option18" style="background-color: rgba(255,255,0,0)">xx</option>
+                <option id="Option64" style="background-color: rgba(83,138,0,0)">xx</option>
+                <option value="5544"  style="background-color: rgba(0, 255, 255,0.7)">xx</option>
+                <option id="Option66" style="background-color: rgba(72, 72, 147,0)">xx</option>
+                <option id="Option67" style="background-color: rgba(145, 70, 136,0)">xx</option>       
+               <option id="Option68" style="background-color: rgba(145, 70, 136,0)">xx</option>
+            </select>
+        <select id="kind3" style="width: 100px" onchange="k3Onchange()">
+                <option id="Option1" >M-P</option>
+                <option id="Option2" style="background-color: rgba(255,0,0,0)">xx</option>
+                <option id="Option3" style="background-color: rgba(255, 148, 201,0)">xx</option>
+                <option id="Option4" style="background-color: rgba(255, 128, 0,0)">xx</option>
+                <option id="Option5" style="background-color: rgba(255,255,0,0)">xx</option>
+                <option id="Option6" style="background-color: rgba(83,138,0,0)">xx</option>
+                <option value="198" style="background-color: rgba(0, 255, 255,0.7)">xx</option>
+                <option id="Option8" style="background-color: rgba(72, 72, 147,0)">xx</option>
+                <option id="Option9" style="background-color: rgba(145, 70, 136,0)">xx</option>       
+                <option id="Option69" style="background-color: rgba(145, 70, 136,0)">xx</option> 
+            </select>            
+        <select id="kind4" style="width: 100px" onchange="k4Onchange()">
+                <option id="Option19" >Q-W</option>
+                <option value="71" style="background-color: rgba(255,0,0,0.7)">xx</option>
+                <option value="198" style="background-color: rgba(255, 148, 201,0.7)">xx</option>
+                <option id="Option22" style="background-color: rgba(255, 128, 0,0)">xx</option>
+                <option id="Option23" style="background-color: rgba(255,255,0,0)">xx</option>
+                
+               </select>
+        </div>
+		<div id="menu">
+			<button id="table">TABLE</button>
+			<button id="sphere">SPHERE</button>
+			<button id="helix">HELIX</button>
+			<button id="grid">GRID</button>
+		</div>
+       	
+        <script>
+
+            var table = [
+
+                "Abraham Lincoln", "AB", "12.0107", 6, 2, "http://54.200.219.41/gre/tw/block_content_GRE3.php?block=11", "img/ab.png", "",
+				"Ae-g", "Aluminium", "26.9815386", 7, 2, "igimg/12.png", "", "",
+				"An-p", "Silicon", "28.0855", 8, 2, "#", "igimg/13.png", "",
+				"Ba-l", "Vanadium", "50.9415", 9, 2, "#", "igimg/14.png", "",
+				"Ca", "Chromium", "51.9961", 10, 2, "#", "igimg/15.png", "",
+				"Co", "Manganese", "54.938045", 11, 2, "#", "igimg/16.png", "",
+				"De", "Iron", "55.845", 12, 2, "#", "igimg/17.png", "",
+				"Di", "Cobalt", "58.933195", 13, 2, "#", "igimg/18.png", "",
+                
+				"Ac-d", "Zinc", "65.38", 6, 3, "#", "igimg/21.png", "",
+				"Al-m", "Gallium", "69.723", 7, 3, "#", "igimg/22.png", "",
+				"Ar-u", "Germanium", "72.63", 8, 3, "#", "igimg/23.png", "",
+				"Bo-u", "Niobium", "92.90628", 9, 3, "#", "igimg/24.png", "",
+				"Ce-l", "Molybdenum", "95.96", 10, 3, "#", "igimg/25.png", "",
+				"Co-u", "Technetium", "(98)", 11, 3, "#", "igimg/26.png", "",
+				"Di", "Ruthenium", "101.07", 12, 3, "#", "igimg/27.png", "",
+				"Do-w", "Rhodium", "102.9055", 13, 3, "#", "igimg/28.png", "",
+
+                "Ea-m", "Cadmium", "112.411", 6, 4, "#", "igimg/31.png", "",
+				"Ex", "Indium", "114.818", 7, 4, "#", "igimg/32.png", "",
+				"Fo-u", "Tin", "118.71", 8, 4, "#", "igimg/33.png", "",
+				"Go-u", "Cerium", "140.116", 9, 4, "#", "igimg/34.png", "",
+				"Id-m", "Praseodymium", "140.90765", 10, 4, "#", "igimg/35.png", "",
+				"In", "Neodymium", "144.242", 11, 4, "igmap.htm", "igimg/36.png", "",
+				"In-r", "Lead", "207.2", 8, 6, "#", "igimg/37.png", "",
+				"Le-i", "Samarium", "150.36", 13, 4, "#", "igimg/38.png", "",
+
+                "En-v", "Terbium", "158.92535", 6, 5, "#", "igimg/41.png", "",
+				"Fa-l", "Dysprosium", "162.5", 7, 5, "#", "igimg/42.png", "",
+				"Fa-l", "Holmium", "164.93032", 8, 5, "#", "igimg/43.png", "",
+				"Ha-y", "Tantalum", "180.94788", 9, 5, "", "igimg/44.png", "",
+				"In", "Tungsten", "183.84", 10, 5, "", "igimg/45.png", "",
+				"In", "Rhenium", "186.207", 11, 5, "#", "igimg/46.png", "",
+				"Ja-La", "Osmium", "190.23", 12, 5, "#", "igimg/47.png", "",
+				"Lo-u", "Iridium", "192.217", 13, 5, "#", "igimg/48.png", "",
+
+				"Ma", "Mercury", "200.59", 6, 6, "#", "igimg/51.png", "",
+				"Mi", "Thallium", "204.3833", 7, 6, "#", "igimg/52.png", "",
+                "Na-e", "Promethium", "(145)", 12, 4, "#", "igimg/53.png", "",
+				"Ob-n", "Thorium", "232.03806", 9, 6, "", "igimg/54.png", "",
+				"Pa", "Protactinium", "231.0588", 10, 6, "", "igimg/55.png", "",
+				"Ph-l", "Uranium", "238.02891", 11, 6, "#", "igimg/56.png", "",
+				"Pr", "Neptunium", "(237)", 12, 6, "#", "igimg/57.png", "",
+				"Pr", "Plutonium", "(244)", 13, 6, "#", "igimg/58.png", "",
+                
+				"Me", "Seaborgium", "(271)", 6, 7, "#", "igimg/61.png", "",
+				"Mo-y", "Bohrium", "(272)", 7, 7, "#", "igimg/62.png", "",
+				"Ni-u", "Hassium", "(270)", 8, 7, "#", "igimg/63.png", "",
+				"Op-x", "Meitnerium", "(276)", 9, 7, "#", "igimg/64.png", "",
+				"Pe", "Darmstadium", "(281)", 10, 7, "#", "igimg/65.png", "",
+				"Po", "Roentgenium", "(280)", 11, 7, "#", "igimg/66.png", "",
+				"Pr", "Copernicium", "(285)", 12, 7, "#", "igimg/67.png", "",
+				"Pu", "Unutrium", "(284)", 13, 7, "#", "igimg/68.png", "",
+                
+				"Qu", "Darmstadium", "(281)", 6, 8, "#", "igimg/71.png", "",
+				"Re", "Roentgenium", "(280)", 7, 8, "#", "igimg/72.png", "",
+				"Sa-c", "Copernicium", "(285)", 8, 8, "#", "igimg/73.png", "",
+				"Sl-o", "Unutrium", "(284)", 9, 8, "#", "igimg/74.png", "",
+				"Ta-e", "Flerovium", "(289)", 10, 8, "#", "igimg/75.png", "",
+				"Ub-s", "Ununpentium", "(288)", 11, 8, "#", "igimg/76.png", "",
+				"Ve", "Livermorium", "(293)", 12, 8, "#", "igimg/77.png", "",
+				"Wa", "Ununseptium", "(294)", 13, 8, "#", "igimg/78.png", "",
+                
+				"Ra-e", "Darmstadium", "(281)", 6, 9, "#", "igimg/81.png", "",
+				"Re-u", "Roentgenium", "(280)", 7, 9, "#", "igimg/82.png", "",
+				"Se-k", "Copernicium", "(285)", 8, 9, "#", "igimg/83.png", "",
+				"Sp-u", "Unutrium", "(284)", 9, 9, "#", "igimg/84.png", "",
+				"Th-r", "Flerovium", "(289)", 10, 9, "#", "igimg/85.png", "",
+				"Va", "Ununpentium", "(288)", 11, 9, "#", "igimg/86.png", "",
+				"Vi-o", "Livermorium", "(293)", 12, 9, "#", "igimg/87.png", "",
+                "We-Ze", "Curium", "(247)", 13, 9, "#", "igimg/88.png", "",
+
+                "Ra-e", "Darmstadium", "(281)", 6,10, "#", "igimg/81.png", "",
+				"Re-u", "Roentgenium", "(280)", 7, 10, "#", "igimg/82.png", "",
+				"Se-k", "Copernicium", "(285)", 8, 10, "#", "igimg/83.png", "",
+				"Sp-u", "Unutrium", "(284)", 9, 10, "#", "igimg/84.png", "",
+				"Th-r", "Flerovium", "(289)", 10, 10, "#", "igimg/85.png", "",
+				"Va", "Ununpentium", "(288)", 11, 10, "#", "igimg/86.png", "",
+				"Vi-o", "Livermorium", "(293)", 12, 10, "#", "igimg/87.png", "",
+                "We-Ze", "Curium", "(247)", 13, 10, "#", "igimg/88.png", "",
+				                		
+			];
+
+			var camera, scene, renderer;
+			var controls;
+
+			var objects = [];
+			var targets = { table: [], sphere: [], helix: [], grid: [] };
+
+			init();
+			animate();
+
+			function init() {
+
+				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 0.1, 10000 );
+				camera.position.z = 2000;
+
+				scene = new THREE.Scene();
+
+				// table
+
+				for ( var i = 0; i < table.length; i += 8 ) {
+
+					var element = document.createElement( 'div' );
+					element.className = 'element';
+					//element.style.backgroundColor = 'rgba(255,187,0,' + ( Math.random() * 0.5 + 0.25 ) + ')';
+					
+
+					var bg = document.createElement('div');
+					element.setAttribute('style', "background-color:" + table[i + 7]);
+					element.appendChild(bg);
+
+					var link = document.createElement('a'); // + url
+					link.setAttribute('href', table[i+5]);
+					link.setAttribute('target', "_blank");
+					element.appendChild(link);
+
+					var Img = document.createElement('img');
+					Img.setAttribute('class', 'done');
+//					Img.setAttribute('width', 230);
+//					Img.setAttribute('height', 230);
+					Img.setAttribute('style', 'background-image:url(' + table[i + 6] + ');background-size:180px 180px;background-repeat:no-repeat;background-position:center');
+//				    Img.setAttribute('src', table[i+6]);
+					link.appendChild(Img);
+
+					var number = document.createElement( 'div' );
+					number.className = 'number'; //右上角小字
+					number.textContent = (i/8) ;
+					element.appendChild( number );
+					
+
+					var symbol = document.createElement( 'div' );
+					symbol.className = 'symbol'; //大字
+					symbol.textContent = table[i];
+					element.appendChild( symbol );
+					link.appendChild(symbol);
+                    
+					var details = document.createElement( 'div' );
+					details.className = 'details'; //下面兩行小字
+					details.innerHTML = table[ i + 1 ] // + '<br>' + table[ i + 2 ];
+					//element.appendChild( details );
+					link.appendChild(details);
+
+					var object = new THREE.CSS3DObject( element );
+//					object.position.x = Math.random() * 4000 - 2000;
+//					object.position.y = Math.random() * 4000 - 2000;
+//					object.position.z = Math.random() * 4000 - 2000;
+					scene.add( object );
+
+					objects.push( object );
+
+					//
+
+					var object = new THREE.Object3D();
+					object.position.x = ( table[ i + 3 ] * 185 ) - 1700;
+					object.position.y = - ( table[ i + 4 ] * 300 ) + 1580;
+
+					targets.table.push( object );
+
+				}
+
+				// sphere
+	var vector = new THREE.Vector3();
+
+	for (var i = 0, l = objects.length; i < l; i++) {
+
+	    var phi = Math.acos(-1 + (2 * i) / l);
+	    var theta = Math.sqrt(l * Math.PI) * phi;
+
+	    var object = new THREE.Object3D();
+
+	    object.position.x = 800 * Math.cos(theta) * Math.sin(phi);
+	    object.position.y = 800 * Math.sin(theta) * Math.sin(phi);
+	    object.position.z = 800 * Math.cos(phi);
+
+	    vector.copy(object.position).multiplyScalar(2);
+
+	    object.lookAt(vector);
+
+	    targets.sphere.push(object);
+
+	}
+
+               
+				// helix
+
+				var vector = new THREE.Vector3();
+
+				for ( var i = 0, l = objects.length; i < l; i ++ ) {
+
+					var phi = i * 0.175 + Math.PI;
+
+					var object = new THREE.Object3D();
+
+					object.position.x = 1300 * Math.sin( phi );
+					object.position.y = - ( i * 12 ) + 600;
+					object.position.z = 1300 * Math.cos( phi );
+
+					vector.x = object.position.x * 2;
+					vector.y = object.position.y;
+					vector.z = object.position.z * 2;
+
+					object.lookAt( vector );
+
+					targets.helix.push( object );
+
+				}
+
+				// grid
+
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = new THREE.Object3D();
+
+					object.position.x = ( ( i % 4 ) * 310 ) - 400;
+					object.position.y = ( - ( Math.floor( i / 4 ) % 3 ) * 310 ) + 400;
+					object.position.z = ( Math.floor( i / 12 ) ) * 500 - 1000;
+
+					targets.grid.push( object );
+
+				}
+
+				//
+
+				renderer = new THREE.CSS3DRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.domElement.style.position = 'absolute';
+				document.getElementById( 'container' ).appendChild( renderer.domElement );
+
+				//
+
+				controls = new THREE.TrackballControls( camera, renderer.domElement );
+				controls.rotateSpeed = 0.5;
+				controls.minDistance = 200;
+				controls.maxDistance = 100000;
+				controls.addEventListener( 'change', render );
+
+				var button = document.getElementById( 'table' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.table, 20);
+				    camera.position.x = 0;
+				    camera.position.y = 0;
+					camera.position.z = 4000;
+				}, false );
+
+				var button = document.getElementById( 'sphere' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.sphere, 20);
+				    camera.position.x = 0;
+				    camera.position.y = 0;
+					camera.position.z = 3000;
+				}, false );
+
+          
+				var button = document.getElementById( 'helix' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.helix, 20);
+				    camera.position.x = 0;
+				    camera.position.y = 0;
+					camera.position.z = 4000;
+				}, false );
+
+				var button = document.getElementById( 'grid' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.grid, 20);
+				    camera.position.x = 2000;
+				    camera.position.y = 0;
+					camera.position.z = 2000;
+				}, false );
+
+	            transform(targets.table, 20);
+	            controls.reset();
+				camera.position.x = 0;
+				camera.position.y = 0;
+				camera.position.z = 4000;
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			function transform( targets, duration ) {
+
+				TWEEN.removeAll();
+
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = objects[ i ];
+					var target = targets[ i ];
+
+					new TWEEN.Tween( object.position )
+						.to( { x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration )
+						.easing( TWEEN.Easing.Exponential.InOut )
+						.start();
+
+					new TWEEN.Tween( object.rotation )
+						.to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+						.easing( TWEEN.Easing.Exponential.InOut )
+						.start();
+
+				}
+	               
+
+				new TWEEN.Tween( this )
+					.to( {}, duration * 2 )
+					.onUpdate( render )
+					.start();
+
+			}
+
+			function transformPos(targets, duration,iX,iY,iZ) {
+
+			    TWEEN.removeAll();
+			    camera.position.x = iX;
+			    camera.position.y = iY;
+			    camera.position.z = iZ;
+			    for (var i = 0; i < objects.length; i++) {
+
+			        var object = objects[i];
+			        var target = targets[i];
+
+			        new TWEEN.Tween(object.position)
+						.to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration)
+						.easing(TWEEN.Easing.Exponential.InOut)
+						.start();
+
+			        new TWEEN.Tween(object.rotation)
+						.to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration)
+						.easing(TWEEN.Easing.Exponential.InOut)
+						.start();
+
+			    }
+                
+                new TWEEN.Tween(this)
+					.to({}, duration * 2)
+					.onUpdate(render)
+					.start();
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+				render();
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				TWEEN.update();
+
+				controls.update();
+
+			}
+
+			function render() {
+
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+	</body>
+</html>

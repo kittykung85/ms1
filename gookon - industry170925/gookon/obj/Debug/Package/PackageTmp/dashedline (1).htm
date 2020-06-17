@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <!--<script src="js/d3.v3.min.js"></script>-->
+
+    <title>Dashed Lines (Symbols)</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+       #map1 {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+  
+    <script>
+        // This example converts a polyline to a dashed line, by
+        // setting the opacity of the polyline to 0, and drawing an opaque symbol
+        // at a regular interval on the polyline.
+
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: { lat: 25.1023554, lng: 121.5463038 },
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+
+            // [START region_polyline]
+            // Define a symbol using SVG path notation, with an opacity of 1.
+            var lineSymbol = {
+                path: 'M 0,-1 0,1',
+                strokeOpacity: 1,
+                scale: 4
+            };
+
+            // Create the polyline, passing the symbol in the 'icons' property.
+            // Give the line an opacity of 0.
+            // Repeat the symbol at intervals of 20 pixels to create the dashed effect.
+            var line = new google.maps.Polyline({
+                path: [ { lat: 48.1550547, lng: 11.2616557 }, //慕尼黑
+                  {lat: 37.9908997, lng: 23.7033198 }, //希臘雅典
+                  {lat: 40.030165, lng: 35.666326 }, //土耳其約茲加特切凱雷克
+                   {lat: 31.4839658, lng: 74.1861195}],
+                strokeColor: '#FF0000',
+                strokeOpacity: 0,
+                icons: [{
+                    icon: lineSymbol,
+                    offset: '0',
+                    repeat: '20px'
+                }],
+                map: map
+            });
+
+            var line2 = new google.maps.Polyline({
+                path: [{ lat: 39.9000872, lng: 116.3969975 }, //北京
+                 {lat: 43.8218749, lng: 87.4226668 }, //中國新疆維吾爾自治區烏魯木齊市
+                 {lat: 48.761865, lng: 56.363139 },
+                  { lat: 48.002835, lng: 36.148284 },
+                ],
+                strokeColor: '#FFF000',
+                strokeOpacity: 0,
+                icons: [{
+                    icon: lineSymbol,
+                    offset: '0',
+                    repeat: '20px'
+                }],
+                map: map
+            });
+            // [END region_polyline]
+        }
+
+
+        //info
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            icon: image
+        });
+        google.maps.event.addListener(marker, 'click', function () {
+            map.setZoom(8);
+            map.setCenter(marker.getPosition());
+        });
+
+        marker.append("svg:text")
+            .attr("x", padding + 7)
+            .attr("y", padding)
+            .attr("dy", ".31em")
+            .on("mouseout", function expandNode() { alert("ff") })
+            .on("click", addEvent())
+
+            .text(function (d) {
+                return d.name;
+            }
+            );
+
+
+        function addEvent(element, evnt, funct) {
+            if (element.attachEvent)
+                return element.attachEvent('on' + evnt, funct);
+            else
+                return element.addEventListener(evnt, funct, false);
+        }
+
+        // example
+        addEvent(
+    document.getElementById('myElement'),
+    'click',
+    function () { alert('hi!'); }
+);
+        $("#Circle").on("click", "tr", function () { alert($(this).text()); })
+    </script>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiX5veLG9NehR6FLAsTFpUSdCQQJjESPw&callback=initMap&signed_in=true" async defer></script> 
+  </body>
+</html>

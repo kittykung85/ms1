@@ -1,0 +1,1745 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>易孔孟老莊球</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			html, body {
+				height: 100%;
+			}
+
+			body {
+				background-color: #FFFFFF;
+				margin: 0;
+				font-family: Helvetica, sans-serif;
+				overflow: hidden;
+			}
+
+			a {
+				color: #000000;
+			}
+            	#info {
+				position: absolute;
+				width: 100%;
+				color: #000;
+				padding: 5px;
+				font-family: Monospace;
+				font-size: 13px;
+				font-weight: bold;
+				text-align: center;
+				z-index: 1;
+			}
+			#logo {
+				position: absolute;
+				width: 100%;
+				padding: 0px;
+				font-family: Monospace;
+				font-size: 20px;
+				font-weight: bold;
+				text-align: center;
+				z-index: 1;
+                top: 5px;
+                left: -30px;
+            }
+
+			#menu {
+				position: absolute;
+				bottom: 10px;
+				width: 100%;
+				text-align: center;
+                left: 0px;
+            }
+			
+			#menuL {
+				position: absolute;
+				top: 40px;
+				left:0px;
+				width: 100%;
+				text-align: center;
+			}
+
+			.element {
+                  width: 280px; 
+                  height:279px;
+                  font-weight: bold;
+                  -webkit-font-smoothing: antialiased;
+                  -moz-osx-font-smoothing: grayscale;
+                  background-color: rgba(255, 128, 0,0.75);
+                  border: 0px solid rgba(127,255,255,0);
+                  order-radius: 8px;
+                  text-align: center;
+                  cursor: default;                  
+                }
+                
+                .element1 {
+                  width: 150px;
+                  height:175px;
+                  font-weight: bold;
+                  -webkit-font-smoothing: antialiased;
+                  -moz-osx-font-smoothing: grayscale;
+                  background-color: rgba(255, 128, 0,0.75);
+                  border: 0px solid rgba(127,255,255,0);
+                  order-radius: 8px;
+                  text-align: center;
+                  cursor: default;                  
+                }
+
+                 .element2 {
+                  width: 220px;
+                  height:220px;
+                  font-weight: bold;
+                  -webkit-font-smoothing: antialiased;
+                  -moz-osx-font-smoothing: grayscale;
+                  background-color: rgba(255, 128, 0,0.75);
+                  border: 0px solid rgba(127,255,255,0);
+                  order-radius: 8px;
+                  text-align: center;
+                  cursor: default;                  
+                }
+                
+                 .element3 {
+                  width: 220px;
+                  height:220px;
+                  font-weight: bold;
+                  -webkit-font-smoothing: antialiased;
+                  -moz-osx-font-smoothing: grayscale;
+                  background-color: rgba(255, 128, 0,0.75);
+                  border: 0px solid rgba(127,255,255,0);
+                  order-radius: 8px;
+                  text-align: center;
+                  cursor: default;                  
+                }
+                
+                 .element4 {
+                  width: 220px;
+                  height:220px;
+                  font-weight: bold;
+                  -webkit-font-smoothing: antialiased;
+                  -moz-osx-font-smoothing: grayscale;
+                  background-color: rgba(255, 128, 0,0.75);
+                  border: 0px solid rgba(127,255,255,0);
+                  order-radius: 8px;
+                  text-align: center;
+                  cursor: default;                  
+                }
+                .element5 {
+                  width:100px;
+                  height:100px;
+                  font-weight: bold;
+                  -webkit-font-smoothing: antialiased;
+                  -moz-osx-font-smoothing: grayscale;
+                  background-color: rgba(255, 255, 255,0);
+                  border: 1px solid rgba(255,255,255,0);
+                  order-radius: 0px;
+                  text-align: center;
+                  cursor: default;                  
+                }
+                .element5_C {
+                  width:100px;
+                  height:100px;
+                  font-weight: bold;
+                  -webkit-font-smoothing: antialiased;
+                  -moz-osx-font-smoothing: grayscale;
+                  background-color: rgba(255, 255, 255,0);
+                  border: 1px solid rgba(255,255,255,0);
+                  order-radius: 0px;
+                  text-align: center;
+                  cursor: default;                  
+                }
+                .element:hover {
+                  box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+                  border: 1px solid rgba(127,255,255,0.75);
+                }
+                .element .svg {
+                  position: absolute;
+                  top: 20px;
+                  left: 2px;
+                  right: 0px;
+                }
+				.element .image{ 
+                  position: absolute;
+                  top:80px;
+                  left:0px;
+                  width: 100%;
+                  height: 100%;
+                  border-style:ridge;
+                  border-color:brown;
+                  border-width: 0px;
+                }
+				.element .number {
+					position: absolute;
+					top: 20px;
+					right: 20px;
+					font-size: 30px;
+					text-shadow:1px 1px 1px #cccccc;
+					color: rgba(0,255,255,0.75);
+				}
+				.element .symbol {
+				  position: absolute;
+                  top: 35px;
+                  left: 0px;
+                  right: 0px;
+                  font-size: 30px;
+                  color: rgba(0, 0, 0,0.75);
+				}
+				.element .details {
+				    position: absolute;
+                    top: 5px;
+                    left: 0px;
+                    right: 0px;
+                    font-size: 30px;
+                    color: rgba(255, 255, 255,0.75);
+				}
+				
+				
+				.element1:hover {
+                  box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+                  border: 1px solid rgba(127,255,255,1);
+                }
+				
+				.element1 .svg {
+                  position: absolute;
+                  top: 20px;
+                  left: 2px;
+                  right: 0px;
+                }
+				.element1 .image{
+                  position: absolute;
+                  top:0px;
+                  left:0px;
+                  width: 100%;
+                  height: 100%;
+                  border-style:ridge;
+                  border-color:brown;
+                  border-width: 0px;
+                }
+				.element1 .number {
+					position: absolute;
+					top: 0px;
+					right: 0px;
+					font-size: 00px;
+					text-shadow:1px 1px 1px #cccccc;
+					color: rgba(0,255,255,0.75);
+				}
+				.element1 .symbol {
+				  position: absolute;
+                  top: 35px;
+                  left: 0px;
+                  right: 0px;
+                  font-size:30px;
+                  color: rgba(0, 0, 0,0.75);
+				}
+				.element1 .details {
+				    position: absolute;
+                    top: 5px;
+                    left: 0px;
+                    right: 0px;
+                    font-size: 30px;
+                    color: rgba(255, 0, 0,0.75);
+				}
+				
+				
+				.element2:hover {
+                  box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+                  border: 1px solid rgba(127,255,255,0.75);
+                }
+				
+				.element2 .svg {
+                  position: absolute;
+                  top: 20px;
+                  left: 2px;
+                  right: 0px;
+                }
+				.element2 .image{
+                  position: absolute;
+                  top:10px;
+                  left:10px;
+                  width: 100%;
+                  height: 100%;
+                  border-style:ridge;
+                  border-color:brown;
+                  border-width: 0px;
+                }
+				.element2 .number {
+					position: absolute;
+					top: 20px;
+					right: 20px;
+					font-size: 30px;
+					text-shadow:1px 1px 1px #cccccc;
+					color: rgba(0,255,255,0.75);
+				}
+				.element2 .symbol {
+				  position: absolute;
+                  top: 35px;
+                  left: 0px;
+                  right: 0px;
+                  font-size: 30px;
+                  color: rgba(0, 0, 0,0.75);
+				}
+				.element2 .details {
+				    position: absolute;
+                    top: 5px;
+                    left: 0px;
+                    right: 0px;
+                    font-size: 30px;
+                    color: rgba(255, 0, 0,0.75);
+				}
+				
+				
+				.element3:hover {
+                  box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+                  border: 1px solid rgba(127,255,255,0.75);
+                }
+				.element3 svg {
+                  position: absolute;
+                  top: 20px;
+                  left: 2px;
+                  right: 0px;
+                }
+				.element3 .image{
+                  position: absolute;
+                  top:0px;
+                  left:0px;
+                  width: 100%;
+                  height: 100%;
+                  border-style:ridge;
+                  border-color:brown;
+                  border-width: 0px;
+                }
+				.element3 .number {
+					position: absolute;
+					top: 20px;
+					right: 20px;
+					font-size: 30px;
+					text-shadow:1px 1px 1px #cccccc;
+					color: rgba(0,255,255,0.75);
+				}
+				.element3 .symbol {
+				  position: absolute;
+                  top: 35px;
+                  left: 0px;
+                  right: 0px;
+                  font-size: 30px;
+                  color: rgba(0, 0, 0,0.75);
+				}
+				.element3 .details {
+				    position: absolute;
+                    top: 5px;
+                    left: 0px;
+                    right: 0px;
+                    font-size: 30px;
+                    color: rgba(255, 0, 0,0.75);
+				}
+				
+				
+				.element4:hover {
+                  box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+                  border: 1px solid rgba(127,255,255,0.75);
+                }				
+				.element4 .svg {
+                  position: absolute;
+                  top: 20px;
+                  left: 2px;
+                  right: 0px;
+                }
+				.element4 .image{
+                  position: absolute;
+                  top:0px;
+                  left:0px;
+                  width: 100%;
+                  height: 100%;
+                  border-style:ridge;
+                  border-color:brown;
+                  border-width: 0px;
+                }
+				.element4 .number {
+					position: absolute;
+					top: 0px;
+					right: 0px;
+					font-size: 0px;
+					text-shadow:0px 0px 0px #cccccc;
+					color: rgba(0,255,255,0.75);
+				}
+				.element4 .symbol {
+				  position: absolute;
+                  top: 0px;
+                  left: 0px;
+                  right: 0px;
+                  font-size: 0px;
+                  color: rgba(0, 0, 0,0.75);
+				}
+				.element4 .details {
+				                position: absolute;
+                                top: 5px;
+                                left: 0px;
+                                right: 0px;
+                                font-size:20px;
+                                color: rgba(255, 255, 255,0.75);
+				}
+				            
+				
+				.element5:hover {
+                  box-shadow: 0px 0px 0px rgba(255,255,255,0.75);
+                  border: 0px solid rgba(0,0,0,0.75);
+                }	
+				.element5 .svg {
+                  position: absolute;
+                  top: 0px;
+                  left: 0px;
+                  right: 0px;
+                }
+				.element5 .image{   
+                  position: absolute;
+                  top:0px;
+                  left:0px;
+                  width: 100%;
+                  height: 100%;
+                  border-style:ridge;
+                  border-color:brown;
+                  border-width: 0px;
+                }
+				.element5 .number {
+					position: absolute;
+					top: 0px;
+					right: 20px;
+					font-size: 30px;
+					text-shadow:1px 1px 1px #cccccc;
+					color: rgba(0,255,255,0.75);
+				}
+               .element5 .symbol {
+				  position: absolute;
+                  top: 0px;
+                  left: 0px;
+                  right: 0px;
+                  font-size:30px;
+                  color: rgba(0, 0, 0,0.75);
+				}
+	            .element5 .details {
+				                position: absolute;
+                                top: 5px;
+                                left: 0px;
+                                right: 0px;
+                                font-size: 30px;
+                                color: rgba(255, 255, 255,0.75);
+			     }
+
+                  .element5:hover {
+                  box-shadow: 0px 0px 0px rgba(255,255,255,0.75);
+                  border: 0px solid rgba(255,255,255,0.75);
+                }	
+				.element5 .svg {
+                  position: absolute;
+                  top: 0px;
+                  left: 0px;
+                  right: 0px;
+                }
+				.element5 .image{   
+                  position: absolute;
+                  top:0px;
+                  left:0px;
+                  width: 0%;
+                  height: 0%;
+                  border-style:ridge;
+                  border-color:brown;
+                  border-width: 0px;
+                }
+				.element5 .number {
+					position: absolute;
+					top: 0px;
+					right: 20px;
+					font-size: 30px;
+					text-shadow:1px 1px 1px #cccccc;
+					color: rgba(0,255,255,0.75);
+				}
+               .element5 .symbol {
+				  position: absolute;
+                  top: 0px;
+                  left: 0px;
+                  right: 0px;
+                  font-size:30px;
+                  color: rgba(0, 0, 0,0.75);
+				}
+	            .element5 .details {
+				                position: absolute;
+                                top: 5px;
+                                left: 0px;
+                                right: 0px;
+                                font-size: 30px;
+                                color: rgba(255, 255, 255,0.75);
+			     }
+                .element5_C:hover {
+                  box-shadow: 0px 0px 0px rgba(255,255,255,0.00);
+                  border: 0px solid rgba(255,255,255,0.75);
+                }	
+				.element5_C .svg {
+                  position: absolute;
+                  top: 0px;
+                  left: 0px;
+                  right: 0px;
+                }
+				.element5_C .image{   
+                  position: absolute;
+                  top:0px;
+                  left:0px;
+                  width: 100%;
+                  height: 100%;
+                  border-style:ridge;
+                  border-color:brown;
+                  border-width: 0px;
+                }
+				.element5_C .number {
+					position: absolute;
+					top: 0px;
+					right: 20px;
+					font-size: 30px;
+					text-shadow:1px 1px 1px #cccccc;
+					color: rgba(0,255,255,0.00);
+				}
+               .element5_C .symbol {
+				  position: absolute;
+                  top: 0px;
+                  left: 0px;
+                  right: 0px;
+                  font-size:30px;
+                  color: rgba(0, 0, 0,0.00;
+				}
+	            .element5_C .details {
+				                position: absolute;
+                                top: 5px;
+                                left: 0px;
+                                right: 0px;
+                                font-size: 30px;
+                                color: rgba(255, 255, 255,0.00);
+			     }
+
+            .element5_C:hover {
+                  box-shadow: 0px 0px 0px rgba(255,255,255,0.00);
+                  border: 0px solid rgba(255,255,255,0.00);
+                }	
+				.element5_C .svg {
+                  position: absolute;
+                  top: 0px;
+                  left: 0px;
+                  right: 0px;
+                }
+				.element5_C .image{   
+                  position: absolute;
+                  top:0px;
+                  left:0px;
+                  width: 100%;
+                  height: 100%;
+                  border-style:ridge;
+                  border-color:brown;
+                  border-width: 0px;
+                }
+				.element5_C .number {
+					position: absolute;
+					top: 0px;
+					right: 20px;
+					font-size: 30px;
+					text-shadow:1px 1px 1px #cccccc;
+					color: rgba(0,255,255,0.00);
+				}
+               .element5_C .symbol {
+				  position: absolute;
+                  top: 0px;
+                  left: 0px;
+                  right: 0px;
+                  font-size:30px;
+                  color: rgba(0, 0, 0,0.00);
+				}
+	            .element5_C .details {
+				                position: absolute;
+                                top: 5px;
+                                left: 0px;
+                                right: 0px;
+                                font-size: 30px;
+                                color: rgba(255, 255, 255,0.00);
+			     }
+
+			button {
+				color: rgba(0,0,0,0.75);
+				background: transparent;
+				outline: 1px solid rgba(127,255,255,0);
+				border: 0px;
+				padding: 5px 10px;
+				cursor: pointer;
+			}
+			button:hover {
+				background-color: rgba(255,187,0,0.5);
+			}
+			button:active {
+				color: #FFFFFF;
+				background-color: rgba(0,255,255,0.75);
+			}
+		</style>
+        <!--<script type="text/javascript" src="../highslide/highslide-with-gallery.js"></script>-->
+        <!--<link rel="stylesheet" type="text/css" href="../highslide/highslide.css" />-->
+
+        <link rel="stylesheet" href="css/buttons.css" type="text/css" media="screen" />
+	</head>
+    <style type="text/css">
+    <!--
+    #info{
+    font-size:20px;
+    }
+    -->
+    </style>
+	<body style="height: 32px">
+		<script src="../build/three.js"></script>
+		<script src="js/libs/tween.min.js"></script>
+		<script src="js/controls/TrackballControls.js"></script>
+		<script src="js/renderers/CSS3DRenderer.js"></script>
+        
+        <div id="info" >易孔孟老莊球</div>
+         
+       
+		<div id="container" ></div>
+
+       <div id="menuL">
+         <!--<select name="select1" id="select1"  style="width:120px" 
+                 onchange="k1Onchange(this.options[this.selectedIndex].value)">
+                        <option value="" >400BC~800BC</option>
+                        <option value="36" >1</option>
+                        <option value="54" >2</option>
+                        <option value="72" >3</option>
+                        <option value="90" >4</option>
+                        <option value="108" >(1)</option>
+                        <option value="126" >(2)</option>
+                        <option value="144" >(3)</option>
+                        <option value="162" >(4)</option>
+         </select>-->
+         <select name="select1" id="select1" style="width:200px"
+                   onchange="k1Onchange(this.options[this.selectedIndex].value)">
+               <option value="16">孔子:圖</option>
+               <option value="16">1：君子－子貢問君子*</option>
+               <option value="18">2：孔子*</option>
+               <option value="20">3：弟子－顏回不改其樂*</option>
+               <option value="22">4：仁－仲弓問仁*</option>
+               <option value="32">5：勇－曾子嚙指心痛</option>
+               <option value="34">6：智－智者樂水，仁者樂山</option>
+               <option value="36">7：學－有朋自遠方來</option>
+               <option value="38">8：教－子路</option>
+               <option value="48">9：禮樂－孔子之制</option>
+               <option value="50">10：德孝－子路為親負米</option>
+               <option value="52">11：政事－舉賢才罷兵衛</option>
+               <option value="54">12：經濟－暴虎馮河</option>
+         </select>&nbsp;&nbsp;
+           <select name="select2" id="select1" style="width:200px"
+                   onchange="k1Onchange(this.options[this.selectedIndex].value)">
+               <option value="24">孟子:圖</option>
+               <option value="24">1：孟子</option>
+               <option value="26">2：大丈夫－舜何人也*</option>
+               <option value="28">3：尚論古人－禹思天下有溺者，由己溺之</option>
+               <option value="30">4：智－有為者辟若掘井*</option>
+               <option value="40">5：學與教－羿教人射必志於彀*</option>
+               <option value="42">6：是非之辯*</option>
+               <option value="44">7：心－牛羊從而牧之*</option>
+               <option value="46">8：仁－仁人之安宅*</option>
+               <option value="56">9：禮－既醉以酒*</option>
+               <option value="58">10：義－毀其宗廟</option>
+               <option value="60">11：行仁政－獨樂樂不若眾樂樂</option>
+               <option value="62">12：謀民利－大禹治水</option>
+           </select>&nbsp; <select name="select-song5" id="select-song5"  style="width:200px" 
+                 onchange="k1Onchange(this.options[this.selectedIndex].value)">
+                        <option value="64">易經</option>
+                        <option value="64">11:乾</option>
+                        <option value="66">13:大有</option>
+                        <option value="68">31:同人</option>
+                        <option value="70">33:离</option>
+                        <option value="72">35:家人</option>
+                        <option value="74">37:賁</option>
+                        <option value="76">15:小畜</option>
+                        <option value="78">17:大畜</option>
+                        <option value="80" >71:遯</option>
+                        <option value="82">73:旅</option>
+                        <option value="84">51:姤</option>
+                        <option value="86">53:鼎</option>
+                        <option value="88">55:巽</option>
+                        <option value="90">57:蠱</option>
+                        <option value="92">75:漸</option>
+                        <option value="94">77:艮</option>
+         </select>&nbsp; <select name="select4" id="select1" style="width:200px"
+                   onchange="k1Onchange(this.options[this.selectedIndex].value)">
+               <option value="96">莊子:圖</option>
+               <option value="96">1：棄聖止之－北海有大魚名鯤*</option>
+               <option value="98">2：莊子心性－莊周夢蝶*</option>
+               <option value="100">3：孔老之辯－三皇五帝</option>
+               <option value="102">4：遊心－汝安知魚樂</option>
+               <option value="112">5：無名－孝未必愛</option>
+               <option value="114">6：無功－淵靜而百姓定</option>
+               <option value="116">7：大美不言－黑鳥白鳥</option>
+               <option value="118">8：棄聖止之－井底之蛙</option>
+               <option value="128">9：心齋坐忘－庖丁解牛*</option>
+               <option value="130">10：六步六競－澤雉十步一啄</option>
+               <option value="132">11：無為守本－養虎順其性</option>
+               <option value="134">12：三劍四患－庶人之劍無異於鬥雞</option>
+           </select>&nbsp; <select name="select6" id="select1" style="width:200px"
+                   onchange="k1Onchange(this.options[this.selectedIndex].value)">
+                  <option value="104">老子:圖</option>
+                  <option value="104">1：循道真人－無為而治*</option>
+                  <option value="106">2：老子心性*</option>
+                  <option value="108">3：善為道者－馳騁畋獵令人心發狂*</option>
+                  <option value="110">4：絕仁復慈－民復孝慈*</option>
+                  <option value="120">5：絕巧知道－復歸於嬰兒</option>
+                  <option value="122">6：絕聖安民－師之所處，荊棘生焉</option>
+                  <option value="124">7：知大道－馳騁天下</option>
+                  <option value="126">8：知常足－不窺牖見天道</option>
+                  <option value="136">9：儉－田甚蕪，倉甚虛</option>
+                  <option value="138">10：不為先－江海能善下</option>
+                  <option value="140">11：無為民自化－治大國若烹小鮮</option>
+                  <option value="142">12：無是民自富－萬物草木之生也柔脆</option>
+           </select><br />
+           <br />
+           <select name="select1" id="select1" style="width:200px"
+                   onchange="k1Onchange(this.options[this.selectedIndex].value)">
+               <option value="17">孔子：心智圖</option>
+               <option value="17">1：君子－子貢問君子*</option>
+               <option value="19">2：孔子*</option>
+               <option value="21">3：弟子－顏回不改其樂*</option>
+               <option value="23">4：仁－仲弓問仁*</option>
+               <option value="33">5：勇－曾子嚙指心痛</option>
+               <option value="35">6：智－智者樂水，仁者樂山</option>
+               <option value="37">7：學－有朋自遠方來</option>
+               <option value="39">8：教－子路</option>
+               <option value="49">9：禮樂－孔子之制</option>
+               <option value="51">10：德孝－子路為親負米</option>
+               <option value="53">11：政事－舉賢才罷兵衛</option>
+               <option value="55">12：經濟－暴虎馮河</option>
+           </select>&nbsp;&nbsp;
+           <select name="select3" id="select2" style="width:200px"
+        onchange="k1Onchange(this.options[this.selectedIndex].value)">
+               <option value="25">孟子:心智圖</option>
+               <option value="25">1：孟子</option>
+               <option value="27">2：大丈夫－舜何人也*</option>
+               <option value="29">3：尚論古人－禹思天下有溺者，由己溺之</option>
+               <option value="31">4：智－有為者辟若掘井*</option>
+               <option value="41">5：學與教－羿教人射必志於彀*</option>
+               <option value="43">6：是非之辯*</option>
+               <option value="45">7：心－牛羊從而牧之*</option>
+               <option value="47">8：仁－仁人之安宅*</option>
+               <option value="57">9：禮－既醉以酒*</option>
+               <option value="59">10：義－毀其宗廟</option>
+               <option value="61">11：行仁政－獨樂樂不若眾樂樂</option>
+               <option value="63">12：謀民利－大禹治水</option>
+         </select>&nbsp; <select name="select-song6" id="select-song6" style="width:200px"
+                   onchange="k1Onchange(this.options[this.selectedIndex].value)">
+                        <option value="65">易經:卦象</option>
+                        <option value="65">11:乾</option>
+                        <option value="67">13:大有</option>
+                        <option value="69">31:同人</option>
+                        <option value="71">33:离</option>
+                        <option value="73">35:家人</option>
+                        <option value="75">37:賁</option>
+                        <option value="77">15:小畜</option>
+                        <option value="79">17:大畜</option>
+                        <option value="81" >71:遯</option>
+                        <option value="83">73:旅</option>
+                        <option value="85">51:姤</option>
+                        <option value="87">53:鼎</option>
+                        <option value="89">55:巽</option>
+                        <option value="91">57:蠱</option>
+                        <option value="93">75:漸</option>
+                        <option value="95">77:艮</option>
+           </select>&nbsp; <select name="select5" id="select1" style="width:200px"
+                   onchange="k1Onchange(this.options[this.selectedIndex].value)">
+               <option value="97">莊子:心智圖</option>
+               <option value="97">1：棄聖止之－北海有大魚名鯤*</option>
+               <option value="99">2：莊子心性－莊周夢蝶*</option>
+               <option value="101">3：孔老之辯－三皇五帝</option>
+               <option value="103">4：遊心－汝安知魚樂</option>
+               <option value="113">5：無名－孝未必愛</option>
+               <option value="115">6：無功－淵靜而百姓定</option>
+               <option value="117">7：大美不言－黑鳥白鳥</option>
+               <option value="119">8：棄聖止之－井底之蛙</option>
+               <option value="129">9：心齋坐忘－庖丁解牛*</option>
+               <option value="131">10：六步六競－澤雉十步一啄</option>
+               <option value="133">11：無為守本－養虎順其性</option>
+               <option value="135">12：三劍四患－庶人之劍無異於鬥雞</option>
+           </select>&nbsp; <select name="select7" id="select1" style="width:200px"
+                   onchange="k1Onchange(this.options[this.selectedIndex].value)">
+               <option value="105">老子:心智圖</option>
+                  <option value="105">1：循道真人－無為而治*</option>
+                  <option value="107">2：老子心性*</option>
+                  <option value="109">3：善為道者－馳騁畋獵令人心發狂*</option>
+                  <option value="111">4：絕仁復慈－民復孝慈*</option>
+                  <option value="121">5：絕巧知道－復歸於嬰兒</option>
+                  <option value="123">6：絕聖安民－師之所處，荊棘生焉</option>
+                  <option value="125">7：知大道－馳騁天下</option>
+                  <option value="127">8：知常足－不窺牖見天道</option>
+                  <option value="137">9：儉－田甚蕪，倉甚虛</option>
+                  <option value="139">10：不為先－江海能善下</option>
+                  <option value="141">11：無為民自化－治大國若烹小鮮</option>
+                  <option value="143">12：無是民自富－萬物草木之生也柔脆</option>
+           </select><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+
+		<div id="menu" >
+			<button id="table">TABLE</button>
+			<button id="sphere">SPHERE</button>
+			<button id="helix">HELIX</button>
+			<button id="grid">GRID</button>
+		    <br />
+            <br />
+
+        <embed src="html/Confucius/menu.mp3"width="200" height="40" type="audio/mpeg"starttime="01:10"autostart="ture" Hidden="true" loop="true" ></embed>
+<!--        <marquee loop="1" width = "600px" direction="left" height="30" scrollamount="5" behavior="scroll">中華文化最迷人的就是「一」。孔子說，吾道「一」以貫之。老子說，載魄抱「一」，專氣致柔。易經也說，「一」生二，二生三，三生萬物。易儒道，各有一，這一是什麼？　　我中學開始唸論語、孟子、大學、中庸；大學的時候喜歡老莊，四十歲以後看易經。結果是越看越迷惑，為什麼？　　　　因為找不著”一”，可以把易孔孟老莊學庸串起來。　　所以每部書都是單獨的一，好像相關又不相連。　　因此經典讀得愈多記得越少，學得愈廣用的愈窄。　　不要說易儒道沒個一，即使在論語裡也不知一歸何處。　　孔子說吾道一以貫之，弟子們很興奮，以為找到豋堂之鑰，跑去問曾子。　　曾子回答說：夫子之道，忠恕而已矣。　　弟子們不滿意，因為他們想知道的是“一“個框架，可以把450則論語提綱挈領的貫起來，可以句句相連脈絡相通。　　弟子們的大哉問流傳了2500年，我們今天還在問同樣的問題。
+</marquee></div>-->
+        &nbsp;<!--sphere--start--><script>
+ 
+            var table = [
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//1
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//2
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//3
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//4
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//5
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//6
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//7
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//8
+
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//1
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//2
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//3
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//4
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//5
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//6
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//7
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//8
+
+                "  ", " ", "", 6, 10, "html/Confucius/C1.html", "img/Confucius/001small.png", "rgba(198,96,96,1)",//1
+                "  ", " ", "", 6, 10, "html/Confucius/C1.html", "img/Confucius/1_1.PNG", "rgba(198,96,96,1)",//2
+                "  ", " ", "", 6, 10, "html/Confucius/C2.html", "img/Confucius/002small.png", "rgba(198,96,96,1)",//3
+                "  ", " ", "", 6, 10, "html/Confucius/C2.html", "img/Confucius/2_1.PNG", "rgba(198,96,96,1)",//4
+                "  ", " ", "", 6, 10, "html/Confucius/C3.html", "img/Confucius/003small.png", "rgba(198,96,96,1)",//1
+                "  ", " ", "", 6, 10, "html/Confucius/C3.html", "img/Confucius/3_1.PNG", "rgba(198,96,96,1)",//2
+                "  ", " ", "", 6, 10, "html/Confucius/C4.html", "img/Confucius/004small.png", "rgba(198,96,96,1)",//3
+                "  ", " ", "", 6, 10, "html/Confucius/C4.html", "img/Confucius/4_1.PNG", "rgba(198,96,96,1)",//4
+
+                "  ", " ", "", 6, 10, "html/Mencius/M1.html", "img/Mencius/013small.png", "rgba(249,161,28,1)",//5
+                "  ", " ", "", 6, 10, "html/Mencius/M1.html", "img/Mencius/1_1.PNG", "rgba(249,161,28,1)",//6
+                "  ", " ", "", 6, 10, "html/Mencius/M2.html", "img/Mencius/014small.png", "rgba(249,161,28,1)",//7
+                "  ", " ", "", 6, 10, "html/Mencius/M2.html", "img/Mencius/2_1.PNG", "rgba(249,161,28,1)",//8
+                "  ", " ", "", 6, 10, "html/Mencius/M3.html", "img/Mencius/015small.png", "rgba(249,161,28,1)",//5
+                "  ", " ", "", 6, 10, "html/Mencius/M3.html", "img/Mencius/3_1.PNG", "rgba(249,161,28,1)",//6
+                "  ", " ", "", 6, 10, "html/Mencius/M4.html", "img/Mencius/016small.png", "rgba(249,161,28,1)",//7
+                "  ", " ", "", 6, 10, "html/Mencius/M4.html", "img/Mencius/4_1.PNG", "rgba(249,161,28,1)",//8
+
+
+                "  ", " ", "", 6, 10, "html/Confucius/C5.html", "img/Confucius/005small.PNG", "rgba(198,96,96,1)",//1
+                "  ", " ", "", 6, 10, "html/Confucius/C5.html", "img/Confucius/5_1.PNG", "rgba(198,96,96,1)",//2
+                "  ", " ", "", 6, 10, "html/Confucius/C6.html", "img/Confucius/006small.png", "rgba(198,96,96,1)",//3
+                "  ", " ", "", 6, 10, "html/Confucius/C6.html", "img/Confucius/6_1.PNG", "rgba(198,96,96,1)",//4
+                "  ", " ", "", 6, 10, "html/Confucius/C7.html", "img/Confucius/007small.png", "rgba(198,96,96,1)",//1
+                "  ", " ", "", 6, 10, "html/Confucius/C7.html", "img/Confucius/7_1.PNG", "rgba(198,96,96,1)",//2
+                "  ", " ", "", 6, 10, "html/Confucius/C8.html", "img/Confucius/008small.png", "rgba(198,96,96,1)",//3
+                "  ", " ", "", 6, 10, "html/Confucius/C8.html", "img/Confucius/8_1.PNG", "rgba(198,96,96,1)",//4
+
+                "  ", " ", "", 6, 10, "html/Mencius/M5.html", "img/Mencius/017small.png", "rgba(249,161,28,1)",//5
+                "  ", " ", "", 6, 10, "html/Mencius/M5.html", "img/Mencius/5_1.PNG", "rgba(249,161,28,1)",//6
+                "  ", " ", "", 6, 10, "html/Mencius/M6.html", "img/Mencius/018small.png", "rgba(249,161,28,1)",//7
+                "  ", " ", "", 6, 10, "html/Mencius/M6.html", "img/Mencius/6_1.PNG", "rgba(249,161,28,1)",//8
+                "  ", " ", "", 6, 10, "html/Mencius/M7.html", "img/Mencius/019small.png", "rgba(249,161,28,1)",//5
+                "  ", " ", "", 6, 10, "html/Mencius/M7.html", "img/Mencius/7_1.PNG", "rgba(249,161,28,1)",//6
+                "  ", " ", "", 6, 10, "html/Mencius/M8.html", "img/Mencius/020small.png", "rgba(249,161,28,1)",//7
+                "  ", " ", "", 6, 10, "html/Mencius/M8.html", "img/Mencius/8_1.PNG", "rgba(249,161,28,1)",//8
+
+                "  ", " ", "", 6, 10, "html/Confucius/C9.html", "img/Confucius/009small.png", "rgba(198,96,96,1)",//1
+                "  ", " ", "", 6, 10, "html/Confucius/C9.html", "img/Confucius/9_1.PNG", "rgba(198,96,96,1)",//1
+                "  ", " ", "", 6, 10, "html/Confucius/C10.html", "img/Confucius/010small.png", "rgba(198,96,96,1)",//2
+                "  ", " ", "", 6, 10, "html/Confucius/C10.html", "img/Confucius/10_1.PNG", "rgba(198,96,96,1)",//2
+                "  ", " ", "", 6, 10, "html/Confucius/C11.html", "img/Confucius/011small.png", "rgba(198,96,96,1)",//3
+                "  ", " ", "", 6, 10, "html/Confucius/C11.html", "img/Confucius/11_1.PNG", "rgba(198,96,96,1)",//3
+                "  ", " ", "", 6, 10, "html/Confucius/C12.html", "img/Confucius/012small.png", "rgba(198,96,96,1)",//4
+                "  ", " ", "", 6, 10, "html/Confucius/C12.html", "img/Confucius/12_1.PNG", "rgba(198,96,96,1)",//4
+
+
+
+                "  ", " ", "", 6, 10, "html/Mencius/M9.html", "img/Mencius/021small.png", "rgba(249,161,28,1)",//5
+                "  ", " ", "", 6, 10, "html/Mencius/M9.html", "img/Mencius/9_1.PNG", "rgba(249,161,28,1)",//5
+                "  ", " ", "", 6, 10, "html/Mencius/M10.html", "img/Mencius/022small.png", "rgba(249,161,28,1)",//6
+                "  ", " ", "", 6, 10, "html/Mencius/M10.html", "img/Mencius/10_1.PNG", "rgba(249,161,28,1)",//6
+                "  ", " ", "", 6, 10, "html/Mencius/M11.html", "img/Mencius/023small.png", "rgba(249,161,28,1)",//7
+                "  ", " ", "", 6, 10, "html/Mencius/M11.html", "img/Mencius/11_1.PNG", "rgba(249,161,28,1)",//7
+                "  ", " ", "", 6, 10, "html/Mencius/M12.html", "img/Mencius/024small.png", "rgba(249,161,28,1)",//8
+                "  ", " ", "", 6, 10, "html/Mencius/M12.html", "img/Mencius/12_1.PNG", "rgba(249,161,28,1)",//8
+
+                //5
+                "", " ", "(98)", 1, 3, "img/Yi_ging/11A1_2.png", "img/Yi_ging/11A1.png", "rgba(255, 255, 255,1)",          //45
+                "", " ", "(98)", 1, 3, "img/Yi_ging/11A1_2.png", "img/Yi_ging/11A1_.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 2, 3, "img/Yi_ging/13E1_2.png", "img/Yi_ging/13E1.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 2, 3, "img/Yi_ging/13E1_2.png", "img/Yi_ging/13E1_.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 3, 3, "img/Yi_ging/31E1_2.png", "img/Yi_ging/31E1.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 3, 3, "img/Yi_ging/31E1_2.png", "img/Yi_ging/31E1_.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 4, 3, "img/Yi_ging/33C1_2.png", "img/Yi_ging/33C1.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 4, 3, "img/Yi_ging/33C1_2.png", "img/Yi_ging/33C1_.png", "rgba(255, 255, 255,1)",          //45
+
+
+
+                //5
+				"", " ", "(98)", 5, 3, "img/Yi_ging/35I1_2.png", "img/Yi_ging/35I1.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 5, 3, "img/Yi_ging/35I1_2.png", "img/Yi_ging/35I1_.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 6, 3, "img/Yi_ging/37G4_2.png", "img/Yi_ging/37G4.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 6, 3, "img/Yi_ging/37G4_2.png", "img/Yi_ging/37G4_.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 7, 3, "img/Yi_ging/15F4_2.png", "img/Yi_ging/15F4.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 7, 3, "img/Yi_ging/15F4_2.png", "img/Yi_ging/15F4_.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 8, 3, "img/Yi_ging/17D4_2.png", "img/Yi_ging/17D4.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 8, 3, "img/Yi_ging/17D4_2.png", "img/Yi_ging/17D4_.png", "rgba(255, 255, 255,1)",          //45
+
+
+				//6
+				"", " ", "(98)", 1, 3, "img/Yi_ging/71F1_2.png", "img/Yi_ging/71F1.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 1, 3, "img/Yi_ging/71F1_2.png", "img/Yi_ging/71F1_.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 2, 3, "img/Yi_ging/73I2_2.png", "img/Yi_ging/73I2.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 2, 3, "img/Yi_ging/73I2_2.png", "img/Yi_ging/73I2_.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 3, 3, "img/Yi_ging/51D1_2.png", "img/Yi_ging/51D1.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 3, 3, "img/Yi_ging/51D1_2.png", "img/Yi_ging/51D1_.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 4, 3, "img/Yi_ging/53G1_2.png", "img/Yi_ging/53G1.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 4, 3, "img/Yi_ging/53G1_2.png", "img/Yi_ging/53G1_.png", "rgba(255, 255, 255,1)",          //45
+
+                //6
+
+				"", " ", "(98)", 5, 3, "img/Yi_ging/55B1_2.png", "img/Yi_ging/55B1.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 5, 3, "img/Yi_ging/55B1_2.png", "img/Yi_ging/55B1_.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 6, 3, "img/Yi_ging/57H3_2.png", "img/Yi_ging/57H3.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 6, 3, "img/Yi_ging/57H3_2.png", "img/Yi_ging/57H3_.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 7, 3, "img/Yi_ging/75J3_2.png", "img/Yi_ging/75J3.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 7, 3, "img/Yi_ging/75J3_2.png", "img/Yi_ging/75J3_.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 8, 3, "img/Yi_ging/77B3_2.png", "img/Yi_ging/77B3.png", "rgba(255, 255, 255,1)",          //45
+				"", " ", "(98)", 8, 3, "img/Yi_ging/77B3_2.png", "img/Yi_ging/77B3_.png", "rgba(255, 255, 255,1)",          //45
+
+
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z1.html", "img/Zhuangzi/037small.png", "rgba(124,174,71,1)",//1
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z1.html", "img/Zhuangzi/1_1.PNG", "rgba(124,174,71,1)",//1
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z2.html", "img/Zhuangzi/038small.png", "rgba(124,174,71,1)",//2
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z2.html", "img/Zhuangzi/2_1.PNG", "rgba(124,174,71,1)",//2
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z3.html", "img/Zhuangzi/039small.png", "rgba(124,174,71,1)",//3
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z3.html", "img/Zhuangzi/3_1.PNG", "rgba(124,174,71,1)",//3
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z4.html", "img/Zhuangzi/040small.png", "rgba(124,174,71,1)",//4
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z4.html", "img/Zhuangzi/4_1.PNG", "rgba(124,174,71,1)",//4
+
+
+
+                "  ", " ", "", 6, 10, "html/Laozi/L1.html", "img/Laozi/025small.png", "rgba(28,160,207,1)",//5
+                "  ", " ", "", 6, 10, "html/Laozi/L1.html", "img/Laozi/1_1.PNG", "rgba(28,160,207,1)",//5
+                "  ", " ", "", 6, 10, "html/Laozi/L2.html", "img/Laozi/026small.png", "rgba(28,160,207,1)",//6
+                "  ", " ", "", 6, 10, "html/Laozi/L2.html", "img/Laozi/2_1.PNG", "rgba(28,160,207,1)",//6
+                "  ", " ", "", 6, 10, "html/Laozi/L3.html", "img/Laozi/027small.png", "rgba(28,160,207,1)",//7
+                "  ", " ", "", 6, 10, "html/Laozi/L3.html", "img/Laozi/3_1.PNG", "rgba(28,160,207,1)",//7
+                "  ", " ", "", 6, 10, "html/Laozi/L4.html", "img/Laozi/028small.png", "rgba(28,160,207,1)",//8
+                "  ", " ", "", 6, 10, "html/Laozi/L4.html", "img/Laozi/4_1.PNG", "rgba(28,160,207,1)",//8
+
+
+
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z5.html", "img/Zhuangzi/041small.png", "rgba(124,174,71,1)",//1
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z5.html", "img/Zhuangzi/5_1.PNG", "rgba(124,174,71,1)",//1
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z6.html", "img/Zhuangzi/042small.png", "rgba(124,174,71,1)",//2
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z6.html", "img/Zhuangzi/6_1.PNG", "rgba(124,174,71,1)",//2
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z7.html", "img/Zhuangzi/043small.png", "rgba(124,174,71,1)",//3
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z7.html", "img/Zhuangzi/7_1.PNG", "rgba(124,174,71,1)",//3
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z8.html", "img/Zhuangzi/044small.png", "rgba(124,174,71,1)",//4
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z8.html", "img/Zhuangzi/8_1.PNG", "rgba(124,174,71,1)",//4
+
+                "  ", " ", "", 6, 10, "html/Laozi/L5.html", "img/Laozi/029small.png", "rgba(28,160,207,1)",//5
+                "  ", " ", "", 6, 10, "html/Laozi/L5.html", "img/Laozi/5_1.PNG", "rgba(28,160,207,1)",//5
+                "  ", " ", "", 6, 10, "html/Laozi/L6.html", "img/Laozi/030small.png", "rgba(28,160,207,1)",//6
+                "  ", " ", "", 6, 10, "html/Laozi/L6.html", "img/Laozi/6_1.PNG", "rgba(28,160,207,1)",//6
+                "  ", " ", "", 6, 10, "html/Laozi/L7.html", "img/Laozi/031small.png", "rgba(28,160,207,1)",//7
+                "  ", " ", "", 6, 10, "html/Laozi/L7.html", "img/Laozi/7_1.PNG", "rgba(28,160,207,1)",//7
+                "  ", " ", "", 6, 10, "html/Laozi/L8.html", "img/Laozi/032small.png", "rgba(28,160,207,1)",//8
+                "  ", " ", "", 6, 10, "html/Laozi/L8.html", "img/Laozi/8_1.PNG", "rgba(28,160,207,1)",//8
+
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z9.html", "img/Zhuangzi/045small.png", "rgba(124,174,71,1)",//1
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z9.html", "img/Zhuangzi/9_1.PNG", "rgba(124,174,71,1)",//1
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z10.html", "img/Zhuangzi/046small.png", "rgba(124,174,71,1)",//2
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z10.html", "img/Zhuangzi/10_1.PNG", "rgba(124,174,71,1)",//2
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z11.html", "img/Zhuangzi/047small.png", "rgba(124,174,71,1)",//3
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z11.html", "img/Zhuangzi/11_1.PNG", "rgba(124,174,71,1)",//3
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z12.html", "img/Zhuangzi/048small.png", "rgba(124,174,71,1)",//4
+                "  ", " ", "", 6, 10, "html/Zhuangzi/Z12.html", "img/Zhuangzi/12_1.PNG", "rgba(124,174,71,1)",//4
+
+                "  ", " ", "", 6, 10, "html/Laozi/L9.html", "img/Laozi/033small.png", "rgba(28,160,207,1)",//5
+                "  ", " ", "", 6, 10, "html/Laozi/L9.html", "img/Laozi/9_1.PNG", "rgba(28,160,207,1)",//5
+                "  ", " ", "", 6, 10, "html/Laozi/L10.html", "img/Laozi/034small.png", "rgba(28,160,207,1)",//6
+                "  ", " ", "", 6, 10, "html/Laozi/L10.html", "img/Laozi/10_1.PNG", "rgba(28,160,207,1)",//6
+                "  ", " ", "", 6, 10, "html/Laozi/L11.html", "img/Laozi/035small.png", "rgba(28,160,207,1)",//7
+                "  ", " ", "", 6, 10, "html/Laozi/L11.html", "img/Laozi/11_1.PNG", "rgba(28,160,207,1)",//7
+                "  ", " ", "", 6, 10, "html/Laozi/L12.html", "img/Laozi/036small.png", "rgba(28,160,207,1)",//8
+                "  ", " ", "", 6, 10, "html/Laozi/L12.html", "img/Laozi/12_1.PNG", "rgba(28,160,207,1)",//8
+
+
+
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//1
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//2
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//3
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//4
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//5
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//6
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//7
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//8
+
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//1
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//2
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//3
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//4
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//5
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//6
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//7
+                "  ", " ", "", 6, 10, " ", "img/.png", "rgba(0,0,0,0)",//8
+               
+			];
+
+			var camera, scene, renderer;
+			var controls;
+
+			var objects = [];
+			var targets = { table: [], sphere: [], helix: [], grid: [] };
+
+            //menuL var
+			var dlist1 = [];
+			var dlist2 = [];
+			var dlist3 = [];
+			var dlist4 = [];
+			var did1 = [];
+			var did2 = [];
+			var did3 = [];
+			var did4 = [];
+
+			dlist1 = [];
+			dlist2 = [];
+			dlist3 = [];
+			dlist4 = [];
+			did1 = [];
+			did2 = [];
+			did3 = [];
+			did4 = [];
+			select_num = 0;
+			//menuL end
+
+			init();
+			animate();
+
+			function init() {
+
+				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 0.1, 10000 );
+				camera.position.z = 2000;
+
+				scene = new THREE.Scene();
+
+				// table
+
+				for ( var i = 0; i < table.length; i += 8 ) {
+
+				    var element = document.createElement('div');
+				    var icol  // x 18爪
+				    var irow  // y
+
+				    //北半球
+				    if (i >= 0 && i < 64*2) {
+				        element.className = 'element5'; //北極
+				        icol = 0;
+				        irow = (i / 8) % 16 + 1; //取餘數
+				    }
+	                else if (i >= 64*2 && i < 128*2) {  //1
+	                    element.className = 'element1';
+	                    icol = 1;
+	                    irow = (i - 64 * 2) / 8 % 16 + 1; //取餘數
+                    }
+	                else if (i >= 128* 2 && i < 192* 2) { //2
+                        element.className = 'element2';
+                        icol = 2;
+                        irow = (i - 64 * 2) / 8 % 16 + 1; //取餘數
+                    }
+	                else if (i >= 192* 2 && i < 256 * 2) { //3
+                        element.className = 'element3';
+                        icol = 3;
+                        irow = (i - 64 * 2) / 8 % 16 + 1; //取餘數
+                    }
+	                else if (i >= 256 * 2 && i < 320 * 2) {  //4
+                        element.className = 'element4';
+                        icol = 4;
+                        irow = (i - 64 * 2) / 8 % 16 + 1; //取餘數
+                    }
+                    //南半球
+	                else if (i >= 320*2 && i < 384 * 2) {  //5
+                        element.className = 'element4';
+                        icol = 5;
+                        irow = (i - 64 * 2) / 8 % 16 + 1; //取餘數
+                    }
+				    if (i >= 384 * 2 && i < 448 * 2) {       //1  18*8
+                        element.className = 'element3';
+                        icol = 6;
+                        irow = (i - 64 * 2) / 8 % 16 + 1; //取餘數
+                    }
+                    else if (i >= 448*2 && i < 512 * 2) {  //2
+                        element.className = 'element2';
+                        icol = 7;
+                        irow = (i - 64 * 2) / 8 % 16 + 1; //取餘數
+                    }
+                    else if (i >= 512*2 && i < 576*2) {  //2
+                        element.className = 'element1';
+                        icol = 8;
+                        irow = (i - 64 * 2) / 8 % 16 + 1; //取餘數
+                    }
+
+                    //else if (i >= table.length - 64 * 2) {  //南極最中心
+                    else if (i >= table.length - 64 * 2) {  //南極最中心   
+                   
+                        element.className = 'element5';
+                        icol = 9;
+                        irow = (i - 64 * 2) / 8 % 16 + 1; //取餘數
+                    }
+                    
+					//element.style.backgroundColor = 'rgba(255,187,0,' + ( Math.random() * 0.5 + 0.25 ) + ')';
+					
+
+					var bg = document.createElement('div');
+					element.setAttribute('style', "background-color:" + table[i + 7]);
+					element.appendChild(bg);
+
+					var link = document.createElement('a'); // + url
+					link.setAttribute('href', table[i + 5]);					
+					link.setAttribute('target', "right");
+//					link.setAttribute('class', 'highslide-gallery');
+					//					link.setAttribute('onclick', 'alert("hi")');
+//					link.setAttribute('href', 'return hs.expand(this, miniGalleryOptions1)');
+//					link.setAttribute('onclick', 'return hs.expand(this, miniGalleryOptions1)');
+					element.appendChild(link);
+
+                    var Img = document.createElement('img');
+					Img.setAttribute('class', 'image');
+//					Img.setAttribute('width', 230);
+//					Img.setAttribute('height', 230);
+					Img.setAttribute('style', 'background-image:url(' + table[i + 6] + ');background-size:200px 200px;background-repeat:no-repeat;background-position:center');
+//				    Img.setAttribute('src', table[i+6]);
+					link.appendChild(Img);
+//					<a class='highslide' id="thumb1" href='../images/thumbstrip11.jpg' title="Two cabins"	onclick="return hs.expand(this, miniGalleryOptions1)">	<img src='../images/thumbstrip11.thumb.png' alt=''/></a>
+
+					var number = document.createElement( 'div' );
+					number.className = 'number'; //右上角小字 index
+					number.textContent = (i/8) ;
+//					element.appendChild( number );
+					
+
+					var symbol = document.createElement( 'div' );
+					symbol.className = 'symbol'; //大字
+					symbol.textContent = table[i];
+					element.appendChild( symbol );
+					link.appendChild(symbol);
+                    
+					var details = document.createElement( 'div' );
+					details.className = 'details'; //下面兩行小字
+					details.innerHTML = table[ i + 1 ] // + '<br>' + table[ i + 2 ];
+					//element.appendChild( details );
+					link.appendChild(details);
+
+					
+//                    var icol = Math.floor(i / 8 / 18) + 1; //取商數 x 18爪
+//					var irow = i / 8 % 18 + 1; //取餘數 y
+
+//					if (i > 24 && i <= 1320) {
+//					    icol = icol + 1;
+//					    irow = (i - 32) / 8 % 18 + 1;					   }
+//                    else if (i > 1320 && i <= 1352){
+//                        icol=icol+1;
+//                        irow = (i-32) / 8 % 18+1 ;
+//                    }
+                    
+					var object = new THREE.CSS3DObject( element );
+//					object.position.x = Math.random() * 4000 - 2000;
+//					object.position.y = Math.random() * 4000 - 2000;
+//					object.position.z = Math.random() * 4000 - 2000;
+					scene.add( object );
+
+					objects.push( object );
+
+					//
+
+					var object = new THREE.Object3D();
+//					object.position.x = ( table[ i + 3 ] * 185 ) - 1750;
+//					object.position.y = - ( table[ i + 4 ] * 300 ) + 1620;
+
+					object.position.x = (irow * 185*1.35)-1125 ;  //常數項為整個Table水平起始位置
+					object.position.y = -(icol * 300) + 1730-800; //常數項為整個Table垂直起始位置 數字越大越往上
+
+					targets.table.push(object);
+
+				}
+
+				// sphere
+	
+				var vector = new THREE.Vector3();
+				var temp0 = [
+207.05523608201676, 739.1239404530203, 0,
+ 191.29409471546776, 739.1239404530203, 79.23660843303016,
+ 146.41016151377556, 739.1239404530203, 146.41016151377553,
+ 79.23660843303017, 739.1239404530203, 191.29409471546776,
+ 1.267847660572707e-14, 739.1239404530203, 207.05523608201676,
+ -79.23660843303016, 739.1239404530203, 191.29409471546776,
+ -146.41016151377553, 739.1239404530203, 146.41016151377556,
+ -191.29409471546776, 739.1239404530203, 79.23660843303018,
+ -207.05523608201676, 739.1239404530203, 2.535695321145414e-14,
+ -191.29409471546776, 739.1239404530203, -79.23660843303014,
+ -146.41016151377562, 739.1239404530203, -146.41016151377553,
+ -79.23660843303027, 739.1239404530203, -191.2940947154677,
+ -3.8035429817181205e-14, 739.1239404530203, -207.05523608201676,
+ 79.2366084330302, 739.1239404530203, -191.29409471546774,
+ 146.41016151377553, 739.1239404530203, -146.41016151377562,
+ 191.2940947154677, 739.1239404530203, -79.23660843303028,
+ 400.0000000000001, 634.7149890379884, 0,
+ 369.55181300451477, 634.7149890379884, 153.07337294603593,
+ 282.8427124746191, 634.7149890379884, 282.842712474619,
+ 153.07337294603596, 634.7149890379884, 369.55181300451477,
+ 2.449293598294707e-14, 634.7149890379884, 400.0000000000001,
+ -153.07337294603593, 634.7149890379884, 369.55181300451477,
+ -282.842712474619, 634.7149890379884, 282.8427124746191,
+ -369.55181300451477, 634.7149890379884, 153.073372946036,
+ -400.0000000000001, 634.7149890379884, 4.898587196589414e-14,
+ -369.55181300451477, 634.7149890379884, -153.0733729460359,
+ -282.84271247461913, 634.7149890379884, -282.842712474619,
+ -153.07337294603616, 634.7149890379884, -369.55181300451466,
+ -7.34788079488412e-14, 634.7149890379884, -400.0000000000001,
+ 153.07337294603602, 634.7149890379884, -369.5518130045147,
+ 282.842712474619, 634.7149890379884, -282.84271247461913,
+ 369.55181300451466, 634.7149890379884, -153.0733729460362,
+ 565.685424949238, 487.0512600361314, 0,
+ 522.6251859505506, 487.0512600361314, 216.4784400584788,
+ 400.00000000000006, 487.0512600361314, 399.99999999999994,
+ 216.47844005847884, 487.0512600361314, 522.6251859505506,
+ 3.4638242249419737e-14, 487.0512600361314, 565.685424949238,
+ -216.4784400584788, 487.0512600361314, 522.6251859505506,
+ -399.99999999999994, 487.0512600361314, 400.00000000000006,
+ -522.6251859505506, 487.0512600361314, 216.47844005847887,
+ -565.685424949238, 487.0512600361314, 6.927648449883947e-14,
+ -522.6251859505506, 487.0512600361314, -216.47844005847875,
+ -400.0000000000001, 487.0512600361314, -399.99999999999994,
+ -216.47844005847912, 487.0512600361314, -522.6251859505505,
+ -1.039147267482592e-13, 487.0512600361314, -565.685424949238,
+ 216.47844005847892, 487.0512600361314, -522.6251859505505,
+ 399.99999999999994, 487.0512600361314, -400.0000000000001,
+ 522.6251859505505, 487.0512600361314, -216.47844005847915,
+ 692.820323027551, 306.19579255307576, 0,
+ 640.0825161530125, 306.19579255307576, 265.1308592284734,
+ 489.8979485566357, 306.19579255307576, 489.8979485566356,
+ 265.13085922847347, 306.19579255307576, 640.0825161530125,
+ 4.242300954899628e-14, 306.19579255307576, 692.820323027551,
+ -265.1308592284734, 306.19579255307576, 640.0825161530125,
+ -489.8979485566356, 306.19579255307576, 489.8979485566357,
+ -640.0825161530125, 306.19579255307576, 265.1308592284735,
+ -692.820323027551, 306.19579255307576, 8.484601909799256e-14,
+ -640.0825161530125, 306.19579255307576, -265.1308592284734,
+ -489.89794855663575, 306.19579255307576, -489.8979485566356,
+ -265.1308592284738, 306.19579255307576, -640.0825161530123,
+ -1.2726902864698882e-13, 306.19579255307576, -692.820323027551,
+ 265.1308592284736, 306.19579255307576, -640.0825161530124,
+ 489.8979485566356, 306.19579255307576, -489.89794855663575,
+ 640.0825161530123, 306.19579255307576, -265.13085922847387,
+ 772.7406610312546, 104.36831927224104, 0,
+ 713.9192806660183, 104.36831927224104, 295.71504849150887,
+ 546.4101615137755, 104.36831927224104, 546.4101615137754,
+ 295.7150484915089, 104.36831927224104, 713.9192806660183,
+ 4.7316718855146796e-14, 104.36831927224104, 772.7406610312546,
+ -295.71504849150887, 104.36831927224104, 713.9192806660183,
+ -546.4101615137754, 104.36831927224104, 546.4101615137755,
+ -713.9192806660183, 104.36831927224104, 295.715048491509,
+ -772.7406610312546, 104.36831927224104, 9.463343771029359e-14,
+ -713.9192806660183, 104.36831927224104, -295.7150484915088,
+ -546.4101615137756, 104.36831927224104, -546.4101615137754,
+ -295.7150484915093, 104.36831927224104, -713.919280666018,
+ -1.4195015656544036e-13, 104.36831927224104, -772.7406610312546,
+ 295.71504849150904, 104.36831927224104, -713.9192806660182,
+ 546.4101615137754, 104.36831927224104, -546.4101615137756,
+ 713.919280666018, 104.36831927224104, -295.7150484915094,
+ 772.7406610312546, -104.36831927224104, 0,
+ 713.9192806660183, -104.36831927224104, 295.71504849150887,
+ 546.4101615137755, -104.36831927224104, 546.4101615137754,
+ 295.7150484915089, -104.36831927224104, 713.9192806660183,
+ 4.7316718855146796e-14, -104.36831927224104, 772.7406610312546,
+ -295.71504849150887, -104.36831927224104, 713.9192806660183,
+ -546.4101615137754, -104.36831927224104, 546.4101615137755,
+ -713.9192806660183, -104.36831927224104, 295.715048491509,
+ -772.7406610312546, -104.36831927224104, 9.463343771029359e-14,
+ -713.9192806660183, -104.36831927224104, -295.7150484915088,
+ -546.4101615137756, -104.36831927224104, -546.4101615137754,
+ -295.7150484915093, -104.36831927224104, -713.919280666018,
+ -1.4195015656544036e-13, -104.36831927224104, -772.7406610312546,
+ 295.71504849150904, -104.36831927224104, -713.9192806660182,
+ 546.4101615137754, -104.36831927224104, -546.4101615137756,
+ 713.919280666018, -104.36831927224104, -295.7150484915094,
+ 692.820323027551, -306.19579255307576, 0,
+ 640.0825161530125, -306.19579255307576, 265.1308592284734,
+ 489.8979485566357, -306.19579255307576, 489.8979485566356,
+ 265.13085922847347, -306.19579255307576, 640.0825161530125,
+ 4.242300954899628e-14, -306.19579255307576, 692.820323027551,
+ -265.1308592284734, -306.19579255307576, 640.0825161530125,
+ -489.8979485566356, -306.19579255307576, 489.8979485566357,
+ -640.0825161530125, -306.19579255307576, 265.1308592284735,
+ -692.820323027551, -306.19579255307576, 8.484601909799256e-14,
+ -640.0825161530125, -306.19579255307576, -265.1308592284734,
+ -489.89794855663575, -306.19579255307576, -489.8979485566356,
+ -265.1308592284738, -306.19579255307576, -640.0825161530123,
+ -1.2726902864698882e-13, -306.19579255307576, -692.820323027551,
+ 265.1308592284736, -306.19579255307576, -640.0825161530124,
+ 489.8979485566356, -306.19579255307576, -489.89794855663575,
+ 640.0825161530123, -306.19579255307576, -265.13085922847387,
+ 565.685424949238, -487.0512600361314, 0,
+ 522.6251859505506, -487.0512600361314, 216.4784400584788,
+ 400.00000000000006, -487.0512600361314, 399.99999999999994,
+ 216.47844005847884, -487.0512600361314, 522.6251859505506,
+ 3.4638242249419737e-14, -487.0512600361314, 565.685424949238,
+ -216.4784400584788, -487.0512600361314, 522.6251859505506,
+ -399.99999999999994, -487.0512600361314, 400.00000000000006,
+ -522.6251859505506, -487.0512600361314, 216.47844005847887,
+ -565.685424949238, -487.0512600361314, 6.927648449883947e-14,
+ -522.6251859505506, -487.0512600361314, -216.47844005847875,
+ -400.0000000000001, -487.0512600361314, -399.99999999999994,
+ -216.47844005847912, -487.0512600361314, -522.6251859505505,
+ -1.039147267482592e-13, -487.0512600361314, -565.685424949238,
+ 216.47844005847892, -487.0512600361314, -522.6251859505505,
+ 399.99999999999994, -487.0512600361314, -400.0000000000001,
+ 522.6251859505505, -487.0512600361314, -216.47844005847915,
+ 400.0000000000001, -634.7149890379884, 0,
+ 369.55181300451477, -634.7149890379884, 153.07337294603593,
+ 282.8427124746191, -634.7149890379884, 282.842712474619,
+ 153.07337294603596, -634.7149890379884, 369.55181300451477,
+ 2.449293598294707e-14, -634.7149890379884, 400.0000000000001,
+ -153.07337294603593, -634.7149890379884, 369.55181300451477,
+ -282.842712474619, -634.7149890379884, 282.8427124746191,
+ -369.55181300451477, -634.7149890379884, 153.073372946036,
+ -400.0000000000001, -634.7149890379884, 4.898587196589414e-14,
+ -369.55181300451477, -634.7149890379884, -153.0733729460359,
+ -282.84271247461913, -634.7149890379884, -282.842712474619,
+ -153.07337294603616, -634.7149890379884, -369.55181300451466,
+ -7.34788079488412e-14, -634.7149890379884, -400.0000000000001,
+ 153.07337294603602, -634.7149890379884, -369.5518130045147,
+ 282.842712474619, -634.7149890379884, -282.84271247461913,
+ 369.55181300451466, -634.7149890379884, -153.0733729460362,
+ 207.05523608201676, -739.1239404530203, 0,
+ 191.29409471546776, -739.1239404530203, 79.23660843303016,
+ 146.41016151377556, -739.1239404530203, 146.41016151377553,
+ 79.23660843303017, -739.1239404530203, 191.29409471546776,
+ 1.267847660572707e-14, -739.1239404530203, 207.05523608201676,
+ -79.23660843303016, -739.1239404530203, 191.29409471546776,
+ -146.41016151377553, -739.1239404530203, 146.41016151377556,
+ -191.29409471546776, -739.1239404530203, 79.23660843303018,
+ -207.05523608201676, -739.1239404530203, 2.535695321145414e-14,
+ -191.29409471546776, -739.1239404530203, -79.23660843303014,
+ -146.41016151377562, -739.1239404530203, -146.41016151377553,
+ -79.23660843303027, -739.1239404530203, -191.2940947154677,
+ -3.8035429817181205e-14, -739.1239404530203, -207.05523608201676,
+ 79.2366084330302, -739.1239404530203, -191.29409471546774,
+ 146.41016151377553, -739.1239404530203, -146.41016151377562,
+ 191.2940947154677, -739.1239404530203, -79.23660843303028,
+
+
+
+
+
+            ];
+
+
+
+
+
+             for (var i = 0, l = objects.length; i < l; i++) {             
+				  
+					var temp2 = [];
+					var object = new THREE.Object3D();
+
+
+					object.position.x = temp0[3 * i];
+					object.position.y = temp0[3 * i + 1];
+					object.position.z = temp0[3 * i + 2];
+					
+					temp2.push(object);
+					vector.copy(object.position).multiplyScalar(2);
+                 object.lookAt(vector);
+                 //   object.lookAt(207.05523608201676, 0, 739.1239404530203)
+                    targets.sphere.push(object);
+                    
+				}
+               
+				// helix
+
+				var vector = new THREE.Vector3();
+
+				for ( var i = 0, l = objects.length; i < l; i ++ ) {
+
+					var phi = i * 0.175 + Math.PI;
+
+					var object = new THREE.Object3D();
+
+					object.position.x = 1300 * Math.sin( phi );
+					object.position.y = - ( i * 12 ) + 600;
+					object.position.z = 1300 * Math.cos( phi );
+
+					vector.x = object.position.x * 2;
+					vector.y = object.position.y;
+					vector.z = object.position.z * 2;
+
+					object.lookAt( vector );
+
+					targets.helix.push( object );
+
+				}
+
+				// grid
+
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = new THREE.Object3D();
+
+					object.position.x = ( ( i % 4 ) * 310 ) - 400;
+					object.position.y = ( - ( Math.floor( i / 4 ) % 3 ) * 310 ) + 400;
+					object.position.z = ( Math.floor( i / 12 ) ) * 500 - 1000;
+
+					targets.grid.push( object );
+
+				}
+
+				//
+
+				renderer = new THREE.CSS3DRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.domElement.style.position = 'absolute';
+				document.getElementById( 'container' ).appendChild( renderer.domElement );
+
+				//
+
+				controls = new THREE.TrackballControls( camera, renderer.domElement );
+				controls.rotateSpeed = 0.5;
+				controls.minDistance = 200;
+				controls.maxDistance = 100000;
+				controls.addEventListener( 'change', render );
+
+				var button = document.getElementById( 'table' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.table, 20);
+				    camera.position.x = 0;
+				    camera.position.y = 0;
+					camera.position.z = 5000;
+				}, false );
+
+				var button = document.getElementById( 'sphere' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.sphere, 20);
+				    camera.position.x = 0;
+				    camera.position.y = 0;
+					camera.position.z = 3000;
+				}, false );
+
+          
+				var button = document.getElementById( 'helix' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.helix, 20);
+				    camera.position.x = 0;
+				    camera.position.y = 0;
+					camera.position.z = 5000;
+				}, false );
+
+				var button = document.getElementById( 'grid' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.grid, 20);
+				    camera.position.x = 2000;
+				    camera.position.y = 0;
+					camera.position.z = 2000;
+	            }, false);
+
+
+	            transform(targets.sphere, 20); // targets.sphere 一開始看 sphere ; targets.table 一開始看table
+                controls.reset();
+				camera.position.x = 0;
+				camera.position.y = 0;   // 一開始 y = -2268 z = 676 看赤道(55置中) ; y=0 z=3000 看北極
+				camera.position.z = 3000;
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+                
+			}
+
+			function k1Onchange(i) {
+
+//			    alert(i);
+			    var temp0 = [
+                    207.05523608201676, 739.1239404530203, 0,
+ 191.29409471546776, 739.1239404530203, 79.23660843303016,
+ 146.41016151377556, 739.1239404530203, 146.41016151377553,
+ 79.23660843303017, 739.1239404530203, 191.29409471546776,
+ 1.267847660572707e-14, 739.1239404530203, 207.05523608201676,
+ -79.23660843303016, 739.1239404530203, 191.29409471546776,
+ -146.41016151377553, 739.1239404530203, 146.41016151377556,
+ -191.29409471546776, 739.1239404530203, 79.23660843303018,
+ -207.05523608201676, 739.1239404530203, 2.535695321145414e-14,
+ -191.29409471546776, 739.1239404530203, -79.23660843303014,
+ -146.41016151377562, 739.1239404530203, -146.41016151377553,
+ -79.23660843303027, 739.1239404530203, -191.2940947154677,
+ -3.8035429817181205e-14, 739.1239404530203, -207.05523608201676,
+ 79.2366084330302, 739.1239404530203, -191.29409471546774,
+ 146.41016151377553, 739.1239404530203, -146.41016151377562,
+ 191.2940947154677, 739.1239404530203, -79.23660843303028,
+ 400.0000000000001, 634.7149890379884, 0,
+ 369.55181300451477, 634.7149890379884, 153.07337294603593,
+ 282.8427124746191, 634.7149890379884, 282.842712474619,
+ 153.07337294603596, 634.7149890379884, 369.55181300451477,
+ 2.449293598294707e-14, 634.7149890379884, 400.0000000000001,
+ -153.07337294603593, 634.7149890379884, 369.55181300451477,
+ -282.842712474619, 634.7149890379884, 282.8427124746191,
+ -369.55181300451477, 634.7149890379884, 153.073372946036,
+ -400.0000000000001, 634.7149890379884, 4.898587196589414e-14,
+ -369.55181300451477, 634.7149890379884, -153.0733729460359,
+ -282.84271247461913, 634.7149890379884, -282.842712474619,
+ -153.07337294603616, 634.7149890379884, -369.55181300451466,
+ -7.34788079488412e-14, 634.7149890379884, -400.0000000000001,
+ 153.07337294603602, 634.7149890379884, -369.5518130045147,
+ 282.842712474619, 634.7149890379884, -282.84271247461913,
+ 369.55181300451466, 634.7149890379884, -153.0733729460362,
+ 565.685424949238, 487.0512600361314, 0,
+ 522.6251859505506, 487.0512600361314, 216.4784400584788,
+ 400.00000000000006, 487.0512600361314, 399.99999999999994,
+ 216.47844005847884, 487.0512600361314, 522.6251859505506,
+ 3.4638242249419737e-14, 487.0512600361314, 565.685424949238,
+ -216.4784400584788, 487.0512600361314, 522.6251859505506,
+ -399.99999999999994, 487.0512600361314, 400.00000000000006,
+ -522.6251859505506, 487.0512600361314, 216.47844005847887,
+ -565.685424949238, 487.0512600361314, 6.927648449883947e-14,
+ -522.6251859505506, 487.0512600361314, -216.47844005847875,
+ -400.0000000000001, 487.0512600361314, -399.99999999999994,
+ -216.47844005847912, 487.0512600361314, -522.6251859505505,
+ -1.039147267482592e-13, 487.0512600361314, -565.685424949238,
+ 216.47844005847892, 487.0512600361314, -522.6251859505505,
+ 399.99999999999994, 487.0512600361314, -400.0000000000001,
+ 522.6251859505505, 487.0512600361314, -216.47844005847915,
+ 692.820323027551, 306.19579255307576, 0,
+ 640.0825161530125, 306.19579255307576, 265.1308592284734,
+ 489.8979485566357, 306.19579255307576, 489.8979485566356,
+ 265.13085922847347, 306.19579255307576, 640.0825161530125,
+ 4.242300954899628e-14, 306.19579255307576, 692.820323027551,
+ -265.1308592284734, 306.19579255307576, 640.0825161530125,
+ -489.8979485566356, 306.19579255307576, 489.8979485566357,
+ -640.0825161530125, 306.19579255307576, 265.1308592284735,
+ -692.820323027551, 306.19579255307576, 8.484601909799256e-14,
+ -640.0825161530125, 306.19579255307576, -265.1308592284734,
+ -489.89794855663575, 306.19579255307576, -489.8979485566356,
+ -265.1308592284738, 306.19579255307576, -640.0825161530123,
+ -1.2726902864698882e-13, 306.19579255307576, -692.820323027551,
+ 265.1308592284736, 306.19579255307576, -640.0825161530124,
+ 489.8979485566356, 306.19579255307576, -489.89794855663575,
+ 640.0825161530123, 306.19579255307576, -265.13085922847387,
+ 772.7406610312546, 104.36831927224104, 0,
+ 713.9192806660183, 104.36831927224104, 295.71504849150887,
+ 546.4101615137755, 104.36831927224104, 546.4101615137754,
+ 295.7150484915089, 104.36831927224104, 713.9192806660183,
+ 4.7316718855146796e-14, 104.36831927224104, 772.7406610312546,
+ -295.71504849150887, 104.36831927224104, 713.9192806660183,
+ -546.4101615137754, 104.36831927224104, 546.4101615137755,
+ -713.9192806660183, 104.36831927224104, 295.715048491509,
+ -772.7406610312546, 104.36831927224104, 9.463343771029359e-14,
+ -713.9192806660183, 104.36831927224104, -295.7150484915088,
+ -546.4101615137756, 104.36831927224104, -546.4101615137754,
+ -295.7150484915093, 104.36831927224104, -713.919280666018,
+ -1.4195015656544036e-13, 104.36831927224104, -772.7406610312546,
+ 295.71504849150904, 104.36831927224104, -713.9192806660182,
+ 546.4101615137754, 104.36831927224104, -546.4101615137756,
+ 713.919280666018, 104.36831927224104, -295.7150484915094,
+ 772.7406610312546, -104.36831927224104, 0,
+ 713.9192806660183, -104.36831927224104, 295.71504849150887,
+ 546.4101615137755, -104.36831927224104, 546.4101615137754,
+ 295.7150484915089, -104.36831927224104, 713.9192806660183,
+ 4.7316718855146796e-14, -104.36831927224104, 772.7406610312546,
+ -295.71504849150887, -104.36831927224104, 713.9192806660183,
+ -546.4101615137754, -104.36831927224104, 546.4101615137755,
+ -713.9192806660183, -104.36831927224104, 295.715048491509,
+ -772.7406610312546, -104.36831927224104, 9.463343771029359e-14,
+ -713.9192806660183, -104.36831927224104, -295.7150484915088,
+ -546.4101615137756, -104.36831927224104, -546.4101615137754,
+ -295.7150484915093, -104.36831927224104, -713.919280666018,
+ -1.4195015656544036e-13, -104.36831927224104, -772.7406610312546,
+ 295.71504849150904, -104.36831927224104, -713.9192806660182,
+ 546.4101615137754, -104.36831927224104, -546.4101615137756,
+ 713.919280666018, -104.36831927224104, -295.7150484915094,
+ 692.820323027551, -306.19579255307576, 0,
+ 640.0825161530125, -306.19579255307576, 265.1308592284734,
+ 489.8979485566357, -306.19579255307576, 489.8979485566356,
+ 265.13085922847347, -306.19579255307576, 640.0825161530125,
+ 4.242300954899628e-14, -306.19579255307576, 692.820323027551,
+ -265.1308592284734, -306.19579255307576, 640.0825161530125,
+ -489.8979485566356, -306.19579255307576, 489.8979485566357,
+ -640.0825161530125, -306.19579255307576, 265.1308592284735,
+ -692.820323027551, -306.19579255307576, 8.484601909799256e-14,
+ -640.0825161530125, -306.19579255307576, -265.1308592284734,
+ -489.89794855663575, -306.19579255307576, -489.8979485566356,
+ -265.1308592284738, -306.19579255307576, -640.0825161530123,
+ -1.2726902864698882e-13, -306.19579255307576, -692.820323027551,
+ 265.1308592284736, -306.19579255307576, -640.0825161530124,
+ 489.8979485566356, -306.19579255307576, -489.89794855663575,
+ 640.0825161530123, -306.19579255307576, -265.13085922847387,
+ 565.685424949238, -487.0512600361314, 0,
+ 522.6251859505506, -487.0512600361314, 216.4784400584788,
+ 400.00000000000006, -487.0512600361314, 399.99999999999994,
+ 216.47844005847884, -487.0512600361314, 522.6251859505506,
+ 3.4638242249419737e-14, -487.0512600361314, 565.685424949238,
+ -216.4784400584788, -487.0512600361314, 522.6251859505506,
+ -399.99999999999994, -487.0512600361314, 400.00000000000006,
+ -522.6251859505506, -487.0512600361314, 216.47844005847887,
+ -565.685424949238, -487.0512600361314, 6.927648449883947e-14,
+ -522.6251859505506, -487.0512600361314, -216.47844005847875,
+ -400.0000000000001, -487.0512600361314, -399.99999999999994,
+ -216.47844005847912, -487.0512600361314, -522.6251859505505,
+ -1.039147267482592e-13, -487.0512600361314, -565.685424949238,
+ 216.47844005847892, -487.0512600361314, -522.6251859505505,
+ 399.99999999999994, -487.0512600361314, -400.0000000000001,
+ 522.6251859505505, -487.0512600361314, -216.47844005847915,
+ 400.0000000000001, -634.7149890379884, 0,
+ 369.55181300451477, -634.7149890379884, 153.07337294603593,
+ 282.8427124746191, -634.7149890379884, 282.842712474619,
+ 153.07337294603596, -634.7149890379884, 369.55181300451477,
+ 2.449293598294707e-14, -634.7149890379884, 400.0000000000001,
+ -153.07337294603593, -634.7149890379884, 369.55181300451477,
+ -282.842712474619, -634.7149890379884, 282.8427124746191,
+ -369.55181300451477, -634.7149890379884, 153.073372946036,
+ -400.0000000000001, -634.7149890379884, 4.898587196589414e-14,
+ -369.55181300451477, -634.7149890379884, -153.0733729460359,
+ -282.84271247461913, -634.7149890379884, -282.842712474619,
+ -153.07337294603616, -634.7149890379884, -369.55181300451466,
+ -7.34788079488412e-14, -634.7149890379884, -400.0000000000001,
+ 153.07337294603602, -634.7149890379884, -369.5518130045147,
+ 282.842712474619, -634.7149890379884, -282.84271247461913,
+ 369.55181300451466, -634.7149890379884, -153.0733729460362,
+ 207.05523608201676, -739.1239404530203, 0,
+ 191.29409471546776, -739.1239404530203, 79.23660843303016,
+ 146.41016151377556, -739.1239404530203, 146.41016151377553,
+ 79.23660843303017, -739.1239404530203, 191.29409471546776,
+ 1.267847660572707e-14, -739.1239404530203, 207.05523608201676,
+ -79.23660843303016, -739.1239404530203, 191.29409471546776,
+ -146.41016151377553, -739.1239404530203, 146.41016151377556,
+ -191.29409471546776, -739.1239404530203, 79.23660843303018,
+ -207.05523608201676, -739.1239404530203, 2.535695321145414e-14,
+ -191.29409471546776, -739.1239404530203, -79.23660843303014,
+ -146.41016151377562, -739.1239404530203, -146.41016151377553,
+ -79.23660843303027, -739.1239404530203, -191.2940947154677,
+ -3.8035429817181205e-14, -739.1239404530203, -207.05523608201676,
+ 79.2366084330302, -739.1239404530203, -191.29409471546774,
+ 146.41016151377553, -739.1239404530203, -146.41016151377562,
+ 191.2940947154677, -739.1239404530203, -79.23660843303028,
+
+
+
+
+            ];
+
+			    controls.reset();
+//			    var phi = Math.acos(-1 + (2 * selectedValue) / select_num);
+//			    var theta = Math.sqrt(select_num * Math.PI) * phi;
+
+    //			    x = 3000 * Math.cos(theta) * Math.sin(phi);
+    //			    y = 3000 * Math.sin(theta) * Math.sin(phi);
+			    //			    z = 3000 * Math.cos(phi);
+
+			    x = 3 * temp0[3 * i];
+			    y = 3 * temp0[3 * i + 1];
+			    z = 3 * temp0[3 * i + 2];
+//			      alert("x=" + x + ", y=" + y + ", z=" + z);
+			    transformPos(targets.sphere, 20, x, y, z);
+
+			}
+
+
+			
+			function transform( targets, duration ) {
+
+				TWEEN.removeAll();
+
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = objects[ i ];
+					var target = targets[ i ];
+
+					new TWEEN.Tween( object.position )
+						.to( { x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration )
+						.easing( TWEEN.Easing.Exponential.InOut )
+						.start();
+
+					new TWEEN.Tween( object.rotation )
+						.to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+						.easing( TWEEN.Easing.Exponential.InOut )
+						.start();
+
+				}
+	               
+
+				new TWEEN.Tween( this )
+					.to( {}, duration * 2 )
+					.onUpdate( render )
+					.start();
+
+			}
+
+			function transformPos(targets, duration,iX,iY,iZ) {
+//			    alert("transformPos: x=" + x + ", y=" + y + ", z=" + z);
+			    TWEEN.removeAll();
+			    camera.position.x = iX;
+			    camera.position.y = iY;
+			    camera.position.z = iZ;
+
+			    for (var i = 0; i < objects.length; i++) {
+
+			        var object = objects[i];
+			        var target = targets[i];
+
+			        new TWEEN.Tween(object.position)
+						.to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration)
+						.easing(TWEEN.Easing.Exponential.InOut)
+						.start();
+
+			        new TWEEN.Tween(object.rotation)
+						.to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration)
+						.easing(TWEEN.Easing.Exponential.InOut)
+						.start();
+			      
+			    }
+                
+                new TWEEN.Tween(this)
+					.to({}, duration * 2)
+					.onUpdate(render)
+					.start();
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+				render();
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				TWEEN.update();
+
+				controls.update();
+
+			}
+
+			function render() {
+
+				renderer.render( scene, camera );
+
+			}
+
+
+		</script></embed>&nbsp;
+
+
+  	</body>
+</html>

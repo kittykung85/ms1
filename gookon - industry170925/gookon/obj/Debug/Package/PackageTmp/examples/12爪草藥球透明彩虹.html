@@ -1,0 +1,1222 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>故宮典藏</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			html, body {
+				height: 100%;
+			}
+
+			body {
+				background-color: #FFFFFF;
+				margin: 0;
+				font-family: Helvetica, sans-serif;
+				overflow: hidden;
+			}
+
+			a {
+				color: #000000;
+			}
+
+			#logo {
+				position: absolute;
+				width: 100%;
+				padding: 0px;
+				font-family: Monospace;
+				font-size: 20px;
+				font-weight: bold;
+				text-align: center;
+				z-index: 1;
+                top: 5px;
+                left: -30px;
+            }
+
+			#menu {
+				position: absolute;
+				bottom: 22px;
+				width: 100%;
+				text-align: center;
+			}
+			
+			#menuL {
+				position: absolute;
+				top: 5px;
+				left:27px;
+				width: 100%;
+				text-align: center;
+			}
+
+			.element {
+                  width: 100px;
+                  height:160px;
+                  font-weight: bold;
+                  -webkit-font-smoothing: antialiased;
+                  -moz-osx-font-smoothing: grayscale;
+                  background-color: rgba(255, 128, 0,0.75);
+                  border: 0px solid rgba(127,255,255,0);
+                  order-radius: 8px;
+                  text-align: center;
+                  cursor: default;
+                  
+                }
+
+                .element:hover {
+                  box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+                  border: 1px solid rgba(127,255,255,0.75);
+                }
+                .element svg {
+                  position: absolute;
+                  top: 20px;
+                  left: 2px;
+                  right: 0px;
+                }
+				.element .done{
+                  position: absolute;
+                  top:0px;
+                  left:0px;
+                  width: 100%;
+                  height: 160px;
+                  border-style:ridge;
+                  border-color:brown;
+                  border-width: 0px;
+                }
+				.element .number {
+					position: absolute;
+					top: 20px;
+					right: 20px;
+					font-size: 20px;
+					text-shadow:1px 1px 1px #cccccc;
+					color: rgba(0,0,0,0.75);
+				}
+
+				.element .symbol {
+				  position: absolute;
+                  top: 35px;
+                  left: 0px;
+                  right: 0px;
+                  font-size: 20px;
+                  color: rgba(230, 255, 0,0.75);
+				}
+
+				.element .details {
+				    position: absolute;
+                    top: 5px;
+                    left: 0px;
+                    right: 0px;
+                    font-size: 20px;
+                    color: rgba(255,255, 255,0.75);
+				}
+
+			button {
+				color: rgba(0,0,0,0.75);
+				background: transparent;
+				outline: 1px solid rgba(127,255,255,0);
+				border: 0px;
+				padding: 5px 10px;
+				cursor: pointer;
+			}
+			button:hover {
+				background-color: rgba(255,187,0,0.5);
+			}
+			button:active {
+				color: #FFFFFF;
+				background-color: rgba(0,255,255,0.75);
+			}
+		</style>
+        <link rel="stylesheet" href="css/buttons.css" type="text/css" media="screen" />
+	</head>
+	<body>
+		<script src="../build/three.js"></script>
+		<script src="js/libs/tween.min.js"></script>
+		<script src="js/controls/TrackballControls.js"></script>
+		<script src="js/renderers/CSS3DRenderer.js"></script>
+
+		<div id="container"></div>
+		
+        <div id="menuL" style="font-size: 12px">
+        <script language="javascript">
+            function pOnchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("iposition");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544") {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }
+            }
+            function k1Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind1");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544") {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "34") {
+                    transformPos(targets.sphere, 20, 1500, 1000, 2000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }
+            }
+            function k2Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind2");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544" ) {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }
+              }
+                  function k3Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind3");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544" ) {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }
+                }
+                  function k4Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind4");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544" ) {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }}
+                  function k5Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind5");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544" ) {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }}
+                  function k6Onchange() {
+                //                alert('test onchange');
+                var selectBox = document.getElementById("kind6");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                controls.reset();
+
+                if (selectedValue == "5544" ) {
+                    transformPos(targets.sphere, 20, 0, 0, 3000);
+                }
+                if (selectedValue == "198") {
+                    transformPos(targets.sphere, 20, 0, 0, -3000);
+                }
+                if (selectedValue == "71") {
+                    transformPos(targets.sphere, 20, 0, -3000, 0);
+                }
+                if (selectedValue == "18") {
+                    transformPos(targets.sphere, 20, 0, 3000, 0);
+                }
+                if (selectedValue == "11") {
+                    transformPos(targets.sphere, 20, 3000, 0, 0);
+                }
+                if (selectedValue == "88") {
+                    transformPos(targets.sphere, 20, -3000, 0, 0);
+                }}
+                function k7Onchange() {
+                    //                alert('test onchange');
+                    var selectBox = document.getElementById("kind7");
+                    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                    controls.reset();
+
+                    if (selectedValue == "5544") {
+                        transformPos(targets.sphere, 20, 0, 0, 3000);
+                    }
+                    if (selectedValue == "198") {
+                        transformPos(targets.sphere, 20, 0, 0, -3000);
+                    }
+                    if (selectedValue == "71") {
+                        transformPos(targets.sphere, 20, 0, -3000, 0);
+                    }
+                    if (selectedValue == "18") {
+                        transformPos(targets.sphere, 20, 0, 3000, 0);
+                    }
+                    if (selectedValue == "11") {
+                        transformPos(targets.sphere, 20, 3000, 0, 0);
+                    }
+                    if (selectedValue == "88") {
+                        transformPos(targets.sphere, 20, -3000, 0, 0);
+                    } 
+                }
+                  function k8Onchange() {
+                //                alert('test onchange');
+                      location.href="http://140.113.73.194/yuekan/9.html";
+            }
+</script>
+        <select id="kind1" style="width: 50px" onchange="k1Onchange()">
+                <option id="OptionA" >繪畫</option>
+                <option id="Option1" >畫元世祖出獵圖</option>
+                <option id="Option2" >潑墨仙人</option>
+                <option value="34" style="background-color: rgba(255,0,25,0.7)">百駿圖</option>
+                <option id="Option3" >唐人宮樂圖</option>
+                <option id="Option4" >秉燭夜遊</option>
+                <option id="Option5" >谿山行旅</option>
+                <option id="Option11" >陶穀贈詞</option>
+                <option value="11" style="background-color: rgba(255,0,0,0.7)">雙喜圖</option>
+                <option id="Option13" >漢宮春曉</option>    
+                <option id="Option14" >層巖叢樹圖</option>
+                <option value="5544" style="background-color: rgba(255,0,0,0.7)">富春山居圖</option>   
+                <option id="Option15" >霜浦歸漁圖</option>
+                <option id="Option21" >春遊晚歸</option>
+                <option id="Option22" >桃花漁艇</option>
+                <option id="Option23" >鵲華秋色</option>
+                <option id="Option24" >赤壁圖</option>
+                <option id="Option25" >古木寒泉</option>
+                <option id="Option31" >清明上河圖</option>
+                <option id="Option32" >溪山清遠</option>
+                <option id="Option33" >王蒙夏日山居圖</option>    
+                <option id="Option34" >牡丹</option>
+                <option id="Option41" >具區林屋</option>
+                <option id="Option42" >明人畫入蹕圖</option>
+                <option id="Option43" >花竹</option>    
+                <option id="Option44" >花竹廬山高</option> 
+                       
+            </select>
+        <select id="kind2" style="width: 50px" onchange="k2Onchange()">
+                <option id="OptionB" >陶瓷</option>
+                <option id="Ceramics" style="background-color: rgba(255,0,0,0)">天青釉紫斑如意</option>
+                <option id="Curios" style="background-color: rgba(255, 148, 201,0)">寶石紅釉僧帽壺</option>
+                <option id="Painting" style="background-color: rgba(255, 128, 0,0)">黑陶高足盃</option>
+                <option value="18" style="background-color: rgba(255,255,0,0.7)">茶葉末六聯瓶</option>
+                <option id="Jade" style="background-color: rgba(83,138,0,0)">開光花鳥雙連瓶</option>
+                <option id="Calligraphy" style="background-color: rgba(0, 255, 255,0)">紅釉尊</option>
+                <option id="Literature" style="background-color: rgba(72, 72, 147,0)">白瓷嬰兒枕</option>
+                <option id="Book" style="background-color: rgba(145, 70, 136,0)">白陶鬶</option>       
+                <option id="Option10" style="background-color: rgba(255,0,0,0)">黃釉粉彩八卦如意</option>
+                <option id="Option16" style="background-color: rgba(255, 148, 201,0)">黑陶繭式壺</option>
+                <option id="Option17" style="background-color: rgba(255, 128, 0,0)">黑陶高足盃</option>
+                <option id="Option18" style="background-color: rgba(255,255,0,0)">青瓷葵花式洗</option>
+                <option id="Option64" style="background-color: rgba(83,138,0,0)">紅地描金萬福紋</option>
+                <option value="5544"  style="background-color: rgba(0, 255, 255,0.7)">嬌黃錐拱獸面紋鼎</option>
+                <option id="Option66" style="background-color: rgba(72, 72, 147,0)">青花人物紋扁壺</option>
+                <option id="Option67" style="background-color: rgba(145, 70, 136,0)">粉紅錦地番蓮碗</option>       
+               <option id="Option68" style="background-color: rgba(145, 70, 136,0)">粉彩紫地花鳥文</option>
+            </select>
+        <select id="kind3" style="width: 50px" onchange="k3Onchange()">
+                <option id="Option1" >珍玩</option>
+                <option id="Option2" style="background-color: rgba(255,0,0,0)">雕竹窺簡圖筆筒</option>
+                <option id="Option3" style="background-color: rgba(255, 148, 201,0)">四層透花提食盒</option>
+                <option id="Option4" style="background-color: rgba(255, 128, 0,0)">雕竹荷葉式水盛</option>
+                <option id="Option5" style="background-color: rgba(255,255,0,0)">黃地牡丹紋蟠龍瓶</option>
+                <option id="Option6" style="background-color: rgba(83,138,0,0)">掐絲琺瑯番蓮紋盒</option>
+                <option value="198" style="background-color: rgba(0, 255, 255,0.7)">肉形石</option>
+                <option id="Option8" style="background-color: rgba(72, 72, 147,0)">填漆牡丹圓盒</option>
+                <option id="Option9" style="background-color: rgba(145, 70, 136,0)">內填琺瑯纍絲盒</option>       
+                <option id="Option69" style="background-color: rgba(145, 70, 136,0)">雕漆雙緣寶盒</option> 
+            </select>            
+        <select id="kind4" style="width: 50px" onchange="k4Onchange()">
+                <option id="Option19" >銅器</option>
+                <option value="71" style="background-color: rgba(255,0,0,0.7)">蟠虺紋鼎</option>
+                <option value="198" style="background-color: rgba(255, 148, 201,0.7)">鉤連乳丁紋羊首</option>
+                <option id="Option22" style="background-color: rgba(255, 128, 0,0)">獸面紋鉞</option>
+                <option id="Option23" style="background-color: rgba(255,255,0,0)">玉高足杯</option>
+                
+                <!--<option id="Option24" style="background-color: rgba(83,138,0,0)">玉器</option>
+                <option id="Option25" style="background-color: rgba(0, 255, 255,0)">書法</option>
+                <option id="Option26" style="background-color: rgba(72, 72, 147,0)">文獻</option>
+                <option id="Option27" style="background-color: rgba(145, 70, 136,0)">圖書</option>       
+           --> </select>&nbsp;
+        <select id="kind5" style="width: 50px" onchange="k5Onchange()">
+            <option id="Option28" >玉器</option>
+            <option id="Option29" style="background-color: rgba(255,0,0,0)">玉鰲魚花插</option>
+            <option id="Option30" style="background-color: rgba(255, 148, 201,0)">玉角形杯</option>
+            <option value="5544" style="background-color: rgba(0, 255, 255,0.7)">翠玉白菜</option>
+            <option id="Option31" style="background-color: rgba(255, 128, 0,0)">新石器時代玉琮</option>
+            <option id="Option32" style="background-color: rgba(255,255,0,0)">鷹紋圭</option>
+            <option id="Option33" style="background-color: rgba(83,138,0,0)">龍冠鳳紋玉飾</option>
+           
+            <!--<option id="Option35" style="background-color: rgba(72, 72, 147,0)">文獻</option>
+            <option id="Option36" style="background-color: rgba(145, 70, 136,0)">圖書</option>       
+        -->  </select>
+        <select id="kind6" style="width: 50px" onchange="k6Onchange()">
+            <option id="Option37" >書法</option>
+            <option value="5544" style="background-color: rgba(255,0,0,0.7)">花氣薰人帖</option>
+            <option id="Option39" style="background-color: rgba(255, 148, 201,0)">書譜</option>
+            <option id="Option40" style="background-color: rgba(255, 128, 0,0)">臨閣帖行書</option>
+            <option id="Option41" style="background-color: rgba(255,255,0,0)">自書五憶歌</option>
+            <option id="Option42" style="background-color: rgba(83,138,0,0)">自敘帖</option>
+            <option id="Option43" style="background-color: rgba(0, 255, 255,0)">書黃州寒食詩</option>
+            <!--<option id="Option44" style="background-color: rgba(72, 72, 147,0)">文獻</option>
+            <option id="Option45" style="background-color: rgba(145, 70, 136,0)">圖書</option>       
+        --> </select>
+        <select id="kind7" style="width: 50px" onchange="k7Onchange()">
+            <option id="Option46" >文獻</option>
+            <option id="Option47" style="background-color: rgba(255,0,0,0)">宮中檔奏摺</option>
+            <option value="88" style="background-color: rgba(255, 148, 0,0.7)">大清國致大英國書</option>
+            <option id="Option49" style="background-color: rgba(255, 128, 0,0)">滿文原檔</option>
+            <!--<option id="Option50" style="background-color: rgba(255,255,0,0)">銅器</option>
+            <option id="Option51" style="background-color: rgba(83,138,0,0)">玉器</option>
+            <option id="Option52" style="background-color: rgba(0, 255, 255,0)">書法</option>
+            <option id="Option53" style="background-color: rgba(72, 72, 147,0)">文獻</option>
+            <option id="Option54" style="background-color: rgba(145, 70, 136,0)">圖書</option>       
+        --> </select>
+        <select id="kind8" style="width: 50px" onchange="k8Onchange()">
+            <option id="Option55" >圖書</option>
+            <option id="Option56" style="background-color: rgba(255,0,0,0)">爾雅</option>
+            <option value="99" style="background-color: rgba(255, 148, 201,0.7)">周禮疏</option>
+            <option id="Option58" style="background-color: rgba(255, 128, 0,0)">劉賓客文集</option><!--
+            <option id="Option59" style="background-color: rgba(255,255,0,0)">銅器</option>
+            <option id="Option60" style="background-color: rgba(83,138,0,0)">玉器</option>
+            <option id="Option61" style="background-color: rgba(0, 255, 255,0)">書法</option>
+            <option id="Option62" style="background-color: rgba(72, 72, 147,0)">文獻</option>
+            <option id="Option63" style="background-color: rgba(145, 70, 136,0)">圖書</option>      --> 
+        </select>
+
+		<select id="kind9" style="width: 50px" onchange="k8Onchange()" name="D1">
+            <option id="Option70" >月刊</option>
+            <option id="Option71" style="background-color: rgba(255,0,0,0)"><a href='http://140.113.73.194/yuekan/9.html' target=_blank >故宮文物</a></option>
+            <!--<option value="99" style="background-color: rgba(255, 148, 201,0.7)"></option>
+            <option id="Option72" style="background-color: rgba(255, 128, 0,0)"></option>--><!--
+            <option id="Option59" style="background-color: rgba(255,255,0,0)">銅器</option>
+            <option id="Option60" style="background-color: rgba(83,138,0,0)">玉器</option>
+            <option id="Option61" style="background-color: rgba(0, 255, 255,0)">書法</option>
+            <option id="Option62" style="background-color: rgba(72, 72, 147,0)">文獻</option>
+            <option id="Option63" style="background-color: rgba(145, 70, 136,0)">圖書</option>      --> 
+        </select></div>
+		<div id="menu">
+			<button id="table">TABLE</button>
+			<button id="sphere">SPHERE</button>
+			<button id="helix">HELIX</button>
+			<button id="grid">GRID</button>
+		</div>
+       	
+        <script>
+
+            var table = [
+            //10
+              	"19乾黑", "大 太 天 从", "今 众 以 会 坐", 5, 1, "", "img/h66.png", "rgba(255, 138, 194,0.75)",
+				"98黑坤", "Darmstadium", "(281)", 6, 1, "", "", "rgba(255, 165, 138,0.75)",
+				"89坤黑", "MichaelPorterbio", "(280)", 7, 1, "", "", "rgba(255, 221, 87,0.75)",
+				"80坤白", "Copernicium", "(285)", 8, 1, "", "", "rgba(186, 255, 102,0.75)",
+				"01白乾", "Unutrium", "(284)", 9, 1, " ", " ", "rgba(102, 255, 102,0.75)",
+				"10乾白", "Flerovium", "(289)", 10, 1, " ", " ", "rgba(117, 255, 205,0.75)",
+				"03白离", "Ununpentium", "(288)", 11, 1, " ", " ", "rgba(102, 255, 255,0.75)",
+				"05白巽", "Livermorium", "(293)", 12, 1, " ", " ", "rgba(117, 221, 255,0.75)",
+                "03白离", "Ununpentium", "(288)", 13, 1, " ", " ", "rgba(153, 187, 255,0.75)",
+				"05白巽", "Livermorium", "(293)", 14, 1, " ", " ", "rgba(161, 138, 255,0.75)",
+            //20
+				"69坎黑", "Boron", "10.811", 15, 1, "#", "#", "rgba(210, 143, 255,0.75)",
+                "99黑黑", "Carbon", "12.0107", 16, 1, "#", "#", "rgba(227, 143, 255,0.75)",
+				"96黑坎", "Aluminium", "26.9815386", 5, 2, "#", "img/h57.png", "rgba(255, 138, 194,0.75)",
+				"94黑震", "Silicon", "28.0855", 6, 2, "#", "#", "rgba(255, 138, 194,0.75)",
+				"91黑乾", "Vanadium", "50.9415", 7, 2, "#", "#", "rgba(255, 165, 138,0.75)",
+				"50巽白", "Chromium", "51.9961", 8, 2, "#", "#", "rgba(255, 165, 138,0.75)",
+				"30离白", "Manganese", "54.938045", 9, 2, "#", "#", "rgba(255, 221, 87,0.75)",
+				"20兌白", "Iron", "55.845", 10, 2, "#", "#", "rgba(255, 221, 87,0.75)",
+                "03白离", "Ununpentium", "(288)", 11, 2, " ", " ", "rgba(186, 255, 102,0.75)",
+				"05白巽", "Livermorium", "(293)", 12, 2, " ", " ", "rgba(186, 255, 102,0.75)",
+            //30	
+				"04白震", "Copper", "63.546", 13, 2, "#", "#", "rgba(102, 255, 102,0.75)",
+				"06白坎", "Zinc", "65.38", 14, 2, "#", "#", "rgba(102, 255, 102,0.75)",
+				"07白艮", "Gallium", "69.723", 15, 2, "#", "#", "rgba(117, 255, 205,0.75)",
+				"09白黑", "Germanium", "72.63", 16, 2, "#", "#", "rgba(117, 255, 205,0.75)",
+				"29兌黑", "Niobium", "92.90628", 5, 3, "#", "#", "rgba(102, 255, 255,0.75)",
+				"39离黑", "Molybdenum", "95.96", 6, 3, "#", "#", "rgba(102, 255, 255,0.75)",
+				"59巽黑", "Technetium", "(98)", 7, 3, "#", "#", "rgba(117, 221, 255,0.75)",
+				"97黑艮", "Ruthenium", "101.07", 8, 3, "#", "#", "rgba(117, 221, 255,0.75)",
+                "03白离", "Ununpentium", "(288)", 9, 3, " ", " ", "rgba(153, 187, 255,0.75)",
+				"05白巽", "Livermorium", "(293)", 10, 3, " ", " ", "rgba(153, 187, 255,0.75)",
+            //40
+                "04白震", "Copper", "63.546", 11, 3, "#", "#", "rgba(161, 138, 255,0.75)",
+				"06白坎", "Zinc", "65.38", 12, 3, "#", "#", "rgba(161, 138, 255,0.75)",
+				"07白艮", "Gallium", "69.723", 13, 3, "#", "#", "rgba(210, 143, 255,0.75)",
+				"09白黑", "Germanium", "72.63", 14, 3, "#", "#", "rgba(210, 143, 255,0.75)",
+				"29兌黑", "Niobium", "92.90628", 15, 3, "#", "#", "rgba(227, 143, 255,0.75)",
+				"39离黑", "Molybdenum", "95.96", 16, 3, "#", "#", "rgba(227, 143, 255,0.75)",
+				"59巽黑", "Technetium", "(98)", 5, 4, "#", "#", "rgba(255, 138, 194,0.75)",
+				"97黑艮", "Ruthenium", "101.07", 6, 4, "#", "#", "rgba(255, 138, 194,0.75)",
+                "03白离", "Ununpentium", "(288)", 7, 4, " ", " ", "rgba(255, 165, 138,0.75)",
+				"05白巽", "Livermorium", "(293)", 8, 4, " ", " ", "rgba(255, 165, 138,0.75)",
+            //50
+				"71遯", "Silver", "107.8682", 9, 4, "#", "#", "rgba(255, 221, 87,0.75)",
+				"61訟", "Cadmium", "112.411", 10, 4, "#", "#", "rgba(255, 221, 87,0.75)",
+				"51姤", "Indium", "114.818", 11, 4, "#", "#", "rgba(186, 255, 102,0.75)",
+				"41無妄", "Tin", "118.71", 12, 4, "#", "#", "rgba(186, 255, 102,0.75)",
+				"31同人", "Cerium", "140.116", 13, 4, "#", "#", "rgba(102, 255, 102,0.75)",
+				"21履", "Praseodymium", "140.90765", 14, 4, "#", "#", "rgba(102, 255, 102,0.75)",
+				"11乾", "Neodymium", "144.242", 15, 4, "igmap.htm", "", "rgba(117, 255, 205,0.75)",
+				"12夬", "Lead", "207.2", 16, 4, "#", "#", "rgba(117, 255, 205,0.75)",
+                "03白离", "Ununpentium", "(288)", 5, 5, " ", " ", "rgba(102, 255, 255,0.75)",
+				"05白巽", "Livermorium", "(293)", 6, 5, " ", " ", "rgba(102, 255, 255,0.75)",
+            //60
+                "71遯", "Silver", "107.8682", 7, 5, "#", "#", "rgba(117, 221, 255,0.75)",
+				"61訟", "Cadmium", "112.411", 8, 5, "#", "#", "rgba(117, 221, 255,0.75)",
+				"51姤", "Indium", "114.818", 9, 5, "#", "#", "rgba(153, 187, 255,0.75)",
+				"41無妄", "Tin", "118.71", 10, 5, "#", "#", "rgba(153, 187, 255,0.75)",
+				"31同人", "Cerium", "140.116", 11, 5, "#", "#", "rgba(161, 138, 255,0.75)",
+				"21履", "Praseodymium", "140.90765", 10, 5, "#", "#", "rgba(161, 138, 255,0.75)",
+				"11乾", "Neodymium", "144.242", 12, 5, "igmap.htm", "", "rgba(210, 143, 255,0.75)",
+				"12夬", "Lead", "207.2", 13, 5, "#", "#", "rgba(210, 143, 255,0.75)",
+                "03白离", "Ununpentium", "(288)", 14, 5, " ", " ", "rgba(227, 143, 255,0.75)",
+				"05白巽", "Livermorium", "(293)", 15, 5, " ", " ", "rgba(227, 143, 255,0.75)",
+            //70
+				"15小畜", "Gadolinium", "157.25", 16, 5, "#", "#", "rgba(255, 138, 194,0.75)",
+				"16需", "Terbium", "158.92535", 5, 5, "#", "#", "rgba(255, 138, 194,0.75)",
+				"17大畜", "Dysprosium", "162.5", 6, 5, "#", "#", "rgba(255, 138, 194,0.75)",
+				"18泰", "Holmium", "164.93032", 7, 5, "#", "#", "rgba(255, 165, 138,0.75)",
+				"28臨", "Tantalum", "180.94788", 8, 5, "#", "#", "rgba(255, 165, 138,0.75)",
+				"38明夷", "Tungsten", "183.84", 9, 5, "#", "#", "rgba(255, 165, 138,0.75)",
+				"48復", "Rhenium", "186.207", 10, 5, "#", "#", "rgba(255, 221, 87,0.75)",
+				"58升", "Osmium", "190.23", 11, 5, "#", "#", "rgba(255, 221, 87,0.75)",
+                "03白离", "Ununpentium", "(288)", 12, 1, " ", " ", "rgba(255, 221, 87,0.75)",
+				"05白巽", "Livermorium", "(293)", 12, 1, " ", " ", "rgba(186, 255, 102,0.75)",
+            //80
+				"88坤", "Gold", "196.966569", 5, 6, "#", "#", "rgba(186, 255, 102,0.75)",
+				"87剝", "Mercury", "200.59", 6, 6, "#", "#", "rgba(186, 255, 102,0.75)",
+				"86比", "Thallium", "204.3833", 7, 6, "#", "#", "rgba(102, 255, 102,0.75)",
+                "85觀", "Promethium", "(145)", 12, 4, "#", "#", "rgba(102, 255, 102,0.75)",
+				"84豫", "Thorium", "232.03806", 9, 6, "#", "#", "rgba(102, 255, 102,0.75)",
+				"83晉", "Protactinium", "231.0588", 10, 6, "#", "#", "rgba(117, 255, 205,0.75)",
+				"82萃", "Uranium", "238.02891", 11, 6, "#", "#", "rgba(117, 255, 205,0.75)",
+				"95黑巽", "Neptunium", "(237)", 12, 6, "#", "#", "rgba(117, 255, 205,0.75)",
+                "03白离", "Ununpentium", "(288)", 11, 1, " ", " ", "rgba(102, 255, 255,0.75)",
+				"05白巽", "Livermorium", "(293)", 12, 1, " ", " ", "rgba(102, 255, 255,0.75)",
+            //90
+				"70艮白", "Dubnium", "(268)", 5, 7, "#", "#", "rgba(102, 255, 255,0.75)",
+				"90黑白", "Seaborgium", "(271)", 6, 7, "#", "#", "rgba(117, 221, 255,0.75)",
+				"60坎白", "Bohrium", "(272)", 7, 7, "#", "#", "rgba(117, 221, 255,0.75)",
+				"40震白", "Hassium", "(270)", 8, 7, "#", "#", "rgba(117, 221, 255,0.75)",
+				"22兌", "Meitnerium", "(276)", 9, 7, "#", "#", "rgba(153, 187, 255,0.75)",
+				"32革", "Darmstadium", "(281)", 10, 7, "#", "#", "rgba(153, 187, 255,0.75)",
+				"42隨", "Roentgenium", "(280)", 11, 7, "#", "#", "rgba(153, 187, 255,0.75)",
+				"52大過", "Copernicium", "(285)", 12, 7, "#", "#", "rgba(161, 138, 255,0.75)",
+                "03白离", "Ununpentium", "(288)", 11, 1, " ", " ", "rgba(161, 138, 255,0.75)",
+				"05白巽", "Livermorium", "(293)", 12, 1, " ", " ", "rgba(161, 138, 255,0.75)",
+
+            //100
+				"73旅", "Meitnerium", "(276)", 5, 8, "#", "#", "rgba(210, 143, 255,0.75)",
+				"74小過", "Darmstadium", "(281)", 6, 8, "#", "#", "rgba(210, 143, 255,0.75)",
+				"75漸", "Roentgenium", "(280)", 7, 8, "#", "#", "rgba(210, 143, 255,0.75)",
+				"76蹇", "Copernicium", "(285)", 8, 8, "#", "#", "rgba(227, 143, 255,0.75)",
+				"77艮", "Unutrium", "(284)", 9, 8, "#", "#", "rgba(227, 143, 255,0.75)",
+				"67蒙", "Flerovium", "(289)", 10, 8, "#", "#", "rgba(227, 143, 255,0.75)",
+				"57蠱", "Ununpentium", "(288)", 11, 8, "#", "#", "rgba(255, 138, 194,0.75)",
+				"47頤", "Livermorium", "(293)", 12, 8, "#", "#", "rgba(255, 138, 194,0.75)",
+                "03白离", "Ununpentium", "(288)", 11, 1, " ", " ", "rgba(255, 138, 194,0.75)",
+				"05白巽", "Livermorium", "(293)", 12, 1, " ", " ", "rgba(255, 165, 138,0.75)",
+            //110
+              	"19乾黑", "大 太 天 从", "今 众 以 会 坐", 5, 1, "", "", "rgba(255, 165, 138,0.75)",
+				"98黑坤", "Darmstadium", "(281)", 6, 1, "", "", "rgba(255, 165, 138,0.75)",
+				"89坤黑", "MichaelPorterbio", "(280)", 7, 1, "", "", "rgba(255, 221, 87,0.75)",
+				"80坤白", "Copernicium", "(285)", 8, 1, "", "", "rgba(255, 221, 87,0.75)",
+				"01白乾", "Unutrium", "(284)", 9, 1, " ", " ", "rgba(255, 221, 87,0.75)",
+				"10乾白", "Flerovium", "(289)", 10, 1, " ", " ", "rgba(186, 255, 102,0.75)",
+				"03白离", "Ununpentium", "(288)", 11, 1, " ", " ", "rgba(186, 255, 102,0.75)",
+				"05白巽", "Livermorium", "(293)", 12, 1, " ", " ", "rgba(186, 255, 102,0.75)",
+                "03白离", "Ununpentium", "(288)", 13, 1, " ", " ", "rgba(102, 255, 102,0.75)",
+				"05白巽", "Livermorium", "(293)", 14, 1, " ", " ", "rgba(102, 255, 102,0.75)",
+            //120
+				"69坎黑", "Boron", "10.811", 15, 1, "#", "#", "rgba(102, 255, 102,0.75)",
+                "99黑黑", "Carbon", "12.0107", 16, 1, "#", "#", "rgba(117, 255, 205,0.75)",
+				"96黑坎", "Aluminium", "26.9815386", 5, 2, "#", "#", "rgba(117, 255, 205,0.75)",
+				"94黑震", "Silicon", "28.0855", 6, 2, "#", "#", "rgba(117, 255, 205,0.75)",
+				"91黑乾", "Vanadium", "50.9415", 7, 2, "#", "#", "rgba(102, 255, 255,0.75)",
+				"50巽白", "Chromium", "51.9961", 8, 2, "#", "#", "rgba(102, 255, 255,0.75)",
+				"30离白", "Manganese", "54.938045", 9, 2, "#", "#", "rgba(102, 255, 255,0.75)",
+				"20兌白", "Iron", "55.845", 10, 2, "#", "#", "rgba(117, 221, 255,0.75)",
+                "03白离", "Ununpentium", "(288)", 11, 2, " ", " ", "rgba(117, 221, 255,0.75)",
+				"05白巽", "Livermorium", "(293)", 12, 2, " ", " ", "rgba(117, 221, 255,0.75)",
+            //130	
+				"04白震", "Copper", "63.546", 13, 2, "#", "#", "rgba(153, 187, 255,0.75)",
+				"06白坎", "Zinc", "65.38", 14, 2, "#", "#", "rgba(153, 187, 255,0.75)",
+				"07白艮", "Gallium", "69.723", 15, 2, "#", "#", "rgba(153, 187, 255,0.75)",
+				"09白黑", "Germanium", "72.63", 16, 2, "#", "#", "rgba(161, 138, 255,0.75)",
+				"29兌黑", "Niobium", "92.90628", 5, 3, "#", "#", "rgba(161, 138, 255,0.75)",
+				"39离黑", "Molybdenum", "95.96", 6, 3, "#", "#", "rgba(161, 138, 255,0.75)",
+				"59巽黑", "Technetium", "(98)", 7, 3, "#", "#", "rgba(210, 143, 255,0.75)",
+				"97黑艮", "Ruthenium", "101.07", 8, 3, "#", "#", "rgba(210, 143, 255,0.75)",
+                "03白离", "Ununpentium", "(288)", 9, 3, " ", " ", "rgba(210, 143, 255,0.75)",
+				"05白巽", "Livermorium", "(293)", 10, 3, " ", " ", "rgba(227, 143, 255,0.75)",
+            //140
+                "04白震", "Copper", "63.546", 11, 3, "#", "#", "rgba(227, 143, 255,0.75)",
+				"06白坎", "Zinc", "65.38", 12, 3, "#", "#", "rgba(227, 143, 255,0.75)",
+				"07白艮", "Gallium", "69.723", 13, 3, "#", "#", "rgba(255, 138, 194,0.75)",
+				"09白黑", "Germanium", "72.63", 14, 3, "#", "#", "rgba(255, 138, 194,0.75)",
+				"29兌黑", "Niobium", "92.90628", 15, 3, "#", "#", "rgba(255, 165, 138,0.75)",
+				"39离黑", "Molybdenum", "95.96", 16, 3, "#", "#", "rgba(255, 165, 138,0.75)",
+				"59巽黑", "Technetium", "(98)", 5, 4, "#", "#", "rgba(255, 221, 87,0.75)",
+				"97黑艮", "Ruthenium", "101.07", 6, 4, "#", "#", "rgba(255, 221, 87,0.75)",
+                "03白离", "Ununpentium", "(288)", 7, 4, " ", " ", "rgba(186, 255, 102,0.75)",
+				"05白巽", "Livermorium", "(293)", 8, 4, " ", " ", "rgba(186, 255, 102,0.75)",
+            //150
+				"71遯", "Silver", "107.8682", 9, 4, "#", "#", "rgba(102, 255, 102,0.75)",
+				"61訟", "Cadmium", "112.411", 10, 4, "#", "#", "rgba(102, 255, 102,0.75)",
+				"51姤", "Indium", "114.818", 11, 4, "#", "#", "rgba(117, 255, 205,0.75)",
+				"41無妄", "Tin", "118.71", 12, 4, "#", "#", "rgba(117, 255, 205,0.75)",
+				"31同人", "Cerium", "140.116", 13, 4, "#", "#", "rgba(102, 255, 255,0.75)",
+				"21履", "Praseodymium", "140.90765", 14, 4, "#", "#", "rgba(102, 255, 255,0.75)",
+				"11乾", "Neodymium", "144.242", 15, 4, "igmap.htm", "", "rgba(117, 221, 255,0.75)",
+				"12夬", "Lead", "207.2", 16, 4, "#", "#", "rgba(117, 221, 255,0.75)",
+                "03白离", "Ununpentium", "(288)", 5, 5, " ", " ", "rgba(153, 187, 255,0.75)",
+				"05白巽", "Livermorium", "(293)", 6, 5, " ", " ", "rgba(153, 187, 255,0.75)",
+            //160
+                "71遯", "Silver", "107.8682", 7, 5, "#", "#", "rgba(161, 138, 255,0.75)",
+				"61訟", "Cadmium", "112.411", 8, 5, "#", "#", "rgba(161, 138, 255,0.75)",
+				"51姤", "Indium", "114.818", 9, 5, "#", "#", "rgba(210, 143, 255,0.75)",
+				"41無妄", "Tin", "118.71", 10, 5, "#", "#", "rgba(210, 143, 255,0.75)",
+				"31同人", "Cerium", "140.116", 11, 5, "#", "#", "rgba(227, 143, 255,0.75)",
+				"21履", "Praseodymium", "140.90765", 10, 5, "#", "#", "rgba(227, 143, 255,0.75)",
+				"11乾", "Neodymium", "144.242", 12, 5, "igmap.htm", "", "rgba(255, 138, 194,0.75)",
+				"12夬", "Lead", "207.2", 13, 5, "#", "#", "rgba(255, 138, 194,0.75)",
+                "03白离", "Ununpentium", "(288)", 14, 5, " ", " ", "rgba(255, 165, 138,0.75)",
+				"05白巽", "Livermorium", "(293)", 15, 5, " ", " ", "rgba(255, 165, 138,0.75)",
+            //170
+				"15小畜", "Gadolinium", "157.25", 16, 5, "#", "#", "rgba(255, 221, 87,0.75)",
+				"16需", "Terbium", "158.92535", 5, 5, "#", "#", "rgba(255, 221, 87,0.75)",
+				"17大畜", "Dysprosium", "162.5", 6, 5, "#", "#", "rgba(186, 255, 102,0.75)",
+				"18泰", "Holmium", "164.93032", 7, 5, "#", "#", "rgba(186, 255, 102,0.75)",
+				"28臨", "Tantalum", "180.94788", 8, 5, "#", "#", "rgba(102, 255, 102,0.75)",
+				"38明夷", "Tungsten", "183.84", 9, 5, "#", "#", "rgba(102, 255, 102,0.75)",
+				"48復", "Rhenium", "186.207", 10, 5, "#", "#", "rgba(117, 255, 205,0.75)",
+				"58升", "Osmium", "190.23", 11, 5, "#", "#", "rgba(117, 255, 205,0.75)",
+                "03白离", "Ununpentium", "(288)", 12, 1, " ", " ", "rgba(102, 255, 255,0.75)",
+				"05白巽", "Livermorium", "(293)", 12, 1, " ", " ", "rgba(102, 255, 255,0.75)",
+            //180
+				"88坤", "Gold", "196.966569", 5, 6, "#", "#", "rgba(117, 221, 255,0.75)",
+				"87剝", "Mercury", "200.59", 6, 6, "#", "#", "rgba(117, 221, 255,0.75)",
+				"86比", "Thallium", "204.3833", 7, 6, "#", "#", "rgba(153, 187, 255,0.75)",
+                "85觀", "Promethium", "(145)", 12, 4, "#", "#", "rgba(153, 187, 255,0.75)",
+				"84豫", "Thorium", "232.03806", 9, 6, "#", "#", "rgba(161, 138, 255,0.75)",
+				"83晉", "Protactinium", "231.0588", 10, 6, "#", "#", "rgba(161, 138, 255,0.75)",
+				"82萃", "Uranium", "238.02891", 11, 6, "#", "#", "rgba(210, 143, 255,0.75)",
+				"95黑巽", "Neptunium", "(237)", 12, 6, "#", "#", "rgba(210, 143, 255,0.75)",
+                "03白离", "Ununpentium", "(288)", 11, 1, " ", " ", "rgba(227, 143, 255,0.75)",
+				"05白巽", "Livermorium", "(293)", 12, 1, " ", " ", "rgba(227, 143, 255,0.75)",
+            //190
+				"70艮白", "Dubnium", "(268)", 5, 7, "#", "#", "rgba(255, 138, 194,0.75)",
+				"90黑白", "Seaborgium", "(271)", 6, 7, "#", "#", "rgba(255, 165, 138,0.75)",
+				"60坎白", "Bohrium", "(272)", 7, 7, "#", "#", "rgba(255, 221, 87,0.75)",
+				"40震白", "Hassium", "(270)", 8, 7, "#", "#", "rgba(186, 255, 102,0.75)",
+				"22兌", "Meitnerium", "(276)", 9, 7, "#", "#", "rgba(102, 255, 102,0.75)",
+				"32革", "Darmstadium", "(281)", 10, 7, "#", "#", "rgba(117, 255, 205,0.75)",
+				"42隨", "Roentgenium", "(280)", 11, 7, "#", "#", "rgba(102, 255, 255,0.75)",
+				"52大過", "Copernicium", "(285)", 12, 7, "#", "#", "rgba(117, 221, 255,0.75)",
+                "03白离", "Ununpentium", "(288)", 11, 1, " ", " ", "rgba(153, 187, 255,0.75)",
+				"05白巽", "Livermorium", "(293)", 12, 1, " ", " ", "rgba(161, 138, 255,0.75)",
+
+            //200
+				"73旅", "Meitnerium", "(276)", 5, 8, "#", "#", "rgba(210, 143, 255,0.75)",
+				"74小過", "Darmstadium", "(281)", 6, 8, "#", "#", "rgba(227, 143, 255,0.75)",
+				"75漸", "Roentgenium", "(280)", 7, 8, "#", "#", "#fff",
+				"76蹇", "Copernicium", "(285)", 8, 8, "#", "#", "#fff",
+				"77艮", "Unutrium", "(284)", 9, 8, "#", "#", "#fff",
+				"67蒙", "Flerovium", "(289)", 10, 8, "#", "#", "#fff",
+				"57蠱", "Ununpentium", "(288)", 11, 8, "#", "#", "#fff",
+				"47頤", "Livermorium", "(293)", 12, 8, "#", "#", "#fff",
+                "03白离", "Ununpentium", "(288)", 11, 1, " ", " ", "#fff",
+				"05白巽", "Livermorium", "(293)", 12, 1, " ", " ", "#fff",
+			];
+
+			var camera, scene, renderer;
+			var controls;
+
+			var objects = [];
+			var targets = { table: [], sphere: [], helix: [], grid: [] };
+
+			init();
+			animate();
+
+			function init() {
+
+				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 0.1, 10000 );
+				camera.position.z = 2000;
+
+				scene = new THREE.Scene();
+
+				// table
+
+				for ( var i = 0; i < table.length; i += 8 ) {
+
+					var element = document.createElement( 'div' );
+					element.className = 'element';
+					//element.style.backgroundColor = 'rgba(255,187,0,' + ( Math.random() * 0.5 + 0.25 ) + ')';
+					
+
+					var bg = document.createElement('div');
+					element.setAttribute('style', "background-color:" + table[i + 7]);
+					element.appendChild(bg);
+
+					var link = document.createElement('a'); // + url 此行要留著 不然下面img出不來
+					link.setAttribute('href', table[i+5]);
+					link.setAttribute('target', "_blank");
+					element.appendChild(link);
+
+					var Img = document.createElement('img');
+					Img.setAttribute('class', 'done');//					
+					Img.setAttribute('style', 'background-image:url(' + table[i + 6] + ');background-size:100px 100px;background-repeat:no-repeat;background-position:center');		  
+					link.appendChild(Img);
+//					console.log(Img);
+
+//					var symbol = document.createElement( 'div' );
+//					symbol.className = 'symbol'; //大字
+//					symbol.textContent = table[i];
+//					element.appendChild( symbol );
+//					link.appendChild(symbol);
+//                    
+//					var details = document.createElement( 'div' );
+//					details.className = 'details'; //下面兩行小字
+//					details.innerHTML = table[ i + 1 ] // + '<br>' + table[ i + 2 ];
+//					//element.appendChild( details );
+//					link.appendChild(details);
+
+					var icol = Math.floor(i / 8 / 12) + 1; //取商數 x=0-11 12爪
+					var irow = i / 8 % 12 + 1; //取餘數 y =0-16
+
+					var number = document.createElement('div');
+					number.className = 'number'; //右上角小字
+					number.textContent = i / 8 +1;
+					element.appendChild(number);
+
+
+					var object = new THREE.CSS3DObject(element);
+					object.position.x = Math.random() * 4000 - 2000;
+					object.position.y = Math.random() * 4000 - 2000;
+					object.position.z = Math.random() * 4000 - 2000;
+					//                        console.log(irow + "," + icol + " :" + object.position.x + "," + object.position.y + "," + object.position.z + ",");
+                    scene.add(object);
+					objects.push(object);
+
+					var object = new THREE.Object3D();
+					//					object.position.x = ( table[ i + 3 ] * 140 ) - 1330;
+					//					object.position.y = - ( table[ i + 4 ] * 180 ) + 990;					
+					object.position.x = (irow * 110) - 600;  //常數項是 table 整體水平位置 數字越大越往左
+					object.position.y = -(icol * 170) + 1700; //常數項是 table 整體垂直位置 數字越大越往上
+
+					targets.table.push(object);
+
+				}
+
+				// sphere
+
+				var vector = new THREE.Vector3();
+                var temp0 = [
+332.33201040150914, 0, 674.2110781460833,
+287.8079634984611, -166.1660052007547, 674.2110781460833,
+166.16600520075437, -287.80796349846133, 674.2110781460833,
+-6.104839991886196e-14, -332.33201040150914, 674.2110781460833,
+-166.1660052007547, -287.80796349846116, 674.2110781460833,
+-287.8079634984613, -166.16600520075448, 674.2110781460833,
+-332.33201040150914, 4.069893327924131e-14, 674.2110781460833,
+-287.80796349846116, 166.16600520075468, 674.2110781460833,
+-166.1660052007545, 287.8079634984613, 674.2110781460833,
+2.0349466639620654e-14, 332.33201040150914, 674.2110781460833,
+166.16600520075463, 287.8079634984612, 674.2110781460833,
+287.8079634984613, 166.16600520075454, 674.2110781460833,
+506.03751643229214, 135.59234386788367, 525.5792089468341,
+523.888587156228, 0, 525.5792089468341,
+506.0375164322921, -135.5923438678841, 525.5792089468341,
+453.70082523003134, -261.94429357811424, 525.5792089468341,
+370.44517256440844, -370.4451725644086, 525.5792089468341,
+261.94429357811373, -453.70082523003174, 525.5792089468341,
+135.59234386788341, -506.03751643229225, 525.5792089468341,
+-9.623677220560558e-14, -523.888587156228, 525.5792089468341,
+-135.59234386788407, -506.0375164322921, 525.5792089468341,
+-261.94429357811424, -453.7008252300314, 525.5792089468341,
+-370.44517256440867, -370.44517256440827, 525.5792089468341,
+-453.70082523003157, -261.9442935781139, 525.5792089468341,
+-506.03751643229225, -135.59234386788347, 525.5792089468341,
+-523.888587156228, 6.415784813707039e-14, 525.5792089468341,
+-506.03751643229214, 135.5923438678838, 525.5792089468341,
+-453.7008252300314, 261.94429357811424, 525.5792089468341,
+-370.44517256440844, 370.4451725644085, 525.5792089468341,
+-261.94429357811396, 453.70082523003157, 525.5792089468341,
+-135.5923438678836, 506.03751643229214, 525.5792089468341,
+3.207892406853519e-14, 523.888587156228, 525.5792089468341,
+135.59234386788378, 506.03751643229214, 525.5792089468341,
+261.9442935781141, 453.7008252300315, 525.5792089468341,
+370.4451725644085, 370.44517256440844, 525.5792089468341,
+453.70082523003157, 261.944293578114, 525.5792089468341,
+650.0708110548452, 174.18594884519072, 334.36803797862285,
+673.0028262649449, 0, 334.36803797862285,
+650.0708110548451, -174.18594884519126, 334.36803797862285,
+582.8375443641671, -336.50141313247275, 334.36803797862285,
+475.88486220965444, -475.8848622096546, 334.36803797862285,
+336.50141313247207, -582.8375443641677, 334.36803797862285,
+174.1859488451904, -650.0708110548453, 334.36803797862285,
+-1.2362861355037307e-13, -673.0028262649449, 334.36803797862285,
+-174.18594884519123, -650.0708110548451, 334.36803797862285,
+-336.50141313247275, -582.8375443641672, 334.36803797862285,
+-475.8848622096547, -475.8848622096542, 334.36803797862285,
+-582.8375443641675, -336.5014131324723, 334.36803797862285,
+-650.0708110548453, -174.18594884519047, 334.36803797862285,
+-673.0028262649449, 8.241907570024871e-14, 334.36803797862285,
+-650.0708110548452, 174.18594884519092, 334.36803797862285,
+-582.8375443641672, 336.50141313247275, 334.36803797862285,
+-475.88486220965444, 475.8848622096545, 334.36803797862285,
+-336.50141313247235, 582.8375443641675, 334.36803797862285,
+-174.18594884519064, 650.0708110548452, 334.36803797862285,
+4.120953785012436e-14, 673.0028262649449, 334.36803797862285,
+174.18594884519086, 650.0708110548452, 334.36803797862285,
+336.5014131324726, 582.8375443641673, 334.36803797862285,
+475.8848622096545, 475.88486220965444, 334.36803797862285,
+582.8375443641675, 336.5014131324724, 334.36803797862285,
+721.3027736011773, 262.53273948448197, 111.63449171538919,
+755.932895501036, 133.29136508190524, 111.63449171538919,
+767.5943788915979, 0, 111.63449171538919,
+755.932895501036, -133.29136508190527, 111.63449171538919,
+721.302773601177, -262.53273948448253, 111.63449171538919,
+664.7562319222612, -383.7971894457993, 111.63449171538919,
+588.0114085192718, -493.4001560165542, 111.63449171538919,
+493.400156016554, -588.011408519272, 111.63449171538919,
+383.79718944579906, -664.7562319222615, 111.63449171538919,
+262.53273948448157, -721.3027736011774, 111.63449171538919,
+133.29136508190496, -755.9328955010361, 111.63449171538919,
+-1.410047998729644e-13, -767.5943788915979, 111.63449171538919,
+-133.29136508190524, -755.932895501036, 111.63449171538919,
+-262.5327394844825, -721.302773601177, 111.63449171538919,
+-383.7971894457993, -664.7562319222613, 111.63449171538919,
+-493.4001560165541, -588.0114085192719, 111.63449171538919,
+-588.011408519272, -493.400156016554, 111.63449171538919,
+-664.7562319222616, -383.7971894457987, 111.63449171538919,
+-721.3027736011773, -262.53273948448197, 111.63449171538919,
+-755.9328955010361, -133.29136508190498, 111.63449171538919,
+-767.5943788915979, 9.40031999153096e-14, 111.63449171538919,
+-755.932895501036, 133.29136508190552, 111.63449171538919,
+-721.3027736011771, 262.53273948448214, 111.63449171538919,
+-664.7562319222616, 383.7971894457989, 111.63449171538919,
+-588.0114085192719, 493.4001560165541, 111.63449171538919,
+-493.4001560165541, 588.011408519272, 111.63449171538919,
+-383.7971894457988, 664.7562319222616, 111.63449171538919,
+-262.53273948448197, 721.3027736011773, 111.63449171538919,
+-133.2913650819052, 755.932895501036, 111.63449171538919,
+4.70015999576548e-14, 767.5943788915979, 111.63449171538919,
+133.29136508190527, 755.932895501036, 111.63449171538919,
+262.5327394844821, 721.3027736011771, 111.63449171538919,
+383.79718944579906, 664.7562319222615, 111.63449171538919,
+493.4001560165541, 588.011408519272, 111.63449171538919,
+588.011408519272, 493.400156016554, 111.63449171538919,
+664.7562319222616, 383.7971894457989, 111.63449171538919,
+721.3027736011773, 262.53273948448197, -111.63449171538919,
+755.932895501036, 133.29136508190524, -111.63449171538919,
+767.5943788915979, 0, -111.63449171538919,
+755.932895501036, -133.29136508190527, -111.63449171538919,
+721.302773601177, -262.53273948448253, -111.63449171538919,
+664.7562319222612, -383.7971894457993, -111.63449171538919,
+588.0114085192718, -493.4001560165542, -111.63449171538919,
+493.400156016554, -588.011408519272, -111.63449171538919,
+383.79718944579906, -664.7562319222615, -111.63449171538919,
+262.53273948448157, -721.3027736011774, -111.63449171538919,
+133.29136508190496, -755.9328955010361, -111.63449171538919,
+-1.410047998729644e-13, -767.5943788915979, -111.63449171538919,
+-133.29136508190524, -755.932895501036, -111.63449171538919,
+-262.5327394844825, -721.302773601177, -111.63449171538919,
+-383.7971894457993, -664.7562319222613, -111.63449171538919,
+-493.4001560165541, -588.0114085192719, -111.63449171538919,
+-588.011408519272, -493.400156016554, -111.63449171538919,
+-664.7562319222616, -383.7971894457987, -111.63449171538919,
+-721.3027736011773, -262.53273948448197, -111.63449171538919,
+-755.9328955010361, -133.29136508190498, -111.63449171538919,
+-767.5943788915979, 9.40031999153096e-14, -111.63449171538919,
+-755.932895501036, 133.29136508190552, -111.63449171538919,
+-721.3027736011771, 262.53273948448214, -111.63449171538919,
+-664.7562319222616, 383.7971894457989, -111.63449171538919,
+-588.0114085192719, 493.4001560165541, -111.63449171538919,
+-493.4001560165541, 588.011408519272, -111.63449171538919,
+-383.7971894457988, 664.7562319222616, -111.63449171538919,
+-262.53273948448197, 721.3027736011773, -111.63449171538919,
+-133.2913650819052, 755.932895501036, -111.63449171538919,
+4.70015999576548e-14, 767.5943788915979, -111.63449171538919,
+133.29136508190527, 755.932895501036, -111.63449171538919,
+262.5327394844821, 721.3027736011771, -111.63449171538919,
+383.79718944579906, 664.7562319222615, -111.63449171538919,
+493.4001560165541, 588.011408519272, -111.63449171538919,
+588.011408519272, 493.400156016554, -111.63449171538919,
+664.7562319222616, 383.7971894457989, -111.63449171538919,
+650.0708110548452, 174.18594884519072, -334.36803797862285,
+673.0028262649449, 0, -334.36803797862285,
+650.0708110548451, -174.18594884519126, -334.36803797862285,
+582.8375443641671, -336.50141313247275, -334.36803797862285,
+475.88486220965444, -475.8848622096546, -334.36803797862285,
+336.50141313247207, -582.8375443641677, -334.36803797862285,
+174.1859488451904, -650.0708110548453, -334.36803797862285,
+-1.2362861355037307e-13, -673.0028262649449, -334.36803797862285,
+-174.18594884519123, -650.0708110548451, -334.36803797862285,
+-336.50141313247275, -582.8375443641672, -334.36803797862285,
+-475.8848622096547, -475.8848622096542, -334.36803797862285,
+-582.8375443641675, -336.5014131324723, -334.36803797862285,
+-650.0708110548453, -174.18594884519047, -334.36803797862285,
+-673.0028262649449, 8.241907570024871e-14, -334.36803797862285,
+-650.0708110548452, 174.18594884519092, -334.36803797862285,
+-582.8375443641672, 336.50141313247275, -334.36803797862285,
+-475.88486220965444, 475.8848622096545, -334.36803797862285,
+-336.50141313247235, 582.8375443641675, -334.36803797862285,
+-174.18594884519064, 650.0708110548452, -334.36803797862285,
+4.120953785012436e-14, 673.0028262649449, -334.36803797862285,
+174.18594884519086, 650.0708110548452, -334.36803797862285,
+336.5014131324726, 582.8375443641673, -334.36803797862285,
+475.8848622096545, 475.88486220965444, -334.36803797862285,
+582.8375443641675, 336.5014131324724, -334.36803797862285,
+506.03751643229214, 135.59234386788367, -525.5792089468341,
+523.888587156228, 0, -525.5792089468341,
+506.0375164322921, -135.5923438678841, -525.5792089468341,
+453.70082523003134, -261.94429357811424, -525.5792089468341,
+370.44517256440844, -370.4451725644086, -525.5792089468341,
+261.94429357811373, -453.70082523003174, -525.5792089468341,
+135.59234386788341, -506.03751643229225, -525.5792089468341,
+-9.623677220560558e-14, -523.888587156228, -525.5792089468341,
+-135.59234386788407, -506.0375164322921, -525.5792089468341,
+-261.94429357811424, -453.7008252300314, -525.5792089468341,
+-370.44517256440867, -370.44517256440827, -525.5792089468341,
+-453.70082523003157, -261.9442935781139, -525.5792089468341,
+-506.03751643229225, -135.59234386788347, -525.5792089468341,
+-523.888587156228, 6.415784813707039e-14, -525.5792089468341,
+-506.03751643229214, 135.5923438678838, -525.5792089468341,
+-453.7008252300314, 261.94429357811424, -525.5792089468341,
+-370.44517256440844, 370.4451725644085, -525.5792089468341,
+-261.94429357811396, 453.70082523003157, -525.5792089468341,
+-135.5923438678836, 506.03751643229214, -525.5792089468341,
+3.207892406853519e-14, 523.888587156228, -525.5792089468341,
+135.59234386788378, 506.03751643229214, -525.5792089468341,
+261.9442935781141, 453.7008252300315, -525.5792089468341,
+370.4451725644085, 370.44517256440844, -525.5792089468341,
+453.70082523003157, 261.944293578114, -525.5792089468341,
+332.33201040150914, 0, -674.2110781460833,
+287.8079634984611, -166.1660052007547, -674.2110781460833,
+166.16600520075437, -287.80796349846133, -674.2110781460833,
+-6.104839991886196e-14, -332.33201040150914, -674.2110781460833,
+-166.1660052007547, -287.80796349846116, -674.2110781460833,
+-287.8079634984613, -166.16600520075448, -674.2110781460833,
+-332.33201040150914, 4.069893327924131e-14, -674.2110781460833,
+-287.80796349846116, 166.16600520075468, -674.2110781460833,
+-166.1660052007545, 287.8079634984613, -674.2110781460833,
+2.0349466639620654e-14, 332.33201040150914, -674.2110781460833,
+166.16600520075463, 287.8079634984612, -674.2110781460833,
+287.8079634984613, 166.16600520075454, -674.2110781460833,
+113.8518706186281, 0, -768.2223754816093,
+-2.091424933950622e-14, -113.8518706186281, -768.2223754816093,
+-113.8518706186281, 1.3942832893004148e-14, -768.2223754816093,
+6.971416446502074e-15, 113.8518706186281, -768.2223754816093,
+113.8518706186281, 0, 768.2223754816093,
+-2.091424933950622e-14, -113.8518706186281, 768.2223754816093,
+-113.8518706186281, 1.3942832893004148e-14, 768.2223754816093,
+6.971416446502074e-15, 113.8518706186281, 768.2223754816093,
+
+
+
+
+
+
+
+
+
+
+
+
+            ];
+
+          
+
+
+
+                for (var i = 0, l = objects.length; i < l; i++) {     //objects.length=200        
+				  
+					var temp2 = [];
+					var object = new THREE.Object3D();
+					object.position.x = temp0[3 * i];
+					object.position.y = temp0[3 * i + 1];
+					object.position.z = temp0[3 * i + 2];
+				
+					temp2.push(object);
+					vector.copy(object.position).multiplyScalar(2);
+					object.lookAt(vector);
+                    targets.sphere.push(object);
+                    
+				}
+               
+				// helix
+
+				var vector = new THREE.Vector3();
+
+				for ( var i = 0, l = objects.length; i < l; i ++ ) {
+
+					var phi = i * 0.175 + Math.PI;
+
+					var object = new THREE.Object3D();
+
+					object.position.x = 1300 * Math.sin( phi );
+					object.position.y = - ( i * 12 ) + 600;
+					object.position.z = 1300 * Math.cos( phi );
+
+					vector.x = object.position.x * 2;
+					vector.y = object.position.y;
+					vector.z = object.position.z * 2;
+
+					object.lookAt( vector );
+
+					targets.helix.push( object );
+
+				}
+
+				// grid
+
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = new THREE.Object3D();
+
+					object.position.x = ( ( i % 4 ) * 310 ) - 400;
+					object.position.y = ( - ( Math.floor( i / 4 ) % 3 ) * 310 ) + 400;
+					object.position.z = ( Math.floor( i / 12 ) ) * 500 - 1000;
+
+					targets.grid.push( object );
+
+				}
+
+				//
+
+				renderer = new THREE.CSS3DRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.domElement.style.position = 'absolute';
+				document.getElementById( 'container' ).appendChild( renderer.domElement );
+
+				//
+
+				controls = new THREE.TrackballControls( camera, renderer.domElement );
+				controls.rotateSpeed = 0.5;
+				controls.minDistance = 200;
+				controls.maxDistance = 100000;
+				controls.addEventListener( 'change', render );
+
+				var button = document.getElementById( 'table' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.table, 20);
+				    camera.position.x = 0;
+				    camera.position.y = 0;
+					camera.position.z = 5000;
+				}, false );
+
+				var button = document.getElementById( 'sphere' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.sphere, 20);
+				    camera.position.x = 0;
+				    camera.position.y = 0;
+					camera.position.z = 3000;
+				}, false );
+
+          
+				var button = document.getElementById( 'helix' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.helix, 20);
+				    camera.position.x = 0;
+				    camera.position.y = 0;
+					camera.position.z = 5000;
+				}, false );
+
+				var button = document.getElementById( 'grid' );
+				button.addEventListener( 'click', function ( event ) {
+				    controls.reset();
+				    transform(targets.grid, 20);
+				    camera.position.x = 2000;
+				    camera.position.y = 0;
+					camera.position.z = 2000;
+				}, false );
+
+	            transform(targets.sphere, 20); //start 
+	            controls.reset();
+				camera.position.x = 0;
+				camera.position.y = 0;
+				camera.position.z = 3000;
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			function transform( targets, duration ) {
+
+				TWEEN.removeAll();
+
+				for ( var i = 0; i < objects.length; i ++ ) {
+
+					var object = objects[ i ];
+					var target = targets[ i ];
+
+					new TWEEN.Tween( object.position )
+						.to( { x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration )
+						.easing( TWEEN.Easing.Exponential.InOut )
+						.start();
+
+					new TWEEN.Tween( object.rotation )
+						.to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+						.easing( TWEEN.Easing.Exponential.InOut )
+						.start();
+
+				}
+	               
+
+				new TWEEN.Tween( this )
+					.to( {}, duration * 2 )
+					.onUpdate( render )
+					.start();
+
+			}
+
+			function transformPos(targets, duration,iX,iY,iZ) {
+
+			    TWEEN.removeAll();
+			    camera.position.x = iX;
+			    camera.position.y = iY;
+			    camera.position.z = iZ;
+			    for (var i = 0; i < objects.length; i++) {
+
+			        var object = objects[i];
+			        var target = targets[i];
+
+			        new TWEEN.Tween(object.position)
+						.to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration)
+						.easing(TWEEN.Easing.Exponential.InOut)
+						.start();
+
+			        new TWEEN.Tween(object.rotation)
+						.to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration)
+						.easing(TWEEN.Easing.Exponential.InOut)
+						.start();
+
+			    }
+                
+                new TWEEN.Tween(this)
+					.to({}, duration * 2)
+					.onUpdate(render)
+					.start();
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+				render();
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				TWEEN.update();
+
+				controls.update();
+
+			}
+
+			function render() {
+
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+	</body>
+</html>

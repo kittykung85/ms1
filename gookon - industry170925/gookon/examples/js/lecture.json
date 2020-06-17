@@ -1,0 +1,25 @@
+{
+	"name": "",
+	"img":"img/logo.png",
+	"color":"#FFFFFF",
+	"children": [
+		{"name":"Lesson 1","size": 1000,"type":"elective one","title":"Lesson 1","url":"http://www.howmooc.com/mobilemap.php?chid=173&cid=18","teacher":" ","month":" ","capita":"img/L1.jpg","color":"#E8CCFF"},
+		{"name":"Lesson 2","size": 1000,"type":"elective one","title":"Lesson 2","url":"http://www.howmooc.com/mobilemap.php?chid=174&cid=18","teacher":" ","month":" ","capita":"img/L2.jpg","color":"#CCDDFF"},
+		{"name":"Lesson 3","size": 1000,"type":"elective one","title":"Lesson3","url":"svg/L03.svg","teacher":" ","month":" ","capita":"img/L3.jpg","color":"#CCEEFF"},
+		{"name":"Lesson 4","size": 1000,"type":"elective one","title":"Lesson 4","url":"svg/L04.svg","teacher":" ","month":" ","capita":"img/L4.jpg","color":"#B0FFBF"},
+		{"name":"Lesson 5","size": 1000,"type":"elective one","title":"Lesson 5","url":"svg/L05.svg","teacher":" ","month":"  ","capita":"img/L5.jpg","color":"#FFFFBB"},
+		{"name":"Lesson 6","size": 1000,"type":"elective one","title":"Lesson 6","url":"svg/L06.svg","teacher":" ","month":"  ","capita":"img/L6.jpg","color":"#FFDDAA"},
+		{"name":"Lesson 7","size": 1000,"type":"elective one","title":"Lesson 7","url":"svg/L07.svg","teacher":" ","month":"  ","capita":"img/L7.jpg","color":"#FFC8B4"},
+		{"name":"Lesson 8","size": 1000,"type":"elective one","title":"Lesson 8","url":"svg/L08.svg","teacher":" ","month":" ","capita":"img/L8.jpg","color":"#E8CCFF"},
+		{"name":"Lesson 9","size": 1000,"type":"elective one","title":"Lesson 9","url":"svg/L09.svg","teacher":" ","month":" ","capita":"img/L9.jpg","color":"#CCDDFF"},
+		{"name":"Lesson 10","size": 1000,"type":"elective one","title":"Lesson10","url":"svg/L10.svg","teacher":" ","month":" ","capita":"img/L10.jpg","color":"#CCEEFF"},
+		{"name":"Lesson 11","size": 1000,"type":"elective one","title":"Lesson 11","url":"svg/L11.svg","teacher":" ","month":" ","capita":"img/L11.jpg","color":"#B0FFBF"},
+		{"name":"Lesson 12","size": 1000,"type":"elective one","title":"Lesson 12","url":"svg/L12.svg","teacher":" ","month":"  ","capita":"img/L12.jpg","color":"#FFFFBB"},
+		{"name":"Lesson 13","size": 1000,"type":"elective one","title":"Lesson 13","url":"svg/L13.svg","teacher":" ","month":"  ","capita":"img/L13.jpg","color":"#FFDDAA"},
+		{"name":"Lesson 14","size": 1000,"type":"elective one","title":"Lesson 14","url":"svg/L14.svg","teacher":" ","month":"  ","capita":"img/L14.jpg","color":"#FFC8B4"},
+		{"name":"Lesson 15","size": 1000,"type":"elective one","title":"Lesson 15","url":"svg/L15.svg","teacher":" ","month":" ","capita":"img/L15.jpg","color":"#E8CCFF"},
+		{"name":"Review","size": 1000,"type":"elective one","title":"Review","url":"#","teacher":" ","month":" ","capita":"img/Lr.jpg","color":"#E8CCFF"}
+	],
+	"type":"required elective one two"
+
+}
